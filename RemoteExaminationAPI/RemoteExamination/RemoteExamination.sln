@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{1694F74F-995E-41CB-9A15-F02DE6E899B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{345924BD-7A19-443D-ADA4-DF400FA75099}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{19CC1415-A4E6-43A9-B763-C2C224D608AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{2304590A-5645-453F-B5BC-FB9DBE8F5737}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteExamination.API", "RemoteExamination.API\RemoteExamination.API.csproj", "{ECCBDCBA-5C6B-457C-824E-D7137A5513ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteExamination.BLL", "RemoteExamination.BLL\RemoteExamination.BLL.csproj", "{56225EF4-26A4-4A80-93DB-A48FCB5DC4FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteExamination.Common", "RemoteExamination.Common\RemoteExamination.Common.csproj", "{B506B264-3FB8-4F1F-8F9B-7CDC47C3ABD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteExamination.DAL", "RemoteExamination.DAL\RemoteExamination.DAL.csproj", "{FDB46C9F-AE0A-4625-9883-359FBCFB7F43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECCBDCBA-5C6B-457C-824E-D7137A5513ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECCBDCBA-5C6B-457C-824E-D7137A5513ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECCBDCBA-5C6B-457C-824E-D7137A5513ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECCBDCBA-5C6B-457C-824E-D7137A5513ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56225EF4-26A4-4A80-93DB-A48FCB5DC4FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56225EF4-26A4-4A80-93DB-A48FCB5DC4FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56225EF4-26A4-4A80-93DB-A48FCB5DC4FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56225EF4-26A4-4A80-93DB-A48FCB5DC4FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B506B264-3FB8-4F1F-8F9B-7CDC47C3ABD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B506B264-3FB8-4F1F-8F9B-7CDC47C3ABD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B506B264-3FB8-4F1F-8F9B-7CDC47C3ABD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B506B264-3FB8-4F1F-8F9B-7CDC47C3ABD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB46C9F-AE0A-4625-9883-359FBCFB7F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB46C9F-AE0A-4625-9883-359FBCFB7F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB46C9F-AE0A-4625-9883-359FBCFB7F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB46C9F-AE0A-4625-9883-359FBCFB7F43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ECCBDCBA-5C6B-457C-824E-D7137A5513ED} = {1694F74F-995E-41CB-9A15-F02DE6E899B1}
+		{56225EF4-26A4-4A80-93DB-A48FCB5DC4FE} = {345924BD-7A19-443D-ADA4-DF400FA75099}
+		{B506B264-3FB8-4F1F-8F9B-7CDC47C3ABD7} = {2304590A-5645-453F-B5BC-FB9DBE8F5737}
+		{FDB46C9F-AE0A-4625-9883-359FBCFB7F43} = {19CC1415-A4E6-43A9-B763-C2C224D608AC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57FF04CB-63E0-4888-90A9-4026883F7F2C}
+	EndGlobalSection
+EndGlobal

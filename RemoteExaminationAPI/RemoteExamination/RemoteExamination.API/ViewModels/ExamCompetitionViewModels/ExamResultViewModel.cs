@@ -1,0 +1,16 @@
+﻿using System.Collections.Generic;
+
+namespace RemoteExamination.API.ViewModels.ExamCompetitionViewModels
+{
+    public class ExamResultViewModel
+    {
+        public int ExamId { get; set; }
+
+        public List<UserAnswerViewModel> UserAnswers { get; set; }
+
+        public ExamResultViewModel()
+        {
+            UserAnswers = new List<UserAnswerViewModel>();
+        }
+    }
+}

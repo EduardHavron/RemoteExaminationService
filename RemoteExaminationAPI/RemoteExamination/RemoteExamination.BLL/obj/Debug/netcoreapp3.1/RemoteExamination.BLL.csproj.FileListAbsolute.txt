@@ -1,0 +1,56 @@
+C:\ProjectsFolder\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.deps.json
+C:\ProjectsFolder\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.dll
+C:\ProjectsFolder\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.pdb
+C:\ProjectsFolder\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.Common.dll
+C:\ProjectsFolder\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.DAL.dll
+C:\ProjectsFolder\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.Common.pdb
+C:\ProjectsFolder\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.DAL.pdb
+C:\ProjectsFolder\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csprojAssemblyReference.cache
+C:\ProjectsFolder\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csproj.CoreCompileInputs.cache
+C:\ProjectsFolder\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.AssemblyInfoInputs.cache
+C:\ProjectsFolder\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.AssemblyInfo.cs
+C:\ProjectsFolder\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csproj.CopyComplete
+C:\ProjectsFolder\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.dll
+C:\ProjectsFolder\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.pdb
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.deps.json
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.dll
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.pdb
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.Common.dll
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.DAL.dll
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.Common.pdb
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.DAL.pdb
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csprojAssemblyReference.cache
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csproj.CoreCompileInputs.cache
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.AssemblyInfoInputs.cache
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.AssemblyInfo.cs
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csproj.CopyComplete
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.dll
+C:\ProjectsFolder\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.deps.json
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.Common.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.DAL.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.Common.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.DAL.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csprojAssemblyReference.cache
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.AssemblyInfoInputs.cache
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.AssemblyInfo.cs
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csproj.CopyComplete
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExamination\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csproj.CoreCompileInputs.cache
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.deps.json
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.BLL.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.Common.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.DAL.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.Common.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\bin\Debug\netcoreapp3.1\RemoteExamination.DAL.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csprojAssemblyReference.cache
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csproj.CoreCompileInputs.cache
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.AssemblyInfoInputs.cache
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.AssemblyInfo.cs
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.csproj.CopyComplete
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.BLL\obj\Debug\netcoreapp3.1\RemoteExamination.BLL.pdb
