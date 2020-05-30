@@ -7,7 +7,7 @@ import {ExaminedExam} from '../../Models/ExamView/Exam/examined-exam';
   providedIn: 'root'
 })
 export class ExamService {
-  private url = 'https://localhost:5001/api/Exam';
+  private url = 'https://localhost:5001/api/Exam/';
   constructor(private http: HttpClient) { }
 
   getExams() {

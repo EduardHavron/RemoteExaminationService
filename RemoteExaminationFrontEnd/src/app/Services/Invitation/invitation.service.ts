@@ -8,7 +8,7 @@ import {ApplyInvitation} from '../../Models/Invitation/apply-invitation';
   providedIn: 'root'
 })
 export class InvitationService {
-  private url = 'https://localhost:5001/api/Exam';
+  private url = 'https://localhost:5001/api/Invitation/';
   constructor(private http: HttpClient) { }
 
   CreateInvite(invite: InvitationView) {

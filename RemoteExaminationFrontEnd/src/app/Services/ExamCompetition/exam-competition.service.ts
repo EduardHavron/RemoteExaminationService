@@ -7,7 +7,7 @@ import {ExamResult} from '../../Models/ExamResults/exam-result';
   providedIn: 'root'
 })
 export class ExamCompetitionService {
-  private url = 'https://localhost:5001/api/ExamCompetition';
+  private url = 'https://localhost:5001/api/ExamCompetition/';
   constructor(private http: HttpClient) { }
 
   examCompetition(examResult: ExamResult) {
