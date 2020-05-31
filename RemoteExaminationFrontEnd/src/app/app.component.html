@@ -1,10 +1,8 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="/">Home</a>
-    <a class="nav-item nav-link" (click)="logout()">Logout</a>
-  </div>
-</nav>
+<nb-layout>
 
-<div class="container body-content">
-  <router-outlet></router-outlet>
-</div>
+  <nb-layout-header fixed>Awesome Company</nb-layout-header>
+  <nb-layout-column class="colored-column-basic">
+    <router-outlet>
+    </router-outlet>
+  </nb-layout-column>
+</nb-layout>

@@ -2,12 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './Authorization/register-form/register-form.component';
+import { LoginFormComponent } from './Authorization/login-form/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorInterceptor } from './Services/Interceptors/error.interceptor';
-import { JwtInterceptor} from './Services/Interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './Shared/Services/Interceptors/error.interceptor';
+import { JwtInterceptor} from './Shared/Services/Interceptors/jwt.interceptor';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,12 @@ import { JwtInterceptor} from './Services/Interceptors/jwt.interceptor';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule,
+    NbThemeModule.forRoot({ name: 'dark' }),
+    NbLayoutModule,
+    NbEvaIconsModule,
+    CommonModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
