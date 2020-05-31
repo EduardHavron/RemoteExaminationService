@@ -66,10 +66,10 @@ namespace RemoteExamination.BLL.Services
         private async Task<string> GenerateToken(User user)
         {
             var claims = (await _userManager.GetRolesAsync(user))
-                .Select(x => new Claim(ClaimsIdentity.DefaultRoleClaimType, x))
+                .Select(x => new Claim("role", x))
                 .ToList();
 
-            claims.Add(new Claim(ClaimsIdentity.DefaultNameClaimType, user.Id));
+            claims.Add(new Claim("id", user.Id));
             var expires = DateTime.Now.AddHours(2);
             var signKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
             var credentials = new SigningCredentials(signKey, SecurityAlgorithms.HmacSha256);

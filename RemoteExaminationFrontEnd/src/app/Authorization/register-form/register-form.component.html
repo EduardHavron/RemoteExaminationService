@@ -1,0 +1,33 @@
+<div class="content-wrapper">
+  <nb-card size="large">
+    <nb-card-body class="">
+      <nb-card-header>Регистрация</nb-card-header>
+      <form [formGroup]="form">
+        <div class="form-wrapper">
+          <div class="form-item-wrapper">
+            <label for="email" i18n>Введите свою почту</label>
+          </div>
+          <div class="form-item-wrapper">
+            <input fieldSize="large" formControlName = 'email' name='email' type="email" nbInput shape="rectangle" placeholder="Email" id ='email' autocomplete="current-email">
+          </div>
+          <div class="form-item-wrapper">
+            <label for="password" i18n>Введите свой пароль</label>
+          </div>
+          <div class="form-item-wrapper">
+            <input fieldSize="large" formControlName = 'password' name='password' type="password" nbInput shape="rectangle" placeholder="*******" id="password" autocomplete="current-password">
+          </div>
+
+          <div class="form-item-wrapper" id = 'toggle'>
+            <nb-checkbox status="basic" (checkedChange)="toggle($event)" i18n>Зарегистрироваться <br> как экзаменатор</nb-checkbox>
+          </div>
+          <div class="form-item-wrapper">
+            <div class="button-div" (click) = signIn()>
+              <button nbButton i18n>Зарегистрироваться</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>
+</div>
+<!-- form [formGroup="form"> -->

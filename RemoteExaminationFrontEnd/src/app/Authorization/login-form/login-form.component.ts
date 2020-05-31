@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthorizationService} from '../../Shared/Services/Auth/authorization.service';
 import {Router} from '@angular/router';
+import {NbToastRef, NbToastrService} from '@nebular/theme';
 
 @Component({
   selector: 'app-login-form',
@@ -13,7 +14,8 @@ form: FormGroup;
 
   constructor(private fb: FormBuilder,
               private authService: AuthorizationService,
-              private router: Router) {
+              private router: Router,
+              private toastrService: NbToastrService) {
 this.form = this.fb.group({
 email: ['', Validators.required],
 password: ['', Validators.required]
@@ -25,11 +27,18 @@ login() {
     this.authService.signIn(val.email, val.password)
       .subscribe(
         () => {
-          this.router.navigateByUrl('/');
+          this.showToastSuccessful('top-right', 'success', 3000);
+          this.router.navigateByUrl('dashboard');
         }
       );
   }
 }
+  showToastSuccessful(position, status, duration) {
+    this.toastrService.show(
+      'Login is successful',
+      `Success!`,
+      {position, status, duration});
+  }
   ngOnInit() {
   }
 

@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import {RouteConfigLoadEnd, RouteConfigLoadStart, Router, RouterEvent} from '@angular/router';
-import { AuthorizationService} from './Shared/Services/Auth/authorization.service';
-import { Auth} from './Shared/Models/UserAuth/auth';
+import { AuthorizationService } from './Shared/Services/Auth/authorization.service';
+import { Auth } from './Shared/Models/UserAuth/auth';
+import {NbComponentSize} from '@nebular/theme';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss',]
 })
 export class AppComponent {
-  currentUser: Auth;
+  currentUser: Auth = null;
   title = 'RemoteExaminationFrontEnd';
   public isShowingRouteLoadIndicator: boolean;
+  sizes: NbComponentSize = 'medium';
   constructor(
   private router: Router,
   private authenticationService: AuthorizationService,
@@ -31,18 +33,22 @@ export class AppComponent {
           asyncLoadCount--;
 
         }
-
-        // If there is at least one pending asynchronous config load request,
-        // then let's show the loading indicator.
-        // --
-        // CAUTION: I'm using CSS to include a small delay such that this loading
-        // indicator won't be seen by people with sufficiently fast connections.
         this.isShowingRouteLoadIndicator = !! asyncLoadCount;
-
       }
     );
   }
-
+  get isAuthenticated(): boolean {
+    return this.currentUser != null;
+  }
+  get isAdmin(): boolean {
+    return this.authenticationService.isAdmin;
+  }
+  get isExaminer(): boolean {
+    return this.authenticationService.isExaminer;
+  }
+  get isExamined(): boolean {
+    return this.authenticationService.isExamined;
+  }
   logout() {
     this.authenticationService.logout();
     this.router.navigateByUrl('/login');

@@ -1,5 +1,6 @@
 export interface Auth {
-  Email: string;
-  Password: string;
+  email: string;
+  password: string;
   token?: string;
+  role: string;
 }

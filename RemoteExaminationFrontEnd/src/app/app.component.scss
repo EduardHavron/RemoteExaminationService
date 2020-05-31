@@ -1,0 +1,35 @@
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  align-content: center;
+  margin: 1%;
+}
+
+nb-action {
+  margin-left: 40%;
+}
+
+.link {
+  cursor: pointer;
+  border: none;
+  margin-left: 5%;
+  outline: none;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 40%;
+}

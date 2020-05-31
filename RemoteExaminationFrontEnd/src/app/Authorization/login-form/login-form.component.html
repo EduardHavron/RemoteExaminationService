@@ -1,17 +1,29 @@
-<div>
-  <form [formGroup]="form">
-      <div class="form-field">
-        <label>Email:</label>
-        <input name="email" formControlName="email">
-      </div>
-      <div class="form-field">
-        <label>Password:</label>
-        <input name="password" formControlName="password"
-               type="password">
-      </div>
-    <div class="form-buttons">
-      <button class="button button-primary"
-              (click)="login()">Login</button>
-    </div>
-  </form>
+<div class="content-wrapper">
+  <nb-card size="medium">
+    <nb-card-body class="">
+      <nb-card-header i18n>Войти</nb-card-header>
+    <form [formGroup]="form">
+        <div class="form-wrapper">
+          <div class="form-item-wrapper">
+          <label for="email" i18n>Введите свою почту</label>
+          </div>
+        <div class="form-item-wrapper">
+          <input fieldSize="large" formControlName = 'email' name='email' type="email" nbInput shape="rectangle" placeholder="Email" id ='email' autocomplete="current-email">
+        </div>
+        <div class="form-item-wrapper">
+          <label for="password" i18n>Введите свой пароль</label>
+        </div>
+        <div class="form-item-wrapper">
+          <input fieldSize="large" formControlName = 'password' name='password' type="password" nbInput shape="rectangle" placeholder="*******" id="password" autocomplete="current-password">
+        </div>
+        <div class="form-item-wrapper">
+          <div class="button-div" (click) = login()>
+            <button nbButton i18n>Войти</button>
+          </div>
+        </div>
+        </div>
+    </form>
+    </nb-card-body>
+  </nb-card>
 </div>
+<!-- form [formGroup="form"> -->
