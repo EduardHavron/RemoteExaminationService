@@ -52,19 +52,39 @@ namespace RemoteExamination.BLL.Services
 
         public async Task AddInviteToUser(InvitationModel model, UserData userData)
         {
-            var invitation = await _dbContext.Invitations.FirstOrDefaultAsync(x => x.InvitationCode == model.InvitationCode);
-            if (invitation is null)
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userData.UserName);
+            var userInvitations =
+                await _dbContext.UserInvitations
+                    .Where(x => x.UserId == user.Id).Select(x => x.InvitationId)
+                    .ToListAsync();
+
+            var currentInvitation = await _dbContext.Invitations.FirstOrDefaultAsync(x => x.InvitationCode == model.InvitationCode);
+            if (currentInvitation is null)
             {
                 return;
             }
-            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userData.UserName);
+
+            if (userInvitations.Any())
+            {
+                var examsId = await _dbContext.Invitations
+                    .Where(x => userInvitations
+                        .Contains(x.ExamId))
+                    .Select(x => x.ExamId)
+                    .ToListAsync();
+               
+                if (examsId.Contains(currentInvitation.ExamId))
+                {
+                    return;
+                }
+            }
+            
             var userInvitation = new UserInvitation
             {
-                InvitationId = invitation.InvitationId,
+                InvitationId = currentInvitation.InvitationId,
                 UserId = user.Id
             };
             await _dbContext.UserInvitations.AddAsync(userInvitation);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();    
         }
     }
 }

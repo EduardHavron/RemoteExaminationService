@@ -6,6 +6,7 @@ using RemoteExamination.BLL.Abstractions;
 using RemoteExamination.BLL.Models;
 using RemoteExamination.Common.Authentication;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RemoteExamination.API.Controllers
 {
@@ -34,18 +35,20 @@ namespace RemoteExamination.API.Controllers
         public async Task<IActionResult> Create(SignUpViewModel model)
         {
             var userModel = _mapper.Map<UserModel>(model);
-            string role;
-            if (model.Role)
-            {
-                role = Role.Examiner;
-            }
-            else
-            {
-                role = Role.Examined;
-            }
+            var role = model.Role ? Role.Examiner : Role.Examined;
             await _accountService.SignUp(userModel, model.Password, role);
 
-            return NoContent();
+            return Ok();
+        }
+
+        [Authorize(Roles = Role.Admin)]
+        [HttpPost("SignUpAdmin")]
+        public async Task<IActionResult> CreateAdmin(SignUpAdminViewModel model)
+        {
+            var adminModel = _mapper.Map<UserModel>(model);
+            await _accountService.SignUp(adminModel, model.Password, Role.Admin);
+
+            return Ok();
         }
     }
 }

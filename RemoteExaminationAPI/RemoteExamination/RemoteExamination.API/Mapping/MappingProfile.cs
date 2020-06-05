@@ -17,6 +17,7 @@ namespace RemoteExamination.API.Mapping
             //Users
             CreateMap<SignUpViewModel, UserModel>().ReverseMap();
             CreateMap<UserModel, User>().ReverseMap();
+            CreateMap<SignUpAdminViewModel, UserModel>().ReverseMap();
             // Exams, Questions, Answers - API - BLL
             CreateMap<ExaminedAnswerViewModel, ExaminedAnswerModel>().ReverseMap();
             CreateMap<ExaminerAnswerViewModel, ExaminerAnswerModel>().ReverseMap();

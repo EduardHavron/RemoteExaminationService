@@ -17,6 +17,7 @@ using RemoteExamination.Common.Authentication;
 using RemoteExamination.DAL.Context;
 using RemoteExamination.DAL.Entities;
 using System.Text;
+using RemoteExamination.API.Seeding;
 
 namespace RemoteExamination.API
 {
@@ -28,7 +29,6 @@ namespace RemoteExamination.API
         }
 
         public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<AppDbContext>(options =>
@@ -132,7 +132,6 @@ namespace RemoteExamination.API
 
             app.UseRouting();
 
-            // TODO: uncomment in future
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -147,6 +146,10 @@ namespace RemoteExamination.API
             using var scope = app.ApplicationServices.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             context.Database.Migrate();
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            SeedRoles.SeedAdminRole(roleManager);
+            SeedUsers.SeedAdminUser(userManager);
         }
     }
 }

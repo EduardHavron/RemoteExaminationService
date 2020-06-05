@@ -66,10 +66,10 @@ namespace RemoteExamination.BLL.Services
         private async Task<string> GenerateToken(User user)
         {
             var claims = (await _userManager.GetRolesAsync(user))
-                .Select(x => new Claim("custom_role", x))
+                .Select(x => new Claim(ClaimsIdentity.DefaultRoleClaimType, x))
                 .ToList();
 
-            claims.Add(new Claim("UserName", user.Id));
+            claims.Add(new Claim(ClaimsIdentity.DefaultNameClaimType, user.Id));
             var expires = DateTime.Now.AddHours(2);
             var signKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
             var credentials = new SigningCredentials(signKey, SecurityAlgorithms.HmacSha256);
@@ -97,7 +97,7 @@ namespace RemoteExamination.BLL.Services
         public async Task<bool> CheckUserInRole(string userId, string role)
         {
             var user = await _userManager.FindByIdAsync(userId);
-            if (await _userManager.IsInRoleAsync(user, "Admin"))
+            if (await _userManager.IsInRoleAsync(user, Role.Admin))
             {
                 return true;
             }
