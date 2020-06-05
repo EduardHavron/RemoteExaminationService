@@ -164,7 +164,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.Common\\RemoteExamination.Common.csproj": {
+                "projectPath": "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.Common\\RemoteExamination.Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

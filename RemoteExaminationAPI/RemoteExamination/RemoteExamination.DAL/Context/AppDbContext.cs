@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using RemoteExamination.Common.Authentication;
 using RemoteExamination.DAL.Entities;
 
 namespace RemoteExamination.DAL.Context
@@ -46,6 +50,38 @@ namespace RemoteExamination.DAL.Context
             builder.Entity<Invitation>()
                 .HasIndex(e => e.InvitationCode)
                 .IsUnique();
+
+            var adminRole = new IdentityRole
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = Role.Admin,
+                NormalizedName = Role.Admin.ToUpper()
+            };
+            builder.Entity<IdentityRole>().HasData(adminRole);
+
+            var emailString = "kyrylo.stakhevych@gmail.com";
+            var userAdmin = new User
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = emailString,
+                Email = emailString,
+                NormalizedEmail = emailString.ToUpper(),
+                NormalizedUserName = emailString.ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+            };
+            var passwordHasher = new PasswordHasher<User>();
+            userAdmin.PasswordHash = passwordHasher.HashPassword(userAdmin, "156980ABCd!");
+
+            builder.Entity<User>().HasData(
+                userAdmin
+                );
+
+            builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = adminRole.Id,
+                UserId = userAdmin.Id
+            });
         }
     }
 }

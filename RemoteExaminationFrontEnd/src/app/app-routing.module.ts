@@ -11,9 +11,14 @@ import {PageNotFoundComponent} from './PageNotFound/page-not-found/page-not-foun
 import {DashboardComponent} from './Dashboard/dashboard/dashboard.component';
 // canActivate: [AuthGuard]
 const routes: Routes = [
-  {path: 'login', component: LoginFormComponent},
-  {path: 'register', component: RegisterFormComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'login',
+    component: LoginFormComponent},
+  {path: 'register',
+    component: RegisterFormComponent},
+  {path: 'dashboard',
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
+    component: DashboardComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

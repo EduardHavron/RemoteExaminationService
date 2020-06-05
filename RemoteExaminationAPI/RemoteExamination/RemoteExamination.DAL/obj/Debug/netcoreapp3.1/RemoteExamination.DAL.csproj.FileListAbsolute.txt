@@ -45,3 +45,6 @@ D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\Re
 D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Debug\netcoreapp3.1\RemoteExamination.DAL.dll
 D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Debug\netcoreapp3.1\RemoteExamination.DAL.pdb
 D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Debug\netcoreapp3.1\RemoteExamination.DAL.genruntimeconfig.cache
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\bin\Debug\netcoreapp3.1\RemoteExamination.Common.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\bin\Debug\netcoreapp3.1\RemoteExamination.Common.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Debug\netcoreapp3.1\RemoteExamination.DAL.csproj.CopyComplete

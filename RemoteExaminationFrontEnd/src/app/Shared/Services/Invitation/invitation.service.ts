@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ExaminedExam} from '../../Models/ExamView/Exam/examined-exam';
 import {InvitationView} from '../../Models/Invitation/invitation-view';
 import {ApplyInvitation} from '../../Models/Invitation/apply-invitation';
 

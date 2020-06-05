@@ -5,10 +5,10 @@
       <div>Remote Examination Service</div>
         <ng-container *ngIf="isAuthenticated">
           <div class="link" (click)="logout()"><span i18n>Logout</span></div>
+          <div class="link" routerLink="dashboard"><span i18n>Dashboard</span></div>
         </ng-container>
         <ng-container *ngIf="!isAuthenticated">
         <div class="link" routerLink="register"><span i18n>Register</span></div>
-        <div class="link" routerLink="login"><span i18n>Login</span></div>
         <div class="link" routerLink="login"><span i18n>Login</span></div>
         </ng-container>
       </div>
@@ -16,19 +16,12 @@
       <div class="header-item">
         <nb-toggle status="info"><span i18n>Change Language</span></nb-toggle>
       </div>
-      <div class="dashboard">
-        <nb-actions [size] = sizes>
-          <nb-action icon="home-outline"></nb-action>
-        </nb-actions>
-      </div>
       </div>
     </div>
   </nb-layout-header>
-  <nb-layout-column class="colored-column-basic">
+  <nb-layout-column>
     <router-outlet>
 
     </router-outlet>
   </nb-layout-column>
-  <nb-layout-footer>
-  </nb-layout-footer>
 </nb-layout>

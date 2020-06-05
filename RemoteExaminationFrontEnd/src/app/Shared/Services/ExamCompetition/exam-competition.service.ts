@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ExaminedExam} from '../../Models/ExamView/Exam/examined-exam';
 import {ExamResult} from '../../Models/ExamResults/exam-result';
 
 @Injectable({

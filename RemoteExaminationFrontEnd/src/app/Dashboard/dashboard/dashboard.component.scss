@@ -1,0 +1,21 @@
+nb-card {
+  width: 50vh;
+}
+
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nb-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card-item-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

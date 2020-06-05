@@ -10,7 +10,7 @@ import {NbComponentSize} from '@nebular/theme';
   styleUrls: ['./app.component.scss',]
 })
 export class AppComponent {
-  currentUser: Auth = null;
+  currentUser: Auth;
   title = 'RemoteExaminationFrontEnd';
   public isShowingRouteLoadIndicator: boolean;
   sizes: NbComponentSize = 'medium';

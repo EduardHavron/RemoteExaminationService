@@ -1,5 +1,29 @@
 <div class="dashboard-wrapper">
-  <nb-card>
-
-  </nb-card>
+  <ng-container *ngIf="currentUser.custom_role === 'Admin' || currentUser.custom_role === 'Examiner'">
+    <div class="exams-wrapper" *ngFor="let exam of ExamList">
+      <nb-card size="small">
+        <nb-card-body>
+          <div class="card-item">
+            <span>{{exam.name}}</span>
+          </div>
+          <div class="card-item">
+            <span i18n>Количество вопросов - </span> <span>{{exam.questions.length}}</span>
+          </div>
+          <div class="card-item">
+            <div class="card-item-buttons">
+              <div class="card-item-button">
+                <button nbButton status ='primary' i18n>Подробнее</button>
+              </div>
+              <div class="card-item-button">
+                <button nbButton status='info' i18n>Редактировать</button>
+              </div>
+              <div class="card-item-button">
+                <button nbButton status='danger' i18n>Удалить</button>
+              </div>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </ng-container>
 </div>

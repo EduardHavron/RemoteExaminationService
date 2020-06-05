@@ -1087,7 +1087,8 @@
           "Microsoft.EntityFrameworkCore.Abstractions": "3.1.4",
           "Microsoft.EntityFrameworkCore.Analyzers": "3.1.4",
           "Microsoft.EntityFrameworkCore.Relational": "3.1.4",
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4"
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4",
+          "RemoteExamination.Common": "1.0.0"
         },
         "runtime": {
           "RemoteExamination.DAL.dll": {}

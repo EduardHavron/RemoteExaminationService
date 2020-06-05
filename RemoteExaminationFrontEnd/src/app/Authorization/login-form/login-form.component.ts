@@ -40,6 +40,7 @@ login() {
       {position, status, duration});
   }
   ngOnInit() {
+
   }
 
 }

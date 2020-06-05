@@ -33,6 +33,7 @@ namespace RemoteExamination.BLL.Services
                 case (Role.Admin):
                     {
                         exams = await _dbContext.Exams
+                            .Include("Questions.Answers").AsNoTracking()
                             .AsNoTracking()
                             .ToListAsync();
                         break;
@@ -69,7 +70,7 @@ namespace RemoteExamination.BLL.Services
                 .Select(x => _mapper.Map<TE>(x))
                 .ToList();
 
-            return examsModel;
+                return examsModel;
         }
 
         public async Task<TE> GetExamAsync<TE, TQ, TA>(int id, UserData currentUser) where TE : IExam<TQ, TA> where TQ : IQuestion<TA> where TA : IAnswer

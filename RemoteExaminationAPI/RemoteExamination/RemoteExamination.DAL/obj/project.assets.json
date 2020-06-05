@@ -1368,6 +1368,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "RemoteExamination.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/RemoteExamination.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RemoteExamination.Common.dll": {}
+        }
       }
     }
   },
@@ -5196,6 +5206,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "RemoteExamination.Common/1.0.0": {
+      "type": "project",
+      "path": "../RemoteExamination.Common/RemoteExamination.Common.csproj",
+      "msbuildProject": "../RemoteExamination.Common/RemoteExamination.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5209,7 +5224,8 @@
       "Microsoft.EntityFrameworkCore.Design >= 3.1.4",
       "Microsoft.EntityFrameworkCore.Relational >= 3.1.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.4",
-      "Microsoft.EntityFrameworkCore.Tools >= 3.1.4"
+      "Microsoft.EntityFrameworkCore.Tools >= 3.1.4",
+      "RemoteExamination.Common >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5241,7 +5257,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.Common\\RemoteExamination.Common.csproj": {
+              "projectPath": "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.Common\\RemoteExamination.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
