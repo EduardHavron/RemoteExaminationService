@@ -68,7 +68,6 @@ namespace RemoteExamination.BLL.Services
             var claims = (await _userManager.GetRolesAsync(user))
                 .Select(x => new Claim(ClaimsIdentity.DefaultRoleClaimType, x))
                 .ToList();
-
             claims.Add(new Claim(ClaimsIdentity.DefaultNameClaimType, user.Id));
             var expires = DateTime.Now.AddHours(2);
             var signKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));

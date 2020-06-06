@@ -9,16 +9,27 @@ import {RegisterFormComponent} from './Authorization/register-form/register-form
 import {AuthGuard} from './Shared/Services/Auth/auth.guard';
 import {PageNotFoundComponent} from './PageNotFound/page-not-found/page-not-found.component';
 import {DashboardComponent} from './Dashboard/dashboard/dashboard.component';
-// canActivate: [AuthGuard]
+
 const routes: Routes = [
-  {path: 'login',
-    component: LoginFormComponent},
-  {path: 'register',
-    component: RegisterFormComponent},
-  {path: 'dashboard',
+  {
+    path: 'login',
+    component: LoginFormComponent
+  },
+  {
+    path: 'register',
+    component: RegisterFormComponent
+  },
+  {
+    path: 'dashboard',
     canLoad: [AuthGuard],
     canActivate: [AuthGuard],
-    component: DashboardComponent},
+    component: DashboardComponent
+  },
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
   {path: '**', component: PageNotFoundComponent}
 ];
 

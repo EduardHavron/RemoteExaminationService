@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe(data => {
         this.ExamList = data;
-        console.log(this.ExamList[0].name);
+        console.log(this.ExamList);
       });
   }
 

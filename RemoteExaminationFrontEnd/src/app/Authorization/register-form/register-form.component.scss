@@ -1,16 +1,20 @@
+.content-wrapper {
+  display:  flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .form-item-wrapper {
   margin-top: 25px;
 }
 
 nb-card {
-  margin-top: 10%;
-  margin-left: 37.5%;
-  width: 30%;
+  max-width: 600px;
+  min-width: 40%;
 }
 
 input {
-  width: 20rem;
+  min-width: 20vw;
 }
 .form-wrapper {
   width: 100%;
@@ -19,9 +23,4 @@ input {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-top: 12.5%;
-}
-
-#toggle {
-  margin-left: 0;
 }

@@ -1,5 +1,5 @@
 <div class="dashboard-wrapper">
-  <ng-container *ngIf="currentUser.custom_role === 'Admin' || currentUser.custom_role === 'Examiner'">
+  <ng-container *ngIf="currentUser.role === 'Admin' || currentUser.role === 'Examiner'">
     <div class="exams-wrapper" *ngFor="let exam of ExamList">
       <nb-card size="small">
         <nb-card-body>

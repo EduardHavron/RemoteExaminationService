@@ -32,7 +32,7 @@ namespace RemoteExamination.BLL.Services
             {
                 case (Role.Admin):
                     {
-                        exams = await _dbContext.Exams
+                            exams = await _dbContext.Exams
                             .Include("Questions.Answers").AsNoTracking()
                             .AsNoTracking()
                             .ToListAsync();

@@ -20,11 +20,12 @@ export class AuthorizationService {
   }
   private getTokenValue(): Auth {
     const jsonToken = JSON.parse(localStorage.getItem('token'));
-
     if (jsonToken && jsonToken.token) {
       const tokenValue = jwt_decode(jsonToken.token);
+      const role = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
+      console.log(tokenValue);
       return {
-        custom_role: tokenValue.custom_role,
+        role: tokenValue[role],
         email: tokenValue.email,
         password: tokenValue.password,
         token: jsonToken.token
@@ -38,7 +39,7 @@ export class AuthorizationService {
     const currentUser = this.currentUserSubject.value;
 
     if (currentUser) {
-      return currentUser.custom_role === Role.Admin;
+      return currentUser.role === Role.Admin;
     }
 
     return false;
@@ -47,7 +48,7 @@ export class AuthorizationService {
     const currentUser = this.currentUserSubject.value;
 
     if (currentUser) {
-      return currentUser.custom_role === Role.Examined;
+      return currentUser.role === Role.Examined;
     }
 
     return false;
@@ -55,7 +56,7 @@ export class AuthorizationService {
   get isExaminer(): boolean {
     const currentUser = this.currentUserSubject.value;
     if (currentUser) {
-      return currentUser.custom_role === Role.Examiner;
+      return currentUser.role === Role.Examiner;
     }
   }
   signUp(email: string, password: string, isExaminer: boolean) {
@@ -68,8 +69,8 @@ export class AuthorizationService {
           if (res && res.token) {
             localStorage.setItem('token', JSON.stringify(res));
             const userInfo = this.getTokenValue();
-            console.log(userInfo.custom_role);
             this.currentUserSubject.next(userInfo);
+            console.log(userInfo);
           }
         })
       );

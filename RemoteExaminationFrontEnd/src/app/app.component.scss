@@ -25,6 +25,9 @@ nb-action {
   border: none;
   margin-left: 5%;
   outline: none;
+  display: flex;
+  justify-items: center;
+  align-items: center;
 }
 
 .nav {
@@ -32,4 +35,33 @@ nb-action {
   flex-direction: row;
   height: 100%;
   width: 40%;
+}
+
+span {
+  display: block;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+}
+
+nb-layout-column {
+  background-image: url("../assets/background.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+router-outlet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

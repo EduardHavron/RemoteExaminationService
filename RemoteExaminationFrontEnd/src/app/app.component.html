@@ -1,27 +1,32 @@
 <nb-layout>
-  <nb-layout-header fixed>
+  <nb-layout-header>
     <div class="header-wrapper">
       <div class="nav">
-      <div>Remote Examination Service</div>
+      <div class="logo"><img src="../assets/400x400_logo.png" alt="REMOTE EXAMINATION SYSTEM"></div>
         <ng-container *ngIf="isAuthenticated">
-          <div class="link" (click)="logout()"><span i18n>Logout</span></div>
-          <div class="link" routerLink="dashboard"><span i18n>Dashboard</span></div>
+          <div class="link" routerLink="dashboard"><span i18n>Главная страница</span></div>
+        </ng-container>
+        <ng-container *ngIf="isExamined">
+          <div class="link" routerLink="dashboard"><span i18n>Ввести код<br>приглашения</span></div>
         </ng-container>
         <ng-container *ngIf="!isAuthenticated">
-        <div class="link" routerLink="register"><span i18n>Register</span></div>
-        <div class="link" routerLink="login"><span i18n>Login</span></div>
+        <div class="link" routerLink="register"><span i18n>Регистрация</span></div>
+        <div class="link" routerLink="login"><span i18n>Войти</span></div>
         </ng-container>
       </div>
       <div class="home link">
       <div class="header-item">
-        <nb-toggle status="info"><span i18n>Change Language</span></nb-toggle>
+        <ng-container *ngIf="isAuthenticated">
+          <div class="link" (click)="logout()"><span i18n>Выйти</span></div>
+        </ng-container>
       </div>
       </div>
     </div>
   </nb-layout-header>
   <nb-layout-column>
+    <div class="background">
+    </div>
     <router-outlet>
-
     </router-outlet>
   </nb-layout-column>
 </nb-layout>
