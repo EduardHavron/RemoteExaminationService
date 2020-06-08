@@ -82,7 +82,7 @@ namespace RemoteExamination.API.Controllers
         }
 
         [HttpPost("CreateExam")]
-        [Authorize]
+        [Authorize(Roles = Role.Admin + "," + Role.Examiner)]
         public async Task<IActionResult> Create(ExaminerExamViewModel model)
         {
             var examModel = _mapper.Map<ExaminerExamModel>(model);
@@ -93,7 +93,7 @@ namespace RemoteExamination.API.Controllers
         }
 
         [HttpPut("EditExam")]
-        [Authorize]
+        [Authorize(Roles = Role.Admin + "," + Role.Examiner)]
         public async Task<IActionResult> Put(ExaminerExamViewModel model)
         {
             var examModel = _mapper.Map<ExaminerExamModel>(model);
@@ -104,7 +104,7 @@ namespace RemoteExamination.API.Controllers
         }
 
         [HttpDelete("DeleteExam")]
-        [Authorize]
+        [Authorize(Roles = Role.Admin + "," + Role.Examiner)]
         public async Task<IActionResult> Delete(int examId)
         {
             await _examService.DeleteExamAsync(examId);

@@ -53,5 +53,19 @@ namespace RemoteExamination.BLL.Services
             await _dbContext.ExamResults.AddAsync(examResult);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<IList<ExamResult>> GetAllExamResults(int examId)
+        {
+            var result = await _dbContext.ExamResults.Where(x => x.ExamId == examId).ToListAsync();
+
+            return result;
+        }
+
+        public async Task<ExamResult> GetExamResult(int examResultId)
+        {
+            var result = await _dbContext.ExamResults.FirstOrDefaultAsync(x => x.ExamResultId == examResultId);
+
+            return result;
+        }
     }
 }
