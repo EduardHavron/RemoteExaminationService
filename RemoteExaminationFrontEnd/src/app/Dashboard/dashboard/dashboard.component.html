@@ -1,5 +1,4 @@
 <div class="dashboard-wrapper">
-  <ng-container *ngIf="currentUser.role === 'Admin' || currentUser.role === 'Examiner'">
     <div class="exams-wrapper" *ngFor="let exam of ExamList">
       <nb-card size="small">
         <nb-card-body>
@@ -11,19 +10,31 @@
           </div>
           <div class="card-item">
             <div class="card-item-buttons">
-              <div class="card-item-button">
-                <button nbButton status ='primary' i18n>Подробнее</button>
-              </div>
-              <div class="card-item-button">
-                <button nbButton status='info' i18n>Редактировать</button>
-              </div>
-              <div class="card-item-button">
-                <button nbButton status='danger' i18n>Удалить</button>
-              </div>
+              <ng-container *ngIf="isExaminer() || isAdmin()">
+                <div class="card-item-button">
+                  <button nbButton status ='primary' i18n>Подробнее</button>
+                </div>
+                <div class="card-item-button">
+                  <button nbButton status ='primary' i18n>Создать<br>приглашение</button>
+                </div>
+                <div class="card-item-button">
+                  <button nbButton status ='primary' i18n>Просмотреть<br>результаты</button>
+                </div>
+                <div class="card-item-button">
+                  <button nbButton status='info' i18n>Редактировать</button>
+                </div>
+                <div class="card-item-button">
+                  <button nbButton status='danger' i18n>Удалить</button>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="isExamined() || isAdmin()">
+                <div class="card-item-button">
+                  <button nbButton status ='primary' i18n>Запустить</button>
+                </div>
+              </ng-container>
             </div>
           </div>
         </nb-card-body>
       </nb-card>
     </div>
-  </ng-container>
 </div>

@@ -70,7 +70,6 @@ export class AuthorizationService {
             localStorage.setItem('token', JSON.stringify(res));
             const userInfo = this.getTokenValue();
             this.currentUserSubject.next(userInfo);
-            console.log(userInfo);
           }
         })
       );

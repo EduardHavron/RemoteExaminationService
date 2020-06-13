@@ -1,0 +1,15 @@
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\bin\Release\netcoreapp3.1\RemoteExamination.DAL.deps.json
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\bin\Release\netcoreapp3.1\RemoteExamination.DAL.runtimeconfig.json
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\bin\Release\netcoreapp3.1\RemoteExamination.DAL.runtimeconfig.dev.json
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\bin\Release\netcoreapp3.1\RemoteExamination.DAL.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\bin\Release\netcoreapp3.1\RemoteExamination.DAL.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\bin\Release\netcoreapp3.1\RemoteExamination.Common.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\bin\Release\netcoreapp3.1\RemoteExamination.Common.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Release\netcoreapp3.1\RemoteExamination.DAL.csprojAssemblyReference.cache
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Release\netcoreapp3.1\RemoteExamination.DAL.csproj.CoreCompileInputs.cache
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Release\netcoreapp3.1\RemoteExamination.DAL.AssemblyInfoInputs.cache
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Release\netcoreapp3.1\RemoteExamination.DAL.AssemblyInfo.cs
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Release\netcoreapp3.1\RemoteExamination.DAL.csproj.CopyComplete
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Release\netcoreapp3.1\RemoteExamination.DAL.dll
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Release\netcoreapp3.1\RemoteExamination.DAL.pdb
+D:\Учеба\АРПЗ\Курсовой проект\RemoteExaminationService\RemoteExaminationAPI\RemoteExamination\RemoteExamination.DAL\obj\Release\netcoreapp3.1\RemoteExamination.DAL.genruntimeconfig.cache

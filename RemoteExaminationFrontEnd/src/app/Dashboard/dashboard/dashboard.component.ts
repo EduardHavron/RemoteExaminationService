@@ -32,8 +32,18 @@ export class DashboardComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe(data => {
         this.ExamList = data;
-        console.log(this.ExamList);
       });
   }
 
+  isAdmin(): boolean {
+    return this.authenticationService.isAdmin;
+  }
+
+  isExaminer(): boolean {
+    return this.authenticationService.isExaminer;
+  }
+
+  isExamined(): boolean {
+    return this.authenticationService.isExamined;
+  }
 }

@@ -26,6 +26,10 @@ import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './PageNotFound/page-not-found/page-not-found.component';
 import { registerLocaleData } from '@angular/common';
 import localeUa from '@angular/common/locales/ru-UA';
+import { AppendInviteComponent } from './Invite/append-invite/append-invite.component';
+import { CreateInviteComponent } from './Invite/create-invite/create-invite.component';
+import { ExamDetailsComponent } from './Exam/Exam/exam-details/exam-details.component';
+import { ExamDeleteComponent } from './Exam/Exam/exam-delete/exam-delete.component';
 
 registerLocaleData(localeUa);
 
@@ -36,6 +40,10 @@ registerLocaleData(localeUa);
     LoginFormComponent,
     DashboardComponent,
     PageNotFoundComponent,
+    AppendInviteComponent,
+    CreateInviteComponent,
+    ExamDetailsComponent,
+    ExamDeleteComponent,
   ],
   imports: [
     BrowserModule,

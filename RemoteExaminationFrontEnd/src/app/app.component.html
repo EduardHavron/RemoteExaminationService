@@ -9,6 +9,9 @@
         <ng-container *ngIf="isExamined">
           <div class="link" routerLink="dashboard"><span i18n>Ввести код<br>приглашения</span></div>
         </ng-container>
+        <ng-container *ngIf="isExaminer || isAdmin">
+          <div class="link" routerLink="dashboard"><span i18n>Создать<br>экзамен</span></div>
+        </ng-container>
         <ng-container *ngIf="!isAuthenticated">
         <div class="link" routerLink="register"><span i18n>Регистрация</span></div>
         <div class="link" routerLink="login"><span i18n>Войти</span></div>
