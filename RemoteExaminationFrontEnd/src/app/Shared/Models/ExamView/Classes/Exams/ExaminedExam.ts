@@ -5,6 +5,7 @@ import {ExaminedQuestion} from '../Questions/ExaminedQuestion';
 import {IQuestion} from '../../Interfaces/Question/IQuestion';
 
 export class ExaminedExam implements IExam<ExaminedQuestion> {
+  examId: number;
   name: string;
   questions: Array<ExaminedQuestion>;
 }

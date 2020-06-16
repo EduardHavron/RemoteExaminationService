@@ -4,6 +4,9 @@ import {AuthorizationService} from '../../Shared/Services/Auth/authorization.ser
 import {Auth} from '../../Shared/Models/UserAuth/auth';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {faTrash} from '@fortawesome/free-solid-svg-icons';
+import {faEdit} from '@fortawesome/free-solid-svg-icons';
+import {faVoteYea} from '@fortawesome/free-solid-svg-icons';
 import {IQuestion} from '../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
 import {IExam} from '../../Shared/Models/ExamView/Interfaces/Exam/IExam';
@@ -16,6 +19,9 @@ import {IExam} from '../../Shared/Models/ExamView/Interfaces/Exam/IExam';
 export class DashboardComponent implements OnInit {
   currentUser: Auth;
   ExamList: Array<IExam<IQuestion<IAnswer>>>;
+  faTrash = faTrash;
+  faEdit = faEdit;
+  faVoteYea = faVoteYea;
   private destroy$ = new Subject<void>();
 
   constructor(private examService: ExamService,
@@ -46,4 +52,7 @@ export class DashboardComponent implements OnInit {
   isExamined(): boolean {
     return this.authenticationService.isExamined;
   }
+  deleteExam(examId: number) {
+   return this.examService.deleteExam(examId);
+}
 }

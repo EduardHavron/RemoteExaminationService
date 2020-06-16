@@ -29,7 +29,10 @@ import localeUa from '@angular/common/locales/ru-UA';
 import { AppendInviteComponent } from './Invite/append-invite/append-invite.component';
 import { CreateInviteComponent } from './Invite/create-invite/create-invite.component';
 import { ExamDetailsComponent } from './Exam/Exam/exam-details/exam-details.component';
-import { ExamDeleteComponent } from './Exam/Exam/exam-delete/exam-delete.component';
+import { ExamCompetitionComponent } from './Exam/ExamCompetition/exam-competition/exam-competition.component';
+import { ExamResultViewComponent } from './Exam/ExamCompetition/exam-result-view/exam-result-view.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 registerLocaleData(localeUa);
 
@@ -43,9 +46,11 @@ registerLocaleData(localeUa);
     AppendInviteComponent,
     CreateInviteComponent,
     ExamDetailsComponent,
-    ExamDeleteComponent,
+    ExamCompetitionComponent,
+    ExamResultViewComponent,
   ],
   imports: [
+    FontAwesomeModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

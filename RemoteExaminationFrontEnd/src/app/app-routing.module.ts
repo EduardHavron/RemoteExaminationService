@@ -6,9 +6,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {RegisterFormComponent} from './Authorization/register-form/register-form.component';
-import {AuthGuard} from './Shared/Services/Auth/auth.guard';
+import {AuthGuard} from './Shared/Services/Guard/auth.guard';
 import {PageNotFoundComponent} from './PageNotFound/page-not-found/page-not-found.component';
 import {DashboardComponent} from './Dashboard/dashboard/dashboard.component';
+import {ExaminerGuard} from './Shared/Services/Guard/examiner.guard';
+import {ExamDetailsComponent} from './Exam/Exam/exam-details/exam-details.component';
 
 const routes: Routes = [
   {
@@ -30,7 +32,15 @@ const routes: Routes = [
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
-  {path: '**', component: PageNotFoundComponent}
+  {
+    path: 'exam/:examId',
+    canActivate: [ExaminerGuard],
+      component: ExamDetailsComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({

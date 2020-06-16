@@ -23,7 +23,6 @@ export class AuthorizationService {
     if (jsonToken && jsonToken.token) {
       const tokenValue = jwt_decode(jsonToken.token);
       const role = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
-      console.log(tokenValue);
       return {
         role: tokenValue[role],
         email: tokenValue.email,

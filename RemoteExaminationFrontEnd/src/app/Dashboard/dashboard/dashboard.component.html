@@ -1,37 +1,34 @@
 <div class="dashboard-wrapper">
     <div class="exams-wrapper" *ngFor="let exam of ExamList">
-      <nb-card size="small">
+      <nb-card size="tiny">
+        <nb-card-header>
+          <span routerLink="exam/{{exam.examId}}" class="exam-name">
+            {{exam.name}}
+          </span>
+          <div class="card-icon-actions">
+            <div class="actions-item">
+              <fa-icon [icon]="faVoteYea" title="Просмотреть результаты" routerLink=""></fa-icon>
+            </div>
+            <div class="actions-item">
+              <fa-icon [icon]="faTrash" (click)="deleteExam(exam.examId)" title="Удалить"></fa-icon>
+            </div>
+            <div class="actions-item">
+              <fa-icon [icon]="faEdit" title="Редактировать" routerLink=""></fa-icon>
+            </div>
+          </div>
+        </nb-card-header>
         <nb-card-body>
           <div class="card-item">
-            <span>{{exam.name}}</span>
-          </div>
-          <div class="card-item">
-            <span i18n>Количество вопросов - </span> <span>{{exam.questions.length}}</span>
+            <span i18n>Количество вопросов - {{exam.questions.length}}</span>
           </div>
           <div class="card-item">
             <div class="card-item-buttons">
-              <ng-container *ngIf="isExaminer() || isAdmin()">
                 <div class="card-item-button">
-                  <button nbButton status ='primary' i18n>Подробнее</button>
+                  <button nbButton status ='primary' size="medium" i18n routerLink="">Создать<br>приглашение</button>
                 </div>
                 <div class="card-item-button">
-                  <button nbButton status ='primary' i18n>Создать<br>приглашение</button>
+                  <button nbButton status ='primary' size="medium" i18n routerLink="">Запустить</button>
                 </div>
-                <div class="card-item-button">
-                  <button nbButton status ='primary' i18n>Просмотреть<br>результаты</button>
-                </div>
-                <div class="card-item-button">
-                  <button nbButton status='info' i18n>Редактировать</button>
-                </div>
-                <div class="card-item-button">
-                  <button nbButton status='danger' i18n>Удалить</button>
-                </div>
-              </ng-container>
-              <ng-container *ngIf="isExamined() || isAdmin()">
-                <div class="card-item-button">
-                  <button nbButton status ='primary' i18n>Запустить</button>
-                </div>
-              </ng-container>
             </div>
           </div>
         </nb-card-body>

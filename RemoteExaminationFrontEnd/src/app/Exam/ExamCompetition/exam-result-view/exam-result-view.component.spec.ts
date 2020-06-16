@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExamDeleteComponent } from './exam-delete.component';
+import { ExamResultViewComponent } from './exam-result-view.component';
 
-describe('ExamDeleteComponent', () => {
-  let component: ExamDeleteComponent;
-  let fixture: ComponentFixture<ExamDeleteComponent>;
+describe('ExamResultViewComponent', () => {
+  let component: ExamResultViewComponent;
+  let fixture: ComponentFixture<ExamResultViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExamDeleteComponent ]
+      declarations: [ ExamResultViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExamDeleteComponent);
+    fixture = TestBed.createComponent(ExamResultViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
