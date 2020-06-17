@@ -1,3 +1,4 @@
+using System;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -31,9 +32,14 @@ namespace RemoteExamination.API
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<AppDbContext>(options =>
-                options.UseSqlServer(Configuration["ConnectionStrings:DbConnection"],
-                    m => m.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+                services.AddDbContext<AppDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
+            else
+                services.AddDbContextPool<AppDbContext>(options =>
+                    options.UseSqlServer(Configuration["ConnectionStrings:DbConnection"],
+                        m => m.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
+
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
