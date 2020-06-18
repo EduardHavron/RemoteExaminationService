@@ -27,7 +27,7 @@
               "src/favicon.ico",
               "src/assets",
               {
-                "glob": "**/web.config",
+                "glob": "**/Web.config",
                 "input": "src/",
                 "output": "./"
               }
@@ -97,7 +97,7 @@
               "src/favicon.ico",
               "src/assets",
               {
-                "glob": "**/web.config",
+                "glob": "**/Web.config",
                 "input": "src/",
                 "output": "./"
               }
