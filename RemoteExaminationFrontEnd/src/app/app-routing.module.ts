@@ -44,7 +44,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [HttpClientModule, FormsModule, BrowserModule, RouterModule.forRoot(routes, {useHash: true})],
+  imports: [HttpClientModule, FormsModule, BrowserModule, RouterModule.forRoot(routes, {})],
   exports: [RouterModule],
   bootstrap: [AppComponent]
 })
