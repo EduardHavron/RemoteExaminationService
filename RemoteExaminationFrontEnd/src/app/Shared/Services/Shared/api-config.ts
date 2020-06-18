@@ -1,3 +1,3 @@
 export enum ApiConfig {
-  apiPath= 'http://reservice.azurewebsites.net/api/'
+  apiPath= 'https://reservice.azurewebsites.net/api/'
 }
