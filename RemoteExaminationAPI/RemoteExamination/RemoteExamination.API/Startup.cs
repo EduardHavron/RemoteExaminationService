@@ -82,7 +82,10 @@ namespace RemoteExamination.API
             services.AddScoped<IInvitationService, InvitationService>();
             services.AddScoped<IExamCompetitionService, ExamCompetitionService>();
 
-            services.AddCors();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowSpecificOrigin", options => options.WithOrigins("https://reservices.azurewebsites.net/"));
+            });
 
             services.AddControllers();
 
@@ -148,7 +151,6 @@ namespace RemoteExamination.API
 
             app.UseSwagger();
             app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "RESApiService"));
-
             using var scope = app.ApplicationServices.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             context.Database.Migrate();

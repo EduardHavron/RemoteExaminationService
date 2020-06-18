@@ -5,12 +5,13 @@ import {IExam} from '../../Models/ExamView/Interfaces/Exam/IExam';
 import {IQuestion} from '../../Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../Models/ExamView/Interfaces/Answer/IAnswer';
 import {ExaminerExam} from '../../Models/ExamView/Classes/Exams/ExaminerExam';
+import {ApiConfig} from '../Shared/api-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExamService {
-  private url = 'https://localhost:5001/api/Exam/';
+  private url = ApiConfig.apiPath + 'Exam/';
   constructor(private http: HttpClient) { }
 
   getExams(): Observable<Array<IExam<IQuestion<IAnswer>>>> {

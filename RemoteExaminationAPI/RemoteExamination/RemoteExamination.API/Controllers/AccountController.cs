@@ -7,6 +7,7 @@ using RemoteExamination.BLL.Models;
 using RemoteExamination.Common.Authentication;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace RemoteExamination.API.Controllers
 {
