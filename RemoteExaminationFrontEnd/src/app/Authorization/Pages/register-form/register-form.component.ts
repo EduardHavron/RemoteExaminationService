@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthorizationService} from '../../Shared/Services/Auth/authorization.service';
+import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {Router} from '@angular/router';
 import {NbToastRef, NbToastrService} from '@nebular/theme';
 
@@ -31,7 +31,7 @@ export class RegisterFormComponent implements OnInit {
         .subscribe(
           () => {
             this.showToastSuccessful('top-right', 'success', 3000);
-            this.router.navigateByUrl('login');
+            this.router.navigateByUrl('authorize/login');
           }
         );
     }

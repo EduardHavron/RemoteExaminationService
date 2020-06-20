@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {InvitationView} from '../../Models/Invitation/invitation-view';
 import {ApplyInvitation} from '../../Models/Invitation/apply-invitation';
-import {ApiConfig} from '../Shared/api-config';
+import {ApiConfig} from '../Shared/Config/api-config';
 
 @Injectable({
   providedIn: 'root'

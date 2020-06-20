@@ -13,8 +13,8 @@
           <div class="link" routerLink="dashboard"><span i18n>Создать<br>экзамен</span></div>
         </ng-container>
         <ng-container *ngIf="!isAuthenticated">
-        <div class="link" routerLink="register"><span i18n>Регистрация</span></div>
-        <div class="link" routerLink="login"><span i18n>Войти</span></div>
+        <div class="link" routerLink="authorize/register"><span i18n>Регистрация</span></div>
+        <div class="link" routerLink="authorize"><span i18n>Войти</span></div>
         </ng-container>
       </div>
       <div class="home link">

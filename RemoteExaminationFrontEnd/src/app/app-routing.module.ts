@@ -1,41 +1,31 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LoginFormComponent} from './Authorization/login-form/login-form.component';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import {RegisterFormComponent} from './Authorization/register-form/register-form.component';
 import {AuthGuard} from './Shared/Services/Guard/auth.guard';
 import {PageNotFoundComponent} from './PageNotFound/page-not-found/page-not-found.component';
-import {DashboardComponent} from './Dashboard/dashboard/dashboard.component';
-import {ExaminerGuard} from './Shared/Services/Guard/examiner.guard';
-import {ExamDetailsComponent} from './Exam/Exam/exam-details/exam-details.component';
+import {UnauthGuard} from './Shared/Services/Guard/unauth.guard';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginFormComponent
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
   },
   {
-    path: 'register',
-    component: RegisterFormComponent
+    path: 'authorize',
+    loadChildren: () => import('./Authorization/authorization.module').then(m => m.AuthorizationModule),
+    canLoad: [UnauthGuard],
+    canActivate: [UnauthGuard]
+
   },
   {
     path: 'dashboard',
+    loadChildren: () => import('./Dashboard/dashboard.module').then(m => m.DashboardModule),
     canLoad: [AuthGuard],
-    canActivate: [AuthGuard],
-    component: DashboardComponent
-  },
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  },
-  {
-    path: 'exam/:examId',
-    canActivate: [ExaminerGuard],
-      component: ExamDetailsComponent
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
@@ -44,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [HttpClientModule, FormsModule, BrowserModule, RouterModule.forRoot(routes, {})],
+  imports: [HttpClientModule, FormsModule, BrowserModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
   bootstrap: [AppComponent]
 })

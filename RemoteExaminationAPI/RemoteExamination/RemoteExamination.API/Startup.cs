@@ -84,7 +84,7 @@ namespace RemoteExamination.API
 
             services.AddCors(c =>
             {
-                c.AddPolicy("AllowSpecificOrigin", options => options.WithOrigins("https://reservices.azurewebsites.net/"));
+                c.AddPolicy("AllowSpecificOrigin", options => options.WithOrigins("https://reservices.azurewebsites.net/", "localhost:4200"));
             });
 
             services.AddControllers();

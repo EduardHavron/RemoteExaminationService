@@ -6,7 +6,7 @@ import {map, tap} from 'rxjs/operators';
 import {Register} from '../../Models/UserAuth/register';
 import * as jwt_decode from 'jwt-decode';
 import {Role} from '../../Enum/enum';
-import {ApiConfig} from '../Shared/api-config';
+import {ApiConfig} from '../Shared/Config/api-config';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +70,7 @@ export class AuthorizationService {
             localStorage.setItem('token', JSON.stringify(res));
             const userInfo = this.getTokenValue();
             this.currentUserSubject.next(userInfo);
+            this.currentUser = Observable.create(userInfo);
           }
         })
       );
@@ -77,5 +78,6 @@ export class AuthorizationService {
   logout() {
     localStorage.removeItem('token');
     this.currentUserSubject.next(null);
+    this.currentUser = null;
   }
 }

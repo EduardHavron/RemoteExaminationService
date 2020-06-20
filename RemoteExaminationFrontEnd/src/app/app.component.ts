@@ -7,13 +7,12 @@ import {NbComponentSize} from '@nebular/theme';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss',]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   currentUser: Auth;
   title = 'RemoteExaminationFrontEnd';
   public isShowingRouteLoadIndicator: boolean;
-  sizes: NbComponentSize = 'medium';
   constructor(
   private router: Router,
   private authenticationService: AuthorizationService,
@@ -51,6 +50,6 @@ export class AppComponent {
   }
   logout() {
     this.authenticationService.logout();
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/authorize/login');
   }
 }

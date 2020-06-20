@@ -5,7 +5,7 @@ import {IExam} from '../../Models/ExamView/Interfaces/Exam/IExam';
 import {IQuestion} from '../../Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../Models/ExamView/Interfaces/Answer/IAnswer';
 import {ExaminerExam} from '../../Models/ExamView/Classes/Exams/ExaminerExam';
-import {ApiConfig} from '../Shared/api-config';
+import {ApiConfig} from '../Shared/Config/api-config';
 
 @Injectable({
   providedIn: 'root'

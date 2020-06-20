@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ExamResult} from '../../Models/ExamResults/exam-result';
 import {Observable} from 'rxjs';
-import {ApiConfig} from '../Shared/api-config';
+import {ApiConfig} from '../Shared/Config/api-config';
 
 @Injectable({
   providedIn: 'root'

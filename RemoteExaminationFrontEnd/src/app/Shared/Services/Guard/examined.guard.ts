@@ -6,7 +6,7 @@ import { AuthorizationService } from '../Auth/authorization.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ExaminerGuard implements CanActivate {
+export class ExaminedGuard implements CanActivate {
   constructor(
     private router: Router,
     private authenticationService: AuthorizationService
@@ -15,6 +15,6 @@ export class ExaminerGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authenticationService.isExaminer || this.authenticationService.isAdmin;
+    return this.authenticationService.isExamined || this.authenticationService.isAdmin;
   }
 }

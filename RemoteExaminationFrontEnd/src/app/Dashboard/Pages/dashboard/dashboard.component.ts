@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {ExamService} from '../../Shared/Services/Exam/exam.service';
-import {AuthorizationService} from '../../Shared/Services/Auth/authorization.service';
-import {Auth} from '../../Shared/Models/UserAuth/auth';
+import {ExamService} from '../../../Shared/Services/Exam/exam.service';
+import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
+import {Auth} from '../../../Shared/Models/UserAuth/auth';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {faEdit} from '@fortawesome/free-solid-svg-icons';
 import {faVoteYea} from '@fortawesome/free-solid-svg-icons';
-import {IQuestion} from '../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
-import {IAnswer} from '../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
-import {IExam} from '../../Shared/Models/ExamView/Interfaces/Exam/IExam';
+import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
+import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
+import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
 
 @Component({
   selector: 'app-dashboard',

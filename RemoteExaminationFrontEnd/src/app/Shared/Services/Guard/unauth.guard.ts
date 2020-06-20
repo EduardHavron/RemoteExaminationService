@@ -4,7 +4,7 @@ import {AuthorizationService} from '../Auth/authorization.service';
 import {Observable} from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
+export class UnauthGuard implements CanActivate {
   constructor(
     private router: Router,
     private authenticationService: AuthorizationService
@@ -12,24 +12,25 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const currentUser = this.authenticationService.currentUser;
-    if (currentUser) {
-      // logged in so return true
+    const currentUser = this.authenticationService.currentUserValue;
+    if (!currentUser) {
+      // not logged in so return true
       return true;
     }
 
-    // not logged in so redirect to login page with the return url
-    this.router.navigateByUrl('/authorize');
+    // logged in so redirect to login page with the return url
+    this.router.navigateByUrl('/dashboard');
     return false;
   }
 
-  canLoad(route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
     const currentUser = this.authenticationService.currentUserValue;
-    if (currentUser) {
+
+    if (!currentUser) {
       return true;
     }
 
-    this.router.navigate(['/authorize']);
+    this.router.navigate(['/dashboard']);
     return false;
   }
 }
