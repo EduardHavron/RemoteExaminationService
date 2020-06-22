@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router'; // we also need angular router f
 import { PageNotFoundComponent } from './PageNotFound/page-not-found/page-not-found.component';
 import { registerLocaleData } from '@angular/common';
 import localeUa from '@angular/common/locales/ru-UA';
-import {SharedModule} from './Shared/Services/Shared/Modules/shared/shared.module';
+import {SharedModule} from './Shared/Services/Shared/Modules/shared.module';
 import {NbToastrModule} from '@nebular/theme';
 
 

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ExamService} from '../../../Shared/Services/Exam/exam.service';
-import {Observable} from 'rxjs';
-import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
+import {takeUntil} from 'rxjs/operators';
+import { Subject} from 'rxjs';
+import { faCheck, faEdit} from '@fortawesome/free-solid-svg-icons';
 import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
+import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
+
 
 @Component({
   selector: 'app-exam-details',
@@ -13,18 +16,24 @@ import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer
 })
 export class ExamDetailsComponent implements OnInit {
   examId: number;
-  exam: Observable<IExam<IQuestion<IAnswer>>>;
+  exam: IExam<IQuestion<IAnswer>>;
+  faCheck = faCheck;
+  faEdit = faEdit;
+  private destroy$ = new Subject<void>();
   constructor(private activatedRoute: ActivatedRoute,
               private examService: ExamService) {
     this.examId = this.activatedRoute.snapshot.params.examId;
   }
 
   ngOnInit() {
-    this.exam = this.getExam(this.examId);
-    console.log(this.exam);
+    this.getExam(this.examId);
   }
 
   getExam(examId: number) {
-      return this.examService.getExamById(examId);
+    this.examService.getExamById(examId)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(data => {
+        this.exam = data;
+      });
   }
 }

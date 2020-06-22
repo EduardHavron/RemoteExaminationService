@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {IExam} from '../../Models/ExamView/Interfaces/Exam/IExam';
 import {IQuestion} from '../../Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../Models/ExamView/Interfaces/Answer/IAnswer';
-import {ExaminerExam} from '../../Models/ExamView/Classes/Exams/ExaminerExam';
 import {ApiConfig} from '../Shared/Config/api-config';
 
 @Injectable({
@@ -19,14 +18,14 @@ export class ExamService {
   }
 
   getExamById(id: number): Observable<IExam<IQuestion<IAnswer>>> {
-    return this.http.get<IExam<IQuestion<IAnswer>>>(this.url + 'SignIn/' + id);
+    return this.http.get<IExam<IQuestion<IAnswer>>>(this.url + 'GetExam/' + id);
   }
 
-  createExam(Exam: ExaminerExam) {
+  createExam(Exam: IExam<IQuestion<IAnswer>>) {
     return this.http.post(this.url + 'CreateExam', Exam);
   }
 
-  editExam(Exam: ExaminerExam) {
+  editExam(Exam: IExam<IQuestion<IAnswer>>) {
     return this.http.put(this.url + 'EditExam', Exam);
   }
 

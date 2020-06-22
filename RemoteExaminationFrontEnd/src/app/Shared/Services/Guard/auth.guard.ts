@@ -5,15 +5,20 @@ import {Observable} from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
+
+  private user: any = null;
+
   constructor(
     private router: Router,
     private authenticationService: AuthorizationService
   ) {
+    authenticationService.currentUser.subscribe((x) => {
+      this.user = x;
+    });
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const currentUser = this.authenticationService.currentUser;
-    if (currentUser) {
+    if (this.user) {
       // logged in so return true
       return true;
     }
@@ -24,8 +29,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canLoad(route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const currentUser = this.authenticationService.currentUserValue;
-    if (currentUser) {
+    if (this.user) {
       return true;
     }
 

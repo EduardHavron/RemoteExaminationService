@@ -1,1 +1,30 @@
-<p>exam-details works!</p>
+<div class="exam-wrapper">
+  <ng-container *ngIf="exam">
+    <nb-card size="tiny">
+      <nb-card-header>
+        <div class="answer-item">
+          <span>{{exam.name}}</span>
+          <fa-icon [icon]="faEdit" routerLink="/exams/exam/{{examId}}/edit"></fa-icon>
+        </div>
+      </nb-card-header>
+
+      <nb-accordion multi *ngIf="exam">
+        <nb-accordion-item *ngFor="let question of exam.questions">
+          <nb-accordion-item-header>{{question.questionMessage}}</nb-accordion-item-header>
+          <nb-accordion-item-body>
+            <nb-list>
+              <nb-list-item *ngFor="let answer of question.answers">
+                <div class="answer-item">
+                  <span>{{answer.value}}</span>
+                  <ng-container *ngIf="answer.isCorrect">
+                    <fa-icon [icon]="faCheck"></fa-icon>
+                  </ng-container>
+                </div>
+              </nb-list-item>
+            </nb-list>
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+      </nb-accordion>
+    </nb-card>
+  </ng-container>
+</div>

@@ -27,7 +27,7 @@ login() {
       .subscribe(
         () => {
           this.showToastSuccessful('top-right', 'success', 3000);
-          this.router.navigateByUrl('dashboard');
+          location.reload();
         }
       );
   }

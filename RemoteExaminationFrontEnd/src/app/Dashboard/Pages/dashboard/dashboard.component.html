@@ -2,18 +2,18 @@
     <div class="exams-wrapper" *ngFor="let exam of ExamList">
       <nb-card size="tiny">
         <nb-card-header>
-          <span routerLink="exam/{{exam.examId}}" class="exam-name">
+          <span routerLink="/exams/exam/{{exam.examId}}" class="exam-name">
             {{exam.name}}
           </span>
           <div class="card-icon-actions">
             <div class="actions-item">
-              <fa-icon [icon]="faVoteYea" title="Просмотреть результаты" routerLink=""></fa-icon>
+              <fa-icon [icon]="faVoteYea" routerLink=""></fa-icon>
             </div>
             <div class="actions-item">
-              <fa-icon [icon]="faTrash" (click)="deleteExam(exam.examId)" title="Удалить"></fa-icon>
+              <fa-icon [icon]="faTrash" (click)="deleteExam(exam.examId)"></fa-icon>
             </div>
             <div class="actions-item">
-              <fa-icon [icon]="faEdit" title="Редактировать" routerLink=""></fa-icon>
+              <!--<fa-icon [icon]="faEdit" routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>-->
             </div>
           </div>
         </nb-card-header>

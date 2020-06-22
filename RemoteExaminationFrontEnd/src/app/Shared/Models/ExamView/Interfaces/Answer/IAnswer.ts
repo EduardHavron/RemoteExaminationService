@@ -1,3 +1,4 @@
 export interface IAnswer {
-  answer: string;
+  value: string;
+  isCorrect: boolean;
 }

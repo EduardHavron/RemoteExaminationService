@@ -28,6 +28,12 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'exams',
+    loadChildren: () => import('./Exam/exam.module').then(m => m.ExamModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }
