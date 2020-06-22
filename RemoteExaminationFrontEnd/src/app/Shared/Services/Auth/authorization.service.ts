@@ -67,7 +67,7 @@ export class AuthorizationService {
       .pipe(
         tap(res => {
           if (res && res.token) {
-            localStorage.setItem('token', JSON.stringify(res));
+            window.localStorage.setItem('token', JSON.stringify(res));
             const userInfo = this.getTokenValue();
             this.currentUserSubject.next(userInfo);
             this.currentUser = Observable.create(userInfo);
@@ -76,7 +76,7 @@ export class AuthorizationService {
       );
   }
   logout() {
-    localStorage.removeItem('token');
+    window.localStorage.removeItem('token');
     this.currentUserSubject.next(null);
     this.currentUser = null;
   }
