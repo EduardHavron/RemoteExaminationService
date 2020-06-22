@@ -20,7 +20,7 @@ export class AuthorizationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
   private getTokenValue(): Auth {
-    const jsonToken = JSON.parse(localStorage.getItem('token'));
+    const jsonToken = JSON.parse(window.localStorage.getItem('token'));
     if (jsonToken && jsonToken.token) {
       const tokenValue = jwt_decode(jsonToken.token);
       const role = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
