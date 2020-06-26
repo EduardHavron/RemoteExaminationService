@@ -103,7 +103,7 @@ namespace RemoteExamination.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("DeleteExam")]
+        [HttpDelete("DeleteExam/{examId}")]
         [Authorize(Roles = Role.Admin + "," + Role.Examiner)]
         public async Task<IActionResult> Delete(int examId)
         {

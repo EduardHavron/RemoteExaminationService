@@ -10,6 +10,7 @@ import {faVoteYea} from '@fortawesome/free-solid-svg-icons';
 import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
 import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
+import {NbToastrService} from '@nebular/theme';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,7 +26,8 @@ export class DashboardComponent implements OnInit {
   private destroy$ = new Subject<void>();
 
   constructor(private examService: ExamService,
-              private authenticationService: AuthorizationService) {
+              private authenticationService: AuthorizationService,
+              private toastrService: NbToastrService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -33,11 +35,18 @@ export class DashboardComponent implements OnInit {
      this.getExams();
   }
 
+  showToast(position, status, duration, message: string, title: string) {
+    this.toastrService.show(
+      message,
+      title,
+      {preventDuplicates: true, position, status, duration});
+  }
   getExams(): void {
     this.examService.getExams()
       .pipe(takeUntil(this.destroy$))
       .subscribe(data => {
         this.ExamList = data;
+        console.log(this.ExamList);
       });
   }
 
@@ -53,6 +62,13 @@ export class DashboardComponent implements OnInit {
     return this.authenticationService.isExamined;
   }
   deleteExam(examId: number) {
-   return this.examService.deleteExam(examId);
+   this.examService.deleteExam(examId).subscribe(() => {
+      this.showToast('top-right',
+        'success',
+        1600,
+        'Экзамен удален',
+        'Успех');
+      location.reload();
+   });
 }
 }

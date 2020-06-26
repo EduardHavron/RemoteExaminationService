@@ -26,8 +26,10 @@ login() {
     this.authService.signIn(val.email, val.password)
       .subscribe(
         () => {
-          this.showToastSuccessful('top-right', 'success', 3000);
-          location.reload();
+          this.showToastSuccessful('top-right', 'success', 1500);
+          setTimeout(() => {
+            location.reload();
+          }, 1600);
         }
       );
   }

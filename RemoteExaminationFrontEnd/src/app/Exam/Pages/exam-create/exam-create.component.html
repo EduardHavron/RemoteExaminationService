@@ -1,5 +1,35 @@
 <div class="exam-wrapper">
-  <form [formGroup]="form">
-
-  </form>
+  <ng-container *ngIf="dataSource">
+    <nb-card size="small">
+      <nb-card-body>
+        <div class="card-body-wrapper">
+            <form [formGroup]="form">
+              <div class="examNameWrapper">
+                <label for="examName">Введите имя экзамена</label>
+                <input type="text" nbInput placeholder="имя экзамена" id="examName" formControlName="name">
+              </div>
+            </form>
+          <div class="content-table">
+            <table [nbTreeGrid]="data" equalColumnsWidth>
+              <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+              <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+              <ng-container [nbTreeGridColumnDef]="customColumn">
+                <td nbTreeGridCell *nbTreeGridCellDef="let row">
+                  <nb-tree-grid-row-toggle
+                    [expanded]="row.expanded"
+                    *ngIf="row.data.kind === 'dir'">
+                  </nb-tree-grid-row-toggle>
+                  {{row.data.value}}
+                </td>
+              </ng-container>
+              <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+                <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+              </ng-container>
+            </table>
+          </div>
+          <button (click)="finalizeData()" nbButton>Сохранить</button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </ng-container>
 </div>
