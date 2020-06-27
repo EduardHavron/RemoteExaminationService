@@ -46,7 +46,6 @@ export class DashboardComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe(data => {
         this.ExamList = data;
-        console.log(this.ExamList);
       });
   }
 
@@ -61,14 +60,14 @@ export class DashboardComponent implements OnInit {
   isExamined(): boolean {
     return this.authenticationService.isExamined;
   }
-  deleteExam(examId: number) {
+  deleteExam(examId: number, examPos: number) {
    this.examService.deleteExam(examId).subscribe(() => {
       this.showToast('top-right',
         'success',
         1600,
         'Экзамен удален',
         'Успех');
-      location.reload();
+      this.ExamList.splice(examPos, 1);
    });
 }
 }

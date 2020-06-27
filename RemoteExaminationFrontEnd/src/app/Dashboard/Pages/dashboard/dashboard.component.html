@@ -1,5 +1,5 @@
 <div class="dashboard-wrapper">
-    <div class="exams-wrapper" *ngFor="let exam of ExamList">
+    <div class="exams-wrapper" *ngFor="let exam of ExamList; let i = index">
       <nb-card size="tiny">
         <nb-card-header>
           <span routerLink="/exams/exam/{{exam.examId}}" class="exam-name">
@@ -10,10 +10,10 @@
               <fa-icon [icon]="faVoteYea" routerLink=""></fa-icon>
             </div>
             <div class="actions-item">
-              <fa-icon [icon]="faTrash" (click)="deleteExam(exam.examId)"></fa-icon>
+              <fa-icon [icon]="faTrash" (click)="deleteExam(exam.examId, i)"></fa-icon>
             </div>
             <div class="actions-item">
-              <!--<fa-icon [icon]="faEdit" routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>-->
+              <fa-icon [icon]="faEdit" routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>
             </div>
           </div>
         </nb-card-header>

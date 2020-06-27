@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './Shared/Services/Interceptors/error.interceptor';
 import { JwtInterceptor} from './Shared/Services/Interceptors/jwt.interceptor';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router'; // we also need angular router for Nebular to function properly
 import { PageNotFoundComponent } from './PageNotFound/page-not-found/page-not-found.component';
 import { registerLocaleData } from '@angular/common';
@@ -22,10 +22,9 @@ registerLocaleData(localeUa);
     PageNotFoundComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    NoopAnimationsModule,
     RouterModule, // RouterModule.forRoot(routes, { useHash: true }), if this is your app.module
     SharedModule,
     NbToastrModule.forRoot()

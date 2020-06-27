@@ -16,6 +16,7 @@ import {
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    ToastrModule,
+    ToastrModule.forRoot(),
     TranslateModule.forRoot(),
     NbLayoutModule,
     NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
@@ -39,7 +40,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     NbCheckboxModule,
     FontAwesomeModule,
     NbSelectModule,
-    NbToastrModule
+    NbToastrModule,
   ],
   exports: [
     CommonModule,
@@ -60,7 +61,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     NbCheckboxModule,
     FontAwesomeModule,
     NbSelectModule,
-    NbToastrModule
+    NbToastrModule,
   ]
 })
 export class SharedModule {

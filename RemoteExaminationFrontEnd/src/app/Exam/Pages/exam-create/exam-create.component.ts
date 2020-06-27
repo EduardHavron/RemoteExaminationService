@@ -28,8 +28,9 @@ interface FSEntry {
 
 export class ExamCreateComponent implements OnInit {
   form: FormGroup;
-  customColumn = 'Значение';
-  defaultColumns = ['Верно ли'];
+  customColumn = 'value';
+  defaultColumns = ['isCorrect'];
+  localizedColumns = ['Значение', 'Верно ли'];
   allColumns = [this.customColumn, ...this.defaultColumns];
   dataSource: NbTreeGridDataSource<FSEntry>;
   public data: TreeNode<FSEntry>[] = [
@@ -48,6 +49,9 @@ export class ExamCreateComponent implements OnInit {
 
   isDir(): boolean {
     return this.kind === 'dir';
+  }
+  getLocalizedColumn(columnIndex: number): string {
+    return this.localizedColumns[columnIndex];
   }
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
               private examService: ExamService,
@@ -98,7 +102,7 @@ export class ExamCreateComponent implements OnInit {
         return true;
       }
       if (containsCorrect && containsIncorrect) {
-        this.questionsAndAnswers.push({questionMessage: questionNode.data.name, answers});
+        this.questionsAndAnswers.push({questionMessage: questionNode.data.value, answers});
       } else {
         this.showToast('top-right',
           'danger',
@@ -135,7 +139,6 @@ export class ExamCreateComponent implements OnInit {
 
   addExam(val) {
     this.finalizedData = {examId: 0, name: val.name, questions: this.questionsAndAnswers };
-    console.log(this.finalizedData);
     this.examService.createExam(this.finalizedData).subscribe(() => {
       this.showToast('top-right',
         'success',
