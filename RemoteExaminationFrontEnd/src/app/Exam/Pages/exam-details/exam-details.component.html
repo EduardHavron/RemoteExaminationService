@@ -8,7 +8,7 @@
         </div>
       </nb-card-header>
 
-      <nb-accordion multi *ngIf="exam">
+      <nb-accordion *ngIf="exam" multi>
         <nb-accordion-item *ngFor="let question of exam.questions">
           <nb-accordion-item-header>{{question.questionMessage}}</nb-accordion-item-header>
           <nb-accordion-item-body>

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from '../../PageNotFound/page-not-found/page-not-found.component';
 import {RegisterFormComponent} from '../Pages/register-form/register-form.component';
@@ -24,6 +24,7 @@ const routes: Routes = [
     component: PageNotFoundComponent
   }
 ];
+
 @NgModule({
   declarations: [],
   imports: [
@@ -34,4 +35,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AuthorizationRouterModule { }
+export class AuthorizationRouterModule {
+}

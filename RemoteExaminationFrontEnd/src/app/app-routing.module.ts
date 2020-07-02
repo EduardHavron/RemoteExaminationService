@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
@@ -44,4 +44,5 @@ const routes: Routes = [
   exports: [RouterModule],
   bootstrap: [AppComponent]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

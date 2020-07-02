@@ -1,12 +1,14 @@
 .exam-wrapper {
-  display:  flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 nb-card {
   max-width: 600px;
   min-width: 40%;
 }
+
 nb-card-body {
   display: flex;
   flex-direction: column;

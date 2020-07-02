@@ -1,6 +1,6 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { ExaminerGuard } from './examiner.guard';
+import {ExaminerGuard} from './examiner.guard';
 
 describe('ExaminerGuard', () => {
   beforeEach(() => {

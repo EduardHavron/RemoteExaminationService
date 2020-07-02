@@ -2,27 +2,29 @@
   <nb-card size="medium">
     <nb-card-body>
       <nb-card-header i18n>Войти</nb-card-header>
-    <form [formGroup]="form">
+      <form [formGroup]="form">
         <div class="form-wrapper">
           <div class="form-item-wrapper">
-          <label for="email" i18n>Введите свою почту</label>
+            <label for="email" i18n>Введите свою почту</label>
           </div>
-        <div class="form-item-wrapper">
-          <input fieldSize="large" formControlName = 'email' name='email' type="email" nbInput shape="rectangle" placeholder="Email" id ='email' autocomplete="current-email">
-        </div>
-        <div class="form-item-wrapper">
-          <label for="password" i18n>Введите свой пароль</label>
-        </div>
-        <div class="form-item-wrapper">
-          <input fieldSize="large" formControlName = 'password' name='password' type="password" nbInput shape="rectangle" placeholder="*******" id="password" autocomplete="current-password">
-        </div>
-        <div class="form-item-wrapper">
-          <div class="button-div" (click) = login()>
-            <button nbButton i18n>Войти</button>
+          <div class="form-item-wrapper">
+            <input autocomplete="current-email" fieldSize="large" formControlName='email' id='email' name='email' nbInput
+                   placeholder="Email" shape="rectangle" type="email">
+          </div>
+          <div class="form-item-wrapper">
+            <label for="password" i18n>Введите свой пароль</label>
+          </div>
+          <div class="form-item-wrapper">
+            <input autocomplete="current-password" fieldSize="large" formControlName='password' id="password" name='password'
+                   nbInput placeholder="*******" shape="rectangle" type="password">
+          </div>
+          <div class="form-item-wrapper">
+            <div (click)=login() class="button-div">
+              <button i18n nbButton>Войти</button>
+            </div>
           </div>
         </div>
-        </div>
-    </form>
+      </form>
     </nb-card-body>
   </nb-card>
 </div>

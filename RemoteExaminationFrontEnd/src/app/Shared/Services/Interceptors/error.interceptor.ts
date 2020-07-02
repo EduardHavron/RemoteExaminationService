@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 import {AuthorizationService} from '../Auth/authorization.service';
 import {Router} from '@angular/router';
 import {NbToastrService} from '@nebular/theme';
@@ -10,14 +10,15 @@ import {NbToastrService} from '@nebular/theme';
 export class ErrorInterceptor implements HttpInterceptor {
   constructor(private authenticationService: AuthorizationService,
               private router: Router,
-              private toastrService: NbToastrService) { }
+              private toastrService: NbToastrService) {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(catchError(err => {
       if (err.status === 401) {
         // auto logout if 401 response returned from api
         this.authenticationService.logout();
-        this.router.navigateByUrl('authorize/login').then( () => {
+        this.router.navigateByUrl('authorize/login').then(() => {
           this.showToast('top-right',
             'danger',
             '3000',

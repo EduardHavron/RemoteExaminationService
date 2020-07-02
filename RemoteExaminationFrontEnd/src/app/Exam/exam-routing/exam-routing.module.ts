@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from '../../PageNotFound/page-not-found/page-not-found.component';
 import {ExamDetailsComponent} from '../Pages/exam-details/exam-details.component';
@@ -26,6 +26,7 @@ const routes: Routes = [
     component: PageNotFoundComponent
   }
 ];
+
 @NgModule({
   declarations: [],
   imports: [
@@ -36,4 +37,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class ExamRoutingModule { }
+export class ExamRoutingModule {
+}

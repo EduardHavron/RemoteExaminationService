@@ -1,4 +1,4 @@
-import { ApiConfig } from './api-config';
+import {ApiConfig} from './api-config';
 
 describe('ApiConfig', () => {
   it('should create an instance', () => {

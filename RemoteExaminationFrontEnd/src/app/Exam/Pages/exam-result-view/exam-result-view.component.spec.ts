@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ExamResultViewComponent } from './exam-result-view.component';
+import {ExamResultViewComponent} from './exam-result-view.component';
 
 describe('ExamResultViewComponent', () => {
   let component: ExamResultViewComponent;
@@ -8,9 +8,9 @@ describe('ExamResultViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExamResultViewComponent ]
+      declarations: [ExamResultViewComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

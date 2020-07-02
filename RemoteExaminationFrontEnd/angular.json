@@ -36,7 +36,7 @@
               "src/styles.scss",
               "node_modules/@nebular/theme/styles/prebuilt/default.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/jquery/dist/jquery.min.js"]
           },
           "configurations": {
             "production": {
@@ -105,7 +105,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["node_modules/jquery/dist/jquery.min.js"]
           }
         },
         "lint": {

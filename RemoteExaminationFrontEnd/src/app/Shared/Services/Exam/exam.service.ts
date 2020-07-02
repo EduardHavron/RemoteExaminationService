@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IExam} from '../../Models/ExamView/Interfaces/Exam/IExam';
@@ -11,7 +11,9 @@ import {ApiConfig} from '../Shared/Config/api-config';
 })
 export class ExamService {
   private url = ApiConfig.apiPath + 'Exam/';
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
 
   getExams(): Observable<Array<IExam<IQuestion<IAnswer>>>> {
     return this.http.get<Array<IExam<IQuestion<IAnswer>>>>(this.url + 'GetExams');

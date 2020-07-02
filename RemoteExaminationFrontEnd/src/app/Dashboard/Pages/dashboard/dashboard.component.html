@@ -1,37 +1,37 @@
 <div class="dashboard-wrapper">
-    <div class="exams-wrapper" *ngFor="let exam of ExamList; let i = index">
-      <nb-card size="tiny">
-        <nb-card-header>
-          <span routerLink="/exams/exam/{{exam.examId}}" class="exam-name">
+  <div *ngFor="let exam of ExamList; let i = index" class="exams-wrapper">
+    <nb-card size="tiny">
+      <nb-card-header>
+          <span class="exam-name" routerLink="/exams/exam/{{exam.examId}}">
             {{exam.name}}
           </span>
-          <div class="card-icon-actions">
-            <div class="actions-item">
-              <fa-icon [icon]="faVoteYea" routerLink=""></fa-icon>
+        <div class="card-icon-actions">
+          <div class="actions-item">
+            <fa-icon [icon]="faVoteYea" routerLink=""></fa-icon>
+          </div>
+          <div class="actions-item">
+            <fa-icon (click)="deleteExam(exam.examId, i)" [icon]="faTrash"></fa-icon>
+          </div>
+          <div class="actions-item">
+            <fa-icon [icon]="faEdit" routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="card-item">
+          <span i18n>Количество вопросов - {{exam.questions.length}}</span>
+        </div>
+        <div class="card-item">
+          <div class="card-item-buttons">
+            <div class="card-item-button">
+              <button i18n nbButton routerLink="" size="medium" status='primary'>Создать<br>приглашение</button>
             </div>
-            <div class="actions-item">
-              <fa-icon [icon]="faTrash" (click)="deleteExam(exam.examId, i)"></fa-icon>
-            </div>
-            <div class="actions-item">
-              <fa-icon [icon]="faEdit" routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>
+            <div class="card-item-button">
+              <button i18n nbButton routerLink="" size="medium" status='primary'>Запустить</button>
             </div>
           </div>
-        </nb-card-header>
-        <nb-card-body>
-          <div class="card-item">
-            <span i18n>Количество вопросов - {{exam.questions.length}}</span>
-          </div>
-          <div class="card-item">
-            <div class="card-item-buttons">
-                <div class="card-item-button">
-                  <button nbButton status ='primary' size="medium" i18n routerLink="">Создать<br>приглашение</button>
-                </div>
-                <div class="card-item-button">
-                  <button nbButton status ='primary' size="medium" i18n routerLink="">Запустить</button>
-                </div>
-            </div>
-          </div>
-        </nb-card-body>
-      </nb-card>
-    </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
 </div>

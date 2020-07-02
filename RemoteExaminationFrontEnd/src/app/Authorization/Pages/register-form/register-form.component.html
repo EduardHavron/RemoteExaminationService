@@ -8,21 +8,24 @@
             <label for="email" i18n>Введите свою почту</label>
           </div>
           <div class="form-item-wrapper">
-            <input fieldSize="large" formControlName = 'email' name='email' type="email" nbInput shape="rectangle" placeholder="Email" id ='email' autocomplete="current-email">
+            <input autocomplete="current-email" fieldSize="large" formControlName='email' id='email' name='email' nbInput
+                   placeholder="Email" shape="rectangle" type="email">
           </div>
           <div class="form-item-wrapper">
             <label for="password" i18n>Введите свой пароль</label>
           </div>
           <div class="form-item-wrapper">
-            <input fieldSize="large" formControlName = 'password' name='password' type="password" nbInput shape="rectangle" placeholder="*******" id="password" autocomplete="current-password">
+            <input autocomplete="current-password" fieldSize="large" formControlName='password' id="password" name='password'
+                   nbInput placeholder="*******" shape="rectangle" type="password">
           </div>
 
-          <div class="form-item-wrapper" id = 'toggle'>
-            <nb-checkbox status="basic" (checkedChange)="toggle($event)" i18n>Зарегистрироваться <br> как экзаменатор</nb-checkbox>
+          <div class="form-item-wrapper" id='toggle'>
+            <nb-checkbox (checkedChange)="toggle($event)" i18n status="basic">Зарегистрироваться <br> как экзаменатор
+            </nb-checkbox>
           </div>
           <div class="form-item-wrapper">
-            <div class="button-div" (click) = signIn()>
-              <button nbButton i18n>Зарегистрироваться</button>
+            <div (click)=signIn() class="button-div">
+              <button i18n nbButton>Зарегистрироваться</button>
             </div>
           </div>
         </div>

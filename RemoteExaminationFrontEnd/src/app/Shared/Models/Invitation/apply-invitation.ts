@@ -1,3 +1,3 @@
 export interface ApplyInvitation {
-InvitationCode: string;
+  InvitationCode: string;
 }

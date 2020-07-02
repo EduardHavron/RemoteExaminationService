@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ExamService} from '../../../Shared/Services/Exam/exam.service';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {Auth} from '../../../Shared/Models/UserAuth/auth';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {faTrash} from '@fortawesome/free-solid-svg-icons';
-import {faEdit} from '@fortawesome/free-solid-svg-icons';
-import {faVoteYea} from '@fortawesome/free-solid-svg-icons';
+import {faEdit, faTrash, faVoteYea} from '@fortawesome/free-solid-svg-icons';
 import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
 import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
@@ -32,7 +30,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     this.getExams();
+    this.getExams();
   }
 
   showToast(position, status, duration, message: string, title: string) {
@@ -41,6 +39,7 @@ export class DashboardComponent implements OnInit {
       title,
       {preventDuplicates: true, position, status, duration});
   }
+
   getExams(): void {
     this.examService.getExams()
       .pipe(takeUntil(this.destroy$))
@@ -60,14 +59,15 @@ export class DashboardComponent implements OnInit {
   isExamined(): boolean {
     return this.authenticationService.isExamined;
   }
+
   deleteExam(examId: number, examPos: number) {
-   this.examService.deleteExam(examId).subscribe(() => {
+    this.examService.deleteExam(examId).subscribe(() => {
       this.showToast('top-right',
         'success',
         1600,
         'Экзамен удален',
         'Успех');
       this.ExamList.splice(examPos, 1);
-   });
-}
+    });
+  }
 }

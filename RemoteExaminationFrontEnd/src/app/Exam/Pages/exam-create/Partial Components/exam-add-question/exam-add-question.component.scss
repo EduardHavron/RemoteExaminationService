@@ -1,0 +1,18 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.body-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.title :focus {
+  pointer-events: none !important;
+  outline: 0 !important;
+  border: 0 !important;
+}

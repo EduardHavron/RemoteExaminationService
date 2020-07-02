@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ExamService} from '../../../Shared/Services/Exam/exam.service';
 import {takeUntil} from 'rxjs/operators';
-import { Subject} from 'rxjs';
-import { faCheck, faEdit} from '@fortawesome/free-solid-svg-icons';
+import {Subject} from 'rxjs';
+import {faCheck, faEdit} from '@fortawesome/free-solid-svg-icons';
 import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
 import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
@@ -20,6 +20,7 @@ export class ExamDetailsComponent implements OnInit {
   faCheck = faCheck;
   faEdit = faEdit;
   private destroy$ = new Subject<void>();
+
   constructor(private activatedRoute: ActivatedRoute,
               private examService: ExamService) {
     this.examId = this.activatedRoute.snapshot.params.examId;

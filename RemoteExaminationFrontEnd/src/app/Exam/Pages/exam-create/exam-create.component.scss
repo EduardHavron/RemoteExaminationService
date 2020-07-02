@@ -1,67 +1,53 @@
 .exam-wrapper {
-  display:  flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 nb-card {
   max-width: 600px;
   min-width: 40%;
 }
 
-button[nbTreeGridRowToggle] {
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-
-.search-label {
-  display: block;
-}
-.search-input {
-  margin-bottom: 1rem;
-}
-
-.nb-column-name {
-  width: 100%;
-}
-
-@media screen and (min-width: 400px) {
-  .nb-column-name,
-  .nb-column-size {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width: 500px) {
-  .nb-column-name,
-  .nb-column-size,
-  .nb-column-kind {
-    width: 33.333%;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  .nb-column-name {
-    width: 31%;
-  }
-  .nb-column-size,
-  .nb-column-kind,
-  .nb-column-items {
-    width: 23%;
-  }
-}
-
-.card-body-wrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .examNameWrapper {
-  height: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.button-wrapper {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5%;
+  height: 100%;
+}
+
+.table {
+  margin-bottom: 5%;
+}
+
+.add-question-wrapper {
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+  .add-question-wrapper {
+    flex-direction: column;
+  }
+
+  .add-button-wrapper:last-child {
+    margin-top: 5%;
+  }
 }

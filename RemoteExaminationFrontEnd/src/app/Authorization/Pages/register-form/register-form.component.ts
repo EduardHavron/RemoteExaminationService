@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {Router} from '@angular/router';
-import {NbToastRef, NbToastrService} from '@nebular/theme';
+import {NbToastrService} from '@nebular/theme';
 
 @Component({
   selector: 'app-register-form',
@@ -40,12 +40,14 @@ export class RegisterFormComponent implements OnInit {
   toggle(checked: boolean) {
     this.checked = checked;
   }
+
   showToastSuccessful(position, status, duration) {
     this.toastrService.show(
       'Registration is successful',
       `Success!`,
       {position, status, duration});
   }
+
   ngOnInit() {
   }
 }

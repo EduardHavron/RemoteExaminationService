@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DashboardComponent} from '../Pages/dashboard/dashboard.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DashboardComponent} from '../Pages/dashboard/dashboard.component';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from '../../PageNotFound/page-not-found/page-not-found.component';
 
@@ -14,6 +14,7 @@ const routes: Routes = [
     component: PageNotFoundComponent
   }
 ];
+
 @NgModule({
   declarations: [],
   imports: [
@@ -24,4 +25,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {
+}

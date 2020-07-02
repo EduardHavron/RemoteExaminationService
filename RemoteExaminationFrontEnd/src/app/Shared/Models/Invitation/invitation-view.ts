@@ -1,4 +1,4 @@
 export interface InvitationView {
-ExamId: number;
-InvitationCode: string;
+  ExamId: number;
+  InvitationCode: string;
 }

@@ -1,22 +1,23 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { ToastrModule } from 'ngx-toastr';
-import { TranslateModule } from '@ngx-translate/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {ToastrModule} from 'ngx-toastr';
+import {TranslateModule} from '@ngx-translate/core';
 import {
   NbActionsModule,
   NbButtonModule,
-  NbCardModule, NbCheckboxModule, NbInputModule,
-  NbLayoutModule, NbSelectModule,
+  NbCardModule,
+  NbCheckboxModule,
+  NbInputModule,
+  NbLayoutModule,
+  NbSelectModule,
   NbSidebarModule,
   NbThemeModule,
-  NbToggleModule,
-  NbToastrModule
+  NbToastrModule,
+  NbToggleModule, NbWindowModule
 } from '@nebular/theme';
-import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -31,7 +32,6 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     NbLayoutModule,
     NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
     NbButtonModule,
-    NbEvaIconsModule,
     NbThemeModule.forRoot(),
     NbToggleModule,
     NbActionsModule,
@@ -52,7 +52,6 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     NbLayoutModule,
     NbSidebarModule,
     NbButtonModule,
-    NbEvaIconsModule,
     NbThemeModule,
     NbToggleModule,
     NbActionsModule,

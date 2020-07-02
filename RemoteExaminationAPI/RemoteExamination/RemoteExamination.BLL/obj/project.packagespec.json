@@ -1,0 +1,75 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.BLL\\RemoteExamination.BLL.csproj",
+    "projectName": "RemoteExamination.BLL",
+    "projectPath": "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.BLL\\RemoteExamination.BLL.csproj",
+    "outputPath": "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.BLL\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp3.1"
+    ],
+    "sources": {
+      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "projectReferences": {
+          "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.Common\\RemoteExamination.Common.csproj": {
+            "projectPath": "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.Common\\RemoteExamination.Common.csproj"
+          },
+          "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.DAL\\RemoteExamination.DAL.csproj": {
+            "projectPath": "D:\\Учеба\\АРПЗ\\Курсовой проект\\RemoteExaminationService\\RemoteExaminationAPI\\RemoteExamination\\RemoteExamination.DAL\\RemoteExamination.DAL.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp3.1": {
+      "dependencies": {
+        "AutoMapper": {
+          "target": "Package",
+          "version": "[9.0.0, )"
+        },
+        "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+          "target": "Package",
+          "version": "[7.0.0, )"
+        },
+        "Microsoft.IdentityModel.Tokens": {
+          "target": "Package",
+          "version": "[5.5.0, )"
+        },
+        "System.IdentityModel.Tokens.Jwt": {
+          "target": "Package",
+          "version": "[5.5.0, )"
+        }
+      },
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true,
+      "frameworkReferences": {
+        "Microsoft.NETCore.App": {
+          "privateAssets": "all"
+        }
+      },
+      "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+    }
+  }
+}
