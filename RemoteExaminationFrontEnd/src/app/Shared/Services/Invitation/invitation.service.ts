@@ -2,13 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {InvitationView} from '../../Models/Invitation/invitation-view';
 import {ApplyInvitation} from '../../Models/Invitation/apply-invitation';
-import {ApiConfig} from '../Shared/Config/api-config';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvitationService {
-  private url = ApiConfig.apiPath + 'Invitation/';
+  private url = environment.apiPath + 'Invitation/';
 
   constructor(private http: HttpClient) {
   }

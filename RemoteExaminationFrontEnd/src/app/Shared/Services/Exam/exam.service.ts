@@ -4,13 +4,13 @@ import {Observable} from 'rxjs';
 import {IExam} from '../../Models/ExamView/Interfaces/Exam/IExam';
 import {IQuestion} from '../../Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../Models/ExamView/Interfaces/Answer/IAnswer';
-import {ApiConfig} from '../Shared/Config/api-config';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExamService {
-  private url = ApiConfig.apiPath + 'Exam/';
+  private url = environment.apiPath + 'Exam/';
 
   constructor(private http: HttpClient) {
   }

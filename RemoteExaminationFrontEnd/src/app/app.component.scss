@@ -54,5 +54,5 @@ nb-layout-column {
   background-image: url("../assets/background.jpg");
   background-position: center;
   background-size: cover;
-  overflow: auto;
+  background-attachment: fixed;
 }

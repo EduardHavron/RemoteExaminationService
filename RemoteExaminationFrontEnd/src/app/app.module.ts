@@ -9,9 +9,8 @@ import {RouterModule} from '@angular/router';
 import {PageNotFoundComponent} from './PageNotFound/page-not-found/page-not-found.component';
 import {registerLocaleData} from '@angular/common';
 import localeUa from '@angular/common/locales/ru-UA';
-import {SharedModule} from './Shared/Services/Shared/Modules/shared.module';
+import {SharedModule} from './Shared/Modules/shared.module';
 import {NbToastrModule, NbWindowModule} from '@nebular/theme';
-import {NbEvaIconsModule} from '@nebular/eva-icons';
 
 
 registerLocaleData(localeUa);

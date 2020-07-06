@@ -1,66 +1,47 @@
 <div class="exam-wrapper">
-  <ng-container *ngIf="dataSource">
-    <nb-card size="medeium">
-      <nb-card-header>
-        <div class="exam-form-wrapper">
-          <form [formGroup]="form">
-            <div class="examNameWrapper">
-              <label for="examName" i18n>Введите название<br>экзамена</label>
-              <input formControlName="name" id="examName" nbInput placeholder="Название экзамена" type="text">
-            </div>
-          </form>
-        </div>
-      </nb-card-header>
-      <div class="content-wrapper">
-        <div class="table-wrapper">
-          <div class="table">
-            <table [nbTreeGrid]="dataSource" equalColumnsWidth>
-              <tr *nbTreeGridHeaderRowDef="allColumns" nbTreeGridHeaderRow></tr>
-              <tr *nbTreeGridRowDef="let row; columns: allColumns" nbTreeGridRow></tr>
-              <ng-container [nbTreeGridColumnDef]="customColumn">
-                <th *nbTreeGridHeaderCellDef nbTreeGridHeaderCell>
-                  {{getLocalizedColumn(0)}} <!-- magical number indicates 1'st localized column -->
-                </th>
-                <td *nbTreeGridCellDef="let row;" nbTreeGridCell>
-                  <nb-tree-grid-row-toggle
-                    *ngIf="row.data.kind === 'dir'"
-                    [expanded]="row.expanded">
-                  </nb-tree-grid-row-toggle>
-
-                  <span>{{row.data.value}}</span>
-                </td>
-              </ng-container>
-              <ng-container *ngFor="let column of defaultColumns; let i = index" [nbTreeGridColumnDef]="column">
-                <th *nbTreeGridHeaderCellDef nbTreeGridHeaderCell>
-                  {{getLocalizedColumn(i + 1)}}
-                </th>
-                <td *nbTreeGridCellDef="let row" nbTreeGridCell><span>{{row.data[column]}}</span></td>
-              </ng-container>
-            </table>
+  <nb-card>
+    <nb-card-header>
+      <div class="exam-form-wrapper">
+        <form [formGroup]="examNameForm">
+          <div class="examNameWrapper">
+            <label for="examName" i18n>Введите название экзамена</label>
+            <input formControlName="examName" id="examName" nbInput placeholder="Название экзамена" type="text">
           </div>
-          <div class="add-question-wrapper">
-            <div class="add-button-wrapper">
-              <button nbButton status="primary" (click)="addQuestionOpenDialog()">
-                <fa-icon [icon]="faPlus"></fa-icon>
-                <span i18n>Добавить вопросы</span>
-              </button>
-            </div>
-            <div class="add-button-wrapper">
-              <ng-container *ngIf="data.length >= 1">
-                <button nbButton status="primary" (click)="addAnswerOpenDialog()">
-                  <fa-icon [icon]="faPlus"></fa-icon>
-                  <span i18n>Добавить ответы</span>
-                </button>
-              </ng-container>
-            </div>
-          </div>
-        </div>
-        <div class="button-wrapper">
-          <div>
-            <button (click)="finalizeData()" nbButton status="success" i18n>Сохранить</button>
-          </div>
-        </div>
+        </form>
       </div>
-    </nb-card>
-  </ng-container>
+    </nb-card-header>
+    <nb-accordion multi>
+
+        <nb-accordion-item *ngFor="let question of exam.questions">
+          <nb-accordion-item-header>
+            {{question.questionMessage}}
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>
+            <nb-list>
+              <nb-list-item *ngFor="let answer of question.answers">
+                <div class="answer-wrapper">
+                  <div>
+                    <span i18n>{{answer.value}}</span>
+                  </div>
+                  <div>
+                    <fa-icon [icon]="faCheck"></fa-icon>
+                  </div>
+                </div>
+              </nb-list-item>
+              <nb-list-item>
+                <div class="answer-wrapper">
+                  <div>
+                    <span i18n>Добавить ответ</span>
+                  </div>
+                  <div>
+                    <fa-icon [icon]="faPlus"></fa-icon>
+                  </div>
+                </div>
+              </nb-list-item>
+            </nb-list>
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+
+    </nb-accordion>
+  </nb-card>
 </div>

@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiPath: 'https://reservice.azurewebsites.net/api/'
 };

@@ -2,13 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ExamResult} from '../../Models/ExamResults/exam-result';
 import {Observable} from 'rxjs';
-import {ApiConfig} from '../Shared/Config/api-config';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExamCompetitionService {
-  private url = ApiConfig.apiPath + 'ExamCompetition/';
+  private url = environment.apiPath + 'ExamCompetition/';
 
   constructor(private http: HttpClient) {
   }

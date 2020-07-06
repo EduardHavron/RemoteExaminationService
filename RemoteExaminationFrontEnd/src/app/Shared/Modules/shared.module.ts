@@ -15,7 +15,7 @@ import {
   NbSidebarModule,
   NbThemeModule,
   NbToastrModule,
-  NbToggleModule, NbWindowModule
+  NbToggleModule
 } from '@nebular/theme';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 

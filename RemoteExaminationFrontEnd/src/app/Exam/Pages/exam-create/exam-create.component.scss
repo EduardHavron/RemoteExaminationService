@@ -15,39 +15,9 @@ nb-card {
   justify-content: space-between;
 }
 
-.button-wrapper {
-  width: 70%;
+.answer-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 5%;
-}
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 5%;
-  height: 100%;
-}
-
-.table {
-  margin-bottom: 5%;
-}
-
-.add-question-wrapper {
-  display: flex;
-  width: 80%;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-@media screen and (max-width: 600px) {
-  .add-question-wrapper {
-    flex-direction: column;
-  }
-
-  .add-button-wrapper:last-child {
-    margin-top: 5%;
-  }
+  width: 100%;
 }

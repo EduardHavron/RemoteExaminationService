@@ -6,14 +6,14 @@ import {tap} from 'rxjs/operators';
 import {Register} from '../../Models/UserAuth/register';
 import * as jwt_decode from 'jwt-decode';
 import {Role} from '../../Enum/enum';
-import {ApiConfig} from '../Shared/Config/api-config';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
   public currentUser: Observable<Auth>;
-  private url = ApiConfig.apiPath + 'Account/';
+  private url = environment.apiPath + 'Account/';
   private currentUserSubject: BehaviorSubject<Auth>;
 
   constructor(private http: HttpClient) {

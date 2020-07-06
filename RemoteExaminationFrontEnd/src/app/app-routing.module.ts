@@ -4,9 +4,9 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import {AuthGuard} from './Shared/Services/Guard/auth.guard';
+import {AuthGuard} from './Shared/Guard/auth.guard';
 import {PageNotFoundComponent} from './PageNotFound/page-not-found/page-not-found.component';
-import {UnauthGuard} from './Shared/Services/Guard/unauth.guard';
+import {UnauthGuard} from './Shared/Guard/unauth.guard';
 
 const routes: Routes = [
   {
