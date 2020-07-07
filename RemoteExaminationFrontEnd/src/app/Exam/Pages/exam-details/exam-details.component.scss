@@ -15,7 +15,13 @@ nb-card-body {
   justify-content: space-between;
 }
 
-fa-icon {
+.fa-icon-color-success {
+  color: #00d68f;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.fa-icon-color-primary {
   color: #36f;
   cursor: pointer;
   font-size: 1.25rem;

@@ -21,3 +21,55 @@ nb-card {
   justify-content: space-between;
   width: 100%;
 }
+
+.fa-icon-color-success {
+  color: #00d68f;
+}
+
+.fa-icon-color-primary {
+  color: #36f;
+}
+
+.add-wrapper {
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-content: center;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5%;
+}
+
+.add-question-accordion-item {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.add-answer-input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-big {
+  font-size: 1.75em;
+}
+
+.flex-center-vertical {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+
+.disable-top-round {
+  border-radius: 0 0 25rem 25rem;
+}

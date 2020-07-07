@@ -10,7 +10,7 @@
             <fa-icon [icon]="faVoteYea" routerLink=""></fa-icon>
           </div>
           <div class="actions-item">
-            <fa-icon (click)="deleteExam(exam.examId, i)" [icon]="faTrash"></fa-icon>
+            <fa-icon (click)="deleteExam(exam.examId, i)" [icon]="faTrash" class="fa-icon-color-primary"></fa-icon>
           </div>
           <div class="actions-item">
             <fa-icon [icon]="faEdit" routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>

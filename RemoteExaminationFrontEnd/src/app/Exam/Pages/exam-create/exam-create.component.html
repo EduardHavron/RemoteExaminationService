@@ -10,8 +10,8 @@
         </form>
       </div>
     </nb-card-header>
-    <nb-accordion multi>
-
+    <ng-container *ngIf="exam">
+      <nb-accordion multi>
         <nb-accordion-item *ngFor="let question of exam.questions">
           <nb-accordion-item-header>
             {{question.questionMessage}}
@@ -23,25 +23,50 @@
                   <div>
                     <span i18n>{{answer.value}}</span>
                   </div>
-                  <div>
-                    <fa-icon [icon]="faCheck"></fa-icon>
-                  </div>
+                  <ng-container *ngIf="answer.isCorrect">
+                    <div>
+                      <fa-icon [icon]="faCheck" class="fa-icon-color-success"></fa-icon>
+                    </div>
+                  </ng-container>
                 </div>
               </nb-list-item>
               <nb-list-item>
-                <div class="answer-wrapper">
+                <div class="add-wrapper" (click)="addAnswer($event)">
                   <div>
                     <span i18n>Добавить ответ</span>
                   </div>
                   <div>
-                    <fa-icon [icon]="faPlus"></fa-icon>
+                    <fa-icon [icon]="faPlus" class="fa-icon-color-primary"></fa-icon>
                   </div>
                 </div>
               </nb-list-item>
             </nb-list>
           </nb-accordion-item-body>
         </nb-accordion-item>
+        <nb-accordion-item disabled>
+          <nb-accordion-item-header>
+           <div class="add-wrapper show add-question-accordion-item" (click)="addQuestion()">
+              <div>
+                <span i18n>Добавить вопрос</span>
+              </div>
+              <div>
+                <fa-icon [icon]="faPlus" class="fa-icon-color-primary"></fa-icon>
+              </div>
+            </div>
 
-    </nb-accordion>
+            <!--<div class="add-answer-wrapper add-question-accordion-item">
+              <div class="add-answer-input-wrapper">
+                <label for="question-input" i18n>Текст вопроса</label>
+                <input id="question-input" nbInput>
+              </div>
+              <div class="icon-big flex-center-vertical">
+                <fa-icon [icon]="faSave" class="fa-icon-color-primary" (click)="saveAnswer()"></fa-icon>
+              </div>
+            </div>-->
+          </nb-accordion-item-header>
+        </nb-accordion-item>
+      </nb-accordion>
+    </ng-container>
+    <button status="success" nbButton (click)="createExam()"><span i18n class="disable-top-round">Сохранить экзамен</span></button>
   </nb-card>
 </div>

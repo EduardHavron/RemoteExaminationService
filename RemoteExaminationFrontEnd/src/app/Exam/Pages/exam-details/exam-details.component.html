@@ -4,7 +4,7 @@
       <nb-card-header>
         <div class="answer-item">
           <span>{{exam.name}}</span>
-          <fa-icon [icon]="faEdit" routerLink="/exams/exam/{{examId}}/edit"></fa-icon>
+          <fa-icon [icon]="faEdit" routerLink="/exams/exam/{{examId}}/edit" class="fa-icon-color-primary"></fa-icon>
         </div>
       </nb-card-header>
 
@@ -17,7 +17,7 @@
                 <div class="answer-item">
                   <span>{{answer.value}}</span>
                   <ng-container *ngIf="answer.isCorrect">
-                    <fa-icon [icon]="faCheck"></fa-icon>
+                    <fa-icon [icon]="faCheck" class="fa-icon-color-success"></fa-icon>
                   </ng-container>
                 </div>
               </nb-list-item>
