@@ -2,12 +2,10 @@
   <nb-card>
     <nb-card-header>
       <div class="exam-form-wrapper">
-        <form [formGroup]="examNameForm">
           <div class="examNameWrapper">
             <label for="examName" i18n>Введите название экзамена</label>
-            <input formControlName="examName" id="examName" nbInput placeholder="Название экзамена" type="text">
+            <input id="examName" nbInput type="text">
           </div>
-        </form>
       </div>
     </nb-card-header>
     <ng-container *ngIf="exam">

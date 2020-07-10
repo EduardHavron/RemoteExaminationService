@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NbToastrService} from '@nebular/theme';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ExamService} from '../../../Shared/Services/Exam/exam.service';
-import {faCheck, faPlus, faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faPlus, faSave, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
 import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
 import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
@@ -24,16 +23,11 @@ export class ExamCreateComponent implements OnInit {
   hiddenBlock;
   showedBlock;
   parentBlock;
-  examNameForm: FormGroup;
   exam: IExam<IQuestion<IAnswer>>;
 
   constructor(private examService: ExamService,
-              private fb: FormBuilder,
               private toastrService: NbToastrService,
               private router: Router) {
-    this.examNameForm = this.fb.group({
-      examName: ['', Validators.required]
-    });
   }
 
   showToast(position, status, duration, message: string, title: string) {
@@ -66,6 +60,10 @@ export class ExamCreateComponent implements OnInit {
       .splice(questionIndex, 1);
   }
   createExam() {
+    this.exam.name = $('#examName')
+      .val()
+      .toString();
+    this.exam.examId = 0;
     this.examService.createExam(this.exam).subscribe(() => {
       this.showToast('top-right',
         'success',
@@ -73,6 +71,7 @@ export class ExamCreateComponent implements OnInit {
         'Экзамен успешно создан',
         'Успех');
     });
+    this.router.navigateByUrl('/dashboard');
   }
 
   saveAnswer() {
