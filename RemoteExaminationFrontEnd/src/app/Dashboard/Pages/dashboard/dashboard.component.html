@@ -7,13 +7,14 @@
           </span>
         <div class="card-icon-actions">
           <div class="actions-item">
-            <fa-icon [icon]="faVoteYea" routerLink=""></fa-icon>
+            <fa-icon class="fa-icon-color-primary" [icon]="faVoteYea" routerLink=""></fa-icon>
           </div>
           <div class="actions-item">
-            <fa-icon (click)="deleteExam(exam.examId, i)" [icon]="faTrash" class="fa-icon-color-primary"></fa-icon>
+            <fa-icon class="fa-icon-color-danger" (click)="deleteExam(exam.examId, i)" [icon]="faTrash"></fa-icon>
           </div>
           <div class="actions-item">
-            <fa-icon [icon]="faEdit" routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>
+            <fa-icon class="fa-icon-color-primary" [icon]="faEdit"
+                     routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>
           </div>
         </div>
       </nb-card-header>

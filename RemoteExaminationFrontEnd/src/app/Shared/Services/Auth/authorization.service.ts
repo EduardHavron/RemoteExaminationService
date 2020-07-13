@@ -12,21 +12,16 @@ import {environment} from '../../../../environments/environment';
   providedIn: 'root'
 })
 export class AuthorizationService {
-  public currentUser: Observable<Auth>;
   private url = environment.apiPath + 'Account/';
-  private currentUserSubject: BehaviorSubject<Auth>;
+  public currentUserSubject: BehaviorSubject<Auth>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<Auth>(this.getTokenValue());
-    this.currentUser = this.currentUserSubject.asObservable();
-  }
-
-  public get currentUserValue(): Auth {
-    return this.currentUserSubject.value;
+    this.currentUserSubject = new BehaviorSubject
+      <Auth>(this.getTokenValue());
   }
 
   get isAdmin(): boolean {
-    const currentUser = this.currentUserSubject.value;
+    const currentUser = this.currentUserSubject.getValue();
 
     if (currentUser) {
       return currentUser.role === Role.Admin;
@@ -36,7 +31,7 @@ export class AuthorizationService {
   }
 
   get isExamined(): boolean {
-    const currentUser = this.currentUserSubject.value;
+    const currentUser = this.currentUserSubject.getValue();
 
     if (currentUser) {
       return currentUser.role === Role.Examined;
@@ -46,7 +41,7 @@ export class AuthorizationService {
   }
 
   get isExaminer(): boolean {
-    const currentUser = this.currentUserSubject.value;
+    const currentUser = this.currentUserSubject.getValue();
     if (currentUser) {
       return currentUser.role === Role.Examiner;
     }
@@ -61,23 +56,22 @@ export class AuthorizationService {
       .pipe(
         tap(res => {
           if (res && res.token) {
-            window.localStorage.setItem('token', JSON.stringify(res));
+            localStorage.setItem('token', JSON.stringify(res));
             const userInfo = this.getTokenValue();
             this.currentUserSubject.next(userInfo);
-            this.currentUser = Observable.create(userInfo);
           }
         })
       );
   }
 
+
   logout() {
-    window.localStorage.removeItem('token');
+    localStorage.removeItem('token');
     this.currentUserSubject.next(null);
-    this.currentUser = null;
   }
 
   private getTokenValue(): Auth {
-    const jsonToken = JSON.parse(window.localStorage.getItem('token'));
+    const jsonToken = JSON.parse(localStorage.getItem('token'));
     if (jsonToken && jsonToken.token) {
       const tokenValue = jwt_decode(jsonToken.token);
       const role = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';

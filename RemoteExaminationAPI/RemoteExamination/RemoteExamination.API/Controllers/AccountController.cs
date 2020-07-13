@@ -29,7 +29,7 @@ namespace RemoteExamination.API.Controllers
         {
             var token = await _accountService.SignIn(model.Email, model.Password);
 
-            return Ok(new { token });
+            return Ok(new {Token =  token });
         }
 
         [HttpPost("SignUp")]

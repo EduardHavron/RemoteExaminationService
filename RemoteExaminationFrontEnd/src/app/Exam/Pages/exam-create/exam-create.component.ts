@@ -65,13 +65,15 @@ export class ExamCreateComponent implements OnInit {
       .toString();
     this.exam.examId = 0;
     this.examService.createExam(this.exam).subscribe(() => {
-      this.showToast('top-right',
-        'success',
-        3000,
-        'Экзамен успешно создан',
-        'Успех');
+      this.router.navigate(['/dashboard'])
+        .then(() => {
+          this.showToast('top-right',
+            'success',
+            3000,
+            'Экзамен успешно создан',
+            'Успех');
+        });
     });
-    this.router.navigateByUrl('/dashboard');
   }
 
   saveAnswer() {

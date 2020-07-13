@@ -1,6 +1,4 @@
 import {NgModule} from '@angular/core';
-import {ExamService} from '../Shared/Services/Exam/exam.service';
-import {ExamCompetitionService} from '../Shared/Services/ExamCompetition/exam-competition.service';
 import {SharedModule} from '../Shared/Modules/shared.module';
 import {ExamRoutingModule} from './exam-routing/exam-routing.module';
 import {ExamCompetitionComponent} from './Pages/exam-competition/exam-competition.component';
@@ -30,10 +28,7 @@ import {ExamAddAnswerComponent} from './Pages/exam-create/Partial Components/exa
     NbListModule,
     NbTreeGridModule,
   ],
-  providers: [
-    ExamService,
-    ExamCompetitionService,
-  ]
+
 })
 export class ExamModule {
 }

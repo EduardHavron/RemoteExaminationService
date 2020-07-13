@@ -29,9 +29,7 @@ export class LoginFormComponent implements OnInit {
         .subscribe(
           () => {
             this.showToastSuccessful('top-right', 'success', 1500);
-            setTimeout(() => {
-              location.reload();
-            }, 1600);
+            this.router.navigateByUrl('/dashboard');
           }
         );
     }

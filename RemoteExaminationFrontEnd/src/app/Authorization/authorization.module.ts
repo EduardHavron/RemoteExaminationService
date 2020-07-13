@@ -3,7 +3,6 @@ import {LoginFormComponent} from './Pages/login-form/login-form.component';
 import {RegisterFormComponent} from './Pages/register-form/register-form.component';
 import {AuthorizationRouterModule} from './authorization-router/authorization-router.module';
 import {SharedModule} from '../Shared/Modules/shared.module';
-import {AuthorizationService} from '../Shared/Services/Auth/authorization.service';
 
 @NgModule({
   declarations: [
@@ -13,9 +12,6 @@ import {AuthorizationService} from '../Shared/Services/Auth/authorization.servic
   imports: [
     AuthorizationRouterModule,
     SharedModule,
-  ],
-  providers: [
-    AuthorizationService,
   ]
 })
 export class AuthorizationModule {

@@ -21,12 +21,11 @@ export class DashboardComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
   faVoteYea = faVoteYea;
-  private destroy$ = new Subject<void>();
 
   constructor(private examService: ExamService,
               private authenticationService: AuthorizationService,
               private toastrService: NbToastrService) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentUserSubject.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
@@ -42,7 +41,6 @@ export class DashboardComponent implements OnInit {
 
   getExams(): void {
     this.examService.getExams()
-      .pipe(takeUntil(this.destroy$))
       .subscribe(data => {
         this.ExamList = data;
       });
@@ -67,7 +65,11 @@ export class DashboardComponent implements OnInit {
         1600,
         'Экзамен удален',
         'Успех');
-      this.ExamList.splice(examPos, 1);
+      this.removeExamFromPage(examPos);
     });
+  }
+
+  removeExamFromPage(examPos: number) {
+    this.ExamList.splice(examPos, 1);
   }
 }

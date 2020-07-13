@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {RouteConfigLoadEnd, RouteConfigLoadStart, Router, RouterEvent} from '@angular/router';
+import {Router} from '@angular/router';
 import {AuthorizationService} from './Shared/Services/Auth/authorization.service';
 import {Auth} from './Shared/Models/UserAuth/auth';
+import {NbToastrService} from '@nebular/theme';
 
 @Component({
   selector: 'app-root',
@@ -11,30 +12,13 @@ import {Auth} from './Shared/Models/UserAuth/auth';
 export class AppComponent {
   currentUser: Auth;
   title = 'RemoteExaminationFrontEnd';
-  public isShowingRouteLoadIndicator: boolean;
 
   constructor(
     private router: Router,
     private authenticationService: AuthorizationService,
+    private toastrService : NbToastrService
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    this.isShowingRouteLoadIndicator = false;
-    let asyncLoadCount = 0;
-    router.events.subscribe(
-      (event: RouterEvent): void => {
-
-        if (event instanceof RouteConfigLoadStart) {
-
-          asyncLoadCount++;
-
-        } else if (event instanceof RouteConfigLoadEnd) {
-
-          asyncLoadCount--;
-
-        }
-        this.isShowingRouteLoadIndicator = !!asyncLoadCount;
-      }
-    );
+    this.authenticationService.currentUserSubject.subscribe(x => this.currentUser = x);
   }
 
   get isAuthenticated(): boolean {
@@ -55,6 +39,20 @@ export class AppComponent {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigateByUrl('/authorize/login');
+    this.router.navigate(['/authorize/login'])
+      .then(() => {
+        this.showToast('top-right',
+          'success',
+          3000,
+          'Вы вышли из системы',
+          'Успех');
+      });
+  }
+
+  private showToast(position, status, duration, message: string, title: string) {
+    this.toastrService.show(
+      message,
+      title,
+      {preventDuplicates: true, position, status, duration});
   }
 }
