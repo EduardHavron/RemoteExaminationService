@@ -6,6 +6,7 @@ import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer
 import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
 import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
 import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -15,19 +16,39 @@ import {Router} from '@angular/router';
 })
 
 export class ExamCreateComponent implements OnInit {
-
+  examNameForm: FormGroup;
+  examQuestionForm: FormGroup;
   faPlus = faPlus;
   faCheck = faCheck;
   faSave = faSave;
   faTrash = faTrash;
-  hiddenBlock;
-  showedBlock;
-  parentBlock;
   exam: IExam<IQuestion<IAnswer>>;
 
   constructor(private examService: ExamService,
               private toastrService: NbToastrService,
-              private router: Router) {
+              private router: Router,
+              private fb: FormBuilder) {
+    this.initializeForms(fb);
+    this.initializeNewExam();
+  }
+
+  private initializeNewExam() {
+    this.exam = {
+      examId: null,
+      name: '',
+      questions: [],
+    };
+  }
+  private initializeForms(fb) {
+    this.examNameForm = fb
+      .group({
+        examName: ['', Validators.required]
+      });
+
+    this.examQuestionForm = fb
+      .group({
+        examQuestion: ['', Validators.required]
+      });
   }
 
   showToast(position, status, duration, message: string, title: string) {
@@ -38,13 +59,10 @@ export class ExamCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.examService.getExamById(1).subscribe((data) => {
-      this.exam = data;
-    });
   }
 
   addAnswer(event) {
-    this.showAnswerInput(event);
+    // this.showAnswerInput(event);
   }
 
   addQuestion() {
@@ -55,10 +73,12 @@ export class ExamCreateComponent implements OnInit {
     this.exam.questions[0].answers
       .splice(answerIndex, 1);
   }
+
   removeQuestion(questionIndex: number) {
     this.exam.questions
       .splice(questionIndex, 1);
   }
+
   createExam() {
     this.exam.name = $('#examName')
       .val()
@@ -77,7 +97,7 @@ export class ExamCreateComponent implements OnInit {
   }
 
   saveAnswer() {
-    this.showAnswerInitial();
+    // this.showAnswerInitial();
   }
 
   saveQuestion() {
@@ -85,10 +105,11 @@ export class ExamCreateComponent implements OnInit {
       .val()
       .toString();
     this.exam.questions.push({questionMessage: question, answers: []});
+    console.log(this.exam.questions);
     this.showQuestionInitial();
   }
 
-  showAnswerInput(event) {
+  /*showAnswerInput(event) {
     this.parentBlock = $(event.path[0])
       .parents('nb-list-item')
       .first();
@@ -103,18 +124,14 @@ export class ExamCreateComponent implements OnInit {
       .addClass('hide');
     this.showedBlock
       .removeClass('hide');
-  }
+  }*/
 
-  showAnswerInitial() {
+  /*showAnswerInitial() {
     this.hiddenBlock
       .removeClass('hide');
     this.showedBlock
       .addClass('hide');
-
-    this.showedBlock = undefined;
-    this.hiddenBlock = undefined;
-    this.parentBlock = undefined;
-  }
+  }*/
 
   showQuestionInput() {
     $('#add-question-block').addClass('hide');

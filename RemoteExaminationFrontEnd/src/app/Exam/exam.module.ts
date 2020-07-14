@@ -7,8 +7,7 @@ import {ExamResultViewComponent} from './Pages/exam-result-view/exam-result-view
 import {NbAccordionModule, NbListModule, NbTreeGridModule} from '@nebular/theme';
 import {ExamEditComponent} from './Pages/exam-edit/exam-edit.component';
 import {ExamCreateComponent} from './Pages/exam-create/exam-create.component';
-import {ExamAddQuestionComponent} from './Pages/exam-create/Partial Components/exam-add-question/exam-add-question.component';
-import {ExamAddAnswerComponent} from './Pages/exam-create/Partial Components/exam-add-answer/exam-add-answer.component';
+
 
 
 @NgModule({
@@ -18,8 +17,6 @@ import {ExamAddAnswerComponent} from './Pages/exam-create/Partial Components/exa
     ExamResultViewComponent,
     ExamEditComponent,
     ExamCreateComponent,
-    ExamAddQuestionComponent,
-    ExamAddAnswerComponent,
   ],
   imports: [
     ExamRoutingModule,

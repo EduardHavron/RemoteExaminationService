@@ -21,7 +21,7 @@ export class UnauthGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigateByUrl('/dashboard')
+    this.router.navigate(['/dashboard'])
       .then(() => {
        this.showToast('top-right',
          'danger',

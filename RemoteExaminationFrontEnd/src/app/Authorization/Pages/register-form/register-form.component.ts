@@ -30,8 +30,12 @@ export class RegisterFormComponent implements OnInit {
       this.authService.signUp(val.email, val.password, this.checked)
         .subscribe(
           () => {
-            this.showToastSuccessful('top-right', 'success', 3000);
-            this.router.navigateByUrl('authorize/login');
+            this.router.navigateByUrl('authorize/login')
+              .then(() => {
+                this.showToastSuccessful('top-right',
+                  'success',
+                  3000);
+              });
           }
         );
     }
@@ -43,8 +47,8 @@ export class RegisterFormComponent implements OnInit {
 
   showToastSuccessful(position, status, duration) {
     this.toastrService.show(
-      'Registration is successful',
-      `Success!`,
+      'Вы успешно зарегистрировались, теперь вы можете авторизоваться в системе',
+      'Успех!',
       {position, status, duration});
   }
 

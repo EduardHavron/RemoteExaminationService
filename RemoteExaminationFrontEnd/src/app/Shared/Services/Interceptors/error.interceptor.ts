@@ -18,7 +18,8 @@ export class ErrorInterceptor implements HttpInterceptor {
       if (err.status === 401) {
         // auto logout if 401 response returned from api
         this.authenticationService.logout();
-        this.router.navigateByUrl('authorize/login').then(() => {
+        this.router.navigate(['authorize/login'])
+          .then(() => {
           this.showToast('top-right',
             'danger',
             '3000',
@@ -30,8 +31,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         this.showToast('top-right',
           'danger',
           '3000',
-          'Неверный пароль и/или логин',
-          'Ошибка авторизации');
+          'Неверный запрос, пожалуйста, проверьте отправляемые данные',
+          'Ошибка');
       }
       if (err.status === 500 || err.status === 502 || err.status === 503 || err.status === 504) {
         this.showToast('top-right',

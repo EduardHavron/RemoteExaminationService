@@ -28,8 +28,12 @@ export class LoginFormComponent implements OnInit {
       this.authService.signIn(val.email, val.password)
         .subscribe(
           () => {
-            this.showToastSuccessful('top-right', 'success', 1500);
-            this.router.navigateByUrl('/dashboard');
+            this.router.navigate(['/dashboard'])
+              .then(() => {
+                this.showToastSuccessful('top-right',
+                  'success',
+                  1500);
+              });
           }
         );
     }
@@ -37,13 +41,11 @@ export class LoginFormComponent implements OnInit {
 
   showToastSuccessful(position, status, duration) {
     this.toastrService.show(
-      'Login is successful',
-      `Success!`,
+      'Вы успешно авторизировались',
+      'Успех!',
       {position, status, duration});
   }
 
   ngOnInit() {
-
   }
-
 }
