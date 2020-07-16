@@ -91,10 +91,21 @@ namespace RemoteExamination.API
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
+                if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
                 {
-                    Title = "RES API Swagger"
-                });
+                    c.SwaggerDoc("v1", new OpenApiInfo
+                    {
+                        Title = "RES API Swagger Production"
+                    });
+                }
+                else
+                {
+                    c.SwaggerDoc("v1", new OpenApiInfo
+                    {
+                        Title = "RES API Swagger Development"
+                    });
+                }
+
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
