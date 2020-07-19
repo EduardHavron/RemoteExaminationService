@@ -34,16 +34,16 @@ export class DashboardComponent implements OnInit {
 
   showToast(position, status, duration, message: string, title: string) {
     this.toastrService.show(
-      message,
-      title,
-      {preventDuplicates: true, position, status, duration});
+        message,
+        title,
+        {preventDuplicates: true, position, status, duration});
   }
 
   getExams(): void {
     this.examService.getExams()
-      .subscribe(data => {
-        this.ExamList = data;
-      });
+        .subscribe(data => {
+          this.ExamList = data;
+        });
   }
 
   isAdmin(): boolean {
@@ -61,10 +61,10 @@ export class DashboardComponent implements OnInit {
   deleteExam(examId: number, examPos: number) {
     this.examService.deleteExam(examId).subscribe(() => {
       this.showToast('top-right',
-        'success',
-        1600,
-        'Экзамен удален',
-        'Успех');
+          'success',
+          1600,
+          'Экзамен удален',
+          'Успех');
       this.removeExamFromPage(examPos);
     });
   }

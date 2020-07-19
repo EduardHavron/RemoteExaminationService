@@ -28,7 +28,7 @@ export class ExamService {
   }
 
   editExam(Exam: IExam<IQuestion<IAnswer>>) {
-    return this.http.put(this.url + 'EditExam', Exam);
+    return this.http.put(this.url + 'EditExam/', Exam);
   }
 
   deleteExam(id: number) {

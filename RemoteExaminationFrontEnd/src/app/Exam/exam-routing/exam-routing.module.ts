@@ -3,23 +3,33 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from '../../PageNotFound/page-not-found/page-not-found.component';
 import {ExamDetailsComponent} from '../Pages/exam-details/exam-details.component';
-import {ExamEditComponent} from '../Pages/exam-edit/exam-edit.component';
-import {ExamCreateComponent} from '../Pages/exam-create/exam-create.component';
+import {ExamCreateEditComponent} from '../Pages/exam-create/exam-create-edit.component';
 import {ExaminerGuard} from '../../Shared/Guard/examiner.guard';
+import {ExamResolver} from '../../Shared/Resolvers/exam.resolver';
 
 const routes: Routes = [
   {
     path: 'exam/create',
-    component: ExamCreateComponent,
+    component: ExamCreateEditComponent,
     canActivate: [ExaminerGuard]
   },
   {
     path: 'exam/:examId',
-    component: ExamDetailsComponent
+    component: ExamDetailsComponent,
+    canActivate: [ExaminerGuard],
+    canLoad: [ExaminerGuard],
+    resolve: {
+      exam: ExamResolver
+    }
   },
   {
     path: 'exam/:examId/edit',
-    component: ExamEditComponent
+    component: ExamCreateEditComponent,
+    canActivate: [ExaminerGuard],
+    canLoad: [ExaminerGuard],
+    resolve: {
+      exam: ExamResolver
+    }
   },
   {
     path: '**',

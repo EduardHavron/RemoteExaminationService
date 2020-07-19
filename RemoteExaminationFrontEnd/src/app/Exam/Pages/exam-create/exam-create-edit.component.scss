@@ -6,7 +6,7 @@
 
 nb-card {
   max-width: 600px;
-  min-width: 40%;
+  min-width: 35%;
 }
 
 .examNameWrapper {
@@ -77,4 +77,24 @@ nb-card {
 
 .answer-data-wrapper {
   width: 100%;
+}
+
+.add-answer-data-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.add-answer-isCorrect {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  width: 20%;
+}
+
+@media screen and (max-device-width: 1300px ) {
+  .add-answer-data-wrapper {
+    flex-direction: column;
+  }
 }

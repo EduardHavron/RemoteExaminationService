@@ -121,7 +121,7 @@ namespace RemoteExamination.BLL.Services
                 }
             }
 
-            _dbContext.Exams.Add(exam);
+            await _dbContext.Exams.AddAsync(exam);
 
             await _dbContext.SaveChangesAsync();
         }
@@ -137,6 +137,7 @@ namespace RemoteExamination.BLL.Services
                 throw new NotFoundException("Exam", model.ExamId);
             }
             _dbContext.Questions.RemoveRange(loaded.Questions);
+            await _dbContext.SaveChangesAsync();
             loaded.Name = examModel.Name;
             loaded.Questions = examModel.Questions;
             _dbContext.Entry(loaded).State = EntityState.Modified;

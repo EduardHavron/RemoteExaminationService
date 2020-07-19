@@ -11,56 +11,56 @@
       </div>
     </nb-card-header>
     <nb-accordion multi>
-      <ng-container>
-        <nb-accordion-item *ngFor="let question of exam.questions; let i = index">
-          <nb-accordion-item-header>
-            <div class="question-wrapper"></div>
-            <fa-icon [icon]="faTrash" class="trash-icon fa-icon-color-danger" (click)="removeQuestion(i)"></fa-icon>
-            <span>{{question.questionMessage}}</span>
-          </nb-accordion-item-header>
-          <nb-accordion-item-body>
-            <nb-list>
-              <nb-list-item *ngFor="let answer of question.answers; let j = index">
-                <div class="answer-wrapper">
-                  <div class="answer-data-wrapper">
-                    <fa-icon [icon]="faTrash" class="trash-icon fa-icon-color-danger"
-                             (click)="removeAnswer(i,j)"></fa-icon>
-                    <span>{{answer.value}}</span>
-                  </div>
-                  <ng-container *ngIf="answer.isCorrect">
-                    <div>
-                      <fa-icon [icon]="faCheck" class="fa-icon-color-success"></fa-icon>
-                    </div>
-                  </ng-container>
+      <nb-accordion-item *ngFor="let question of exam.questions; let i = index">
+        <nb-accordion-item-header>
+          <div class="question-wrapper"></div>
+          <fa-icon [icon]="faTrash" class="trash-icon fa-icon-color-danger" (click)="removeQuestion(i)"></fa-icon>
+          <span>{{question.questionMessage}}</span>
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <nb-list>
+            <nb-list-item *ngFor="let answer of question.answers; let j = index">
+              <div class="answer-wrapper">
+                <div class="answer-data-wrapper">
+                  <fa-icon [icon]="faTrash" class="trash-icon fa-icon-color-danger"
+                           (click)="removeAnswer(i,j)"></fa-icon>
+                  <span>{{answer.value}}</span>
                 </div>
-              </nb-list-item>
-              <nb-list-item>
-                <div class="add-wrapper show-answer" (click)="addAnswer($event)">
+                <ng-container *ngIf="answer.isCorrect">
                   <div>
-                    <span i18n>Добавить ответ</span>
+                    <fa-icon [icon]="faCheck" class="fa-icon-color-success"></fa-icon>
                   </div>
-                  <div>
-                    <fa-icon [icon]="faPlus" class="fa-icon-color-primary"></fa-icon>
-                  </div>
+                </ng-container>
+              </div>
+            </nb-list-item>
+            <nb-list-item>
+              <div class="add-wrapper show-answer" (click)="addAnswer($event)">
+                <div>
+                  <span i18n>Добавить ответ</span>
                 </div>
+                <div>
+                  <fa-icon [icon]="faPlus" class="fa-icon-color-primary"></fa-icon>
+                </div>
+              </div>
 
-                <div class="add-wrapper save-answer hide">
+              <div class="add-wrapper save-answer hide">
+                <div class="add-answer-data-wrapper">
                   <div class="add-answer-input-wrapper">
                     <label i18n>Текст ответа</label>
                     <input nbInput>
-                    <nb-checkbox class="add-answer-isCorrect">
-                      <span i18n> Верно ли</span>
-                    </nb-checkbox>
                   </div>
-                  <div class="icon-big flex-center-vertical">
-                    <fa-icon [icon]="faSave" class="fa-icon-color-primary" (click)="saveAnswer()"></fa-icon>
-                  </div>
+                  <nb-checkbox class="add-answer-isCorrect">
+                    <span i18n> Верно ли</span>
+                  </nb-checkbox>
                 </div>
-              </nb-list-item>
-            </nb-list>
-          </nb-accordion-item-body>
-        </nb-accordion-item>
-      </ng-container>
+                <div class="icon-big flex-center-vertical">
+                  <fa-icon [icon]="faSave" class="fa-icon-color-primary" (click)="saveAnswer(i, $event)"></fa-icon>
+                </div>
+              </div>
+            </nb-list-item>
+          </nb-list>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
       <nb-accordion-item disabled>
         <nb-accordion-item-header>
           <div class="add-wrapper add-question-accordion-item" (click)="addQuestion()" id="add-question-block">
