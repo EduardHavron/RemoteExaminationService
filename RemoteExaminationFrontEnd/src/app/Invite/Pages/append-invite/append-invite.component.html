@@ -1,1 +1,21 @@
-<p>append-invite works!</p>
+<div class="create-invite-wrapper">
+  <nb-card>
+    <nb-card-header>
+      <ng-container *ngIf="examName">
+        <span>{{examName}}</span>
+      </ng-container>
+      <ng-container *ngIf="!examName">
+        <span i18n>Название экзамена</span>
+      </ng-container>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="input-wrapper">
+        <label i18n for="invite-input">Введите код приглашения</label>
+        <form [formGroup]="form">
+          <input nbInput id="invite-input" formControlName="invitationCode">
+        </form>
+      </div>
+      <button nbButton status="success" (click)="appendInvite()"><span i18n>Применить приглашение</span></button>
+    </nb-card-body>
+  </nb-card>
+</div>

@@ -4,17 +4,17 @@
       <div class="nav">
         <div class="logo"><img alt="REMOTE EXAMINATION SYSTEM" src="../assets/400x400_logo.png"></div>
         <ng-container *ngIf="isAuthenticated">
-          <div class="link" routerLink="dashboard"><span i18n>Главная страница</span></div>
+          <div class="link" routerLink="/dashboard"><span i18n>Главная страница</span></div>
         </ng-container>
         <ng-container *ngIf="isExamined">
-          <div class="link" routerLink="dashboard"><span i18n>Ввести код<br>приглашения</span></div>
+          <div class="link" routerLink="/invites/append"><span i18n>Ввести код<br>приглашения</span></div>
         </ng-container>
         <ng-container *ngIf="isExaminer || isAdmin">
-          <div class="link" routerLink="exams/exam/create"><span i18n>Создать<br>экзамен</span></div>
+          <div class="link" routerLink="/exams/exam/create"><span i18n>Создать<br>экзамен</span></div>
         </ng-container>
         <ng-container *ngIf="!isAuthenticated">
-          <div class="link" routerLink="authorize/register"><span i18n>Регистрация</span></div>
-          <div class="link" routerLink="authorize"><span i18n>Войти</span></div>
+          <div class="link" routerLink="/authorize/register"><span i18n>Регистрация</span></div>
+          <div class="link" routerLink="/authorize"><span i18n>Войти</span></div>
         </ng-container>
       </div>
       <div class="home link">

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {InvitationView} from '../../Models/Invitation/invitation-view';
-import {ApplyInvitation} from '../../Models/Invitation/apply-invitation';
+import {IInvitation} from '../../Models/Invitation/Invitation';
+import {IApplyInvitation} from '../../Models/Invitation/ApplyInvitation';
 import {environment} from '../../../../environments/environment';
 
 @Injectable({
@@ -13,11 +13,11 @@ export class InvitationService {
   constructor(private http: HttpClient) {
   }
 
-  CreateInvite(invite: InvitationView) {
+  createInvite(invite: IInvitation) {
     return this.http.post(this.url + 'CreateInvite', invite);
   }
 
-  AddInviteToUser(inviteCode: ApplyInvitation) {
+  addInviteToUser(inviteCode: IApplyInvitation) {
     return this.http.post(this.url + 'AddInviteToUser', inviteCode);
   }
 }

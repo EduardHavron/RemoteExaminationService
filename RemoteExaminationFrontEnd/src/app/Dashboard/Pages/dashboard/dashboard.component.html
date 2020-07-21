@@ -2,22 +2,31 @@
   <div *ngFor="let exam of ExamList; let i = index" class="exams-wrapper">
     <nb-card size="tiny">
       <nb-card-header>
+        <ng-container *ngIf="isExaminer() || isAdmin()">
           <span class="exam-name" routerLink="/exams/exam/{{exam.examId}}">
             {{exam.name}}
           </span>
-        <div class="card-icon-actions">
-          <div class="actions-item">
-            <fa-icon class="fa-icon-color-primary" [icon]="faVoteYea" routerLink=""></fa-icon>
+        </ng-container>
+        <ng-container *ngIf="!isExaminer() && !isAdmin()">
+          <span class="exam-name no-pointer">
+            {{exam.name}}
+          </span>
+        </ng-container>
+        <ng-container *ngIf="isExaminer() || isAdmin()">
+          <div class="card-icon-actions">
+            <div class="actions-item">
+              <fa-icon class="fa-icon-color-primary" [icon]="faVoteYea" routerLink=""></fa-icon>
+            </div>
+            <div class="actions-item">
+              <fa-icon class="fa-icon-color-danger" (click)="deleteExam(exam.examId, i)"
+                       [icon]="faTrash"></fa-icon>
+            </div>
+            <div class="actions-item">
+              <fa-icon class="fa-icon-color-primary" [icon]="faEdit"
+                       routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>
+            </div>
           </div>
-          <div class="actions-item">
-            <fa-icon class="fa-icon-color-danger" (click)="deleteExam(exam.examId, i)"
-                     [icon]="faTrash"></fa-icon>
-          </div>
-          <div class="actions-item">
-            <fa-icon class="fa-icon-color-primary" [icon]="faEdit"
-                     routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>
-          </div>
-        </div>
+        </ng-container>
       </nb-card-header>
       <nb-card-body>
         <div class="card-item">
@@ -25,13 +34,18 @@
         </div>
         <div class="card-item">
           <div class="card-item-buttons">
-            <div class="card-item-button">
-              <button i18n nbButton routerLink="" size="medium" status='primary'>Создать<br>приглашение
-              </button>
-            </div>
-            <div class="card-item-button">
-              <button i18n nbButton routerLink="" size="medium" status='primary'>Запустить</button>
-            </div>
+            <ng-container *ngIf="isExaminer() || isAdmin()">
+              <div class="card-item-button">
+                <button i18n nbButton routerLink="/invites/create/{{exam.examId}}" size="medium" status='primary'>
+                  Создать<br>приглашение
+                </button>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="isExamined()">
+              <div class="card-item-button">
+                <button i18n nbButton routerLink="" size="medium" status='primary'>Запустить</button>
+              </div>
+            </ng-container>
           </div>
         </div>
       </nb-card-body>

@@ -18,8 +18,7 @@ export class ExamDetailsComponent implements OnInit {
   faCheck = faCheck;
   faEdit = faEdit;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private examService: ExamService,
+  constructor(private examService: ExamService,
               private route: ActivatedRoute) {
     route.data.subscribe((data: {exam: any}) => {
       this.exam = data.exam;

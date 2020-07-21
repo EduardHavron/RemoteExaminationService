@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthorizationService} from './Shared/Services/Auth/authorization.service';
-import {Auth} from './Shared/Models/UserAuth/auth';
+import {IUser} from './Shared/Models/UserAuth/IUser';
 import {NbToastrService} from '@nebular/theme';
 
 @Component({
@@ -10,13 +10,13 @@ import {NbToastrService} from '@nebular/theme';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  currentUser: Auth;
+  currentUser: IUser;
   title = 'RemoteExaminationFrontEnd';
 
   constructor(
     private router: Router,
     private authenticationService: AuthorizationService,
-    private toastrService : NbToastrService
+    private toastrService: NbToastrService
   ) {
     this.authenticationService.currentUserSubject.subscribe(x => this.currentUser = x);
   }

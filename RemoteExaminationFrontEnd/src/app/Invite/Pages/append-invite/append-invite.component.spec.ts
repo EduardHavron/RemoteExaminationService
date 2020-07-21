@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AppendInviteComponent} from './append-invite.component';
 
-describe('AppendInviteComponent', () => {
+describe('CreateInviteComponent', () => {
   let component: AppendInviteComponent;
   let fixture: ComponentFixture<AppendInviteComponent>;
 

@@ -1,23 +1,24 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Auth} from '../../Models/UserAuth/auth';
+import {IUser} from '../../Models/UserAuth/IUser';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {Register} from '../../Models/UserAuth/register';
+import {IRegister} from '../../Models/UserAuth/IRegister';
 import * as jwt_decode from 'jwt-decode';
-import {Role} from '../../Enum/enum';
+import {Role} from '../../Enum/rolesEnum';
 import {environment} from '../../../../environments/environment';
+import {ILogin} from '../../Models/UserAuth/ILogin';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
   private url = environment.apiPath + 'Account/';
-  public currentUserSubject: BehaviorSubject<Auth>;
+  public currentUserSubject: BehaviorSubject<IUser>;
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject
-      <Auth>(this.getTokenValue());
+      <IUser>(this.getTokenValue());
   }
 
   get isAdmin(): boolean {
@@ -47,12 +48,12 @@ export class AuthorizationService {
     }
   }
 
-  signUp(email: string, password: string, isExaminer: boolean) {
-    return this.http.post<Register>(this.url + 'SignUp/', {email, password, isExaminer});
+  signUp(user: IRegister) {
+    return this.http.post<IRegister>(this.url + 'SignUp/', user);
   }
 
-  signIn(email: string, password: string): Observable<any> {
-    return this.http.post<Auth>(this.url + 'SignIn/', {email, password})
+  signIn(user: ILogin): Observable<any> {
+    return this.http.post<IUser>(this.url + 'SignIn/', user)
       .pipe(
         tap(res => {
           if (res && res.token) {
@@ -70,15 +71,13 @@ export class AuthorizationService {
     this.currentUserSubject.next(null);
   }
 
-  private getTokenValue(): Auth {
+  private getTokenValue(): IUser {
     const jsonToken = JSON.parse(localStorage.getItem('token'));
     if (jsonToken && jsonToken.token) {
       const tokenValue = jwt_decode(jsonToken.token);
       const role = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
       return {
         role: tokenValue[role],
-        email: tokenValue.email,
-        password: tokenValue.password,
         token: jsonToken.token
       };
     }

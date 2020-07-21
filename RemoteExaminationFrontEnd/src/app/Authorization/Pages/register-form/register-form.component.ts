@@ -11,7 +11,7 @@ import {NbToastrService} from '@nebular/theme';
 })
 export class RegisterFormComponent implements OnInit {
   form: FormGroup;
-  checked: boolean;
+  checked = false;
 
   constructor(private fb: FormBuilder,
               private authService: AuthorizationService,
@@ -21,13 +21,12 @@ export class RegisterFormComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
-    this.checked = false;
   }
 
-  signIn() {
+  signUp() {
     const val = this.form.value;
     if (val.email && val.password) {
-      this.authService.signUp(val.email, val.password, this.checked)
+      this.authService.signUp({email: val.email, password: val.password, role: this.checked})
         .subscribe(
           () => {
             this.router.navigateByUrl('authorize/login')

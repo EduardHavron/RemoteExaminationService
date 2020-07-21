@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ExamService} from '../../../Shared/Services/Exam/exam.service';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
-import {Auth} from '../../../Shared/Models/UserAuth/auth';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {IUser} from '../../../Shared/Models/UserAuth/IUser';
 import {faEdit, faTrash, faVoteYea} from '@fortawesome/free-solid-svg-icons';
 import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
@@ -16,7 +14,7 @@ import {NbToastrService} from '@nebular/theme';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  currentUser: Auth;
+  currentUser: IUser;
   ExamList: Array<IExam<IQuestion<IAnswer>>>;
   faTrash = faTrash;
   faEdit = faEdit;
@@ -34,16 +32,16 @@ export class DashboardComponent implements OnInit {
 
   showToast(position, status, duration, message: string, title: string) {
     this.toastrService.show(
-        message,
-        title,
-        {preventDuplicates: true, position, status, duration});
+      message,
+      title,
+      {preventDuplicates: true, position, status, duration});
   }
 
   getExams(): void {
     this.examService.getExams()
-        .subscribe(data => {
-          this.ExamList = data;
-        });
+      .subscribe(data => {
+        this.ExamList = data;
+      });
   }
 
   isAdmin(): boolean {
@@ -61,10 +59,10 @@ export class DashboardComponent implements OnInit {
   deleteExam(examId: number, examPos: number) {
     this.examService.deleteExam(examId).subscribe(() => {
       this.showToast('top-right',
-          'success',
-          1600,
-          'Экзамен удален',
-          'Успех');
+        'success',
+        1600,
+        'Экзамен удален',
+        'Успех');
       this.removeExamFromPage(examPos);
     });
   }

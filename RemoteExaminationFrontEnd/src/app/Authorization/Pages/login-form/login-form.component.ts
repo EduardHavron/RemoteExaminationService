@@ -25,7 +25,7 @@ export class LoginFormComponent implements OnInit {
   login() {
     const val = this.form.value;
     if (val.email && val.password) {
-      this.authService.signIn(val.email, val.password)
+      this.authService.signIn({email: val.email, password: val.password})
         .subscribe(
           () => {
             this.router.navigate(['/dashboard'])

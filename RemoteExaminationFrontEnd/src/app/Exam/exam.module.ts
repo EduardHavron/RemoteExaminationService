@@ -5,8 +5,7 @@ import {ExamCompetitionComponent} from './Pages/exam-competition/exam-competitio
 import {ExamDetailsComponent} from './Pages/exam-details/exam-details.component';
 import {ExamResultViewComponent} from './Pages/exam-result-view/exam-result-view.component';
 import {NbAccordionModule, NbListModule, NbTreeGridModule} from '@nebular/theme';
-import {ExamEditComponent} from './Pages/exam-edit/exam-edit.component';
-import {ExamCreateEditComponent} from './Pages/exam-create/exam-create-edit.component';
+import {ExamCreateEditComponent} from './Pages/exam-create-edit/exam-create-edit.component';
 
 
 
@@ -15,7 +14,6 @@ import {ExamCreateEditComponent} from './Pages/exam-create/exam-create-edit.comp
     ExamCompetitionComponent,
     ExamDetailsComponent,
     ExamResultViewComponent,
-    ExamEditComponent,
     ExamCreateEditComponent,
   ],
   imports: [

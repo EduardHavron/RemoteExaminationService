@@ -1,0 +1,28 @@
+<div class="create-invite-wrapper">
+  <nb-card>
+    <nb-card-header>
+      <span i18n>Ваш код приглашения</span>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="invite-main">
+        <div class="invite-wrapper">
+          <ng-container *ngIf="!inviteCode">
+            <p i18n>Здесь появится ваш код приглашения</p>
+          </ng-container>
+          <div>
+            <ng-container *ngIf="inviteCode">
+              <p i18n>Ваш код приглашения: </p>
+              <p i18n>Отправьте его человеку, которому хотите дать доступ к экзамену, любым удобным Вам способом.</p>
+              {{inviteCode}}
+            </ng-container>
+
+            <button nbButton ghost status="primary" size="giant">
+              <fa-icon [icon]="faCopy" (click)="copyCode()"></fa-icon>
+            </button>
+            <button nbButton status="primary" routerLink="/dashboard"><span i18n>Вернуться на главную</span></button>
+          </div>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>

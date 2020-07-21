@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from '../../PageNotFound/page-not-found/page-not-found.component';
 import {ExamDetailsComponent} from '../Pages/exam-details/exam-details.component';
-import {ExamCreateEditComponent} from '../Pages/exam-create/exam-create-edit.component';
+import {ExamCreateEditComponent} from '../Pages/exam-create-edit/exam-create-edit.component';
 import {ExaminerGuard} from '../../Shared/Guard/examiner.guard';
 import {ExamResolver} from '../../Shared/Resolvers/exam.resolver';
 
