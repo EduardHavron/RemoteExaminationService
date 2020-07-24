@@ -69,7 +69,7 @@ namespace RemoteExamination.BLL.Services
                 .Select(x => new Claim(ClaimsIdentity.DefaultRoleClaimType, x))
                 .ToList();
             claims.Add(new Claim(ClaimsIdentity.DefaultNameClaimType, user.Id));
-            var expires = DateTime.Now.AddHours(2);
+            var expires = DateTime.Now.AddDays(365);
             var signKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
             var credentials = new SigningCredentials(signKey, SecurityAlgorithms.HmacSha256);
 

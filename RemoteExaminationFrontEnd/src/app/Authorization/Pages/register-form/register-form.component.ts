@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {Router} from '@angular/router';
-import {NbToastrService} from '@nebular/theme';
+import {CustomToastrService} from '../../../Shared/Services/NbToastr/custom-toastr.service';
 
 @Component({
   selector: 'app-register-form',
@@ -16,7 +16,7 @@ export class RegisterFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthorizationService,
               private router: Router,
-              private toastrService: NbToastrService) {
+              private customToastrService: CustomToastrService) {
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -31,9 +31,11 @@ export class RegisterFormComponent implements OnInit {
           () => {
             this.router.navigateByUrl('authorize/login')
               .then(() => {
-                this.showToastSuccessful('top-right',
+                this.customToastrService.showToast('top-right',
                   'success',
-                  3000);
+                  3000,
+                  'Вы успешно зарегистрировались, теперь вы можете авторизоваться в системе',
+                  'Успех');
               });
           }
         );
@@ -42,13 +44,6 @@ export class RegisterFormComponent implements OnInit {
 
   toggle(checked: boolean) {
     this.checked = checked;
-  }
-
-  showToastSuccessful(position, status, duration) {
-    this.toastrService.show(
-      'Вы успешно зарегистрировались, теперь вы можете авторизоваться в системе',
-      'Успех!',
-      {position, status, duration});
   }
 
   ngOnInit() {

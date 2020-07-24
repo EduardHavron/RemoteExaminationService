@@ -7,6 +7,7 @@ import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
 import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CustomToastrService} from '../../../Shared/Services/NbToastr/custom-toastr.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class ExamCreateEditComponent implements OnInit {
   exam: IExam<IQuestion<IAnswer>>;
 
   constructor(private examService: ExamService,
-              private toastrService: NbToastrService,
+              private customToastrService: CustomToastrService,
               private router: Router,
               private fb: FormBuilder,
               route: ActivatedRoute) {
@@ -69,13 +70,6 @@ export class ExamCreateEditComponent implements OnInit {
         });
   }
 
-  private showToast(position, status, duration, message: string, title: string) {
-    this.toastrService.show(
-        message,
-        title,
-        {preventDuplicates: true, position, status, duration});
-  }
-
   ngOnInit() {
   }
 
@@ -105,7 +99,7 @@ export class ExamCreateEditComponent implements OnInit {
         this.examService.createExam(this.exam).subscribe(() => {
           this.router.navigate(['/dashboard'])
               .then(() => {
-                this.showToast('top-right',
+                this.customToastrService.showToast('top-right',
                     'success',
                     3000,
                     'Экзамен успешно создан',
@@ -120,7 +114,7 @@ export class ExamCreateEditComponent implements OnInit {
     this.examService.editExam(this.exam).subscribe(() => {
       this.router.navigate(['/dashboard'])
           .then(() => {
-            this.showToast('top-right',
+            this.customToastrService.showToast('top-right',
                 'success',
                 3000,
                 'Экзамен успешно обновлен',
@@ -145,7 +139,7 @@ export class ExamCreateEditComponent implements OnInit {
     if (examName.trim().length >= 1) {
       return true;
     } else {
-      this.showToast('top-right',
+      this.customToastrService.showToast('top-right',
           'danger',
           3000,
           'Название экзамена не может быть пустым',
@@ -156,7 +150,7 @@ export class ExamCreateEditComponent implements OnInit {
 
   validateExamLength(): boolean {
     if (this.exam.questions.length < 1) {
-      this.showToast('top-right',
+      this.customToastrService.showToast('top-right',
           'danger',
           3000,
           'В экзамене должен быть хотя бы один вопрос',
@@ -182,7 +176,7 @@ export class ExamCreateEditComponent implements OnInit {
       if (containsTrue && containsFalse) {
         finalResult = true;
       } else {
-        this.showToast('top-right',
+        this.customToastrService.showToast('top-right',
             'danger',
             3000,
             'Каждый вопрос должен содержать не менее одного правильного и одного неправильного ответа',
@@ -218,7 +212,7 @@ export class ExamCreateEditComponent implements OnInit {
       this.clearAnswerInput(event);
       this.showAnswerInitial(event);
     } else {
-      this.showToast('top-right',
+      this.customToastrService.showToast('top-right',
           'danger',
           3000,
           'В ответе должно быть не меньше 5 символов',
@@ -236,7 +230,7 @@ export class ExamCreateEditComponent implements OnInit {
       this.showQuestionInitial();
       this.examQuestionForm.reset();
     } else {
-      this.showToast('top-right',
+      this.customToastrService.showToast('top-right',
           'danger',
           3000,
           'В вопросе должно быть не меньше 5 символов',

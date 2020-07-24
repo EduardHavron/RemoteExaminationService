@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {Router} from '@angular/router';
-import {NbToastrService} from '@nebular/theme';
+import {CustomToastrService} from '../../../Shared/Services/NbToastr/custom-toastr.service';
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +15,7 @@ export class LoginFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthorizationService,
               private router: Router,
-              private toastrService: NbToastrService) {
+              private customToastrService: CustomToastrService) {
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -30,20 +30,15 @@ export class LoginFormComponent implements OnInit {
           () => {
             this.router.navigate(['/dashboard'])
               .then(() => {
-                this.showToastSuccessful('top-right',
+                this.customToastrService.showToast('top-right',
                   'success',
-                  1500);
+                  1500,
+                  'Вы успешно авторизировались',
+                  'Успех');
               });
           }
         );
     }
-  }
-
-  showToastSuccessful(position, status, duration) {
-    this.toastrService.show(
-      'Вы успешно авторизировались',
-      'Успех!',
-      {position, status, duration});
   }
 
   ngOnInit() {

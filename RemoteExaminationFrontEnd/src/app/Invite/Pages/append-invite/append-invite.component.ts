@@ -3,7 +3,7 @@ import {InvitationService} from '../../../Shared/Services/Invitation/invitation.
 import {ActivatedRoute, Router} from '@angular/router';
 import {ExamService} from '../../../Shared/Services/Exam/exam.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {NbToastrService} from '@nebular/theme';
+import {CustomToastrService} from '../../../Shared/Services/NbToastr/custom-toastr.service';
 
 @Component({
   selector: 'app-create-invite',
@@ -21,7 +21,7 @@ export class AppendInviteComponent implements OnInit {
               private route: ActivatedRoute,
               private examService: ExamService,
               private fb: FormBuilder,
-              private toastrService: NbToastrService,
+              private customToastrService: CustomToastrService,
               private router: Router) {
     this.form = fb.group({
       invitationCode: ['', Validators.required]
@@ -40,7 +40,7 @@ export class AppendInviteComponent implements OnInit {
         .subscribe(() => {
           this.router.navigate(['/dashboard'])
             .then(() => {
-              this.showToast('top-right',
+              this.customToastrService.showToast('top-right',
                 'success',
                 3000,
                 'Приглашение успешно применено',
@@ -55,7 +55,7 @@ export class AppendInviteComponent implements OnInit {
       return true;
     } else {
 
-      this.showToast('top-right',
+      this.customToastrService.showToast('top-right',
         'danger',
         3000,
         'Код приглашения должен состоять не менее чем из 5 символов, не считая пробелы',
@@ -64,10 +64,4 @@ export class AppendInviteComponent implements OnInit {
     }
   }
 
-  private showToast(position, status, duration, message: string, title: string) {
-    this.toastrService.show(
-      message,
-      title,
-      {preventDuplicates: true, position, status, duration});
-  }
 }

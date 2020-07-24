@@ -6,7 +6,7 @@ import {faEdit, faTrash, faVoteYea} from '@fortawesome/free-solid-svg-icons';
 import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
 import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
 import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
-import {NbToastrService} from '@nebular/theme';
+import {CustomToastrService} from '../../../Shared/Services/NbToastr/custom-toastr.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,19 +22,12 @@ export class DashboardComponent implements OnInit {
 
   constructor(private examService: ExamService,
               private authenticationService: AuthorizationService,
-              private toastrService: NbToastrService) {
+              private customToastrService: CustomToastrService) {
     this.authenticationService.currentUserSubject.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
     this.getExams();
-  }
-
-  showToast(position, status, duration, message: string, title: string) {
-    this.toastrService.show(
-      message,
-      title,
-      {preventDuplicates: true, position, status, duration});
   }
 
   getExams(): void {
@@ -58,7 +51,7 @@ export class DashboardComponent implements OnInit {
 
   deleteExam(examId: number, examPos: number) {
     this.examService.deleteExam(examId).subscribe(() => {
-      this.showToast('top-right',
+      this.customToastrService.showToast('top-right',
         'success',
         1600,
         'Экзамен удален',

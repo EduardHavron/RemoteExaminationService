@@ -36,6 +36,12 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'competition',
+    loadChildren: () => import('./ExamCompetition/exam-competition.module').then(m => m.ExamCompetitionModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'invites',
     loadChildren: () => import('./Invite/invite.module').then(m => m.InviteModule),
     canLoad: [AuthGuard],

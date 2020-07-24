@@ -8,12 +8,12 @@ import {IAnswer} from '../Models/ExamView/Interfaces/Answer/IAnswer';
 
 @Injectable({ providedIn: 'root' })
 export class ExamResolver implements Resolve<IExam<IQuestion<IAnswer>>> {
-    constructor(private service: ExamService) {}
+  constructor(private service: ExamService) {}
 
-    resolve(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ): Observable<any>|Promise<any>|any {
-        return this.service.getExamById(route.params.examId);
-    }
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<any>|Promise<any>|any {
+    return this.service.getExamById(route.params.examId);
+  }
 }
