@@ -14,7 +14,7 @@ namespace RemoteExamination.BLL.Helpers
 
             var userData = new UserData
             {
-                UserName = GetClaimValue(claims, ClaimsIdentity.DefaultNameClaimType),
+                UserId = GetClaimValue(claims, ClaimsIdentity.DefaultNameClaimType),
                 UserRoles = GetClaimValue(claims, ClaimsIdentity.DefaultRoleClaimType)
             };
 

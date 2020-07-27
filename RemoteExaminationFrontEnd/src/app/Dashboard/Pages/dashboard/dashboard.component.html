@@ -15,14 +15,15 @@
         <ng-container *ngIf="isExaminer() || isAdmin()">
           <div class="card-icon-actions">
             <div class="actions-item">
-              <fa-icon class="fa-icon-color-primary" [icon]="faVoteYea" routerLink=""></fa-icon>
+              <fa-icon [icon]="faVoteYea" class="fa-icon-color-primary"
+                       routerLink="/competition/{{exam.examId}}/results"></fa-icon>
             </div>
             <div class="actions-item">
-              <fa-icon class="fa-icon-color-danger" (click)="deleteExam(exam.examId, i)"
-                       [icon]="faTrash"></fa-icon>
+              <fa-icon (click)="deleteExam(exam.examId, i)" [icon]="faTrash"
+                       class="fa-icon-color-danger"></fa-icon>
             </div>
             <div class="actions-item">
-              <fa-icon class="fa-icon-color-primary" [icon]="faEdit"
+              <fa-icon [icon]="faEdit" class="fa-icon-color-primary"
                        routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>
             </div>
           </div>
@@ -43,7 +44,9 @@
             </ng-container>
             <ng-container *ngIf="isExamined()">
               <div class="card-item-button">
-                <button i18n nbButton routerLink="" size="medium" status='primary'>Запустить</button>
+                <button i18n nbButton routerLink="/competition/{{exam.examId}}/competition" size="medium"
+                        status='primary'>Запустить
+                </button>
               </div>
             </ng-container>
           </div>

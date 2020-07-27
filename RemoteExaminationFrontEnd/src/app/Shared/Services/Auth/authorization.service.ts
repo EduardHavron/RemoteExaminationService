@@ -13,12 +13,12 @@ import {ILogin} from '../../Models/UserAuth/ILogin';
   providedIn: 'root'
 })
 export class AuthorizationService {
-  private url = environment.apiPath + 'Account/';
   public currentUserSubject: BehaviorSubject<IUser>;
+  private url = environment.apiPath + 'Account/';
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject
-      <IUser>(this.getTokenValue());
+      < IUser > (this.getTokenValue());
   }
 
   get isAdmin(): boolean {

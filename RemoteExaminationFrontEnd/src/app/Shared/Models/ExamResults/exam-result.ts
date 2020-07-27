@@ -1,8 +1,9 @@
-import {UserAnswer} from './user-answer';
+import {IExamResultQuestion} from './exam-result-question';
 
-export interface ExamResult {
-  ExamId: number;
-  UserAnswer: Array<UserAnswer>;
-  ExamResultDate: string;
-  ExamResultInPercent: string;
+export interface IExamResult {
+  examId: number;
+  examResultQuestions: Array<IExamResultQuestion>;
+  examResultDate: string;
+  examResultInPercent: string;
+  userEmail: string;
 }

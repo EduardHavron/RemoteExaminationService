@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IExam} from '../../Models/ExamView/Interfaces/Exam/IExam';
-import {IQuestion} from '../../Models/ExamView/Interfaces/Question/IQuestion';
-import {IAnswer} from '../../Models/ExamView/Interfaces/Answer/IAnswer';
+import {IExam} from '../../Models/ExamView/Exam/IExam';
+import {IQuestion} from '../../Models/ExamView/Question/IQuestion';
+import {IAnswer} from '../../Models/ExamView/Answer/IAnswer';
 import {environment} from '../../../../environments/environment';
 
 @Injectable({

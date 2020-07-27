@@ -1,1 +1,8 @@
-<p>exam-result-view works!</p>
+<ng-container *ngIf="examResults">
+  <div class="exam-results-wrapper">
+    <nb-card *ngFor="let result of examResults; let i = index">
+      {{result.userEmail}}
+
+    </nb-card>
+  </div>
+</ng-container>

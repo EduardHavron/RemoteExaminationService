@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RemoteExamination.API.Controllers.Abstractions;
 using RemoteExamination.API.ViewModels.ExamCompetitionViewModels;
+using RemoteExamination.API.ViewModels.ExamViewModels;
 using RemoteExamination.BLL.Abstractions;
+using RemoteExamination.BLL.Models;
 using RemoteExamination.BLL.Models.ExamCompetition;
 using RemoteExamination.Common.Authentication;
 
@@ -26,12 +28,11 @@ namespace RemoteExamination.API.Controllers
 
         [HttpPost("SendResult")]
         [Authorize]
-        public async Task<IActionResult> SendExamResults(ExamResultViewModel model)
+        public async Task<IActionResult> SendExamResults(ExaminerExamViewModel model)
         {
-            var resultModel = _mapper.Map<ExamResultModel>(model);
-            resultModel.UserId = CurrentUser.UserName;
-            resultModel.ExamResultDate = DateTime.Today;
-            await _examCompetitionService.CheckExamResult(resultModel);
+            var resultModel = _mapper.Map<ExaminerExamModel>(model);
+            var user = CurrentUser.UserId;
+            await _examCompetitionService.CheckExamResult(resultModel, user);
             return Ok();
         }
 

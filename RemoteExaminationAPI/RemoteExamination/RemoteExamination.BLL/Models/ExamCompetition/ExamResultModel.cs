@@ -12,14 +12,16 @@ namespace RemoteExamination.BLL.Models.ExamCompetition
         public DateTime ExamResultDate { get; set; }
 
         public string UserId { get; set; }
+        
+        public string UserEmail { get; set; }
 
-        public List<UserAnswerModel> UserAnswers { get; set; }
+        public List<ExamResultQuestionModel> ExamResultQuestionModels { get; set; }
 
         public string ExamResultInPercent { get; set; }
 
         public ExamResultModel()
         {
-            UserAnswers = new List<UserAnswerModel>();
+            ExamResultQuestionModels = new List<ExamResultQuestionModel>();
         }
     }
 }

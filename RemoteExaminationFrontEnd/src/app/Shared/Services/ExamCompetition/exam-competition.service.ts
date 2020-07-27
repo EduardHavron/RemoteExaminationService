@@ -1,8 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ExamResult} from '../../Models/ExamResults/exam-result';
+import {IExamResult} from '../../Models/ExamResults/exam-result';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
+import {IExam} from '../../Models/ExamView/Exam/IExam';
+import {IQuestion} from '../../Models/ExamView/Question/IQuestion';
+import {IAnswer} from '../../Models/ExamView/Answer/IAnswer';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +16,15 @@ export class ExamCompetitionService {
   constructor(private http: HttpClient) {
   }
 
-  examCompetition(examResult: ExamResult) {
-    return this.http.post(this.url + 'ExamCompetition', examResult);
+  sendResult(examResult: IExam<IQuestion<IAnswer>>) {
+    return this.http.post(this.url + 'SendResult', examResult);
   }
 
-  getExamResults(examId: number): Observable<Array<ExamResult>> {
-    return this.http.get<Array<ExamResult>>(this.url + 'GetAllResults/' + examId);
+  getExamResults(examId: number): Observable<Array<IExamResult>> {
+    return this.http.get<Array<IExamResult>>(this.url + 'GetAllResults/' + examId);
   }
 
-  getExamResult(examResultId: number): Observable<ExamResult> {
-    return this.http.get<ExamResult>(this.url + 'GetExamResult/' + examResultId);
+  getExamResult(examResultId: number): Observable<IExamResult> {
+    return this.http.get<IExamResult>(this.url + 'GetExamResult/' + examResultId);
   }
 }

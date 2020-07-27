@@ -3,9 +3,9 @@ import {ActivatedRoute} from '@angular/router';
 import {ExamService} from '../../../Shared/Services/Exam/exam.service';
 
 import {faCheck, faEdit} from '@fortawesome/free-solid-svg-icons';
-import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
-import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
-import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
+import {IQuestion} from '../../../Shared/Models/ExamView/Question/IQuestion';
+import {IAnswer} from '../../../Shared/Models/ExamView/Answer/IAnswer';
+import {IExam} from '../../../Shared/Models/ExamView/Exam/IExam';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class ExamDetailsComponent implements OnInit {
 
   constructor(private examService: ExamService,
               private route: ActivatedRoute) {
-    route.data.subscribe((data: {exam: any}) => {
+    route.data.subscribe((data: { exam: any }) => {
       this.exam = data.exam;
     });
   }

@@ -23,11 +23,11 @@ export class UnauthGuard implements CanActivate {
 
     this.router.navigate(['/dashboard'])
       .then(() => {
-       this.showToast('top-right',
-         'danger',
-         3000,
-         'Вы уже авторизированы',
-         'Ошибка');
+        this.showToast('top-right',
+          'danger',
+          3000,
+          'Вы уже авторизированы',
+          'Ошибка');
       });
     return false;
   }
@@ -48,7 +48,7 @@ export class UnauthGuard implements CanActivate {
           3000,
           'Вы уже авторизированы',
           'Ошибка');
-    });
+      });
     return false;
   }
 

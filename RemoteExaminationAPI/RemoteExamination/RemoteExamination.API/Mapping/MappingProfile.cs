@@ -37,10 +37,17 @@ namespace RemoteExamination.API.Mapping
             CreateMap<InvitationModel, Invitation>().ReverseMap();
             CreateMap<ApplyInvitationViewModel, InvitationModel>().ReverseMap();
             //Exam Results
-            CreateMap<UserAnswerViewModel, UserAnswerModel>().ReverseMap();
-            CreateMap<UserAnswerModel, UserAnswer>().ReverseMap();
+            
+            //ExamResult
             CreateMap<ExamResultViewModel, ExamResultModel>().ReverseMap();
             CreateMap<ExamResultModel, ExamResult>().ReverseMap();
+            //ExamResultQuestion
+            CreateMap<ExamResultQuestionViewModel, ExamResultQuestionModel>().ReverseMap();
+            CreateMap<ExamResultQuestionModel, ExamResultQuestion>().ReverseMap();
+            //ExamResultAnswer
+            CreateMap<ExamResultAnswerViewModel, ExamResultAnswerModel>().ReverseMap();
+            CreateMap<ExamResultAnswerModel, ExamResultAnswer>().ReverseMap();
+
         }
     }
 }

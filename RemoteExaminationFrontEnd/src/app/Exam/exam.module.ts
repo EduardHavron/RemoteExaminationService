@@ -6,7 +6,6 @@ import {NbAccordionModule, NbListModule, NbTreeGridModule} from '@nebular/theme'
 import {ExamCreateEditComponent} from './Pages/exam-create-edit/exam-create-edit.component';
 
 
-
 @NgModule({
   declarations: [
     ExamDetailsComponent,

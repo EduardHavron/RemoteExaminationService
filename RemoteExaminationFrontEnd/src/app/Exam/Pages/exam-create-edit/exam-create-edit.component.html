@@ -5,7 +5,7 @@
         <div class="examNameWrapper">
           <label for="examName" i18n>Введите название экзамена</label>
           <form [formGroup]=examNameForm>
-            <input id="examName" nbInput type="text" formControlName="examName">
+            <input formControlName="examName" id="examName" nbInput type="text">
           </form>
         </div>
       </div>
@@ -14,7 +14,7 @@
       <nb-accordion-item *ngFor="let question of exam.questions; let i = index">
         <nb-accordion-item-header>
           <div class="question-wrapper"></div>
-          <fa-icon [icon]="faTrash" class="trash-icon fa-icon-color-danger" (click)="removeQuestion(i)"></fa-icon>
+          <fa-icon (click)="removeQuestion(i)" [icon]="faTrash" class="trash-icon fa-icon-color-danger"></fa-icon>
           <span>{{question.questionMessage}}</span>
         </nb-accordion-item-header>
         <nb-accordion-item-body>
@@ -22,8 +22,8 @@
             <nb-list-item *ngFor="let answer of question.answers; let j = index">
               <div class="answer-wrapper">
                 <div class="answer-data-wrapper">
-                  <fa-icon [icon]="faTrash" class="trash-icon fa-icon-color-danger"
-                           (click)="removeAnswer(i,j)"></fa-icon>
+                  <fa-icon (click)="removeAnswer(i,j)" [icon]="faTrash"
+                           class="trash-icon fa-icon-color-danger"></fa-icon>
                   <span>{{answer.value}}</span>
                 </div>
                 <ng-container *ngIf="answer.isCorrect">
@@ -34,7 +34,7 @@
               </div>
             </nb-list-item>
             <nb-list-item>
-              <div class="add-wrapper show-answer" (click)="addAnswer($event)">
+              <div (click)="addAnswer($event)" class="add-wrapper show-answer">
                 <div>
                   <span i18n>Добавить ответ</span>
                 </div>
@@ -54,7 +54,7 @@
                   </nb-checkbox>
                 </div>
                 <div class="icon-big flex-center-vertical">
-                  <fa-icon [icon]="faSave" class="fa-icon-color-primary" (click)="saveAnswer(i, $event)"></fa-icon>
+                  <fa-icon (click)="saveAnswer(i, $event)" [icon]="faSave" class="fa-icon-color-primary"></fa-icon>
                 </div>
               </div>
             </nb-list-item>
@@ -63,7 +63,7 @@
       </nb-accordion-item>
       <nb-accordion-item disabled>
         <nb-accordion-item-header>
-          <div class="add-wrapper add-question-accordion-item" (click)="addQuestion()" id="add-question-block">
+          <div (click)="addQuestion()" class="add-wrapper add-question-accordion-item" id="add-question-block">
             <div>
               <span i18n>Добавить вопрос</span>
             </div>
@@ -76,18 +76,18 @@
             <div class="add-answer-input-wrapper">
               <label for="question-input" i18n>Текст вопроса</label>
               <form [formGroup]=examQuestionForm>
-                <input id="question-input" nbInput formControlName="examQuestion">
+                <input formControlName="examQuestion" id="question-input" nbInput>
               </form>
             </div>
             <div class="icon-big flex-center-vertical">
-              <fa-icon [icon]="faSave" class="fa-icon-color-primary" (click)="saveQuestion()"></fa-icon>
+              <fa-icon (click)="saveQuestion()" [icon]="faSave" class="fa-icon-color-primary"></fa-icon>
             </div>
           </div>
         </nb-accordion-item-header>
       </nb-accordion-item>
     </nb-accordion>
-    <button status="success" nbButton (click)="createExam()">
-      <span i18n class="disable-top-round">Сохранить экзамен</span>
+    <button (click)="createExam()" nbButton status="success">
+      <span class="disable-top-round" i18n>Сохранить экзамен</span>
     </button>
   </nb-card>
 </div>

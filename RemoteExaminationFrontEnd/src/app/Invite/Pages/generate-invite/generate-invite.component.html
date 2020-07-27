@@ -16,10 +16,10 @@
               {{inviteCode}}
             </ng-container>
 
-            <button nbButton ghost status="primary" size="giant">
-              <fa-icon [icon]="faCopy" (click)="copyCode()"></fa-icon>
+            <button ghost nbButton size="giant" status="primary">
+              <fa-icon (click)="copyCode()" [icon]="faCopy"></fa-icon>
             </button>
-            <button nbButton status="primary" routerLink="/dashboard"><span i18n>Вернуться на главную</span></button>
+            <button nbButton routerLink="/dashboard" status="primary"><span i18n>Вернуться на главную</span></button>
           </div>
         </div>
       </div>

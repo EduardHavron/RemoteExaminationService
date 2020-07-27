@@ -15,8 +15,6 @@ namespace RemoteExamination.DAL.Entities
 
         public ICollection<ExamResult> ExamResults { get; set; }
 
-        public ICollection<UserAnswer> UserAnswers { get; set; }
-
         public ICollection<UserInvitation> UserInvitations { get; set; }
     }
 }

@@ -8,8 +8,10 @@ namespace RemoteExamination.API.ViewModels.ExamCompetitionViewModels
         public int ExamResultId { get; set; }
 
         public int ExamId { get; set; }
-
-        public List<UserAnswerViewModel> UserAnswers { get; set; }
+        
+        public string UserEmail { get; set; }
+        
+        public List<ExamResultQuestionViewModel> ExamResultQuestions { get; set; }
 
         public string ExamResultDate { get; set; }
 
@@ -17,7 +19,7 @@ namespace RemoteExamination.API.ViewModels.ExamCompetitionViewModels
 
         public ExamResultViewModel()
         {
-            UserAnswers = new List<UserAnswerViewModel>();
+            ExamResultQuestions = new List<ExamResultQuestionViewModel>();
         }
     }
 }

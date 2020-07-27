@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using RemoteExamination.BLL.Abstractions;
+using RemoteExamination.BLL.Models;
 using RemoteExamination.BLL.Models.ExamCompetition;
 using RemoteExamination.DAL.Context;
 using RemoteExamination.DAL.Entities;
@@ -22,35 +24,77 @@ namespace RemoteExamination.BLL.Services
             _mapper = mapper;
         }
 
-        public async Task CheckExamResult(ExamResultModel model)
+        public async Task CheckExamResult(ExaminerExamModel model, string currentUser)
         {
-            var examResult = _mapper.Map<ExamResult>(model);
-            var examQuestions = await _dbContext.Questions.Include("Answers").Where(x => x.ExamId == model.ExamId).ToListAsync();
-            var examSummary = 0;
-            var examMax = examQuestions.Count;
-            foreach (var modelAnswer in model.UserAnswers)
+            double finalResult= 0;
+            var checkedExam = _mapper.Map<ExaminerExamModel>(_dbContext
+                .Exams
+                .Include("Questions.Answers")
+                .FirstOrDefaultAsync(exam => exam.ExamId == model.ExamId).Result);
+            var examResultModel = new ExamResultModel
             {
-                var currentQuestion = examQuestions.FirstOrDefault(x => x.QuestionMessage == modelAnswer.Question);
-                if (currentQuestion is null)
+                ExamId = model.ExamId,
+                ExamResultDate = DateTime.Now,
+                UserId = currentUser,
+                UserEmail = _dbContext.Users
+                    .FirstOrDefaultAsync(x => 
+                        x.Id == currentUser).Result.Email
+            };
+            foreach (var question in model.Questions)
+            {
+                var checkedQuestion =
+                    checkedExam.Questions.FirstOrDefault(questionModel =>
+                        questionModel.QuestionId == question.QuestionId);
+                if (checkedQuestion is null)
                 {
-                    throw new Exception("Question not found, there is something wrong with result model");
+                    throw new Exception("Checked question not found");
                 }
-
-                var currentAnswer = currentQuestion.Answers.FirstOrDefault(x => x.Value == modelAnswer.SelectedAnswer);
-                if (currentAnswer is null)
+                var examResultQuestion = new ExamResultQuestionModel
                 {
-                    throw new Exception("Answer not found, there is something wrong with result model");
-                }
-
-                if (currentAnswer.IsCorrect && modelAnswer.IsCorrect)
+                    ExamResultQuestionId = checkedQuestion.QuestionId,
+                    Question = checkedQuestion.QuestionMessage
+                };
+                var correctlyAnswered = false;
+                foreach (var answer in question.Answers)
                 {
-                    examSummary++;
+                    var checkedAnswer =
+                        checkedQuestion.Answers
+                            .FirstOrDefault(answerModel => 
+                                answerModel.AnswerId == answer.AnswerId);
+                    if (checkedAnswer is null)
+                    {
+                        throw new Exception("Checked answer not found");
+                    }
+                    var examResultAnswerModel = new ExamResultAnswerModel
+                    {
+                        IsCorrect = checkedAnswer.IsCorrect,
+                        IsTouched = answer.IsCorrect,
+                        Value = checkedAnswer.Value
+                    };
+                    if (answer.IsCorrect == checkedAnswer.IsCorrect)
+                    {
+                        correctlyAnswered = true;
+                        examResultQuestion.ExamResultAnswerModels.Add(examResultAnswerModel);
+                    }
+                    else
+                    {
+                        correctlyAnswered = false;
+                        examResultQuestion.ExamResultAnswerModels.Add(examResultAnswerModel);
+                        break;
+                    }
                 }
+                if (correctlyAnswered)
+                {
+                    finalResult++;
+                }
+                examResultModel.ExamResultQuestionModels.Add(examResultQuestion);
             }
 
-            var examPercent = examSummary / examMax;
-            examResult.ExamResultInPercent = (examPercent * 100).ToString("##.00");
-            await _dbContext.ExamResults.AddAsync(examResult);
+            examResultModel.ExamResultInPercent =
+                (finalResult / examResultModel.ExamResultQuestionModels.Count)
+                .ToString("P", CultureInfo.InvariantCulture);
+            var result = _mapper.Map<ExamResult>(examResultModel);
+            await _dbContext.ExamResults.AddAsync(result);
             await _dbContext.SaveChangesAsync();
         }
 

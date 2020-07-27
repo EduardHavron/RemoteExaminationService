@@ -52,7 +52,7 @@ namespace RemoteExamination.BLL.Services
 
         public async Task AddInviteToUser(InvitationModel model, UserData userData)
         {
-            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userData.UserName);
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userData.UserId);
             var userInvitations =
                 await _dbContext.UserInvitations
                     .Where(x => x.UserId == user.Id).Select(x => x.InvitationId)

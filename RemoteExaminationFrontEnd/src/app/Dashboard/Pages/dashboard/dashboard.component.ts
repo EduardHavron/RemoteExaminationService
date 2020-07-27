@@ -3,10 +3,10 @@ import {ExamService} from '../../../Shared/Services/Exam/exam.service';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {IUser} from '../../../Shared/Models/UserAuth/IUser';
 import {faEdit, faTrash, faVoteYea} from '@fortawesome/free-solid-svg-icons';
-import {IQuestion} from '../../../Shared/Models/ExamView/Interfaces/Question/IQuestion';
-import {IAnswer} from '../../../Shared/Models/ExamView/Interfaces/Answer/IAnswer';
-import {IExam} from '../../../Shared/Models/ExamView/Interfaces/Exam/IExam';
-import {CustomToastrService} from '../../../Shared/Services/NbToastr/custom-toastr.service';
+import {IQuestion} from '../../../Shared/Models/ExamView/Question/IQuestion';
+import {IAnswer} from '../../../Shared/Models/ExamView/Answer/IAnswer';
+import {IExam} from '../../../Shared/Models/ExamView/Exam/IExam';
+import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 
 @Component({
   selector: 'app-dashboard',

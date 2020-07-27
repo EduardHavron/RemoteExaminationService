@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GenerateInviteComponent } from './generate-invite.component';
+import {GenerateInviteComponent} from './generate-invite.component';
 
 describe('GenerateInviteComponent', () => {
   let component: GenerateInviteComponent;
@@ -8,9 +8,9 @@ describe('GenerateInviteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenerateInviteComponent ]
+      declarations: [GenerateInviteComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

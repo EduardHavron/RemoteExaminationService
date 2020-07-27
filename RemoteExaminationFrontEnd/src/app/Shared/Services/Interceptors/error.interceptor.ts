@@ -20,12 +20,12 @@ export class ErrorInterceptor implements HttpInterceptor {
         this.authenticationService.logout();
         this.router.navigate(['authorize/login'])
           .then(() => {
-          this.showToast('top-right',
-            'danger',
-            '3000',
-            'Истек срок сессии, пожалуйста, авторизируйтесь заново',
-            'Ошибка авторизации');
-        });
+            this.showToast('top-right',
+              'danger',
+              '3000',
+              'Истек срок сессии, пожалуйста, авторизируйтесь заново',
+              'Ошибка авторизации');
+          });
       }
       if (err.status === 400) {
         this.showToast('top-right',

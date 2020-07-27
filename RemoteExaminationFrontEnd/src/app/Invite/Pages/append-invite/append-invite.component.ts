@@ -3,7 +3,7 @@ import {InvitationService} from '../../../Shared/Services/Invitation/invitation.
 import {ActivatedRoute, Router} from '@angular/router';
 import {ExamService} from '../../../Shared/Services/Exam/exam.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CustomToastrService} from '../../../Shared/Services/NbToastr/custom-toastr.service';
+import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 
 @Component({
   selector: 'app-create-invite',

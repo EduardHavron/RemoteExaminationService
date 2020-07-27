@@ -10,12 +10,12 @@
     </nb-card-header>
     <nb-card-body>
       <div class="input-wrapper">
-        <label i18n for="invite-input">Введите код приглашения</label>
+        <label for="invite-input" i18n>Введите код приглашения</label>
         <form [formGroup]="form">
-          <input nbInput id="invite-input" formControlName="invitationCode">
+          <input formControlName="invitationCode" id="invite-input" nbInput>
         </form>
       </div>
-      <button nbButton status="success" (click)="appendInvite()"><span i18n>Применить приглашение</span></button>
+      <button (click)="appendInvite()" nbButton status="success"><span i18n>Применить приглашение</span></button>
     </nb-card-body>
   </nb-card>
 </div>

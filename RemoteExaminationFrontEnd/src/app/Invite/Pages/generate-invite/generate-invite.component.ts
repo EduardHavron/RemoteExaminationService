@@ -3,7 +3,7 @@ import {faCopy as fasCopy} from '@fortawesome/free-regular-svg-icons/faCopy';
 import {v4 as uuidv4} from 'uuid';
 import {ActivatedRoute, Router} from '@angular/router';
 import {InvitationService} from '../../../Shared/Services/Invitation/invitation.service';
-import {CustomToastrService} from '../../../Shared/Services/NbToastr/custom-toastr.service';
+import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 
 @Component({
   selector: 'app-generate-invite',
@@ -23,6 +23,10 @@ export class GenerateInviteComponent implements OnInit {
     this.examId = parseInt(activatedRoute.snapshot.params.examId, 10);
   }
 
+  get newCode() {
+    return uuidv4();
+  }
+
   ngOnInit() {
     this.invitationService.createInvite(
       {examId: this.examId, invitationCode: this.inviteCode})
@@ -33,10 +37,6 @@ export class GenerateInviteComponent implements OnInit {
           'Код приглашения создан',
           'Успех');
       });
-  }
-
-  get newCode() {
-    return uuidv4();
   }
 
   copyCode() {

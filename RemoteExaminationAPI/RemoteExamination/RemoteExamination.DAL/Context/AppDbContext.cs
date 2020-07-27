@@ -16,12 +16,14 @@ namespace RemoteExamination.DAL.Context
 
         public DbSet<ExamResult> ExamResults { get; set; }
 
+        public DbSet<ExamResultQuestion> ExamResultQuestions { get; set; }
+        
+        public DbSet<ExamResultAnswer> ExamResultAnswers { get; set; }
+        
         public DbSet<Invitation> Invitations { get; set; }
 
         public DbSet<Question> Questions { get; set; }
-
-        public DbSet<UserAnswer> UserAnswers { get; set; }
-
+        
         public DbSet<UserInvitation> UserInvitations { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)

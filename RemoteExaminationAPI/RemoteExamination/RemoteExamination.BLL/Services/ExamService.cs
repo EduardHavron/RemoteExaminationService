@@ -42,7 +42,7 @@ namespace RemoteExamination.BLL.Services
                 case (Role.Examiner):
                     {
                         exams = await _dbContext.Exams.Include("Questions.Answers").AsNoTracking()
-                            .Where(x => x.ExamCreator == currentUser.UserName)
+                            .Where(x => x.ExamCreator == currentUser.UserId)
                             .ToListAsync();
                         break;
                     }
@@ -52,7 +52,7 @@ namespace RemoteExamination.BLL.Services
                         var examsId = await _dbContext.UserInvitations
                             .Include(x => x.Invitation)
                             .AsNoTracking()
-                            .Where(x => x.UserId == currentUser.UserName)
+                            .Where(x => x.UserId == currentUser.UserId)
                             .Select(x => x.Invitation.ExamId)
                             .ToListAsync();
                         exams = await _dbContext.Exams
@@ -84,7 +84,7 @@ namespace RemoteExamination.BLL.Services
                     break;
 
                 case ("Examiner"):
-                    if (exam.ExamCreator != currentUser.UserName)
+                    if (exam.ExamCreator != currentUser.UserId)
                         exam = null;
                     break;
 
@@ -92,7 +92,7 @@ namespace RemoteExamination.BLL.Services
                     var examsId = await _dbContext.UserInvitations
                         .Include(x => x.Invitation)
                         .AsNoTracking()
-                        .Where(x => x.UserId == currentUser.UserName)
+                        .Where(x => x.UserId == currentUser.UserId)
                         .Select(x => x.Invitation.ExamId)
                         .ToListAsync();
                     if (!examsId.Contains(id))

@@ -5,6 +5,7 @@ namespace RemoteExamination.API.ViewModels.ExamViewModels
 {
     public class ExaminedExamViewModel
     {
+        public int ExamId { get; set; }
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }

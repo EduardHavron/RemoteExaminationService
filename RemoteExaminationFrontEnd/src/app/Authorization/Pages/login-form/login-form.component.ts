@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {Router} from '@angular/router';
-import {CustomToastrService} from '../../../Shared/Services/NbToastr/custom-toastr.service';
+import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 
 @Component({
   selector: 'app-login-form',

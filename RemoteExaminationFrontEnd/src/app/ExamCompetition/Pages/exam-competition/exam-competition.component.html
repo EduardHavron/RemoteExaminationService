@@ -1,1 +1,45 @@
-<p>exam-competition works!</p>
+<div class="competition-wrapper">
+  <nb-card>
+    <nb-card-header>
+      <span i18n>Экзамен: </span>
+      <span>{{exam.name}}</span>
+    </nb-card-header>
+    <nb-card-body>
+      <nb-stepper orientation="horizontal">
+        <nb-step *ngFor="let question of exam.questions; let i = index">
+          <div class="step-wrapper">
+            <div class="step-exam-wrapper">
+              <div class="step-exam-wrapper-question">
+                <span i18n>Вопрос: </span>
+                <span>{{question.questionMessage}}</span>
+              </div>
+              <div class="step-exam-wrapper-answers">
+                <nb-list>
+                  <nb-list-item *ngFor="let answer of question.answers; let j = index">
+                    <nb-checkbox (checkedChange)="touchAnswer(i, j)"></nb-checkbox>
+                    <span>{{answer.value}}</span>
+                  </nb-list-item>
+                </nb-list>
+              </div>
+            </div>
+            <div class="step-navigation-wrapper">
+              <ng-container *ngIf="i === 0">
+                <button disabled nbButton nbStepperPrevious><span i18n>Назад</span></button>
+              </ng-container>
+              <ng-container *ngIf="i !== 0">
+                <button nbButton nbStepperPrevious><span i18n>Назад</span></button>
+              </ng-container>
+              <ng-container *ngIf="exam.questions.length-1 === i">
+                <button disabled nbButton nbStepperNext><span i18n>Вперед</span></button>
+              </ng-container>
+              <ng-container *ngIf="exam.questions.length-1 !== i">
+                <button nbButton nbStepperNext><span i18n>Вперед</span></button>
+              </ng-container>
+            </div>
+          </div>
+        </nb-step>
+      </nb-stepper>
+      <button (click)="sendResult()" nbButton status="success"><span i18n>Завершить</span></button>
+    </nb-card-body>
+  </nb-card>
+</div>

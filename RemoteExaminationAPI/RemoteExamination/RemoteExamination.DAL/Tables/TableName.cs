@@ -4,8 +4,6 @@
     {
         public const string Answer = "Answers";
 
-        public const string UserAnswer = "UserAnswer";
-
         public const string Question = "Questions";
 
         public const string ExamResult = "ExamResults";
@@ -15,5 +13,9 @@
         public const string Invitation = "Invitations";
 
         public const string User = "Users";
+
+        public const string ExamResultAnswer = "ExamResultAnswers";
+
+        public const string ExamResultQuestion = "ExamResultQuestions";
     }
 }

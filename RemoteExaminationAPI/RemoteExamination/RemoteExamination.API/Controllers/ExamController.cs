@@ -86,7 +86,7 @@ namespace RemoteExamination.API.Controllers
         public async Task<IActionResult> Create(ExaminerExamViewModel model)
         {
             var examModel = _mapper.Map<ExaminerExamModel>(model);
-            examModel.ExamCreator = CurrentUser.UserName;
+            examModel.ExamCreator = CurrentUser.UserId;
             await _examService.CreateExamAsync(examModel);
 
             return Ok();

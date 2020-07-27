@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using RemoteExamination.BLL.Models;
 using RemoteExamination.BLL.Models.ExamCompetition;
 using RemoteExamination.DAL.Entities;
 
@@ -7,7 +8,7 @@ namespace RemoteExamination.BLL.Abstractions
 {
     public interface IExamCompetitionService
     {
-        Task CheckExamResult(ExamResultModel model);
+        Task CheckExamResult(ExaminerExamModel model, string user);
 
         Task<IList<ExamResult>> GetAllExamResults(int examId);
 

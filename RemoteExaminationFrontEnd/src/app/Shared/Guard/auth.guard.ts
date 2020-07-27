@@ -25,12 +25,12 @@ export class AuthGuard implements CanActivate {
 
     this.router.navigate(['/authorize'])
       .then(() => {
-      this.showToast('top-right',
-        'danger',
-        3000,
-        'У вас недостаточно прав для просмотра этой страницы',
-        'Ошибка!');
-    });
+        this.showToast('top-right',
+          'danger',
+          3000,
+          'У вас недостаточно прав для просмотра этой страницы',
+          'Ошибка!');
+      });
     return false;
   }
 
