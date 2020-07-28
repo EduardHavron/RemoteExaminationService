@@ -12,15 +12,13 @@ namespace RemoteExamination.DAL.Entities
         [Key]
         public int ExamResultId { get; set; }
 
+        public string ExamName { get; set; }
+        
         public int ExamId { get; set; }
-
-        public Exam Exam { get; set; }
-
+        
         public string UserId { get; set; }
         
         public string UserEmail { get; set; }
-
-        public User User { get; set; }
 
         public ICollection<ExamResultQuestion> ExamResultQuestions { get; set; }
 

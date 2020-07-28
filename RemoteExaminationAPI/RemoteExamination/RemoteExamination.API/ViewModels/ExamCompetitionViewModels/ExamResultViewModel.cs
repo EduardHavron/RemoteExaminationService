@@ -9,6 +9,8 @@ namespace RemoteExamination.API.ViewModels.ExamCompetitionViewModels
 
         public int ExamId { get; set; }
         
+        public string ExamName { get; set; }
+        
         public string UserEmail { get; set; }
         
         public List<ExamResultQuestionViewModel> ExamResultQuestions { get; set; }

@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {IExamResult} from '../../../Shared/Models/ExamResults/exam-result';
+import {faCheck} from '@fortawesome/free-solid-svg-icons/faCheck';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-exam-result',
@@ -6,8 +9,13 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./exam-result.component.scss']
 })
 export class ExamResultComponent implements OnInit {
+  examResult: IExamResult;
+  faCheck = faCheck;
 
-  constructor() {
+  constructor(route: ActivatedRoute) {
+    route.data.subscribe((data: { examResult: any }) => {
+      this.examResult = data.examResult;
+    });
   }
 
   ngOnInit() {

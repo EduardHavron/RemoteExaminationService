@@ -1,8 +1,35 @@
 <ng-container *ngIf="examResults">
   <div class="exam-results-wrapper">
     <nb-card *ngFor="let result of examResults; let i = index">
-      {{result.userEmail}}
-
+      <nb-card-header>
+        <div class="exam-result-header-wrapper">
+          <div class="exam-name-wrapper"  routerLink="/exams/exam/{{result.examId}}">
+            <span i18n>Название экзамена: </span>
+            <span>{{result.examName}}</span>
+          </div>
+          <div class="exam-user-wrapper">
+            <span i18n>Экзаменируемый: </span>
+            <span>{{result.userEmail}}</span>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="exam-result-body-wrapper">
+          <div class="exam-result-body-item">
+            <span i18n>Дата экзамена: </span>
+            <span>{{result.examResultDate | date: 'short'}}</span>
+          </div>
+          <div class="exam-result-body-item">
+            <span i18n>Результат: </span>
+            <span>{{result.examResultInPercent}}</span>
+          </div>
+          <div class="exam-result-body-item">
+            <button nbButton status="success" routerLink="/competition/{{result.examId}}/results/{{result.examResultId}}">
+              <span i18n>Подробнее</span>
+            </button>
+          </div>
+        </div>
+      </nb-card-body>
     </nb-card>
   </div>
 </ng-container>

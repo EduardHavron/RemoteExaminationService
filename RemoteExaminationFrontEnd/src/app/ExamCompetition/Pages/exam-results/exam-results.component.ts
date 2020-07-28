@@ -25,5 +25,4 @@ export class ExamResultsComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

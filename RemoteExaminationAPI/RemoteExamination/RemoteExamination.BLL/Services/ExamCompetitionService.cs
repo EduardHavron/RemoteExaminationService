@@ -34,7 +34,8 @@ namespace RemoteExamination.BLL.Services
             var examResultModel = new ExamResultModel
             {
                 ExamId = model.ExamId,
-                ExamResultDate = DateTime.Now,
+                ExamResultDate = DateTime.UtcNow,
+                ExamName = checkedExam.Name,
                 UserId = currentUser,
                 UserEmail = _dbContext.Users
                     .FirstOrDefaultAsync(x => 
@@ -51,7 +52,6 @@ namespace RemoteExamination.BLL.Services
                 }
                 var examResultQuestion = new ExamResultQuestionModel
                 {
-                    ExamResultQuestionId = checkedQuestion.QuestionId,
                     Question = checkedQuestion.QuestionMessage
                 };
                 var correctlyAnswered = false;
@@ -74,12 +74,12 @@ namespace RemoteExamination.BLL.Services
                     if (answer.IsCorrect == checkedAnswer.IsCorrect)
                     {
                         correctlyAnswered = true;
-                        examResultQuestion.ExamResultAnswerModels.Add(examResultAnswerModel);
+                        examResultQuestion.ExamResultAnswers.Add(examResultAnswerModel);
                     }
                     else
                     {
                         correctlyAnswered = false;
-                        examResultQuestion.ExamResultAnswerModels.Add(examResultAnswerModel);
+                        examResultQuestion.ExamResultAnswers.Add(examResultAnswerModel);
                         break;
                     }
                 }
@@ -87,11 +87,11 @@ namespace RemoteExamination.BLL.Services
                 {
                     finalResult++;
                 }
-                examResultModel.ExamResultQuestionModels.Add(examResultQuestion);
+                examResultModel.ExamResultQuestions.Add(examResultQuestion);
             }
 
             examResultModel.ExamResultInPercent =
-                (finalResult / examResultModel.ExamResultQuestionModels.Count)
+                (finalResult / examResultModel.ExamResultQuestions.Count)
                 .ToString("P", CultureInfo.InvariantCulture);
             var result = _mapper.Map<ExamResult>(examResultModel);
             await _dbContext.ExamResults.AddAsync(result);
@@ -100,14 +100,20 @@ namespace RemoteExamination.BLL.Services
 
         public async Task<IList<ExamResult>> GetAllExamResults(int examId)
         {
-            var result = await _dbContext.ExamResults.Where(x => x.ExamId == examId).ToListAsync();
+            var result = await _dbContext.ExamResults
+                .Where(x 
+                    => x.ExamId == examId).ToListAsync();
 
             return result;
         }
 
         public async Task<ExamResult> GetExamResult(int examResultId)
         {
-            var result = await _dbContext.ExamResults.FirstOrDefaultAsync(x => x.ExamResultId == examResultId);
+            var result = await _dbContext.ExamResults.Include(examResult 
+                => examResult.ExamResultQuestions).ThenInclude(question 
+                => question.ExamResultAnswers)
+                .FirstOrDefaultAsync(x 
+                    => x.ExamResultId == examResultId);
 
             return result;
         }

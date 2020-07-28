@@ -10,11 +10,11 @@ namespace RemoteExamination.BLL.Models.ExamCompetition
 
         public string Question { get; set; }
         
-        public List<ExamResultAnswerModel> ExamResultAnswerModels { get; set; }
+        public List<ExamResultAnswerModel> ExamResultAnswers { get; set; }
 
         public ExamResultQuestionModel()
         {
-            ExamResultAnswerModels = new List<ExamResultAnswerModel>();
+            ExamResultAnswers = new List<ExamResultAnswerModel>();
         }
     }
 }

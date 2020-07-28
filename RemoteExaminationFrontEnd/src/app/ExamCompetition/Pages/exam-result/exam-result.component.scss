@@ -1,0 +1,27 @@
+nb-card {
+  max-width: 600px;
+  min-width: 30%;
+}
+
+nb-card:first-child {
+  min-width: 38%;
+}
+.exam-result-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.answer-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.answer-checks-wrapper {
+  width: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

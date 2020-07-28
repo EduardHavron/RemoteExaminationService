@@ -7,6 +7,7 @@ import {ExaminerGuard} from '../../Shared/Guard/examiner.guard';
 import {ExamResultComponent} from '../Pages/exam-result/exam-result.component';
 import {ExamCompetitionComponent} from '../Pages/exam-competition/exam-competition.component';
 import {ExaminedGuard} from '../../Shared/Guard/examined.guard';
+import {ExamResultResolver} from '../../Shared/Resolvers/exam-result.resolver';
 
 const routes: Routes = [
   {
@@ -19,7 +20,10 @@ const routes: Routes = [
     path: ':examId/results/:resultId',
     component: ExamResultComponent,
     canLoad: [ExaminerGuard],
-    canActivate: [ExaminerGuard]
+    canActivate: [ExaminerGuard],
+    resolve: {
+      examResult: ExamResultResolver
+    }
   },
   {
     path: ':examId/competition',

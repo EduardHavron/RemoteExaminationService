@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RemoteExamination.DAL.Context;
 
 namespace RemoteExamination.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200727154126_ProvidedExamName")]
+    partial class ProvidedExamName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,7 +242,10 @@ namespace RemoteExamination.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ExamResultQuestionId")
+                    b.Property<int>("ExamResulQuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ExamResultQuestionId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsCorrect")
@@ -478,29 +483,27 @@ namespace RemoteExamination.DAL.Migrations
 
             modelBuilder.Entity("RemoteExamination.DAL.Entities.ExamResult", b =>
                 {
-                    b.HasOne("RemoteExamination.DAL.Entities.Exam", null)
+                    b.HasOne("RemoteExamination.DAL.Entities.Exam", "Exam")
                         .WithMany("ExamResults")
                         .HasForeignKey("ExamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RemoteExamination.DAL.Entities.User", null)
+                    b.HasOne("RemoteExamination.DAL.Entities.User", "User")
                         .WithMany("ExamResults")
                         .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("RemoteExamination.DAL.Entities.ExamResultAnswer", b =>
                 {
-                    b.HasOne("RemoteExamination.DAL.Entities.ExamResultQuestion", null)
+                    b.HasOne("RemoteExamination.DAL.Entities.ExamResultQuestion", "ExamResultQuestion")
                         .WithMany("ExamResultAnswers")
-                        .HasForeignKey("ExamResultQuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ExamResultQuestionId");
                 });
 
             modelBuilder.Entity("RemoteExamination.DAL.Entities.ExamResultQuestion", b =>
                 {
-                    b.HasOne("RemoteExamination.DAL.Entities.ExamResult", null)
+                    b.HasOne("RemoteExamination.DAL.Entities.ExamResult", "ExamResult")
                         .WithMany("ExamResultQuestions")
                         .HasForeignKey("ExamResultId")
                         .OnDelete(DeleteBehavior.Cascade)

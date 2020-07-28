@@ -8,6 +8,8 @@ namespace RemoteExamination.BLL.Models.ExamCompetition
         public int ExamResultId { get; set; }
 
         public int ExamId { get; set; }
+        
+        public string ExamName { get; set; }
 
         public DateTime ExamResultDate { get; set; }
 
@@ -15,13 +17,13 @@ namespace RemoteExamination.BLL.Models.ExamCompetition
         
         public string UserEmail { get; set; }
 
-        public List<ExamResultQuestionModel> ExamResultQuestionModels { get; set; }
+        public List<ExamResultQuestionModel> ExamResultQuestions { get; set; }
 
         public string ExamResultInPercent { get; set; }
 
         public ExamResultModel()
         {
-            ExamResultQuestionModels = new List<ExamResultQuestionModel>();
+            ExamResultQuestions = new List<ExamResultQuestionModel>();
         }
     }
 }

@@ -1,1 +1,59 @@
-<p>exam-result works!</p>
+<div class="exam-result-wrapper">
+  <nb-card>
+    <nb-list>
+      <nb-list-item>
+        <div class="exam-result-header-item">
+          <span i18n>Название экзамена: </span>
+          <span>{{examResult.examName}}</span>
+        </div>
+      </nb-list-item>
+      <nb-list-item>
+        <div class="exam-result-header-item">
+          <span i18n>Пользователь: </span>
+          <span>{{examResult.userEmail}}</span>
+        </div>
+      </nb-list-item>
+      <nb-list-item>
+        <div class="exam-result-header-item">
+          <span i18n>Дата: </span>
+          <span>{{examResult.examResultDate | date: 'short'}}</span>
+        </div>
+      </nb-list-item>
+      <nb-list-item>
+        <div class="exam-result-header-item">
+          <span i18n>Результат </span>
+          <span>{{examResult.examResultInPercent}}</span>
+        </div>
+      </nb-list-item>
+    </nb-list>
+  </nb-card>
+  <nb-card>
+    <nb-card-header>
+      <span i18n>Результат</span>
+    </nb-card-header>
+    <nb-accordion multi>
+      <nb-accordion-item *ngFor="let question of examResult.examResultQuestions; let i = index">
+        <nb-accordion-item-header>
+          <span>{{question.question}}</span>
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <nb-list>
+            <nb-list-item *ngFor="let answer of question.examResultAnswers">
+              <div class="answer-wrapper">
+                <span>{{answer.value}}</span>
+                <div class="answer-checks-wrapper">
+                  <ng-container *ngIf="answer.isCorrect">
+                    <fa-icon class="fa-icon-color-success" [icon]="faCheck"></fa-icon>
+                  </ng-container>
+                  <ng-container *ngIf="answer.isTouched">
+                    <fa-icon class="fa-icon-color-primary" [icon]="faCheck"></fa-icon>
+                  </ng-container>
+                </div>
+              </div>
+            </nb-list-item>
+          </nb-list>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+    </nb-accordion>
+  </nb-card>
+</div>
