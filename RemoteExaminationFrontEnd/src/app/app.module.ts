@@ -53,5 +53,5 @@ registerLocaleData(localeUa);
 export class AppModule {
 }
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
-  return new TranslateHttpLoader(http, '../assets/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
