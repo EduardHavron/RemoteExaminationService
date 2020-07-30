@@ -1,7 +1,7 @@
 <div class="competition-wrapper">
   <nb-card>
     <nb-card-header>
-      <span i18n>Экзамен: </span>
+      <span>{{'Exam: ' | translate}}</span>
       <span>{{exam.name}}</span>
     </nb-card-header>
     <nb-card-body>
@@ -10,7 +10,7 @@
           <div class="step-wrapper">
             <div class="step-exam-wrapper">
               <div class="step-exam-wrapper-question">
-                <span i18n>Вопрос: </span>
+                <span>{{'Question' | translate}}</span>
                 <span>{{question.questionMessage}}</span>
               </div>
               <div class="step-exam-wrapper-answers">
@@ -24,22 +24,22 @@
             </div>
             <div class="step-navigation-wrapper">
               <ng-container *ngIf="i === 0">
-                <button disabled nbButton nbStepperPrevious><span i18n>Назад</span></button>
+                <button disabled nbButton nbStepperPrevious><span>{{'Previous' | translate}}</span></button>
               </ng-container>
               <ng-container *ngIf="i !== 0">
-                <button nbButton nbStepperPrevious><span i18n>Назад</span></button>
+                <button nbButton nbStepperPrevious><span>{{'Previous' | translate}}</span></button>
               </ng-container>
               <ng-container *ngIf="exam.questions.length-1 === i">
-                <button disabled nbButton nbStepperNext><span i18n>Вперед</span></button>
+                <button disabled nbButton nbStepperNext><span>{{'Next' | translate}}</span></button>
               </ng-container>
               <ng-container *ngIf="exam.questions.length-1 !== i">
-                <button nbButton nbStepperNext><span i18n>Вперед</span></button>
+                <button nbButton nbStepperNext><span>{{'Next' | translate}}</span></button>
               </ng-container>
             </div>
           </div>
         </nb-step>
       </nb-stepper>
-      <button (click)="sendResult()" nbButton status="success"><span i18n>Завершить</span></button>
+      <button (click)="sendResult()" nbButton status="success"><span>{{'Finalize' | translate}}</span></button>
     </nb-card-body>
   </nb-card>
 </div>

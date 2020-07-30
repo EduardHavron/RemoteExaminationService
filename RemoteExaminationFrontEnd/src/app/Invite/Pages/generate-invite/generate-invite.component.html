@@ -1,25 +1,25 @@
 <div class="create-invite-wrapper">
   <nb-card>
     <nb-card-header>
-      <span i18n>Ваш код приглашения</span>
+      <span>{{'Your invite code' | translate}}</span>
     </nb-card-header>
     <nb-card-body>
       <div class="invite-main">
         <div class="invite-wrapper">
           <ng-container *ngIf="!inviteCode">
-            <p i18n>Здесь появится ваш код приглашения</p>
+            <p>{{'Here will be your invite code' | translate}}</p>
           </ng-container>
           <div>
             <ng-container *ngIf="inviteCode">
-              <p i18n>Ваш код приглашения: </p>
-              <p i18n>Отправьте его человеку, которому хотите дать доступ к экзамену, любым удобным Вам способом.</p>
+              <p>{{'Your invite code' | translate}}</p>
+              <p>{{'Send it to the person you want to give access to the exam in any way convenient for you.' | translate}}</p>
               {{inviteCode}}
             </ng-container>
 
             <button ghost nbButton size="giant" status="primary">
               <fa-icon (click)="copyCode()" [icon]="faCopy"></fa-icon>
             </button>
-            <button nbButton routerLink="/dashboard" status="primary"><span i18n>Вернуться на главную</span></button>
+            <button nbButton routerLink="/dashboard" status="primary"><span>{{'Go to Dashboard' | translate}}</span></button>
           </div>
         </div>
       </div>

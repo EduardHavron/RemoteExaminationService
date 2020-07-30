@@ -3,25 +3,25 @@
     <nb-list>
       <nb-list-item>
         <div class="exam-result-header-item">
-          <span i18n>Название экзамена: </span>
+          <span>{{'Exam name' | translate}}</span>
           <span>{{examResult.examName}}</span>
         </div>
       </nb-list-item>
       <nb-list-item>
         <div class="exam-result-header-item">
-          <span i18n>Пользователь: </span>
+          <span>{{'User' | translate}}</span>
           <span>{{examResult.userEmail}}</span>
         </div>
       </nb-list-item>
       <nb-list-item>
         <div class="exam-result-header-item">
-          <span i18n>Дата: </span>
+          <span>{{'Date' | translate}}</span>
           <span>{{examResult.examResultDate | date: 'short'}}</span>
         </div>
       </nb-list-item>
       <nb-list-item>
         <div class="exam-result-header-item">
-          <span i18n>Результат </span>
+          <span>{{'Result' | translate}}</span>
           <span>{{examResult.examResultInPercent}}</span>
         </div>
       </nb-list-item>
@@ -29,7 +29,7 @@
   </nb-card>
   <nb-card>
     <nb-card-header>
-      <span i18n>Результат</span>
+      <span>{{'Result' | translate}}</span>
     </nb-card-header>
     <nb-accordion multi>
       <nb-accordion-item *ngFor="let question of examResult.examResultQuestions; let i = index">

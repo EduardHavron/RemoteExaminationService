@@ -34,8 +34,6 @@ namespace RemoteExamination.DAL.Context
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<UserInvitation>()
-                .HasKey(bc => new { bc.InvitationId, bc.UserId });
 
             builder.Entity<UserInvitation>()
                 .HasOne(bc => bc.User)
@@ -47,11 +45,7 @@ namespace RemoteExamination.DAL.Context
                 .HasOne(bc => bc.Invitation)
                 .WithMany(c => c.UserInvitations)
                 .HasForeignKey(bc => bc.InvitationId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
-
-            builder.Entity<Invitation>()
-                .HasIndex(e => e.InvitationCode)
-                .IsUnique();
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

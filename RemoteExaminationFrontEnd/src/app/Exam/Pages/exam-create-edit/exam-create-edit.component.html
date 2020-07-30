@@ -3,7 +3,7 @@
     <nb-card-header>
       <div class="exam-form-wrapper">
         <div class="examNameWrapper">
-          <label for="examName" i18n>Введите название экзамена</label>
+          <label for="examName">{{'Enter exam name' | translate}}</label>
           <form [formGroup]=examNameForm>
             <input formControlName="examName" id="examName" nbInput type="text">
           </form>
@@ -36,7 +36,7 @@
             <nb-list-item>
               <div (click)="addAnswer($event)" class="add-wrapper show-answer">
                 <div>
-                  <span i18n>Добавить ответ</span>
+                  <span>{{'Add answer' | translate}}</span>
                 </div>
                 <div>
                   <fa-icon [icon]="faPlus" class="fa-icon-color-primary"></fa-icon>
@@ -46,11 +46,11 @@
               <div class="add-wrapper save-answer hide">
                 <div class="add-answer-data-wrapper">
                   <div class="add-answer-input-wrapper">
-                    <label i18n>Текст ответа</label>
+                    <label>{{'Answer value' | translate}}</label>
                     <input nbInput>
                   </div>
                   <nb-checkbox class="add-answer-isCorrect">
-                    <span i18n> Верно ли</span>
+                    <span>{{'Is correct' | translate}}</span>
                   </nb-checkbox>
                 </div>
                 <div class="icon-big flex-center-vertical">
@@ -65,7 +65,7 @@
         <nb-accordion-item-header>
           <div (click)="addQuestion()" class="add-wrapper add-question-accordion-item" id="add-question-block">
             <div>
-              <span i18n>Добавить вопрос</span>
+              <span>{{'Add question' | translate}}</span>
             </div>
             <div>
               <fa-icon [icon]="faPlus" class="fa-icon-color-primary"></fa-icon>
@@ -74,7 +74,7 @@
 
           <div class="add-wrapper add-question-accordion-item hide" id="save-question-block">
             <div class="add-answer-input-wrapper">
-              <label for="question-input" i18n>Текст вопроса</label>
+              <label for="question-input">{{'Question value' | translate}}</label>
               <form [formGroup]=examQuestionForm>
                 <input formControlName="examQuestion" id="question-input" nbInput>
               </form>
@@ -87,7 +87,7 @@
       </nb-accordion-item>
     </nb-accordion>
     <button (click)="createExam()" nbButton status="success">
-      <span class="disable-top-round" i18n>Сохранить экзамен</span>
+      <span class="disable-top-round">{{'Save exam' | translate}}</span>
     </button>
   </nb-card>
 </div>

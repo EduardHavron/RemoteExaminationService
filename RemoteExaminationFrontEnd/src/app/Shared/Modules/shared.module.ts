@@ -27,7 +27,6 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     RouterModule,
     ToastrModule.forRoot(),
-    TranslateModule.forRoot(),
     NbLayoutModule,
     NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
     NbButtonModule,
@@ -40,6 +39,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     NbSelectModule,
     NbToastrModule,
+    TranslateModule,
   ],
   exports: [
     CommonModule,
@@ -47,7 +47,6 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     RouterModule,
     ToastrModule,
-    TranslateModule,
     NbLayoutModule,
     NbSidebarModule,
     NbButtonModule,
@@ -60,6 +59,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     NbSelectModule,
     NbToastrModule,
+    TranslateModule,
   ]
 })
 export class SharedModule {

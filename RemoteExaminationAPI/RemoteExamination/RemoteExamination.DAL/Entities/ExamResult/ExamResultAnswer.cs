@@ -8,15 +8,15 @@ namespace RemoteExamination.DAL.Entities
     public class ExamResultAnswer
     {
         [Key]
-            public int ExamResultAnswerId { get; set; }
+        public int ExamResultAnswerId { get; set; }
 
-            public int ExamResultQuestionId { get; set; }
-            
-            
-            public string Value { get; set; }
-            
-            public bool IsCorrect { get; set; }
-            
-            public bool IsTouched { get; set; }
+        public int ExamResultQuestionId { get; set; }
+
+
+        public string Value { get; set; }
+
+        public bool IsCorrect { get; set; }
+
+        public bool IsTouched { get; set; }
     }
 }

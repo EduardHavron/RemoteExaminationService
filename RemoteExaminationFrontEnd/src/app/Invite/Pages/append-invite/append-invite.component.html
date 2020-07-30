@@ -5,17 +5,17 @@
         <span>{{examName}}</span>
       </ng-container>
       <ng-container *ngIf="!examName">
-        <span i18n>Название экзамена</span>
+        <span>{{'Exam name' | translate}}</span>
       </ng-container>
     </nb-card-header>
     <nb-card-body>
       <div class="input-wrapper">
-        <label for="invite-input" i18n>Введите код приглашения</label>
+        <label for="invite-input">{{'Enter invite code' | translate}}</label>
         <form [formGroup]="form">
           <input formControlName="invitationCode" id="invite-input" nbInput>
         </form>
       </div>
-      <button (click)="appendInvite()" nbButton status="success"><span i18n>Применить приглашение</span></button>
+      <button (click)="appendInvite()" nbButton status="success"><span>{{'Apply invite' | translate}}</span></button>
     </nb-card-body>
   </nb-card>
 </div>

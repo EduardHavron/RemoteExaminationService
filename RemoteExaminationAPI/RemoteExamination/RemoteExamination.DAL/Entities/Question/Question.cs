@@ -8,15 +8,11 @@ namespace RemoteExamination.DAL.Entities
     [Table(TableName.Question)]
     public class Question
     {
-        [Key]
-        public int QuestionId { get; set; }
+        [Key] public int QuestionId { get; set; }
 
-        [ForeignKey(nameof(Exam))]
-        public int ExamId { get; set; }
+        [ForeignKey(nameof(Exam))] public int ExamId { get; set; }
 
-        [Required]
-        [MaxLength(300)]
-        public string QuestionMessage { get; set; }
+        [Required] [MaxLength(300)] public string QuestionMessage { get; set; }
 
         public ICollection<Answer> Answers { get; set; }
         public Exam Exam { get; set; }

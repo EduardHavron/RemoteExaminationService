@@ -1,26 +1,31 @@
 <nb-layout>
   <nb-layout-header fixed>
     <div class="header-wrapper">
-      <div class="nav">
-        <div class="logo"><img alt="REMOTE EXAMINATION SYSTEM" src="../assets/400x400_logo.png"></div>
+      <div class="header-wrapper-left">
+        <div class="logo header-item"><img alt="{{'Remote Examination System' | translate}}" src="../assets/400x400_logo.png"></div>
         <ng-container *ngIf="isAuthenticated">
-          <div class="link" routerLink="/dashboard"><span i18n>Главная страница</span></div>
+          <div class="link header-item" routerLink="/dashboard"><span>{{'Main Page' | translate}}</span></div>
         </ng-container>
         <ng-container *ngIf="isExamined">
-          <div class="link" routerLink="/invites/append"><span i18n>Ввести код<br>приглашения</span></div>
+          <div class="link header-item" routerLink="/invites/append"><span>{{'Enter the code' | translate}}</span></div>
         </ng-container>
         <ng-container *ngIf="isExaminer || isAdmin">
-          <div class="link" routerLink="/exams/exam/create"><span i18n>Создать<br>экзамен</span></div>
+          <div class="link header-item" routerLink="/exams/exam/create"><span>{{'Create' | translate}}
+            <br>{{'exam' | translate}}</span></div>
         </ng-container>
         <ng-container *ngIf="!isAuthenticated">
-          <div class="link" routerLink="/authorize/register"><span i18n>Регистрация</span></div>
-          <div class="link" routerLink="/authorize"><span i18n>Войти</span></div>
+          <div class="link header-item" routerLink="/authorize/register"><span>{{'Register' | translate}}</span></div>
+          <div class="link header-item" routerLink="/authorize"><span>{{'Login' | translate}}</span></div>
         </ng-container>
       </div>
-      <div class="home link">
+
+      <div class="header-wrapper-right">
+        <div class="header-item">
+          <nb-toggle status="primary" (checkedChange)="changeLanguage()" [(ngModel)]="isUa">{{currentLang}}</nb-toggle>
+        </div>
         <div class="header-item">
           <ng-container *ngIf="isAuthenticated">
-            <div (click)="logout()" class="link"><span i18n>Выйти</span></div>
+            <div (click)="logout()" class="link"><span>{{'Logout' | translate}}</span></div>
           </ng-container>
         </div>
       </div>

@@ -31,21 +31,21 @@
       </nb-card-header>
       <nb-card-body>
         <div class="card-item">
-          <span i18n>Количество вопросов - {{exam.questions.length}}</span>
+          <span>{{'Questions count' | translate}} - {{exam.questions.length}}</span>
         </div>
         <div class="card-item">
           <div class="card-item-buttons">
             <ng-container *ngIf="isExaminer() || isAdmin()">
               <div class="card-item-button">
-                <button i18n nbButton routerLink="/invites/create/{{exam.examId}}" size="medium" status='primary'>
-                  Создать<br>приглашение
+                <button nbButton routerLink="/invites/create/{{exam.examId}}" size="medium" status='primary'>
+                  {{'Create' | translate}}<br>{{'invite' | translate}}
                 </button>
               </div>
             </ng-container>
             <ng-container *ngIf="isExamined()">
               <div class="card-item-button">
-                <button i18n nbButton routerLink="/competition/{{exam.examId}}/competition" size="medium"
-                        status='primary'>Запустить
+                <button nbButton routerLink="/competition/{{exam.examId}}/competition" size="medium"
+                        status='primary'>{{'Launch' | translate}}
                 </button>
               </div>
             </ng-container>

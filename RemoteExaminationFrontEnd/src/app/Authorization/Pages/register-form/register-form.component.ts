@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {Router} from '@angular/router';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register-form',
@@ -16,7 +17,8 @@ export class RegisterFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthorizationService,
               private router: Router,
-              private customToastrService: CustomToastrService) {
+              private customToastrService: CustomToastrService,
+              private translateService: TranslateService) {
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -34,8 +36,8 @@ export class RegisterFormComponent implements OnInit {
                 this.customToastrService.showToast('top-right',
                   'success',
                   3000,
-                  'Вы успешно зарегистрировались, теперь вы можете авторизоваться в системе',
-                  'Успех');
+                  this.translateService.instant('You registered successfully, now you can login to the system'),
+                  this.translateService.instant('Success'));
               });
           }
         );

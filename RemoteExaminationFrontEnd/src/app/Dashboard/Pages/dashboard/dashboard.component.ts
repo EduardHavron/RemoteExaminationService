@@ -7,6 +7,7 @@ import {IQuestion} from '../../../Shared/Models/ExamView/Question/IQuestion';
 import {IAnswer} from '../../../Shared/Models/ExamView/Answer/IAnswer';
 import {IExam} from '../../../Shared/Models/ExamView/Exam/IExam';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private examService: ExamService,
               private authenticationService: AuthorizationService,
-              private customToastrService: CustomToastrService) {
+              private customToastrService: CustomToastrService,
+              private translateSerivce: TranslateService) {
     this.authenticationService.currentUserSubject.subscribe(x => this.currentUser = x);
   }
 
@@ -54,8 +56,8 @@ export class DashboardComponent implements OnInit {
       this.customToastrService.showToast('top-right',
         'success',
         1600,
-        'Экзамен удален',
-        'Успех');
+        this.translateSerivce.instant('Exam is deleted'),
+        this.translateSerivce.instant('Success'));
       this.removeExamFromPage(examPos);
     });
   }

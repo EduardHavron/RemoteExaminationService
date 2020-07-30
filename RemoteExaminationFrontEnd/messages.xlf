@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="afacfa85227991ac7d81a99a787a115276204304" datatype="html">
+        <source>Главная страница</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="36b6d12c3dcc2cc62718b2a48be38296ff554be2" datatype="html">
+        <source>Ввести код<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>приглашения</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="292420e4a46e23ea18d75a20d276b23910176402" datatype="html">
+        <source>Создать<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>экзамен</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9313958545203394ce206f6f0f8f70b85eaccc24" datatype="html">
+        <source>Регистрация</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Authorization/Pages/register-form/register-form.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="15b94eeb99b93bf636366f164040cacbdf855073" datatype="html">
+        <source>Войти</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Authorization/Pages/login-form/login-form.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Authorization/Pages/login-form/login-form.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f9de4cc357bb009c8a876d5a98d91bffbd9a5459" datatype="html">
+        <source>Выйти</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="77533a64bd10cc92af5490020a25b84c8e6341af" datatype="html">
+        <source>Страница не найдена</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/PageNotFound/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="15761673e052961fb14afbac59d44ec8201f1e92" datatype="html">
+        <source>Назад</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/PageNotFound/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-competition/exam-competition.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-competition/exam-competition.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e4331c5aaa6f311d9755b2a632f5cf633d094cba" datatype="html">
+        <source>На главную</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/PageNotFound/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e1411439e13b8c743524d33010a07ca2651338f3" datatype="html">
+        <source>Введите свою почту</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Authorization/Pages/login-form/login-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Authorization/Pages/register-form/register-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1cc03f0fc3e4f1f619b7e06ab8ad19580c4addcc" datatype="html">
+        <source>Введите свой пароль</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Authorization/Pages/login-form/login-form.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Authorization/Pages/register-form/register-form.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7d3642af94d13c362ac491784d05c8e95305dab8" datatype="html">
+        <source>Зарегистрироваться <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/> как экзаменатор
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Authorization/Pages/register-form/register-form.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="863152b48b6cda7a25782bee627c2f04c4712e28" datatype="html">
+        <source>Зарегистрироваться</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Authorization/Pages/register-form/register-form.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dca9be1ca4041397f0210e75417843dd5164de29" datatype="html">
+        <source>Количество вопросов - <x id="INTERPOLATION" equiv-text="{{exam.questions.length}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Dashboard/Pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="440422cf66f390dfb53cd41e9903a72497d617ca" datatype="html">
+        <source>
+                  Создать<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>приглашение
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Dashboard/Pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d9c5e81a7513de9bec0f2114b5fbe26a081c63ba" datatype="html">
+        <source>Запустить
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Dashboard/Pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4141613affbb54dcb149d86d5561c34de41ea73c" datatype="html">
+        <source>Введите название экзамена</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Exam/Pages/exam-create-edit/exam-create-edit.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f07271cda2327f33b2b5bf2eee77a561ed64d803" datatype="html">
+        <source>Добавить ответ</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Exam/Pages/exam-create-edit/exam-create-edit.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4e7e09f0144748681cbce29f16f54a442543f7d9" datatype="html">
+        <source>Текст ответа</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Exam/Pages/exam-create-edit/exam-create-edit.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0d6e5e5648a3c06c9c8ce703bed0cc4abfd9005f" datatype="html">
+        <source> Верно ли</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Exam/Pages/exam-create-edit/exam-create-edit.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="48e3279cf2a1b4e562c9f60c8137ae4bf81c9ce4" datatype="html">
+        <source>Добавить вопрос</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Exam/Pages/exam-create-edit/exam-create-edit.component.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2f1b807ed310d3ffd96c36348381a01c6bf53a37" datatype="html">
+        <source>Текст вопроса</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Exam/Pages/exam-create-edit/exam-create-edit.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bedc184c76605e3b6d0a32ad0920832e04915d3f" datatype="html">
+        <source>Сохранить экзамен</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Exam/Pages/exam-create-edit/exam-create-edit.component.html</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="45221e8708a200a60f2ae2dd01a8331864f9a342" datatype="html">
+        <source>Экзамен: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-competition/exam-competition.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fd3a30783c300aafab9b7f33b06e348471da419c" datatype="html">
+        <source>Вопрос: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-competition/exam-competition.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="007e5fa6b1c49ce354e729b57a55eb96c21a9c0d" datatype="html">
+        <source>Вперед</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-competition/exam-competition.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-competition/exam-competition.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="08fb76a0027ce5aaec59bcaebad6b6f742a61146" datatype="html">
+        <source>Завершить</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-competition/exam-competition.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="52ee3f216cea01845e344b175ae97681a7e89816" datatype="html">
+        <source>Название экзамена: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-results/exam-results.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-result/exam-result.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8a04093469afbac47bc07a7d8a39bd1a740c4ba7" datatype="html">
+        <source>Экзаменируемый: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-results/exam-results.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d4ac28e5eb948c78ccaef0aaea0711409701a480" datatype="html">
+        <source>Дата экзамена: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-results/exam-results.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="80c3dfceae05d075d4aa53ee31baf3b824367f4b" datatype="html">
+        <source>Результат: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-results/exam-results.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="db6b149267f2438a390c0cd99128833ebb64014e" datatype="html">
+        <source>Подробнее</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-results/exam-results.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="43194c9c8164cd78c580c7579eea6e6e814b8e84" datatype="html">
+        <source>Пользователь: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-result/exam-result.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8afd9239eec413b8a8a97c09334e316b147b381f" datatype="html">
+        <source>Дата: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-result/exam-result.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0802b2b29e3ff3023120e343c66dfa3574653f09" datatype="html">
+        <source>Результат </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-result/exam-result.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4771088e8d64308d048d13c593c0b67a472a4ff1" datatype="html">
+        <source>Результат</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ExamCompetition/Pages/exam-result/exam-result.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="19428e64114ef764e8a955b42183685e51fd67b1" datatype="html">
+        <source>Название экзамена</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Invite/Pages/append-invite/append-invite.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3fd69b99747e2960fa7674241ddfde5819f3fcdf" datatype="html">
+        <source>Введите код приглашения</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Invite/Pages/append-invite/append-invite.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3193104ec5a521c8043085765efaac0da8eb7dc0" datatype="html">
+        <source>Применить приглашение</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Invite/Pages/append-invite/append-invite.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5270ccfe4c4ea3162f7faf24aee355f8ca677c6c" datatype="html">
+        <source>Ваш код приглашения</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Invite/Pages/generate-invite/generate-invite.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fe5193fb9b5cceb63eeb48783c54fec247c85a5b" datatype="html">
+        <source>Здесь появится ваш код приглашения</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Invite/Pages/generate-invite/generate-invite.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0326a404c54525dceee726ed9aa9518469040aed" datatype="html">
+        <source>Ваш код приглашения: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Invite/Pages/generate-invite/generate-invite.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e4cfbd7709e7ebce1b65e923f05e556c620d8319" datatype="html">
+        <source>Отправьте его человеку, которому хотите дать доступ к экзамену, любым удобным Вам способом.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Invite/Pages/generate-invite/generate-invite.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5ebed33b61042fb09efdf08d0ba6a84cdae9749a" datatype="html">
+        <source>Вернуться на главную</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Invite/Pages/generate-invite/generate-invite.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

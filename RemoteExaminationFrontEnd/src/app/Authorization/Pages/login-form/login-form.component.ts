@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {Router} from '@angular/router';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +16,8 @@ export class LoginFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthorizationService,
               private router: Router,
-              private customToastrService: CustomToastrService) {
+              private customToastrService: CustomToastrService,
+              private translateService: TranslateService) {
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -32,9 +34,9 @@ export class LoginFormComponent implements OnInit {
               .then(() => {
                 this.customToastrService.showToast('top-right',
                   'success',
-                  1500,
-                  'Вы успешно авторизировались',
-                  'Успех');
+                  3000,
+                  this.translateService.instant('You successfully authorized'),
+                  this.translateService.instant('Success'));
               });
           }
         );

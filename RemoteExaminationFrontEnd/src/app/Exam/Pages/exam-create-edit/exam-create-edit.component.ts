@@ -7,6 +7,7 @@ import {IQuestion} from '../../../Shared/Models/ExamView/Question/IQuestion';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -30,9 +31,10 @@ export class ExamCreateEditComponent implements OnInit {
               private customToastrService: CustomToastrService,
               private router: Router,
               private fb: FormBuilder,
-              route: ActivatedRoute) {
-    if (route.snapshot.params.examId) {
-      route.data.subscribe((data: { exam: any }) => {
+              private activatedRoute: ActivatedRoute,
+              private translateService: TranslateService) {
+    if (activatedRoute.snapshot.params.examId) {
+      activatedRoute.data.subscribe((data: { exam: any }) => {
         this.exam = data.exam;
       });
       this.isEdit = true;
@@ -75,8 +77,8 @@ export class ExamCreateEditComponent implements OnInit {
               this.customToastrService.showToast('top-right',
                 'success',
                 3000,
-                'Экзамен успешно создан',
-                'Успех');
+                this.translateService.instant('Exam created successfully'),
+                this.translateService.instant('Success'));
             });
         });
       }
@@ -90,8 +92,8 @@ export class ExamCreateEditComponent implements OnInit {
           this.customToastrService.showToast('top-right',
             'success',
             3000,
-            'Экзамен успешно обновлен',
-            'Успех');
+            this.translateService.instant('Exam updated successfully'),
+            this.translateService.instant('Success'));
         });
     });
   }
@@ -115,8 +117,8 @@ export class ExamCreateEditComponent implements OnInit {
       this.customToastrService.showToast('top-right',
         'danger',
         3000,
-        'Название экзамена не может быть пустым',
-        'Ошибка');
+        this.translateService.instant('Exam name cannot be empty'),
+        this.translateService.instant('Error'));
       return false;
     }
   }
@@ -126,8 +128,8 @@ export class ExamCreateEditComponent implements OnInit {
       this.customToastrService.showToast('top-right',
         'danger',
         3000,
-        'В экзамене должен быть хотя бы один вопрос',
-        'Ошибка');
+        this.translateService.instant('Exam should contain at least one question'),
+        this.translateService.instant('Error'));
       return false;
     } else {
       return true;
@@ -152,8 +154,8 @@ export class ExamCreateEditComponent implements OnInit {
         this.customToastrService.showToast('top-right',
           'danger',
           3000,
-          'Каждый вопрос должен содержать не менее одного правильного и одного неправильного ответа',
-          'Ошибка');
+          this.translateService.instant('Each question should contain at least one correct and one incorrect answer'),
+          this.translateService.instant('Error'));
         finalResult = false;
         break;
       }
@@ -188,8 +190,8 @@ export class ExamCreateEditComponent implements OnInit {
       this.customToastrService.showToast('top-right',
         'danger',
         3000,
-        'В ответе должно быть не меньше 5 символов',
-        'Ошибка');
+        this.translateService.instant('Answer shouldn\'t be empty'),
+        this.translateService.instant('Error'));
     }
   }
 
@@ -206,8 +208,8 @@ export class ExamCreateEditComponent implements OnInit {
       this.customToastrService.showToast('top-right',
         'danger',
         3000,
-        'В вопросе должно быть не меньше 5 символов',
-        'Ошибка');
+        this.translateService.instant('Question shouldn\'t be empty'),
+        this.translateService.instant('Error'));
     }
   }
 

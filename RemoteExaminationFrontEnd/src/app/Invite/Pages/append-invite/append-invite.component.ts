@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ExamService} from '../../../Shared/Services/Exam/exam.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-invite',
@@ -22,7 +23,8 @@ export class AppendInviteComponent implements OnInit {
               private examService: ExamService,
               private fb: FormBuilder,
               private customToastrService: CustomToastrService,
-              private router: Router) {
+              private router: Router,
+              private translateService: TranslateService) {
     this.form = fb.group({
       invitationCode: ['', Validators.required]
     });
@@ -43,8 +45,8 @@ export class AppendInviteComponent implements OnInit {
               this.customToastrService.showToast('top-right',
                 'success',
                 3000,
-                'Приглашение успешно применено',
-                'Успех');
+                this.translateService.instant('Invite successfully applied'),
+                this.translateService.instant('Success'));
             });
         });
     }
@@ -58,8 +60,8 @@ export class AppendInviteComponent implements OnInit {
       this.customToastrService.showToast('top-right',
         'danger',
         3000,
-        'Код приглашения должен состоять не менее чем из 5 символов, не считая пробелы',
-        'Ошибка');
+        this.translateService.instant('Invite code should contain at least 5 symbols without spaces'),
+        this.translateService.instant('Error'));
       return false;
     }
   }

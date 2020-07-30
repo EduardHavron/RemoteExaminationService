@@ -4,6 +4,7 @@ import {v4 as uuidv4} from 'uuid';
 import {ActivatedRoute, Router} from '@angular/router';
 import {InvitationService} from '../../../Shared/Services/Invitation/invitation.service';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-generate-invite',
@@ -18,7 +19,8 @@ export class GenerateInviteComponent implements OnInit {
   constructor(private customToastrService: CustomToastrService,
               private router: Router,
               private invitationService: InvitationService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private translateService: TranslateService) {
     this.inviteCode = this.newCode;
     this.examId = parseInt(activatedRoute.snapshot.params.examId, 10);
   }
@@ -34,8 +36,8 @@ export class GenerateInviteComponent implements OnInit {
         this.customToastrService.showToast('top-right',
           'success',
           3000,
-          'Код приглашения создан',
-          'Успех');
+          this.translateService.instant('Invite code is successfully created'),
+          this.translateService.instant('Success'));
       });
   }
 
@@ -44,8 +46,8 @@ export class GenerateInviteComponent implements OnInit {
       this.customToastrService.showToast('top-right',
         'success',
         3000,
-        'Скопировано в буфер обмена',
-        'Успех');
+        this.translateService.instant('Successfully copied to clipboard'),
+        this.translateService.instant('Success'));
     });
   }
 

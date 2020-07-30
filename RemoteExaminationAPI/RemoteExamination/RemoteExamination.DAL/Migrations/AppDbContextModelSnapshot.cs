@@ -15,7 +15,7 @@ namespace RemoteExamination.DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.4")
+                .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -298,9 +298,6 @@ namespace RemoteExamination.DAL.Migrations
 
                     b.HasIndex("ExamId");
 
-                    b.HasIndex("InvitationCode")
-                        .IsUnique();
-
                     b.ToTable("Invitations");
                 });
 
@@ -394,13 +391,20 @@ namespace RemoteExamination.DAL.Migrations
 
             modelBuilder.Entity("RemoteExamination.DAL.Entities.UserInvitation", b =>
                 {
+                    b.Property<int>("UserInvitationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("InvitationId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(36)");
 
-                    b.HasKey("InvitationId", "UserId");
+                    b.HasKey("UserInvitationId");
+
+                    b.HasIndex("InvitationId");
 
                     b.HasIndex("UserId");
 
@@ -530,12 +534,12 @@ namespace RemoteExamination.DAL.Migrations
                     b.HasOne("RemoteExamination.DAL.Entities.Invitation", "Invitation")
                         .WithMany("UserInvitations")
                         .HasForeignKey("InvitationId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RemoteExamination.DAL.Entities.User", "User")
                         .WithMany("UserInvitations")
-                        .HasForeignKey("UserId")
-                        .IsRequired();
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -20,5 +20,6 @@ namespace RemoteExamination.DAL.Entities
         public bool IsCorrect { get; set; }
 
         public Question Question { get; set; }
+
     }
 }

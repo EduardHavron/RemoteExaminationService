@@ -17,11 +17,11 @@
     </svg>
     <div class="message-box">
       <h1>404</h1>
-      <p i18n>Страница не найдена</p>
+      <p>{{'Page not found' | translate}}</p>
       <div class="buttons-con">
         <div class="action-link-wrap">
-          <a class="link-button link-back-button" i18n onclick="history.back()">Назад</a>
-          <a [routerLink]="['']" class="link-button" i18n>На главную</a>
+          <a class="link-button link-back-button" onclick="history.back()">{{'Go back' | translate}}</a>
+          <a [routerLink]="['']" class="link-button">{{'Go to Dashboard' | translate}}</a>
         </div>
       </div>
     </div>

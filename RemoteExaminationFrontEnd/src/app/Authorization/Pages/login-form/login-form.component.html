@@ -1,11 +1,11 @@
 <div class="content-wrapper">
   <nb-card size="medium">
     <nb-card-body>
-      <nb-card-header i18n>Войти</nb-card-header>
+      <nb-card-header>{{'Login' | translate}}</nb-card-header>
       <form [formGroup]="form">
         <div class="form-wrapper">
           <div class="form-item-wrapper">
-            <label for="email" i18n>Введите свою почту</label>
+            <label for="email">{{'Enter your email' | translate}}</label>
           </div>
           <div class="form-item-wrapper">
             <input autocomplete="current-email" fieldSize="large" formControlName='email' id='email' name='email'
@@ -13,7 +13,7 @@
                    placeholder="Email" shape="rectangle" type="email">
           </div>
           <div class="form-item-wrapper">
-            <label for="password" i18n>Введите свой пароль</label>
+            <label for="password">{{'Enter your password' | translate}}</label>
           </div>
           <div class="form-item-wrapper">
             <input autocomplete="current-password" fieldSize="large" formControlName='password' id="password"
@@ -22,7 +22,7 @@
           </div>
           <div class="form-item-wrapper">
             <div (click)=login() class="button-div">
-              <button i18n nbButton>Войти</button>
+              <button nbButton>{{'Login' | translate}}</button>
             </div>
           </div>
         </div>
@@ -30,4 +30,3 @@
     </nb-card-body>
   </nb-card>
 </div>
-<!-- form [formGroup="form"> -->

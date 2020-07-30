@@ -5,6 +5,7 @@ import {IExam} from '../../../Shared/Models/ExamView/Exam/IExam';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 import {ExamCompetitionService} from '../../../Shared/Services/ExamCompetition/exam-competition.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-exam-competition',
@@ -17,7 +18,8 @@ export class ExamCompetitionComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private customToastrService: CustomToastrService,
-              private examCompetitionService: ExamCompetitionService) {
+              private examCompetitionService: ExamCompetitionService,
+              private translateService: TranslateService) {
     route.data.subscribe((data: { exam: any }) => {
       data.exam.questions = this.shuffleExam(data.exam.questions);
       this.exam = data.exam;
@@ -35,8 +37,8 @@ export class ExamCompetitionComponent implements OnInit {
             this.customToastrService.showToast('top-right',
               'success',
               3000,
-              'Результат отправлен',
-              'Успех');
+              this.translateService.instant('Result sent'),
+              this.translateService.instant('Success'));
           });
       });
   }

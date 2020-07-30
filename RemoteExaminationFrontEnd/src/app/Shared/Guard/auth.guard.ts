@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {AuthorizationService} from '../Services/Auth/authorization.service';
 import {Observable} from 'rxjs';
-import {NbToastrService} from '@nebular/theme';
+import {TranslateService} from '@ngx-translate/core';
+import {CustomToastrService} from '../Services/CustomToastr/custom-toastr.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate {
@@ -10,7 +11,8 @@ export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
     private authenticationService: AuthorizationService,
-    private toastrService: NbToastrService
+    private customToastrService: CustomToastrService,
+    private translateService: TranslateService
   ) {
 
   }
@@ -25,11 +27,11 @@ export class AuthGuard implements CanActivate {
 
     this.router.navigate(['/authorize'])
       .then(() => {
-        this.showToast('top-right',
+        this.customToastrService.showToast('top-right',
           'danger',
           3000,
-          'У вас недостаточно прав для просмотра этой страницы',
-          'Ошибка!');
+          this.translateService.instant('You don\'t have permission to view this page'),
+          this.translateService.instant('Error'));
       });
     return false;
   }
@@ -44,19 +46,12 @@ export class AuthGuard implements CanActivate {
 
     this.router.navigate(['/authorize'])
       .then(() => {
-        this.showToast('top-right',
+        this.customToastrService.showToast('top-right',
           'danger',
           3000,
-          'У вас недостаточно прав для просмотра этой страницы',
-          'Ошибка!');
+          this.translateService.instant('You don\'t have permission to load this page'),
+          this.translateService.instant('Error'));
       });
     return false;
-  }
-
-  private showToast(position, status, duration, message: string, title: string) {
-    this.toastrService.show(
-      message,
-      title,
-      {preventDuplicates: true, position, status, duration});
   }
 }

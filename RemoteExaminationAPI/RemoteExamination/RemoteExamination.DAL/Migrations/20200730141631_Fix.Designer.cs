@@ -10,14 +10,14 @@ using RemoteExamination.DAL.Context;
 namespace RemoteExamination.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200726185958_Reworked ExamCompetition")]
-    partial class ReworkedExamCompetition
+    [Migration("20200730141631_Fix")]
+    partial class Fix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.4")
+                .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -211,10 +211,16 @@ namespace RemoteExamination.DAL.Migrations
                     b.Property<int>("ExamId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ExamName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("ExamResultDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ExamResultInPercent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserEmail")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -236,10 +242,7 @@ namespace RemoteExamination.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ExamResulQuestionId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ExamResultQuestionId")
+                    b.Property<int>("ExamResultQuestionId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsCorrect")
@@ -296,9 +299,6 @@ namespace RemoteExamination.DAL.Migrations
                     b.HasKey("InvitationId");
 
                     b.HasIndex("ExamId");
-
-                    b.HasIndex("InvitationCode")
-                        .IsUnique();
 
                     b.ToTable("Invitations");
                 });
@@ -393,13 +393,20 @@ namespace RemoteExamination.DAL.Migrations
 
             modelBuilder.Entity("RemoteExamination.DAL.Entities.UserInvitation", b =>
                 {
+                    b.Property<int>("UserInvitationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("InvitationId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(36)");
 
-                    b.HasKey("InvitationId", "UserId");
+                    b.HasKey("UserInvitationId");
+
+                    b.HasIndex("InvitationId");
 
                     b.HasIndex("UserId");
 
@@ -477,27 +484,29 @@ namespace RemoteExamination.DAL.Migrations
 
             modelBuilder.Entity("RemoteExamination.DAL.Entities.ExamResult", b =>
                 {
-                    b.HasOne("RemoteExamination.DAL.Entities.Exam", "Exam")
+                    b.HasOne("RemoteExamination.DAL.Entities.Exam", null)
                         .WithMany("ExamResults")
                         .HasForeignKey("ExamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RemoteExamination.DAL.Entities.User", "User")
+                    b.HasOne("RemoteExamination.DAL.Entities.User", null)
                         .WithMany("ExamResults")
                         .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("RemoteExamination.DAL.Entities.ExamResultAnswer", b =>
                 {
-                    b.HasOne("RemoteExamination.DAL.Entities.ExamResultQuestion", "ExamResultQuestion")
+                    b.HasOne("RemoteExamination.DAL.Entities.ExamResultQuestion", null)
                         .WithMany("ExamResultAnswers")
-                        .HasForeignKey("ExamResultQuestionId");
+                        .HasForeignKey("ExamResultQuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("RemoteExamination.DAL.Entities.ExamResultQuestion", b =>
                 {
-                    b.HasOne("RemoteExamination.DAL.Entities.ExamResult", "ExamResult")
+                    b.HasOne("RemoteExamination.DAL.Entities.ExamResult", null)
                         .WithMany("ExamResultQuestions")
                         .HasForeignKey("ExamResultId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -527,12 +536,12 @@ namespace RemoteExamination.DAL.Migrations
                     b.HasOne("RemoteExamination.DAL.Entities.Invitation", "Invitation")
                         .WithMany("UserInvitations")
                         .HasForeignKey("InvitationId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RemoteExamination.DAL.Entities.User", "User")
                         .WithMany("UserInvitations")
-                        .HasForeignKey("UserId")
-                        .IsRequired();
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -19,7 +19,7 @@ using RemoteExamination.DAL.Context;
 using RemoteExamination.DAL.Entities;
 using System.Text;
 using RemoteExamination.API.Seeding;
-
+using Newtonsoft.Json;
 namespace RemoteExamination.API
 {
     public class Startup
