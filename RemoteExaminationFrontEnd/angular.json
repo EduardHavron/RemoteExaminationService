@@ -30,7 +30,8 @@
                 "glob": "**/Web.config",
                 "input": "src/",
                 "output": "./"
-              }
+              },
+              "src/assets/i18n"
             ],
             "styles": [
               "src/styles.scss",
