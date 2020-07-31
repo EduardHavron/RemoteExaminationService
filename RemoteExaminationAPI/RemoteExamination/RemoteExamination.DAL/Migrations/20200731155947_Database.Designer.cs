@@ -10,8 +10,8 @@ using RemoteExamination.DAL.Context;
 namespace RemoteExamination.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200730141631_Fix")]
-    partial class Fix
+    [Migration("20200731155947_Database")]
+    partial class Database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
