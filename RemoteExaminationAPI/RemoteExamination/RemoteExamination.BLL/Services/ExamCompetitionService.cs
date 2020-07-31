@@ -55,6 +55,7 @@ namespace RemoteExamination.BLL.Services
                     Question = checkedQuestion.QuestionMessage
                 };
                 var correctlyAnswered = false;
+                var isFreezed = false;
                 foreach (var answer in question.Answers)
                 {
                     var checkedAnswer =
@@ -71,19 +72,18 @@ namespace RemoteExamination.BLL.Services
                         IsTouched = answer.IsCorrect,
                         Value = checkedAnswer.Value
                     };
+                    examResultQuestion.ExamResultAnswers.Add(examResultAnswerModel);
                     if (answer.IsCorrect == checkedAnswer.IsCorrect)
                     {
                         correctlyAnswered = true;
-                        examResultQuestion.ExamResultAnswers.Add(examResultAnswerModel);
                     }
                     else
                     {
                         correctlyAnswered = false;
-                        examResultQuestion.ExamResultAnswers.Add(examResultAnswerModel);
-                        break;
+                        isFreezed = true;
                     }
                 }
-                if (correctlyAnswered)
+                if (correctlyAnswered && !isFreezed)
                 {
                     finalResult++;
                 }
