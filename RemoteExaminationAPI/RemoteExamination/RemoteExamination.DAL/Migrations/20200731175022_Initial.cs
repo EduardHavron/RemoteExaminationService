@@ -7,7 +7,7 @@ namespace RemoteExamination.DAL.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            /*migrationBuilder.CreateTable(
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -418,7 +418,7 @@ namespace RemoteExamination.DAL.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_UserInvitations_UserId",
                 table: "UserInvitations",
-                column: "UserId"); */
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
