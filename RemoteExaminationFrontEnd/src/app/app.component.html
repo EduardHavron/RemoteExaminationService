@@ -13,6 +13,10 @@
           <div class="link header-item" routerLink="/exams/exam/create"><span>{{'Create' | translate}}
             <br>{{'exam' | translate}}</span></div>
         </ng-container>
+        <ng-container *ngIf="isAdmin">
+          <div class="link header-item" routerLink="/admin"><span>{{'Admin' | translate}}
+            <br>{{'page' | translate}}</span></div>
+        </ng-container>
         <ng-container *ngIf="!isAuthenticated">
           <div class="link header-item" routerLink="/authorize/register"><span>{{'Register' | translate}}</span></div>
           <div class="link header-item" routerLink="/authorize"><span>{{'Login' | translate}}</span></div>

@@ -1,0 +1,47 @@
+<div class="manage-database-wrapper">
+  <nb-card>
+    <nb-card-header>
+      {{'Manage database' | translate}}
+    </nb-card-header>
+    <nb-card-body>
+      <div class="query-editor-wrapper">
+        <label for="sql-editor">
+          {{'Paste code' | translate}}
+        </label>
+        <form [formGroup]="form">
+          <textarea nbInput id="sql-editor" formControlName="query"></textarea>
+        </form>
+      </div>
+      <div class="button-wrapper" (click)="checkQuery(dialog)">
+        <button nbButton status="danger">
+          {{'Execute query' | translate}}
+        </button>
+        {{affectedRows}}
+      </div>
+    </nb-card-body>
+  </nb-card>
+
+  <ng-template #dialog let-ref="dialogRef">
+    <nb-card>
+      <nb-card-header>
+        <div>
+          {{'Warning' | translate}}
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="warning-wrapper">
+          <div class="buttons">
+            <div class="button-item">
+              <button nbButton status="success" (click)="setAccepted(true)">{{'Accept' | translate}}</button>
+            </div>
+            <div class="button-item">
+              <button nbButton status="danger" (click)="setAccepted(false)">{{'Decline' | translate}}</button>
+            </div>
+          </div>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+
+  </ng-template>
+</div>

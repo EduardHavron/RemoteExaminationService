@@ -81,6 +81,7 @@ namespace RemoteExamination.API
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IInvitationService, InvitationService>();
             services.AddScoped<IExamCompetitionService, ExamCompetitionService>();
+            services.AddScoped<IAdminService, AdminService>();
 
             services.AddCors(c =>
             {

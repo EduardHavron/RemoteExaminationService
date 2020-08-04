@@ -29,5 +29,10 @@
     <ProjectReference Include="..\RemoteExamination.BLL\RemoteExamination.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Backup" />
+    <Folder Include="wwwroot\Backup\" />
+  </ItemGroup>
+
 
 </Project>

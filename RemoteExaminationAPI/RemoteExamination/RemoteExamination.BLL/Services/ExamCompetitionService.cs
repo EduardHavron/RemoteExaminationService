@@ -55,7 +55,7 @@ namespace RemoteExamination.BLL.Services
                     Question = checkedQuestion.QuestionMessage
                 };
                 var correctlyAnswered = false;
-                var isFreezed = false;
+                var isFrozen = false;
                 foreach (var answer in question.Answers)
                 {
                     var checkedAnswer =
@@ -80,10 +80,10 @@ namespace RemoteExamination.BLL.Services
                     else
                     {
                         correctlyAnswered = false;
-                        isFreezed = true;
+                        isFrozen = true;
                     }
                 }
-                if (correctlyAnswered && !isFreezed)
+                if (correctlyAnswered && !isFrozen)
                 {
                     finalResult++;
                 }

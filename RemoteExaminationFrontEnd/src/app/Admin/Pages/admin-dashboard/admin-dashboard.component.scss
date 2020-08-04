@@ -1,0 +1,20 @@
+.admin-dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nb-card {
+  max-width: 600px;
+  min-width: 30%;
+}
+
+.admin-body-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+button {
+  margin-bottom: 5%;
+}

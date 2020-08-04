@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using RemoteExamination.API.ViewModels.AccountViewModels;
+using RemoteExamination.API.ViewModels.AdminViewModels;
 using RemoteExamination.API.ViewModels.ExamCompetitionViewModels;
 using RemoteExamination.API.ViewModels.ExamViewModels;
 using RemoteExamination.API.ViewModels.InvitationViewModels;
 using RemoteExamination.BLL.Models;
+using RemoteExamination.BLL.Models.Admin;
 using RemoteExamination.BLL.Models.ExamCompetition;
 using RemoteExamination.BLL.Models.Invitation;
 using RemoteExamination.DAL.Entities;
@@ -47,7 +49,9 @@ namespace RemoteExamination.API.Mapping
             //ExamResultAnswer
             CreateMap<ExamResultAnswerViewModel, ExamResultAnswerModel>().ReverseMap();
             CreateMap<ExamResultAnswerModel, ExamResultAnswer>().ReverseMap();
-
+            //MapUsers
+            CreateMap<AdminUserViewModel, AdminUserModel>().ReverseMap();
+            CreateMap<UpdatedAdminUserViewModel, UpdatedAdminUserModel>().ReverseMap();
         }
     }
 }

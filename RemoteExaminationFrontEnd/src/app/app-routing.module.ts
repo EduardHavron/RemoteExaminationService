@@ -7,6 +7,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AuthGuard} from './Shared/Guard/auth.guard';
 import {PageNotFoundComponent} from './PageNotFound/page-not-found/page-not-found.component';
 import {UnauthGuard} from './Shared/Guard/unauth.guard';
+import {AdminGuard} from './Shared/Guard/admin.guard';
 
 const routes: Routes = [
   {
@@ -46,6 +47,12 @@ const routes: Routes = [
     loadChildren: () => import('./Invite/invite.module').then(m => m.InviteModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./Admin/admin.module').then(m => m.AdminModule),
+    canLoad: [AdminGuard],
+    canActivate: [AdminGuard]
   },
   {
     path: '**',

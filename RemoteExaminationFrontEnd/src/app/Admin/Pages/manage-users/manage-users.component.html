@@ -1,0 +1,15 @@
+<div class="manage-users-wrapper">
+  <nb-card *ngFor="let user of users; let i = index">
+    <nb-card-header>
+        <div class="card-header-wrapper">
+        <div>
+          {{'User: ' | translate}}
+          {{user.email}}
+        </div>
+        <div>
+          <fa-icon [icon]="faTrash" class="fa-icon-color-danger" (click)="deleteUser(i)"></fa-icon>
+        </div>
+      </div>
+    </nb-card-header>
+  </nb-card>
+</div>

@@ -1,0 +1,25 @@
+.manage-database-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nb-card {
+  max-width: 600px;
+  min-width: 30%;
+}
+
+.query-editor-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-wrapper {
+  margin-top: 5%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
