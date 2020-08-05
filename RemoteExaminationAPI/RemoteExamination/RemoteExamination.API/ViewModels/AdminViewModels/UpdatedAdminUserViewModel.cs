@@ -2,6 +2,7 @@
 {
     public class UpdatedAdminUserViewModel: AdminUserViewModel
     {
-        public string Password { get; set; }
+        #nullable enable
+        public string? Password { get; set; }
     }
 }

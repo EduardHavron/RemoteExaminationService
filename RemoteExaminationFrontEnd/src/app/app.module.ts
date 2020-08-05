@@ -10,7 +10,15 @@ import {PageNotFoundComponent} from './PageNotFound/page-not-found/page-not-foun
 import {registerLocaleData} from '@angular/common';
 import localeUa from '@angular/common/locales/ru-UA';
 import {SharedModule} from './Shared/Modules/shared.module';
-import {NbDialogModule, NbToastrModule, NbToggleModule, NbWindowModule} from '@nebular/theme';
+import {
+  NbAutocompleteModule,
+  NbContextMenuModule,
+  NbDialogModule,
+  NbMenuModule, NbSelectModule,
+  NbToastrModule,
+  NbToggleModule,
+  NbWindowModule
+} from '@nebular/theme';
 import {MissingTranslationHandler, TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MissingTranslationService} from './Shared/i18n/helpers';
@@ -24,6 +32,7 @@ registerLocaleData(localeUa);
     PageNotFoundComponent,
   ],
   imports: [
+    NbAutocompleteModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -33,6 +42,7 @@ registerLocaleData(localeUa);
     NbWindowModule.forRoot(),
     NbToggleModule, /* Unfortunately this module can't work with lazy loading */
     NbDialogModule.forRoot(),
+    NbSelectModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -43,7 +53,8 @@ registerLocaleData(localeUa);
         provide: MissingTranslationHandler, useClass: MissingTranslationService
       },
       useDefaultLang: false
-    })
+    }),
+    NbContextMenuModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

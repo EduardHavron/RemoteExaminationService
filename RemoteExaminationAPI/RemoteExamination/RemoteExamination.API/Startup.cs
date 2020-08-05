@@ -32,6 +32,15 @@ namespace RemoteExamination.API
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOriginPolicy", builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200", "https://reservices.azurewebsites.net");
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyMethod();
+                });
+            });
             services.AddApplicationInsightsTelemetry();
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
                 services.AddDbContext<AppDbContext>(options =>
@@ -84,8 +93,6 @@ namespace RemoteExamination.API
             services.AddScoped<IExamCompetitionService, ExamCompetitionService>();
             services.AddScoped<IAdminService, AdminService>();
 
-            services.AddCors();
-            
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
@@ -144,9 +151,8 @@ namespace RemoteExamination.API
 
             app.UseHttpsRedirection();
 
-            app.UseCors(options =>
-                options.WithOrigins("localhost:4200", "https://reservices.azurewebsites.net"));
-                app.UseRouting();
+            app.UseCors("AllowSpecificOriginPolicy");
+            app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();

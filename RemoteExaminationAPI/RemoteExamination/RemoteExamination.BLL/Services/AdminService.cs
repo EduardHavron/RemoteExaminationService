@@ -80,8 +80,11 @@ namespace RemoteExamination.BLL.Services
             var fetchedUser = await _userManager.FindByEmailAsync(fetchedEmail);
             fetchedUser.Email = userModel.Email;
             await UpdateRoles(fetchedUser.Id, userModel.Role);
-            await _userManager.RemovePasswordAsync(fetchedUser);
-            await _userManager.AddPasswordAsync(fetchedUser, userModel.Password);
+            if (userModel.Password != null)
+            {
+                await _userManager.RemovePasswordAsync(fetchedUser);
+                await _userManager.AddPasswordAsync(fetchedUser, userModel.Password);
+            }
             await _dbContext.SaveChangesAsync();
         }
 

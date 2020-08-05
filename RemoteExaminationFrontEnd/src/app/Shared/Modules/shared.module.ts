@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {ToastrModule} from 'ngx-toastr';
 import {TranslateModule} from '@ngx-translate/core';
 import {
-  NbActionsModule,
+  NbActionsModule, NbAutocompleteModule,
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
@@ -28,7 +28,6 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     RouterModule,
     ToastrModule.forRoot(),
     NbLayoutModule,
-    NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
     NbButtonModule,
     NbThemeModule.forRoot(),
     NbToggleModule,
@@ -37,9 +36,9 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     NbInputModule,
     NbCheckboxModule,
     FontAwesomeModule,
-    NbSelectModule,
-    NbToastrModule,
+    NbToastrModule.forRoot(),
     TranslateModule,
+    NbSidebarModule.forRoot(),
   ],
   exports: [
     CommonModule,
@@ -57,7 +56,6 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     NbInputModule,
     NbCheckboxModule,
     FontAwesomeModule,
-    NbSelectModule,
     NbToastrModule,
     TranslateModule,
   ]

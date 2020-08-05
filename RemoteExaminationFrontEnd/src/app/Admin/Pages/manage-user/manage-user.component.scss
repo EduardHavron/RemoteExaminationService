@@ -1,0 +1,29 @@
+.manage-user-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nb-card {
+  max-width: 600px;
+  min-width: 30%;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+.card-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}

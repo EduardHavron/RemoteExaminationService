@@ -56,11 +56,11 @@ namespace RemoteExamination.API.Controllers
         }
         
         [Authorize(Roles = Role.Admin)]
-        [HttpGet("GetUser/{userId}")]
-        public async Task<IActionResult> GetUser([FromRoute] string model)
+        [HttpGet("GetUser/{id}")]
+        public async Task<IActionResult> GetUser([FromRoute] string id)
         {
             var user = _mapper.Map<AdminUserViewModel>
-                (await _adminService.GetUser(model));
+                (await _adminService.GetUser(id));
             return Ok(user);
         }
         

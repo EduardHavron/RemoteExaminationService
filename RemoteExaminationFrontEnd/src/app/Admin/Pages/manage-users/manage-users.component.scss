@@ -5,7 +5,7 @@
 }
 
 nb-card {
-  max-width: 600px;
+  max-width: 300px;
   min-width: 30%;
 }
 
@@ -18,4 +18,11 @@ nb-card {
 
 fa-icon {
   cursor: pointer;
+}
+
+.card-body-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 }

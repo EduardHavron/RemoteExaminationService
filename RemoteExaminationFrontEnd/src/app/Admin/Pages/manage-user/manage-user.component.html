@@ -1,1 +1,37 @@
-<p>manage-user works!</p>
+<div class="manage-user-wrapper">
+  <nb-card>
+    <nb-card-header>
+      <div class="card-header-wrapper">
+        <div>
+          {{'Edit user' | translate}}
+        </div>
+        <div>
+          <fa-icon [icon]="faTrash" class="fa-icon-color-danger" (click)="deleteUser()"></fa-icon>
+        </div>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <form [formGroup]="form">
+        <div class="form-wrapper">
+          <div class="form-item">
+            <label for="email">{{'User\'s email' | translate}}</label>
+            <input nbInput status="danger" formControlName="email" id="email">
+          </div>
+          <div class="form-item">
+            <label for="role">{{'User\'s role' | translate}}</label>
+            <nb-select status="danger" formControlName="role" id="role">
+              <nb-option *ngFor="let role of options" [value]="role">{{role}}</nb-option>
+            </nb-select>
+          </div>
+          <div class="form-item">
+            <label for="password">{{'Users\'s password' | translate}}</label>
+            <input nbInput status="primary" formControlName="password" id="password">
+          </div>
+          <div class="form-item">
+            <button nbButton status="danger" (click)="updateUser()">{{'Update user' | translate}}</button>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>
+</div>

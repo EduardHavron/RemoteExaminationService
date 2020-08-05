@@ -45,10 +45,10 @@ export class ManageUsersComponent implements OnInit {
   private checkAdmin(index: number): boolean {
     if (this.users[index].role === Role.Admin) {
       this.customToastrService.showToast('top-right',
-        'success',
+        'danger',
         3000,
         this.translateService.instant('You can\'t delete admin'),
-        this.translateService.instant('Success'));
+        this.translateService.instant('Error'));
       return false;
     }
     return true;

@@ -2,9 +2,11 @@
   <nb-layout-header fixed>
     <div class="header-wrapper">
       <div class="header-wrapper-left">
-        <div class="logo header-item"><img alt="{{'Remote Examination System' | translate}}" src="../assets/400x400_logo.png"></div>
         <ng-container *ngIf="isAuthenticated">
-          <div class="link header-item" routerLink="/dashboard"><span>{{'Main Page' | translate}}</span></div>
+          <div class="logo header-item" routerLink="/dashboard"><img alt="{{'Main Page' | translate}}" src="../assets/400x400_logo.png"></div>
+        </ng-container>
+        <ng-container *ngIf="!isAuthenticated">
+          <div class="logo header-item" routerLink="/authorize/login"><img alt="{{'Main Page' | translate}}" src="../assets/400x400_logo.png"></div>
         </ng-container>
         <ng-container *ngIf="isExamined">
           <div class="link header-item" routerLink="/invites/append"><span>{{'Enter the code' | translate}}</span></div>
@@ -25,7 +27,7 @@
 
       <div class="header-wrapper-right">
         <div class="header-item">
-          <nb-toggle status="primary" (checkedChange)="changeLanguage()" [(ngModel)]="isUa">{{currentLang}}</nb-toggle>
+          <nb-toggle status="primary" (checkedChange)="changeLanguage()" [(ngModel)]="isEn">{{currentLang.getValue()}}</nb-toggle>
         </div>
         <div class="header-item">
           <ng-container *ngIf="isAuthenticated">
@@ -35,6 +37,16 @@
       </div>
     </div>
   </nb-layout-header>
+  <nb-sidebar state="collapsed" id="menu">
+    <div class="header-item">
+      <nb-toggle status="primary" (checkedChange)="changeLanguage()" [(ngModel)]="isEn">{{currentLang.getValue()}}</nb-toggle>
+    </div>
+    <div class="header-item">
+      <ng-container *ngIf="isAuthenticated">
+        <div (click)="logout()" class="link"><span>{{'Logout' | translate}}</span></div>
+      </ng-container>
+    </div>
+  </nb-sidebar>
   <nb-layout-column>
     <router-outlet>
     </router-outlet>
