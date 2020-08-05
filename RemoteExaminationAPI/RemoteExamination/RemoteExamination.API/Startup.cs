@@ -83,11 +83,8 @@ namespace RemoteExamination.API
             services.AddScoped<IExamCompetitionService, ExamCompetitionService>();
             services.AddScoped<IAdminService, AdminService>();
 
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllowSpecificOrigin", options => options.WithOrigins("https://reservices.azurewebsites.net/", "localhost:4200"));
-            });
-
+            services.AddCors();
+            
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
@@ -147,11 +144,8 @@ namespace RemoteExamination.API
             app.UseHttpsRedirection();
 
             app.UseCors(options =>
-                options.AllowAnyOrigin()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod());
-
-            app.UseRouting();
+                options.WithOrigins("localhost:4200", "https://reservices.azurewebsites.net"));
+                app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
