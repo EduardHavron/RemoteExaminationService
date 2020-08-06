@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {IUserExtended} from '../../Models/Admin/admin-user-extended';
 import {Observable} from 'rxjs';
 import {IQuery} from '../../Models/Query/query';
-
+import {saveAs} from 'file-saver';
 @Injectable({
   providedIn: 'root'
 })
@@ -35,6 +35,10 @@ export class AdminService {
   }
 
   getBackupFile() {
-    return this.http.get(this.url + 'GetBackup');
+    this.http.get(this.url + 'GetBackup', { responseType: 'blob' })
+      .subscribe(file => {
+          saveAs(file, `Database_backup_${new Date().toString()}.bak`);
+        },
+        err => console.log(err));
   }
 }

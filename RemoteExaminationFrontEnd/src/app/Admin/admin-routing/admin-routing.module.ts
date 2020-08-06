@@ -8,6 +8,7 @@ import {ManageUserComponent} from '../Pages/manage-user/manage-user.component';
 import {ManageDatabaseComponent} from '../Pages/manage-database/manage-database.component';
 import {UsersResolver} from '../../Shared/Resolvers/users-resolver';
 import {UserResolver} from '../../Shared/Resolvers/user-resolver';
+import {GetBackupComponent} from '../Pages/get-backup/get-backup.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'database',
     component: ManageDatabaseComponent
+  },
+  {
+    path: 'backup',
+    component: GetBackupComponent
   },
   {
     path: '**',

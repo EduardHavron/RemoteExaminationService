@@ -1,0 +1,19 @@
+<div class="get-backup-wrapper">
+  <nb-card size="tiny">
+    <nb-card-header>
+      {{'Get database backup' | translate}}
+    </nb-card-header>
+
+    <nb-card-body>
+      <div class="get-backup-body-wrapper">
+        <div>
+          <span>{{'Click here to save backup to your downloads folder' | translate}}</span>
+        </div>
+
+        <div class="button-wrapper">
+          <button nbButton status="primary" (click)="getBackup()">{{'Get database backup' | translate}}</button>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>
