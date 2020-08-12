@@ -18,7 +18,7 @@ export class ManageDatabaseComponent implements OnInit {
   isAccepted = new BehaviorSubject(false);
   modalRef: NbDialogRef<any>;
   prohibitedWords = ['DROP', 'TRUNCATE', 'DELETE'];
-  isLoading: boolean;
+  isLoading = false;
 
   constructor(private dialogService: NbDialogService,
               private fb: FormBuilder,

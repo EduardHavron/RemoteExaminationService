@@ -18,7 +18,7 @@ export class ExamDetailsComponent implements OnInit {
   exam: IExam<IQuestion<IAnswer>>;
   faCheck = faCheck;
   faEdit = faEdit;
-  isLoading: boolean;
+  isLoading = false;
 
   constructor(private examService: ExamService,
               private route: ActivatedRoute,

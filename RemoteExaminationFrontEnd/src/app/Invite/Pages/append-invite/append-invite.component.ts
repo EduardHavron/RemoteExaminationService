@@ -18,7 +18,7 @@ export class AppendInviteComponent implements OnInit {
   currentAction: string;
   form: FormGroup;
   minimumInvitationCodeLength = 5;
-  isLoading: boolean;
+  isLoading = false;
 
   constructor(private invitationService: InvitationService,
               private route: ActivatedRoute,

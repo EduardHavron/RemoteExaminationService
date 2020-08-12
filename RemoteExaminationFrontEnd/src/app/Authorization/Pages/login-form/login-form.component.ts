@@ -13,7 +13,7 @@ import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 })
 export class LoginFormComponent implements OnInit {
   form: FormGroup;
-  isLoading: boolean;
+  isLoading = false;
 
   constructor(private fb: FormBuilder,
               private authService: AuthorizationService,
