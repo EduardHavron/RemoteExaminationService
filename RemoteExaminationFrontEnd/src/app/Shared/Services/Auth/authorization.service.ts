@@ -18,7 +18,7 @@ export class AuthorizationService {
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject
-      < IUser > (this.getTokenValue());
+      <IUser> (this.getTokenValue());
   }
 
   get isAdmin(): boolean {
