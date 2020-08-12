@@ -5,6 +5,7 @@
 	"Get database backup": "Отримати копію бази даних",
 	"Click here to save backup to your downloads folder": "Натисніть тут щоб зберегти резервну копію",
 	"Paste code": "Введіть запит",
+	"Affected rows: ": "Задіяно рядків: ",
 	"Execute query": "Виконати запит",
 	"Warning": "Небезпечно видаляти дані, їх буде неможливо відновити! Ви впевнені?",
 	"Accept": "Так",
