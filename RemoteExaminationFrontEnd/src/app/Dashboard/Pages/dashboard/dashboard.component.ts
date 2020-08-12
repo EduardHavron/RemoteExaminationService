@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
   faVoteYea = faVoteYea;
-  isLoading: boolean;
+  isLoading = false;
 
   constructor(private examService: ExamService,
               private authenticationService: AuthorizationService,

@@ -16,7 +16,8 @@ import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 export class ManageUsersComponent implements OnInit {
   users: Array<IAdminUser>;
   faTrash = faTrash;
-  isLoading: boolean;
+  isLoading = false;
+
   constructor(private adminService: AdminService,
               private customToastrService: CustomToastrService,
               private activatedRoute: ActivatedRoute,

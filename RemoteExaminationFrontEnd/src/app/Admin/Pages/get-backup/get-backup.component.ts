@@ -10,7 +10,7 @@ import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
   styleUrls: ['./get-backup.component.scss']
 })
 export class GetBackupComponent implements OnInit {
-isLoading: boolean;
+isLoading = false;
 
   constructor(private customToastrService: CustomToastrService,
               private adminService: AdminService,

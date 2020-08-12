@@ -27,7 +27,7 @@ export class ExamCreateEditComponent implements OnInit {
   faSave = faSave;
   faTrash = faTrash;
   exam: IExam<IQuestion<IAnswer>>;
-  isLoading: boolean;
+  isLoading = false;
 
   constructor(private examService: ExamService,
               private customToastrService: CustomToastrService,

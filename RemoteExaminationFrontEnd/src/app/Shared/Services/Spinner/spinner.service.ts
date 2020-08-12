@@ -6,7 +6,9 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class SpinnerService {
 isLoading: BehaviorSubject<boolean>;
-  constructor() { }
+  constructor() {
+    this.isLoading = new BehaviorSubject<boolean>(false);
+  }
 
 
   updateProgress(isLoading: boolean) {

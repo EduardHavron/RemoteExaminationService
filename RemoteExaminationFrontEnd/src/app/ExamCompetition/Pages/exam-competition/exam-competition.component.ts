@@ -15,7 +15,7 @@ import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 })
 export class ExamCompetitionComponent implements OnInit {
   exam: IExam<IQuestion<IAnswer>>;
-  isLoading: boolean;
+  isLoading = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

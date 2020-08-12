@@ -19,7 +19,7 @@ export class ManageUserComponent implements OnInit {
   user: IAdminUser;
   options: string[] = [Role.Admin, Role.Examined, Role.Examiner];
   faTrash = faTrash;
-  isLoading: boolean;
+  isLoading = false;
 
   constructor(private fb: FormBuilder,
               private customToastrService: CustomToastrService,
