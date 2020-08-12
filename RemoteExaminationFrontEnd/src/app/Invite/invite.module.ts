@@ -4,6 +4,7 @@ import {AppendInviteComponent} from './Pages/append-invite/append-invite.compone
 import {SharedModule} from '../Shared/Modules/shared.module';
 import {InviteRoutingModule} from './invite-routing/invite-routing.module';
 import {GenerateInviteComponent} from './Pages/generate-invite/generate-invite.component';
+import {NbSpinnerModule} from '@nebular/theme';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {GenerateInviteComponent} from './Pages/generate-invite/generate-invite.c
     CommonModule,
     InviteRoutingModule,
     SharedModule.forRoot(),
+    NbSpinnerModule,
   ]
 })
 export class InviteModule {

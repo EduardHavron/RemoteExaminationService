@@ -14,7 +14,7 @@ export class InvitationService {
   }
 
   createInvite(invite: IInvitation) {
-    return this.http.post(this.url + 'CreateInvite', invite);
+    return this.http.post(this.url + 'CreateInvite', invite, {reportProgress: true});
   }
 
   addInviteToUser(inviteCode: IApplyInvitation) {

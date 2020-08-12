@@ -14,7 +14,7 @@ import {
   NbAutocompleteModule,
   NbContextMenuModule,
   NbDialogModule,
-  NbMenuModule, NbSelectModule,
+  NbMenuModule, NbSelectModule, NbSpinnerModule,
   NbToastrModule,
   NbToggleModule,
   NbWindowModule
@@ -43,6 +43,7 @@ registerLocaleData(localeUa);
     NbToggleModule, /* Unfortunately this module can't work with lazy loading */
     NbDialogModule.forRoot(),
     NbSelectModule,
+    NbSpinnerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

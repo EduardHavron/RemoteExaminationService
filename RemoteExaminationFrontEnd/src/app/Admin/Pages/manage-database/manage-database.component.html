@@ -1,5 +1,5 @@
 <div class="manage-database-wrapper">
-  <nb-card>
+  <nb-card [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
     <nb-card-header>
       {{'Manage database' | translate}}
     </nb-card-header>
@@ -11,12 +11,14 @@
         <form [formGroup]="form">
           <textarea nbInput id="sql-editor" formControlName="query"></textarea>
         </form>
+        <ng-container *ngIf="affectedRows">
+          <span>{{'Affected rows: ' | translate}}{{affectedRows}}</span>
+        </ng-container>
       </div>
       <div class="button-wrapper" (click)="checkQuery(dialog)">
         <button nbButton status="danger">
           {{'Execute query' | translate}}
         </button>
-        {{affectedRows}}
       </div>
     </nb-card-body>
   </nb-card>

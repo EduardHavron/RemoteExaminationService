@@ -17,14 +17,14 @@ export class ExamCompetitionService {
   }
 
   sendResult(examResult: IExam<IQuestion<IAnswer>>) {
-    return this.http.post(this.url + 'SendResult', examResult);
+    return this.http.post(this.url + 'SendResult', examResult, {reportProgress: true});
   }
 
   getExamResults(examId: number): Observable<Array<IExamResult>> {
-    return this.http.get<Array<IExamResult>>(this.url + 'GetAllResults/' + examId);
+    return this.http.get<Array<IExamResult>>(this.url + 'GetAllResults/' + examId, {reportProgress: true});
   }
 
   getExamResult(examResultId: number): Observable<IExamResult> {
-    return this.http.get<IExamResult>(this.url + 'GetExamResult/' + examResultId);
+    return this.http.get<IExamResult>(this.url + 'GetExamResult/' + examResultId, {reportProgress: true});
   }
 }

@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 import {ExamCompetitionService} from '../../../Shared/Services/ExamCompetition/exam-competition.service';
 import {TranslateService} from '@ngx-translate/core';
+import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 
 @Component({
   selector: 'app-exam-competition',
@@ -14,16 +15,19 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class ExamCompetitionComponent implements OnInit {
   exam: IExam<IQuestion<IAnswer>>;
+  isLoading: boolean;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private customToastrService: CustomToastrService,
               private examCompetitionService: ExamCompetitionService,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private spinnerService: SpinnerService) {
     route.data.subscribe((data: { exam: any }) => {
       data.exam.questions = this.shuffleExam(data.exam.questions);
       this.exam = data.exam;
     });
+    this.spinnerService.isLoading.subscribe(value => this.isLoading = value);
   }
 
   ngOnInit() {

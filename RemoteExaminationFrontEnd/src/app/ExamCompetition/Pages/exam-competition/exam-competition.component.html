@@ -1,5 +1,5 @@
 <div class="competition-wrapper">
-  <nb-card>
+  <nb-card  [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
     <nb-card-header>
       <span>{{'Exam: ' | translate}}</span>
       <span>{{exam.name}}</span>

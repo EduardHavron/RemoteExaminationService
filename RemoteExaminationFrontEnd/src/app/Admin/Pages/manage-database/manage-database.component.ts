@@ -5,6 +5,7 @@ import {BehaviorSubject} from 'rxjs';
 import {AdminService} from '../../../Shared/Services/Admin/admin.service';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 import {TranslateService} from '@ngx-translate/core';
+import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 
 @Component({
   selector: 'app-manage-database',
@@ -17,12 +18,14 @@ export class ManageDatabaseComponent implements OnInit {
   isAccepted = new BehaviorSubject(false);
   modalRef: NbDialogRef<any>;
   prohibitedWords = ['DROP', 'TRUNCATE', 'DELETE'];
+  isLoading: boolean;
 
   constructor(private dialogService: NbDialogService,
               private fb: FormBuilder,
               private adminService: AdminService,
               private customToastrService: CustomToastrService,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private spinnerService: SpinnerService) {
     this.form = this.fb.group({
       query: ['', Validators.required]
     });
@@ -32,6 +35,7 @@ export class ManageDatabaseComponent implements OnInit {
         this.isAccepted.next(false);
       }
     });
+    this.spinnerService.isLoading.subscribe(value => this.isLoading = value);
   }
 
   ngOnInit() {

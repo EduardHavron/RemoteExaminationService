@@ -19,23 +19,23 @@ export class AdminService {
   }
 
   getUsers() {
-    return this.http.get(this.url + 'GetUsers');
+    return this.http.get(this.url + 'GetUsers', {reportProgress: true});
   }
 
   getUser(userId: string) {
-    return this.http.get(this.url + 'GetUser/' + userId);
+    return this.http.get(this.url + 'GetUser/' + userId, {reportProgress: true});
   }
 
   updateUser(user: IUserExtended) {
-    return this.http.put(this.url + 'UpdateUser/', user);
+    return this.http.put(this.url + 'UpdateUser/', user, {reportProgress: true});
   }
 
   deleteUser(id: string) {
-    return this.http.delete(this.url + 'DeleteUser/' + id);
+    return this.http.delete(this.url + 'DeleteUser/' + id, {reportProgress: true});
   }
 
   getBackupFile() {
-    this.http.get(this.url + 'GetBackup', { responseType: 'blob' })
+    this.http.get(this.url + 'GetBackup', { responseType: 'blob', reportProgress: true })
       .subscribe(file => {
           saveAs(file, `Database_backup_${new Date().toString()}.bak`);
         },

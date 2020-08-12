@@ -12,7 +12,7 @@ export class ExamResultComponent implements OnInit {
   examResult: IExamResult;
   faCheck = faCheck;
 
-  constructor(route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
     route.data.subscribe((data: { examResult: any }) => {
       this.examResult = data.examResult;
     });

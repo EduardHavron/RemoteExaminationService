@@ -16,22 +16,22 @@ export class ExamService {
   }
 
   getExams(): Observable<Array<IExam<IQuestion<IAnswer>>>> {
-    return this.http.get<Array<IExam<IQuestion<IAnswer>>>>(this.url + 'GetExams');
+    return this.http.get<Array<IExam<IQuestion<IAnswer>>>>(this.url + 'GetExams', {reportProgress: true});
   }
 
   getExamById(id: number): Observable<IExam<IQuestion<IAnswer>>> {
-    return this.http.get<IExam<IQuestion<IAnswer>>>(this.url + 'GetExam/' + id);
+    return this.http.get<IExam<IQuestion<IAnswer>>>(this.url + 'GetExam/' + id, {reportProgress: true});
   }
 
   createExam(Exam: IExam<IQuestion<IAnswer>>) {
-    return this.http.post(this.url + 'CreateExam', Exam);
+    return this.http.post(this.url + 'CreateExam', Exam, {reportProgress: true});
   }
 
   editExam(Exam: IExam<IQuestion<IAnswer>>) {
-    return this.http.put(this.url + 'EditExam/', Exam);
+    return this.http.put(this.url + 'EditExam/', Exam, {reportProgress: true});
   }
 
   deleteExam(id: number) {
-    return this.http.delete(this.url + 'DeleteExam/' + id);
+    return this.http.delete(this.url + 'DeleteExam/' + id, {reportProgress: true});
   }
 }

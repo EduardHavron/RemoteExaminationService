@@ -4,6 +4,7 @@ import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.
 import {Router} from '@angular/router';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 import {TranslateService} from '@ngx-translate/core';
+import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 
 @Component({
   selector: 'app-register-form',
@@ -13,16 +14,19 @@ import {TranslateService} from '@ngx-translate/core';
 export class RegisterFormComponent implements OnInit {
   form: FormGroup;
   checked = false;
+  isLoading: boolean;
 
   constructor(private fb: FormBuilder,
               private authService: AuthorizationService,
               private router: Router,
               private customToastrService: CustomToastrService,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private spinnerService: SpinnerService) {
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
+    this.spinnerService.isLoading.subscribe(value => this.isLoading = value);
   }
 
   signUp() {

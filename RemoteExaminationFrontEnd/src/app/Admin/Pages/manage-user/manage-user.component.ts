@@ -7,6 +7,7 @@ import {IAdminUser} from '../../../Shared/Models/Admin/admin-user';
 import {TranslateService} from '@ngx-translate/core';
 import {Role} from '../../../Shared/Enum/rolesEnum';
 import {faTrash} from '@fortawesome/free-solid-svg-icons/faTrash';
+import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 
 @Component({
   selector: 'app-manage-user',
@@ -18,13 +19,15 @@ export class ManageUserComponent implements OnInit {
   user: IAdminUser;
   options: string[] = [Role.Admin, Role.Examined, Role.Examiner];
   faTrash = faTrash;
+  isLoading: boolean;
 
   constructor(private fb: FormBuilder,
               private customToastrService: CustomToastrService,
               private adminService: AdminService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private spinnerService: SpinnerService) {
     activatedRoute.data.subscribe((data: { user: any }) => {
       this.user = data.user;
     });
@@ -36,6 +39,7 @@ export class ManageUserComponent implements OnInit {
     });
     this.form.controls.email.setValue(this.user.email);
     this.form.controls.role.setValue(this.user.role);
+    this.spinnerService.isLoading.subscribe(value => this.isLoading = value);
   }
 
   ngOnInit() {

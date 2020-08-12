@@ -3,6 +3,7 @@ import {LoginFormComponent} from './Pages/login-form/login-form.component';
 import {RegisterFormComponent} from './Pages/register-form/register-form.component';
 import {AuthorizationRouterModule} from './authorization-router/authorization-router.module';
 import {SharedModule} from '../Shared/Modules/shared.module';
+import {NbSpinnerModule} from '@nebular/theme';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import {SharedModule} from '../Shared/Modules/shared.module';
   imports: [
     AuthorizationRouterModule,
     SharedModule,
+    NbSpinnerModule,
   ]
 })
 export class AuthorizationModule {

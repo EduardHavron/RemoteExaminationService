@@ -6,6 +6,7 @@ import {IAdminUser} from '../../../Shared/Models/Admin/admin-user';
 import {faTrash} from '@fortawesome/free-solid-svg-icons/faTrash';
 import {TranslateService} from '@ngx-translate/core';
 import {Role} from '../../../Shared/Enum/rolesEnum';
+import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 
 @Component({
   selector: 'app-manage-users',
@@ -15,13 +16,16 @@ import {Role} from '../../../Shared/Enum/rolesEnum';
 export class ManageUsersComponent implements OnInit {
   users: Array<IAdminUser>;
   faTrash = faTrash;
+  isLoading: boolean;
   constructor(private adminService: AdminService,
               private customToastrService: CustomToastrService,
               private activatedRoute: ActivatedRoute,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private spinnerService: SpinnerService) {
     activatedRoute.data.subscribe((data: { users: any }) => {
       this.users = data.users;
     });
+    this.spinnerService.isLoading.subscribe(value => this.isLoading = value);
   }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 <div class="get-backup-wrapper">
-  <nb-card size="tiny">
+  <nb-card size="tiny" [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
     <nb-card-header>
       {{'Get database backup' | translate}}
     </nb-card-header>
