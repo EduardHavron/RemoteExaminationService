@@ -5,6 +5,7 @@
 	"Get database backup": "Get database backup",
 	"Click here to save backup to your downloads folder": "Click here to save backup to your downloads folder",
 	"Paste code": "Paste SQL Here",
+	"Affected rows: ": "Affected rows: ",
 	"Execute query": "Execute query",
 	"Warning": "It is dangerout to delete data, it can't be restored! Are you sure?",
 	"Accept": "Yes",
