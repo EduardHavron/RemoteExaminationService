@@ -8,6 +8,7 @@ import {IAnswer} from '../../../Shared/Models/ExamView/Answer/IAnswer';
 import {IExam} from '../../../Shared/Models/ExamView/Exam/IExam';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 import {TranslateService} from '@ngx-translate/core';
+import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,12 +21,15 @@ export class DashboardComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
   faVoteYea = faVoteYea;
+  isLoading: boolean;
 
   constructor(private examService: ExamService,
               private authenticationService: AuthorizationService,
               private customToastrService: CustomToastrService,
-              private translateSerivce: TranslateService) {
+              private translateSerivce: TranslateService,
+              private spinnerService: SpinnerService) {
     this.authenticationService.currentUserSubject.subscribe(x => this.currentUser = x);
+    this.spinnerService.isLoading.subscribe(value => this.isLoading = value);
   }
 
   ngOnInit(): void {

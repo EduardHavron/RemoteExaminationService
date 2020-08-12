@@ -4,7 +4,7 @@ import {AdminDashboardComponent} from './Pages/admin-dashboard/admin-dashboard.c
 import {ManageUsersComponent} from './Pages/manage-users/manage-users.component';
 import {ManageUserComponent} from './Pages/manage-user/manage-user.component';
 import {ManageDatabaseComponent} from './Pages/manage-database/manage-database.component';
-import {NbButtonModule, NbCardModule, NbInputModule, NbSelectModule} from '@nebular/theme';
+import {NbButtonModule, NbCardModule, NbInputModule, NbSelectModule, NbSpinnerModule} from '@nebular/theme';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -30,7 +30,8 @@ import { GetBackupComponent } from './Pages/get-backup/get-backup.component';
     NbButtonModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    NbSpinnerModule
   ]
 })
 export class AdminModule {

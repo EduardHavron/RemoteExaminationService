@@ -1,5 +1,5 @@
 <div class="content-wrapper">
-  <nb-card size="medium">
+  <nb-card size="medium" [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
     <nb-card-body>
       <nb-card-header><span>{{'Register' | translate}}</span></nb-card-header>
       <form [formGroup]="form">

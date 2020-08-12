@@ -1,6 +1,6 @@
 <div class="dashboard-wrapper">
   <div *ngFor="let exam of ExamList; let i = index" class="exams-wrapper">
-    <nb-card size="tiny">
+    <nb-card size="tiny"  [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
       <nb-card-header>
         <ng-container *ngIf="isExaminer() || isAdmin()">
           <span class="exam-name" routerLink="/exams/exam/{{exam.examId}}">

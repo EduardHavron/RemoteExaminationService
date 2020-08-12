@@ -1,5 +1,5 @@
 <div class="manage-users-wrapper">
-  <nb-card *ngFor="let user of users; let i = index" size="tiny">
+  <nb-card *ngFor="let user of users; let i = index" size="tiny"  [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
     <nb-card-header>
         <div class="card-header-wrapper">
         <div>

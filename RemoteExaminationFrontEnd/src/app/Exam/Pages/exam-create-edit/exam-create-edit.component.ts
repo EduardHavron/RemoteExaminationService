@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 import {TranslateService} from '@ngx-translate/core';
+import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 
 
 @Component({
@@ -26,13 +27,15 @@ export class ExamCreateEditComponent implements OnInit {
   faSave = faSave;
   faTrash = faTrash;
   exam: IExam<IQuestion<IAnswer>>;
+  isLoading: boolean;
 
   constructor(private examService: ExamService,
               private customToastrService: CustomToastrService,
               private router: Router,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private spinnerService: SpinnerService) {
     if (activatedRoute.snapshot.params.examId) {
       activatedRoute.data.subscribe((data: { exam: any }) => {
         this.exam = data.exam;
@@ -43,6 +46,7 @@ export class ExamCreateEditComponent implements OnInit {
       this.isEdit = false;
     }
     this.initializeForms(fb);
+    this.spinnerService.isLoading.subscribe(value => this.isLoading = value);
   }
 
   ngOnInit() {

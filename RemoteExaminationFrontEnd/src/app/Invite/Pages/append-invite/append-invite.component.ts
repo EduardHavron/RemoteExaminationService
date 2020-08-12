@@ -5,6 +5,7 @@ import {ExamService} from '../../../Shared/Services/Exam/exam.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 import {TranslateService} from '@ngx-translate/core';
+import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 
 @Component({
   selector: 'app-create-invite',
@@ -17,6 +18,7 @@ export class AppendInviteComponent implements OnInit {
   currentAction: string;
   form: FormGroup;
   minimumInvitationCodeLength = 5;
+  isLoading: boolean;
 
   constructor(private invitationService: InvitationService,
               private route: ActivatedRoute,
@@ -24,10 +26,12 @@ export class AppendInviteComponent implements OnInit {
               private fb: FormBuilder,
               private customToastrService: CustomToastrService,
               private router: Router,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private spinnerService: SpinnerService) {
     this.form = fb.group({
       invitationCode: ['', Validators.required]
     });
+    this.spinnerService.isLoading.subscribe(value => this.isLoading = value);
   }
 
   ngOnInit() {

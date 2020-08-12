@@ -15,7 +15,6 @@ import {ILogin} from '../../Models/UserAuth/ILogin';
 export class AuthorizationService {
   public currentUserSubject: BehaviorSubject<IUser>;
   private url = environment.apiPath + 'Account/';
-
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject
       <IUser> (this.getTokenValue());
@@ -49,11 +48,11 @@ export class AuthorizationService {
   }
 
   signUp(user: IRegister) {
-    return this.http.post<IRegister>(this.url + 'SignUp/', user);
+    return this.http.post<IRegister>(this.url + 'SignUp/', user, {reportProgress: true});
   }
 
   signIn(user: ILogin): Observable<any> {
-    return this.http.post<IUser>(this.url + 'SignIn/', user)
+    return this.http.post<IUser>(this.url + 'SignIn/', user, {reportProgress: true})
       .pipe(
         tap(res => {
           if (res && res.token) {
@@ -82,4 +81,5 @@ export class AuthorizationService {
       };
     }
   }
+
 }
