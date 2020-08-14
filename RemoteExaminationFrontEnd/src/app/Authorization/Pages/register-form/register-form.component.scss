@@ -1,3 +1,5 @@
+@import '../../../../themes.scss';
+
 .content-wrapper {
   display: flex;
   flex-direction: column;
@@ -6,6 +8,9 @@
 
 .form-item-wrapper {
   margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 nb-card {
@@ -24,4 +29,41 @@ input {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.font-color-black {
+  color: #222b45
+}
+
+.form-camera-control {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.form-camera-info {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+video {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.form-camera-item {
+  margin-bottom: 25px;
+}
+
+.webcam-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.webcam-position {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }

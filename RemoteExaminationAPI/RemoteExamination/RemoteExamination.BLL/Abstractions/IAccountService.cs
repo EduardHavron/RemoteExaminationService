@@ -7,6 +7,6 @@ namespace RemoteExamination.BLL.Abstractions
     {
         Task<string> SignIn(string email, string password);
 
-        Task SignUp(UserModel employee, string password, string role);
+        Task<bool> SignUp(UserModel employee, string password, string role, string passportImage);
     }
 }

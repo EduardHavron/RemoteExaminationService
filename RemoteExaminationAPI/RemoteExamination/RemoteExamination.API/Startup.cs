@@ -86,13 +86,11 @@ namespace RemoteExamination.API
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Auth:Key"]))
                 };
             });
-
             services.AddScoped<IExamService, ExamService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IInvitationService, InvitationService>();
             services.AddScoped<IExamCompetitionService, ExamCompetitionService>();
             services.AddScoped<IAdminService, AdminService>();
-
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

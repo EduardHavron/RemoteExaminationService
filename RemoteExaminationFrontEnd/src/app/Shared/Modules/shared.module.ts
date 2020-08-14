@@ -5,13 +5,12 @@ import {RouterModule} from '@angular/router';
 import {ToastrModule} from 'ngx-toastr';
 import {TranslateModule} from '@ngx-translate/core';
 import {
-  NbActionsModule, NbAutocompleteModule,
+  NbActionsModule,
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
   NbInputModule,
   NbLayoutModule,
-  NbSelectModule,
   NbSidebarModule,
   NbThemeModule,
   NbToastrModule,

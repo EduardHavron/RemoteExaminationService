@@ -7,5 +7,7 @@ namespace RemoteExamination.API.ViewModels.AccountViewModels
 
         [Required]
         public bool Role { get; set; }
+        
+        public string PassportHash { get; set; }
     }
 }

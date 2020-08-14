@@ -1,38 +1,111 @@
 <div class="content-wrapper">
-  <nb-card size="medium" [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
-    <nb-card-body>
-      <nb-card-header><span>{{'Register' | translate}}</span></nb-card-header>
-      <form [formGroup]="form">
-        <div class="form-wrapper">
-          <div class="form-item-wrapper">
-            <label for="email">{{'Enter your email' | translate}}</label>
-          </div>
-          <div class="form-item-wrapper">
-            <input autocomplete="current-email" fieldSize="large" formControlName='email' id='email' name='email'
-                   nbInput
-                   placeholder="Email" shape="rectangle" type="email">
-          </div>
-          <div class="form-item-wrapper">
-            <label for="password">{{'Enter your password' | translate}}</label>
-          </div>
-          <div class="form-item-wrapper">
-            <input autocomplete="current-password" fieldSize="large" formControlName='password' id="password"
-                   name='password'
-                   nbInput placeholder="*******" shape="rectangle" type="password">
-          </div>
+  <nb-stepper>
+    <nb-step [label]="this.translateService.instant('Register')" [stepControl]="form">
+      <nb-card size="medium">
+        <nb-card-body>
+          <nb-card-header><span>{{'Register' | translate}}</span></nb-card-header>
+          <form [formGroup]="form">
+            <div class="form-wrapper">
+              <div class="form-item-wrapper">
+                <label for="email">{{'Enter your email' | translate}}</label>
+              </div>
+              <div class="form-item-wrapper">
+                <input autocomplete="current-email" fieldSize="large" formControlName='email' id='email' name='email'
+                       nbInput
+                       placeholder="Email" shape="rectangle" type="email">
+              </div>
+              <div class="form-item-wrapper">
+                <label for="password">{{'Enter your password' | translate}}</label>
+              </div>
+              <div class="form-item-wrapper">
+                <input autocomplete="current-password" fieldSize="large" formControlName='password' id="password"
+                       name='password'
+                       nbInput placeholder="*******" shape="rectangle" type="password">
+              </div>
 
-          <div class="form-item-wrapper" id='toggle'>
-            <nb-checkbox (checkedChange)="toggle($event)" status="basic">{{'Register' | translate}}<br>{{'as examiner' | translate}}
-            </nb-checkbox>
-          </div>
-          <div class="form-item-wrapper">
-            <div (click)=signUp() class="button-div">
-              <button nbButton>{{'Register' | translate}}</button>
+              <div class="form-item-wrapper" id='toggle'>
+                <nb-checkbox (checkedChange)="toggleRole($event)" status="basic">{{'Register' | translate}}
+                  <br>{{'as examiner' | translate}}
+                </nb-checkbox>
+              </div>
+              <div class="form-item-wrapper">
+                <div class="button-div">
+                  <button nbButton nbStepperNext>{{'Next' | translate}}</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </nb-card-body>
+      </nb-card>
+    </nb-step>
+    <nb-step [label]="this.translateService.instant('Add document data')">
+      <nb-card size="medium">
+        <nb-card-body>
+          <nb-card-header><span>{{'Register' | translate}}</span></nb-card-header>
+          <div>
+            <div class="form-item-wrapper">
+              <span>{{'Photo description' | translate}}</span>
+            </div>
+            <div class="form-item-wrapper" *ngIf="!cameraError && !documentPhoto">
+              <button nbButton status="primary" (click)="allowCamera()">
+                {{'Open camera' | translate}}
+              </button>
+            </div>
+            <div class="form-item-wrapper" *ngIf="!cameraError && documentPhoto">
+                <button nbButton status="primary">{{'Retake photo' | translate}}</button>
+            </div>
+            <div class="form-item-wrapper" *ngIf="cameraError">
+              {{'cameraError' | translate}}
+            </div>
+            <div class="form-item-wrapper">
+              <div class="button-div" (click)="validatePhoto()">
+                <button nbButton nbStepperNext>{{'Register' | translate}}</button>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
-    </nb-card-body>
-  </nb-card>
+        </nb-card-body>
+      </nb-card>
+    </nb-step>
+  </nb-stepper>
 </div>
-<!-- form [formGroup="form"> -->
+
+<ng-template #contentTemplate>
+  <div class="form-camera-info" [nbSpinner]="this.cameraError" nbSpinnerSize="large" nbSpinnerStatus="danger">
+    <div class="form-camera-item">
+      {{'Photo manual' | translate}}
+    </div>
+    <div class="form-camera">
+      <ng-container *ngIf="isCameraAllowed && !documentPhoto">
+        <div class="webcam-wrapper">
+          <div class="webcam-position">
+            <webcam [trigger]="triggerObservable"
+                    (imageCapture)="handleImage($event)"
+                    [allowCameraSwitch]="true"
+                    [switchCamera]="nextWebcamObservable"
+                    [imageQuality]="1"
+                    (initError)="handleInitError($event)"
+                    [height]="375" [width]="280">
+            </webcam>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isCameraAllowed">
+        <div class="form-camera-button-allow">
+          <button nbButton status="primary" (click)="allowCamera()">
+            {{'Make photo' | translate}}
+          </button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isCameraAllowed">
+        <div class="form-camera-controls">
+          <div class="form-camera-control" (click)="triggerSnapshot()">
+            <button nbButton status="primary">{{'Make photo' | translate}}</button>
+          </div>
+          <div class="form-camera-control" (click)="showNextWebcam(true)" *ngIf="multipleWebcamsAvailable"> <!--Move to NEXT camera-->
+            <button nbButton status="primary">{{'Next camera' | translate}}</button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>

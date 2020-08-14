@@ -36,9 +36,10 @@ namespace RemoteExamination.API.Controllers
         {
             var userModel = _mapper.Map<UserModel>(model);
             var role = model.Role ? Role.Examiner : Role.Examined;
-            await _accountService.SignUp(userModel, model.Password, role);
-
-            return Ok();
+            var result = await _accountService.SignUp(userModel, model.Password, role, model.PassportHash);
+            if(result)
+                return Ok();
+            return BadRequest();
         }
 
         [Authorize(Roles = Role.Admin)]
@@ -46,7 +47,7 @@ namespace RemoteExamination.API.Controllers
         public async Task<IActionResult> CreateAdmin(SignUpAdminViewModel model)
         {
             var adminModel = _mapper.Map<UserModel>(model);
-            await _accountService.SignUp(adminModel, model.Password, Role.Admin);
+            await _accountService.SignUp(adminModel, model.Password, Role.Admin, null);
 
             return Ok();
         }
