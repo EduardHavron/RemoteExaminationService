@@ -170,5 +170,9 @@ namespace RemoteExamination.API
             SeedRoles.SeedAdminRole(roleManager);
             SeedUsers.SeedAdminUser(userManager);
         }
+
+
     }
+
+
 }
