@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using RemoteExamination.Common.Authentication;
 using RemoteExamination.DAL.Entities;
 
@@ -19,14 +15,11 @@ namespace RemoteExamination.API.Seeding
                 var admin = new User
                 {
                     UserName = adminEmail,
-                    Email = adminEmail,
+                    Email = adminEmail
                 };
                 var result = userManager.CreateAsync(admin, adminPassword).Result;
 
-                if (result.Succeeded)
-                {
-                    userManager.AddToRoleAsync(admin, Role.Admin).Wait();
-                }
+                if (result.Succeeded) userManager.AddToRoleAsync(admin, Role.Admin).Wait();
             }
         }
     }

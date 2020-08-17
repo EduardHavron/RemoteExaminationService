@@ -14,7 +14,8 @@ import {
   NbAutocompleteModule,
   NbContextMenuModule,
   NbDialogModule,
-  NbMenuModule, NbSelectModule, NbSpinnerModule,
+  NbSelectModule,
+  NbSpinnerModule,
   NbToastrModule,
   NbToggleModule,
   NbWindowModule
@@ -65,6 +66,7 @@ registerLocaleData(localeUa);
 })
 export class AppModule {
 }
+
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

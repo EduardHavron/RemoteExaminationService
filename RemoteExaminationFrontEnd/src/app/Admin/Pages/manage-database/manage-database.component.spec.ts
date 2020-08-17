@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ManageDatabaseComponent } from './manage-database.component';
+import {ManageDatabaseComponent} from './manage-database.component';
 
 describe('ManageDatabaseComponent', () => {
   let component: ManageDatabaseComponent;
@@ -8,9 +8,9 @@ describe('ManageDatabaseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ManageDatabaseComponent ]
+      declarations: [ManageDatabaseComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

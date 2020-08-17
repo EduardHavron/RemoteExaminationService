@@ -79,12 +79,12 @@ export class ManageUserComponent implements OnInit {
         this.router
           .navigate(['/admin/users'])
           .then(() => {
-          this.customToastrService.showToast('top-right',
-            'success',
-            3000,
-            this.translateService.instant('Delete user'),
-            this.translateService.instant('Success'));
-        });
+            this.customToastrService.showToast('top-right',
+              'success',
+              3000,
+              this.translateService.instant('Delete user'),
+              this.translateService.instant('Success'));
+          });
       });
   }
 }

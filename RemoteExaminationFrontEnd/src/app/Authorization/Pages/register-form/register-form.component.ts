@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, HostListener, OnInit, TemplateRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {Router} from '@angular/router';
@@ -22,13 +22,14 @@ export class RegisterFormComponent implements OnInit {
   webcamRef: NbWindowRef;
   webcamWidth: BehaviorSubject<number>;
   webcamHeight: BehaviorSubject<number>;
-  private changeSize = new Subject<WebcamWidth>();
   isCameraAllowed = false;
   documentPhoto: WebcamImage = null;
   cameraError: boolean;
   multipleWebcamsAvailable: boolean;
+  private changeSize = new Subject<WebcamWidth>();
   private trigger: Subject<void> = new Subject<void>();
-  private nextWebcam: Subject<boolean|string> = new Subject<boolean|string>();
+  private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
+
   constructor(private fb: FormBuilder,
               private authService: AuthorizationService,
               private router: Router,
@@ -44,6 +45,14 @@ export class RegisterFormComponent implements OnInit {
     this.changeSize
       .asObservable()
       .subscribe((data) => this.calculateWebcamSize(data));
+  }
+
+  get triggerObservable(): Observable<any> {
+    return this.trigger.asObservable();
+  }
+
+  public get nextWebcamObservable(): Observable<boolean | string> {
+    return this.nextWebcam.asObservable();
   }
 
   signUp() {
@@ -109,10 +118,6 @@ export class RegisterFormComponent implements OnInit {
       });
   }
 
-  get triggerObservable(): Observable<any> {
-    return this.trigger.asObservable();
-  }
-
   public handleImage(documentPhoto: WebcamImage): void {
     this.documentPhoto = documentPhoto;
     this.webcamRef.close();
@@ -123,10 +128,6 @@ export class RegisterFormComponent implements OnInit {
       this.translateService.instant('Success'));
   }
 
-  public get nextWebcamObservable(): Observable<boolean|string> {
-    return this.nextWebcam.asObservable();
-  }
-
   public handleInitError(error: WebcamInitError): void {
     this.cameraError = true;
     setTimeout(() => {
@@ -135,7 +136,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
 
-  public showNextWebcam(directionOrDeviceId: boolean|string): void {
+  public showNextWebcam(directionOrDeviceId: boolean | string): void {
     this.nextWebcam.next(directionOrDeviceId);
   }
 
@@ -163,6 +164,7 @@ export class RegisterFormComponent implements OnInit {
       this.webcamHeight = new BehaviorSubject<number>(height);
     }
   }
+
   private calculateWebcamSize(args: WebcamWidth) {
     const height = args.height * 0.4;
     const width = args.width * 0.4;

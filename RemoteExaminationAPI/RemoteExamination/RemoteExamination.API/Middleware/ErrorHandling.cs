@@ -1,18 +1,18 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+using System.Net;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RemoteExamination.Common.Exceptions;
-using System;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace RemoteExamination.API.Middleware
 {
     public class ErrorHandling
     {
-        private readonly RequestDelegate _next;
         private readonly ILogger<ErrorHandling> _logger;
+        private readonly RequestDelegate _next;
 
         public ErrorHandling(RequestDelegate next, ILogger<ErrorHandling> logger)
         {
@@ -55,10 +55,10 @@ namespace RemoteExamination.API.Middleware
 
         private async Task WriteErrorAsync(HttpContext context, string error, HttpStatusCode statusCode)
         {
-            var serializedError = JsonConvert.SerializeObject(new { error });
+            var serializedError = JsonConvert.SerializeObject(new {error});
 
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)statusCode;
+            context.Response.StatusCode = (int) statusCode;
 
             await context.Response.WriteAsync(serializedError);
         }

@@ -1,13 +1,13 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using RemoteExamination.BLL.Abstractions;
 using RemoteExamination.BLL.Models.Invitation;
 using RemoteExamination.BLL.Models.User;
 using RemoteExamination.DAL.Context;
 using RemoteExamination.DAL.Entities;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RemoteExamination.BLL.Services
 {
@@ -24,19 +24,13 @@ namespace RemoteExamination.BLL.Services
 
         public async Task<IList<int>> GetUserInvitations(string userId)
         {
-            if (userId is null)
-            {
-                return null;
-            }
+            if (userId is null) return null;
             var invitationsList = new List<int>();
             var userInvitations = await _dbContext.UserInvitations
                 .AsNoTracking()
                 .Where(x => x.UserId == userId)
                 .ToListAsync();
-            foreach (var invitation in userInvitations)
-            {
-                invitationsList.Add(invitation.InvitationId);
-            }
+            foreach (var invitation in userInvitations) invitationsList.Add(invitation.InvitationId);
 
             return invitationsList;
         }
@@ -58,11 +52,9 @@ namespace RemoteExamination.BLL.Services
                     .Where(x => x.UserId == user.Id).Select(x => x.InvitationId)
                     .ToListAsync();
 
-            var currentInvitation = await _dbContext.Invitations.FirstOrDefaultAsync(x => x.InvitationCode == model.InvitationCode);
-            if (currentInvitation is null)
-            {
-                return;
-            }
+            var currentInvitation =
+                await _dbContext.Invitations.FirstOrDefaultAsync(x => x.InvitationCode == model.InvitationCode);
+            if (currentInvitation is null) return;
 
             if (userInvitations.Any())
             {
@@ -71,20 +63,17 @@ namespace RemoteExamination.BLL.Services
                         .Contains(x.ExamId))
                     .Select(x => x.ExamId)
                     .ToListAsync();
-               
-                if (examsId.Contains(currentInvitation.ExamId))
-                {
-                    return;
-                }
+
+                if (examsId.Contains(currentInvitation.ExamId)) return;
             }
-            
+
             var userInvitation = new UserInvitation
             {
                 InvitationId = currentInvitation.InvitationId,
                 UserId = user.Id
             };
             await _dbContext.UserInvitations.AddAsync(userInvitation);
-            await _dbContext.SaveChangesAsync();    
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

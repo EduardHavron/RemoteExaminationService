@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GetBackupComponent } from './get-backup.component';
+import {GetBackupComponent} from './get-backup.component';
 
 describe('GetBackupComponent', () => {
   let component: GetBackupComponent;
@@ -8,9 +8,9 @@ describe('GetBackupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GetBackupComponent ]
+      declarations: [GetBackupComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

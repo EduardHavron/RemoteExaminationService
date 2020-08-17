@@ -1,16 +1,15 @@
 ﻿using System;
-using RemoteExamination.DAL.Tables;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using RemoteExamination.DAL.Tables;
 
 namespace RemoteExamination.DAL.Entities
 {
     [Table(TableName.ExamResult)]
     public class ExamResult
     {
-        [Key]
-        public int ExamResultId { get; set; }
+        [Key] public int ExamResultId { get; set; }
 
         public string ExamName { get; set; }
 

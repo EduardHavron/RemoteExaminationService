@@ -15,9 +15,10 @@ import {ILogin} from '../../Models/UserAuth/ILogin';
 export class AuthorizationService {
   public currentUserSubject: BehaviorSubject<IUser>;
   private url = environment.apiPath + 'Account/';
+
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject
-      <IUser> (this.getTokenValue());
+      < IUser > (this.getTokenValue());
   }
 
   get isAdmin(): boolean {

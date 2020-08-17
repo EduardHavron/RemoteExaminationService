@@ -1,5 +1,5 @@
 <div class="get-backup-wrapper">
-  <nb-card size="tiny" [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
+  <nb-card [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger" size="tiny">
     <nb-card-header>
       {{'Get database backup' | translate}}
     </nb-card-header>
@@ -11,7 +11,7 @@
         </div>
 
         <div class="button-wrapper">
-          <button nbButton status="primary" (click)="getBackup()">{{'Get database backup' | translate}}</button>
+          <button (click)="getBackup()" nbButton status="primary">{{'Get database backup' | translate}}</button>
         </div>
       </div>
     </nb-card-body>

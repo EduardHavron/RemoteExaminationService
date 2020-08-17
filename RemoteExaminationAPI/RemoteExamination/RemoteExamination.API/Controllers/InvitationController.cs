@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RemoteExamination.API.Controllers.Abstractions;
@@ -6,7 +7,6 @@ using RemoteExamination.API.ViewModels.InvitationViewModels;
 using RemoteExamination.BLL.Abstractions;
 using RemoteExamination.BLL.Models.Invitation;
 using RemoteExamination.Common.Authentication;
-using System.Threading.Tasks;
 
 namespace RemoteExamination.API.Controllers
 {

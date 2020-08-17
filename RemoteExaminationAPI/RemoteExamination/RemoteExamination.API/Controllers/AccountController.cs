@@ -1,14 +1,12 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RemoteExamination.API.Controllers.Abstractions;
 using RemoteExamination.API.ViewModels.AccountViewModels;
 using RemoteExamination.BLL.Abstractions;
 using RemoteExamination.BLL.Models;
 using RemoteExamination.Common.Authentication;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using RemoteExamination.API.ViewModels.PassportViewModel;
-using RemoteExamination.BLL.Models.Passport;
 
 namespace RemoteExamination.API.Controllers
 {
@@ -30,7 +28,7 @@ namespace RemoteExamination.API.Controllers
         {
             var token = await _accountService.SignIn(model.Email, model.Password);
 
-            return Ok(new {Token =  token });
+            return Ok(new {Token = token});
         }
 
         [HttpPost("SignUp")]
@@ -39,7 +37,7 @@ namespace RemoteExamination.API.Controllers
             var userModel = _mapper.Map<UserModel>(model);
             var role = model.Role ? Role.Examiner : Role.Examined;
             var result = await _accountService.SignUp(userModel, model.Password, role, model.PassportHash);
-            if(result)
+            if (result)
                 return Ok();
             return BadRequest();
         }

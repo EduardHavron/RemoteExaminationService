@@ -1,6 +1,5 @@
-﻿using RemoteExamination.BLL.Models;
-using System.Threading.Tasks;
-using RemoteExamination.BLL.Models.Passport;
+﻿using System.Threading.Tasks;
+using RemoteExamination.BLL.Models;
 
 namespace RemoteExamination.BLL.Abstractions
 {
@@ -9,6 +8,5 @@ namespace RemoteExamination.BLL.Abstractions
         Task<string> SignIn(string email, string password);
 
         Task<bool> SignUp(UserModel employee, string password, string role, string passportImage);
-        
     }
 }

@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { NgxTranslateServiceWrapperService } from './ngx-translate-service-wrapper.service';
+import {NgxTranslateServiceWrapperService} from './ngx-translate-service-wrapper.service';
 
 describe('NgxTranslateServiceWrapperService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

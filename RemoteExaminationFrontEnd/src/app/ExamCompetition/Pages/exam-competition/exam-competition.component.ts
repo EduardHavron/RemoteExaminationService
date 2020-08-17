@@ -7,7 +7,6 @@ import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-
 import {ExamCompetitionService} from '../../../Shared/Services/ExamCompetition/exam-competition.service';
 import {TranslateService} from '@ngx-translate/core';
 import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
-import {NbDialogService} from '@nebular/theme';
 
 @Component({
   selector: 'app-exam-competition',
@@ -20,6 +19,7 @@ export class ExamCompetitionComponent implements OnInit, OnDestroy {
   isSubmitted = false;
   isAccepted = false;
   @ViewChild('dialogTemplate') dialogTemplate: TemplateRef<any>;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private customToastrService: CustomToastrService,
@@ -58,17 +58,6 @@ export class ExamCompetitionComponent implements OnInit, OnDestroy {
       .answers[answerIndex].isCorrect; // shitty code?
   }
 
-  private shuffleExam(questions: Array<IQuestion<IAnswer>>) {
-    questions.forEach((question) => {
-      question.answers.forEach((answer) => {
-        answer.isCorrect = false;
-      });
-      question.answers.sort(() => Math.random() - 0.5);
-    });
-    questions.sort(() => Math.random() - 0.5);
-    return questions;
-  }
-
   ngOnDestroy(): void {
     if (this.isSubmitted === false) {
       this.examCompetitionService.sendResult(this.exam)
@@ -81,5 +70,16 @@ export class ExamCompetitionComponent implements OnInit, OnDestroy {
         });
       localStorage.removeItem(this.exam.examId.toString(10));
     }
+  }
+
+  private shuffleExam(questions: Array<IQuestion<IAnswer>>) {
+    questions.forEach((question) => {
+      question.answers.forEach((answer) => {
+        answer.isCorrect = false;
+      });
+      question.answers.sort(() => Math.random() - 0.5);
+    });
+    questions.sort(() => Math.random() - 0.5);
+    return questions;
   }
 }

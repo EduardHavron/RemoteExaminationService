@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AdminService} from '../../../Shared/Services/Admin/admin.service';
 import {CustomToastrService} from '../../../Shared/Services/CustomToastr/custom-toastr.service';
 import {ActivatedRoute} from '@angular/router';

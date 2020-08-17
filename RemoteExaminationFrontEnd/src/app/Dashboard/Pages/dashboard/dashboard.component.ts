@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, HostListener, OnInit, TemplateRef} from '@angular/core';
 import {ExamService} from '../../../Shared/Services/Exam/exam.service';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {IUser} from '../../../Shared/Models/UserAuth/IUser';
@@ -13,7 +13,6 @@ import {NbDialogRef, NbDialogService, NbWindowRef, NbWindowService} from '@nebul
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ExamCompetitionService} from '../../../Shared/Services/ExamCompetition/exam-competition.service';
-import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {WebcamWidth} from '../../../Shared/Models/Webcam/webcam-width';
 
@@ -32,12 +31,12 @@ export class DashboardComponent implements OnInit {
   webcamRef: NbWindowRef;
   webcamWidth: BehaviorSubject<number>;
   webcamHeight: BehaviorSubject<number>;
-  private changeSize = new Subject<WebcamWidth>();
   modalRef: NbDialogRef<any>;
   isCameraAllowed = false;
   documentPhoto: BehaviorSubject<WebcamImage> = new BehaviorSubject<WebcamImage>(null);
   cameraError: boolean;
   multipleWebcamsAvailable: boolean;
+  private changeSize = new Subject<WebcamWidth>();
   private trigger: Subject<void> = new Subject<void>();
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
 
@@ -51,6 +50,14 @@ export class DashboardComponent implements OnInit {
               private examCompetitionService: ExamCompetitionService,
               private router: Router) {
     this.initSubscriptions();
+  }
+
+  get triggerObservable(): Observable<any> {
+    return this.trigger.asObservable();
+  }
+
+  public get nextWebcamObservable(): Observable<boolean | string> {
+    return this.nextWebcam.asObservable();
   }
 
   ngOnInit(): void {
@@ -72,6 +79,7 @@ export class DashboardComponent implements OnInit {
       .asObservable()
       .subscribe((data) => this.calculateWebcamSize(data));
   }
+
   getExams(): void {
     this.examService.getExams()
       .subscribe(data => {
@@ -106,10 +114,6 @@ export class DashboardComponent implements OnInit {
     this.ExamList.splice(examPos, 1);
   }
 
-  get triggerObservable(): Observable<any> {
-    return this.trigger.asObservable();
-  }
-
   public handleImage(documentPhoto: WebcamImage): void {
     this.documentPhoto.next(documentPhoto);
     this.webcamRef.close();
@@ -118,10 +122,6 @@ export class DashboardComponent implements OnInit {
       3000,
       this.translateService.instant('Photo captured successfully'),
       this.translateService.instant('Success'));
-  }
-
-  public get nextWebcamObservable(): Observable<boolean | string> {
-    return this.nextWebcam.asObservable();
   }
 
   public handleInitError(error: WebcamInitError): void {
@@ -183,16 +183,16 @@ export class DashboardComponent implements OnInit {
       const imageAsBase64 = this.documentPhoto.getValue().imageAsDataUrl;
       this.examCompetitionService.recognizeData({passportImageBase64: imageAsBase64})
         .subscribe((data) => {
-            if (data.status === 200) {
-              localStorage.setItem(examId.toString(10), 'approved');
-              this.navigateToExam(examId);
-            } else {
-              this.customToastrService.showToast('top-right',
-                'danger',
-                3000,
-                this.translateService.instant('Access to exam denied'),
-                this.translateService.instant('Error'));
-            }
+          if (data.status === 200) {
+            localStorage.setItem(examId.toString(10), 'approved');
+            this.navigateToExam(examId);
+          } else {
+            this.customToastrService.showToast('top-right',
+              'danger',
+              3000,
+              this.translateService.instant('Access to exam denied'),
+              this.translateService.instant('Error'));
+          }
         });
     }
   }

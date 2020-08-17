@@ -7,25 +7,25 @@ namespace RemoteExamination.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "PassportNumber",
-                table: "AspNetUsers");
+                "PassportNumber",
+                "AspNetUsers");
 
             migrationBuilder.AddColumn<string>(
-                name: "PassportHash",
-                table: "AspNetUsers",
+                "PassportHash",
+                "AspNetUsers",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "PassportHash",
-                table: "AspNetUsers");
+                "PassportHash",
+                "AspNetUsers");
 
             migrationBuilder.AddColumn<string>(
-                name: "PassportNumber",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
+                "PassportNumber",
+                "AspNetUsers",
+                "nvarchar(max)",
                 nullable: true);
         }
     }

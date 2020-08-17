@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using RemoteExamination.BLL.Helpers;
 using RemoteExamination.BLL.Models.User;
-using System.Security.Claims;
 
 namespace RemoteExamination.API.Controllers.Abstractions
 {

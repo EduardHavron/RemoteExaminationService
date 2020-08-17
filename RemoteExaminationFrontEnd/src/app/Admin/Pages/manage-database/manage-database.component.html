@@ -9,13 +9,13 @@
           {{'Paste code' | translate}}
         </label>
         <form [formGroup]="form">
-          <textarea nbInput id="sql-editor" formControlName="query"></textarea>
+          <textarea formControlName="query" id="sql-editor" nbInput></textarea>
         </form>
         <ng-container *ngIf="affectedRows">
           <span>{{'Affected rows: ' | translate}}{{affectedRows}}</span>
         </ng-container>
       </div>
-      <div class="button-wrapper" (click)="checkQuery(dialog)">
+      <div (click)="checkQuery(dialog)" class="button-wrapper">
         <button nbButton status="danger">
           {{'Execute query' | translate}}
         </button>
@@ -34,10 +34,10 @@
         <div class="warning-wrapper">
           <div class="buttons">
             <div class="button-item">
-              <button nbButton status="success" (click)="setAccepted(true)">{{'Accept' | translate}}</button>
+              <button (click)="setAccepted(true)" nbButton status="success">{{'Accept' | translate}}</button>
             </div>
             <div class="button-item">
-              <button nbButton status="danger" (click)="setAccepted(false)">{{'Decline' | translate}}</button>
+              <button (click)="setAccepted(false)" nbButton status="danger">{{'Decline' | translate}}</button>
             </div>
           </div>
         </div>

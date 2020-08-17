@@ -30,8 +30,8 @@
 
       <div class="header-wrapper-right">
         <div class="header-item">
-          <nb-toggle status="primary" (checkedChange)="changeLanguage()"
-                     [(ngModel)]="isEn">{{currentLang.getValue()}}</nb-toggle>
+          <nb-toggle (checkedChange)="changeLanguage()" [(ngModel)]="isEn"
+                     status="primary">{{currentLang.getValue()}}</nb-toggle>
         </div>
         <div class="header-item">
           <ng-container *ngIf="isAuthenticated">
@@ -41,10 +41,10 @@
       </div>
     </div>
   </nb-layout-header>
-  <nb-sidebar state="collapsed" id="menu">
+  <nb-sidebar id="menu" state="collapsed">
     <div class="header-item">
-      <nb-toggle status="primary" (checkedChange)="changeLanguage()"
-                 [(ngModel)]="isEn">{{currentLang.getValue()}}</nb-toggle>
+      <nb-toggle (checkedChange)="changeLanguage()" [(ngModel)]="isEn"
+                 status="primary">{{currentLang.getValue()}}</nb-toggle>
     </div>
     <div class="header-item">
       <ng-container *ngIf="isAuthenticated">

@@ -8,22 +8,19 @@ namespace RemoteExamination.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AspNetRoles",
-                columns: table => new
+                "AspNetRoles",
+                table => new
                 {
                     Id = table.Column<string>(nullable: false),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AspNetRoles", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
+                "AspNetUsers",
+                table => new
                 {
                     Id = table.Column<string>(maxLength: 36, nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
@@ -41,14 +38,11 @@ namespace RemoteExamination.DAL.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AspNetUsers", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "AspNetRoleClaims",
-                columns: table => new
+                "AspNetRoleClaims",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -60,16 +54,16 @@ namespace RemoteExamination.DAL.Migrations
                 {
                     table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
+                        "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        x => x.RoleId,
+                        "AspNetRoles",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserClaims",
-                columns: table => new
+                "AspNetUserClaims",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -81,16 +75,16 @@ namespace RemoteExamination.DAL.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_AspNetUserClaims_AspNetUsers_UserId",
+                        x => x.UserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserLogins",
-                columns: table => new
+                "AspNetUserLogins",
+                table => new
                 {
                     LoginProvider = table.Column<string>(nullable: false),
                     ProviderKey = table.Column<string>(nullable: false),
@@ -99,42 +93,42 @@ namespace RemoteExamination.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new {x.LoginProvider, x.ProviderKey});
                     table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        x => x.UserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserRoles",
-                columns: table => new
+                "AspNetUserRoles",
+                table => new
                 {
                     UserId = table.Column<string>(nullable: false),
                     RoleId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new {x.UserId, x.RoleId});
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
+                        "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        x => x.RoleId,
+                        "AspNetRoles",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        x => x.UserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserTokens",
-                columns: table => new
+                "AspNetUserTokens",
+                table => new
                 {
                     UserId = table.Column<string>(nullable: false),
                     LoginProvider = table.Column<string>(nullable: false),
@@ -143,18 +137,18 @@ namespace RemoteExamination.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.PrimaryKey("PK_AspNetUserTokens", x => new {x.UserId, x.LoginProvider, x.Name});
                     table.ForeignKey(
-                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_AspNetUserTokens_AspNetUsers_UserId",
+                        x => x.UserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Exams",
-                columns: table => new
+                "Exams",
+                table => new
                 {
                     ExamId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -165,16 +159,16 @@ namespace RemoteExamination.DAL.Migrations
                 {
                     table.PrimaryKey("PK_Exams", x => x.ExamId);
                     table.ForeignKey(
-                        name: "FK_Exams_AspNetUsers_ExamCreator",
-                        column: x => x.ExamCreator,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_Exams_AspNetUsers_ExamCreator",
+                        x => x.ExamCreator,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExamResults",
-                columns: table => new
+                "ExamResults",
+                table => new
                 {
                     ExamResultId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -189,22 +183,22 @@ namespace RemoteExamination.DAL.Migrations
                 {
                     table.PrimaryKey("PK_ExamResults", x => x.ExamResultId);
                     table.ForeignKey(
-                        name: "FK_ExamResults_Exams_ExamId",
-                        column: x => x.ExamId,
-                        principalTable: "Exams",
-                        principalColumn: "ExamId",
+                        "FK_ExamResults_Exams_ExamId",
+                        x => x.ExamId,
+                        "Exams",
+                        "ExamId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ExamResults_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_ExamResults_AspNetUsers_UserId",
+                        x => x.UserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Invitations",
-                columns: table => new
+                "Invitations",
+                table => new
                 {
                     InvitationId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -215,16 +209,16 @@ namespace RemoteExamination.DAL.Migrations
                 {
                     table.PrimaryKey("PK_Invitations", x => x.InvitationId);
                     table.ForeignKey(
-                        name: "FK_Invitations_Exams_ExamId",
-                        column: x => x.ExamId,
-                        principalTable: "Exams",
-                        principalColumn: "ExamId",
+                        "FK_Invitations_Exams_ExamId",
+                        x => x.ExamId,
+                        "Exams",
+                        "ExamId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Questions",
-                columns: table => new
+                "Questions",
+                table => new
                 {
                     QuestionId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -235,16 +229,16 @@ namespace RemoteExamination.DAL.Migrations
                 {
                     table.PrimaryKey("PK_Questions", x => x.QuestionId);
                     table.ForeignKey(
-                        name: "FK_Questions_Exams_ExamId",
-                        column: x => x.ExamId,
-                        principalTable: "Exams",
-                        principalColumn: "ExamId",
+                        "FK_Questions_Exams_ExamId",
+                        x => x.ExamId,
+                        "Exams",
+                        "ExamId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExamResultQuestions",
-                columns: table => new
+                "ExamResultQuestions",
+                table => new
                 {
                     ExamResultQuestionId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -255,16 +249,16 @@ namespace RemoteExamination.DAL.Migrations
                 {
                     table.PrimaryKey("PK_ExamResultQuestions", x => x.ExamResultQuestionId);
                     table.ForeignKey(
-                        name: "FK_ExamResultQuestions_ExamResults_ExamResultId",
-                        column: x => x.ExamResultId,
-                        principalTable: "ExamResults",
-                        principalColumn: "ExamResultId",
+                        "FK_ExamResultQuestions_ExamResults_ExamResultId",
+                        x => x.ExamResultId,
+                        "ExamResults",
+                        "ExamResultId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserInvitations",
-                columns: table => new
+                "UserInvitations",
+                table => new
                 {
                     UserInvitationId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -275,22 +269,22 @@ namespace RemoteExamination.DAL.Migrations
                 {
                     table.PrimaryKey("PK_UserInvitations", x => x.UserInvitationId);
                     table.ForeignKey(
-                        name: "FK_UserInvitations_Invitations_InvitationId",
-                        column: x => x.InvitationId,
-                        principalTable: "Invitations",
-                        principalColumn: "InvitationId",
+                        "FK_UserInvitations_Invitations_InvitationId",
+                        x => x.InvitationId,
+                        "Invitations",
+                        "InvitationId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserInvitations_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_UserInvitations_AspNetUsers_UserId",
+                        x => x.UserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Answers",
-                columns: table => new
+                "Answers",
+                table => new
                 {
                     AnswerId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -302,16 +296,16 @@ namespace RemoteExamination.DAL.Migrations
                 {
                     table.PrimaryKey("PK_Answers", x => x.AnswerId);
                     table.ForeignKey(
-                        name: "FK_Answers_Questions_QuestionId",
-                        column: x => x.QuestionId,
-                        principalTable: "Questions",
-                        principalColumn: "QuestionId",
+                        "FK_Answers_Questions_QuestionId",
+                        x => x.QuestionId,
+                        "Questions",
+                        "QuestionId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExamResultAnswers",
-                columns: table => new
+                "ExamResultAnswers",
+                table => new
                 {
                     ExamResultAnswerId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -324,149 +318,149 @@ namespace RemoteExamination.DAL.Migrations
                 {
                     table.PrimaryKey("PK_ExamResultAnswers", x => x.ExamResultAnswerId);
                     table.ForeignKey(
-                        name: "FK_ExamResultAnswers_ExamResultQuestions_ExamResultQuestionId",
-                        column: x => x.ExamResultQuestionId,
-                        principalTable: "ExamResultQuestions",
-                        principalColumn: "ExamResultQuestionId",
+                        "FK_ExamResultAnswers_ExamResultQuestions_ExamResultQuestionId",
+                        x => x.ExamResultQuestionId,
+                        "ExamResultQuestions",
+                        "ExamResultQuestionId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Answers_QuestionId",
-                table: "Answers",
-                column: "QuestionId");
+                "IX_Answers_QuestionId",
+                "Answers",
+                "QuestionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetRoleClaims_RoleId",
-                table: "AspNetRoleClaims",
-                column: "RoleId");
+                "IX_AspNetRoleClaims_RoleId",
+                "AspNetRoleClaims",
+                "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "RoleNameIndex",
-                table: "AspNetRoles",
-                column: "NormalizedName",
+                "RoleNameIndex",
+                "AspNetRoles",
+                "NormalizedName",
                 unique: true,
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserClaims_UserId",
-                table: "AspNetUserClaims",
-                column: "UserId");
+                "IX_AspNetUserClaims_UserId",
+                "AspNetUserClaims",
+                "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserLogins_UserId",
-                table: "AspNetUserLogins",
-                column: "UserId");
+                "IX_AspNetUserLogins_UserId",
+                "AspNetUserLogins",
+                "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_RoleId",
-                table: "AspNetUserRoles",
-                column: "RoleId");
+                "IX_AspNetUserRoles_RoleId",
+                "AspNetUserRoles",
+                "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "EmailIndex",
-                table: "AspNetUsers",
-                column: "NormalizedEmail");
+                "EmailIndex",
+                "AspNetUsers",
+                "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers",
-                column: "NormalizedUserName",
+                "UserNameIndex",
+                "AspNetUsers",
+                "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExamResultAnswers_ExamResultQuestionId",
-                table: "ExamResultAnswers",
-                column: "ExamResultQuestionId");
+                "IX_ExamResultAnswers_ExamResultQuestionId",
+                "ExamResultAnswers",
+                "ExamResultQuestionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExamResultQuestions_ExamResultId",
-                table: "ExamResultQuestions",
-                column: "ExamResultId");
+                "IX_ExamResultQuestions_ExamResultId",
+                "ExamResultQuestions",
+                "ExamResultId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExamResults_ExamId",
-                table: "ExamResults",
-                column: "ExamId");
+                "IX_ExamResults_ExamId",
+                "ExamResults",
+                "ExamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExamResults_UserId",
-                table: "ExamResults",
-                column: "UserId");
+                "IX_ExamResults_UserId",
+                "ExamResults",
+                "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Exams_ExamCreator",
-                table: "Exams",
-                column: "ExamCreator");
+                "IX_Exams_ExamCreator",
+                "Exams",
+                "ExamCreator");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Invitations_ExamId",
-                table: "Invitations",
-                column: "ExamId");
+                "IX_Invitations_ExamId",
+                "Invitations",
+                "ExamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Questions_ExamId",
-                table: "Questions",
-                column: "ExamId");
+                "IX_Questions_ExamId",
+                "Questions",
+                "ExamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserInvitations_InvitationId",
-                table: "UserInvitations",
-                column: "InvitationId");
+                "IX_UserInvitations_InvitationId",
+                "UserInvitations",
+                "InvitationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserInvitations_UserId",
-                table: "UserInvitations",
-                column: "UserId");
+                "IX_UserInvitations_UserId",
+                "UserInvitations",
+                "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Answers");
+                "Answers");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
+                "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserClaims");
+                "AspNetUserClaims");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserLogins");
+                "AspNetUserLogins");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserRoles");
+                "AspNetUserRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
+                "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ExamResultAnswers");
+                "ExamResultAnswers");
 
             migrationBuilder.DropTable(
-                name: "UserInvitations");
+                "UserInvitations");
 
             migrationBuilder.DropTable(
-                name: "Questions");
+                "Questions");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "ExamResultQuestions");
+                "ExamResultQuestions");
 
             migrationBuilder.DropTable(
-                name: "Invitations");
+                "Invitations");
 
             migrationBuilder.DropTable(
-                name: "ExamResults");
+                "ExamResults");
 
             migrationBuilder.DropTable(
-                name: "Exams");
+                "Exams");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                "AspNetUsers");
         }
     }
 }

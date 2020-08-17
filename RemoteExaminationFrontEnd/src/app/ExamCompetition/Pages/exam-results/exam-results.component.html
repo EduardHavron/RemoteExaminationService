@@ -3,7 +3,7 @@
     <nb-card *ngFor="let result of examResults; let i = index">
       <nb-card-header>
         <div class="exam-result-header-wrapper">
-          <div class="exam-name-wrapper"  routerLink="/exams/exam/{{result.examId}}">
+          <div class="exam-name-wrapper" routerLink="/exams/exam/{{result.examId}}">
             <span>{{'Exam name' | translate}}</span>
             <span>{{result.examName}}</span>
           </div>
@@ -24,7 +24,8 @@
             <span>{{result.examResultInPercent}}</span>
           </div>
           <div class="exam-result-body-item">
-            <button nbButton status="success" routerLink="/competition/{{result.examId}}/results/{{result.examResultId}}">
+            <button nbButton routerLink="/competition/{{result.examId}}/results/{{result.examResultId}}"
+                    status="success">
               <span>{{'Details' | translate}}</span>
             </button>
           </div>

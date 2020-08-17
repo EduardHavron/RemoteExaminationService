@@ -43,10 +43,10 @@
                 <span>{{answer.value}}</span>
                 <div class="answer-checks-wrapper">
                   <ng-container *ngIf="answer.isCorrect">
-                    <fa-icon class="fa-icon-color-success" [icon]="faCheck"></fa-icon>
+                    <fa-icon [icon]="faCheck" class="fa-icon-color-success"></fa-icon>
                   </ng-container>
                   <ng-container *ngIf="answer.isTouched">
-                    <fa-icon class="fa-icon-color-primary" [icon]="faCheck"></fa-icon>
+                    <fa-icon [icon]="faCheck" class="fa-icon-color-primary"></fa-icon>
                   </ng-container>
                 </div>
               </div>

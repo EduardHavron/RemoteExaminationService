@@ -1,13 +1,14 @@
 <div class="manage-users-wrapper">
-  <nb-card *ngFor="let user of users; let i = index" size="tiny"  [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
+  <nb-card *ngFor="let user of users; let i = index" [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger"
+           size="tiny">
     <nb-card-header>
-        <div class="card-header-wrapper">
+      <div class="card-header-wrapper">
         <div>
           {{'User: ' | translate}}
           {{user.email}}
         </div>
         <div>
-          <fa-icon [icon]="faTrash" class="fa-icon-color-danger" (click)="deleteUser(i)"></fa-icon>
+          <fa-icon (click)="deleteUser(i)" [icon]="faTrash" class="fa-icon-color-danger"></fa-icon>
         </div>
       </div>
     </nb-card-header>
@@ -17,7 +18,7 @@
           <span>{{'Role: ' | translate}} </span>
           <span>{{user.role}}</span>
         </div>
-        <button nbButton status="primary" routerLink="/admin/user/{{user.userId}}">{{'Edit' | translate}}</button>
+        <button nbButton routerLink="/admin/user/{{user.userId}}" status="primary">{{'Edit' | translate}}</button>
       </div>
     </nb-card-body>
   </nb-card>

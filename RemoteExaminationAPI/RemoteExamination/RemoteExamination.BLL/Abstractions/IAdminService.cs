@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using RemoteExamination.BLL.Models;
 using RemoteExamination.BLL.Models.Admin;
 
 namespace RemoteExamination.BLL.Abstractions

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
 @Injectable({
@@ -6,7 +6,9 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class NgxTranslateServiceWrapperService {
 
-  constructor(private translateService: TranslateService) { }
+  constructor(private translateService: TranslateService) {
+  }
+
   getLocalization() {
     return localStorage.getItem('localization');
   }

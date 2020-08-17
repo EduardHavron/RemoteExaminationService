@@ -4,13 +4,13 @@ namespace RemoteExamination.API.ViewModels.ExamViewModels
 {
     public class ExaminedQuestionViewModel
     {
-        public int QuestionId { get; set; }
-        public string QuestionMessage { get; set; }
-        public List<ExaminedAnswerViewModel> Answers { get; set; }
-
         public ExaminedQuestionViewModel()
         {
             Answers = new List<ExaminedAnswerViewModel>();
         }
+
+        public int QuestionId { get; set; }
+        public string QuestionMessage { get; set; }
+        public List<ExaminedAnswerViewModel> Answers { get; set; }
     }
 }

@@ -46,19 +46,20 @@
             <div class="form-item-wrapper">
               <span>{{'Photo description' | translate}}</span>
             </div>
-            <div class="form-item-wrapper" *ngIf="!cameraError && !documentPhoto">
-              <button nbButton status="primary" (click)="allowCamera(webcamTemplate)">
+            <div *ngIf="!cameraError && !documentPhoto" class="form-item-wrapper">
+              <button (click)="allowCamera(webcamTemplate)" nbButton status="primary">
                 {{'Open camera' | translate}}
               </button>
             </div>
-            <div class="form-item-wrapper" *ngIf="!cameraError && documentPhoto">
-                <button nbButton status="primary" (click)="retakePhoto(webcamTemplate)">{{'Retake photo' | translate}}</button>
+            <div *ngIf="!cameraError && documentPhoto" class="form-item-wrapper">
+              <button (click)="retakePhoto(webcamTemplate)" nbButton
+                      status="primary">{{'Retake photo' | translate}}</button>
             </div>
-            <div class="form-item-wrapper" *ngIf="cameraError">
+            <div *ngIf="cameraError" class="form-item-wrapper">
               {{'cameraError' | translate}}
             </div>
             <div class="form-item-wrapper">
-              <div class="button-div" (click)="validatePhoto()">
+              <div (click)="validatePhoto()" class="button-div">
                 <button nbButton nbStepperNext>{{'Register' | translate}}</button>
               </div>
             </div>
@@ -70,7 +71,7 @@
 </div>
 
 <ng-template #webcamTemplate>
-  <div class="form-camera-info" [nbSpinner]="this.cameraError" nbSpinnerSize="large" nbSpinnerStatus="danger">
+  <div [nbSpinner]="this.cameraError" class="form-camera-info" nbSpinnerSize="large" nbSpinnerStatus="danger">
     <div class="form-camera-item">
       {{'Photo manual' | translate}}
     </div>
@@ -78,23 +79,24 @@
       <ng-container *ngIf="isCameraAllowed && !documentPhoto">
         <div class="webcam-wrapper">
           <div class="webcam-position">
-            <webcam [trigger]="triggerObservable"
-                    (imageCapture)="handleImage($event)"
-                    [allowCameraSwitch]="true"
-                    [switchCamera]="nextWebcamObservable"
-                    [imageQuality]="1"
+            <webcam (imageCapture)="handleImage($event)"
                     (initError)="handleInitError($event)"
-                    [height]="this.webcamHeight.getValue()" [width]="this.webcamWidth.getValue()">
+                    [allowCameraSwitch]="true"
+                    [height]="this.webcamHeight.getValue()"
+                    [imageQuality]="1"
+                    [switchCamera]="nextWebcamObservable"
+                    [trigger]="triggerObservable" [width]="this.webcamWidth.getValue()">
             </webcam>
           </div>
         </div>
       </ng-container>
       <ng-container *ngIf="isCameraAllowed">
         <div class="form-camera-controls">
-          <div class="form-camera-control" (click)="triggerSnapshot()">
+          <div (click)="triggerSnapshot()" class="form-camera-control">
             <button nbButton status="primary">{{'Make photo' | translate}}</button>
           </div>
-          <div class="form-camera-control" (click)="showNextWebcam(true)" *ngIf="multipleWebcamsAvailable"> <!--Move to NEXT camera where true = direction-->
+          <div (click)="showNextWebcam(true)" *ngIf="multipleWebcamsAvailable" class="form-camera-control">
+            <!--Move to NEXT camera where true = direction-->
             <button nbButton status="primary">{{'Next camera' | translate}}</button>
           </div>
         </div>

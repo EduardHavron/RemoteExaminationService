@@ -3,7 +3,7 @@
     public class UserData
     {
         public string UserId { get; set; }
-        
+
         public string UserRoles { get; set; }
     }
 }

@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   isEn: boolean;
   menuState = false;
   items;
+
   constructor(
     private router: Router,
     private authenticationService: AuthorizationService,
@@ -34,8 +35,6 @@ export class AppComponent implements OnInit {
     this.translateServiceManager.useCurrentLocalization();
     this.currentLang = new BehaviorSubject<string>((this.translateServiceManager.getLocalization()));
     this.isEn = this.translateServiceManager.getLocalization() === 'en';
-  }
-  ngOnInit() {
   }
 
   get isAuthenticated(): boolean {
@@ -54,6 +53,8 @@ export class AppComponent implements OnInit {
     return this.authenticationService.isExamined;
   }
 
+  ngOnInit() {
+  }
 
   changeLanguage() {
     if (!this.isEn) {
@@ -61,16 +62,6 @@ export class AppComponent implements OnInit {
     } else {
       this.localeUA();
     }
-  }
-
-  private localeUA() {
-    this.translateServiceManager.localeUA();
-    this.currentLang.next('ua');
-  }
-
-  private localeEN() {
-    this.translateServiceManager.localeEN();
-    this.currentLang.next('en');
   }
 
   logout() {
@@ -100,5 +91,15 @@ export class AppComponent implements OnInit {
       menu.addClass('compacted');
       this.menuState = true;
     }
+  }
+
+  private localeUA() {
+    this.translateServiceManager.localeUA();
+    this.currentLang.next('ua');
+  }
+
+  private localeEN() {
+    this.translateServiceManager.localeEN();
+    this.currentLang.next('en');
   }
 }

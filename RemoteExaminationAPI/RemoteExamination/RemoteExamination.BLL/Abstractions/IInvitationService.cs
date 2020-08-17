@@ -1,7 +1,7 @@
-﻿using RemoteExamination.BLL.Models.Invitation;
-using RemoteExamination.BLL.Models.User;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using RemoteExamination.BLL.Models.Invitation;
+using RemoteExamination.BLL.Models.User;
 
 namespace RemoteExamination.BLL.Abstractions
 {

@@ -1,16 +1,5 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using RemoteExamination.BLL.Abstractions;
-using RemoteExamination.BLL.Models;
-using RemoteExamination.Common.Authentication;
-using RemoteExamination.Common.Exceptions;
-using RemoteExamination.DAL.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -18,24 +7,31 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using RemoteExamination.BLL.Abstractions;
+using RemoteExamination.BLL.Models;
 using RemoteExamination.BLL.Models.IoT;
-using RemoteExamination.BLL.Models.Passport;
-using JsonSerializer = System.Text.Json.JsonSerializer;
+using RemoteExamination.Common.Authentication;
+using RemoteExamination.Common.Exceptions;
+using RemoteExamination.DAL.Entities;
 
 namespace RemoteExamination.BLL.Services
 {
     public class AccountService : IAccountService
     {
-        private readonly UserManager<User> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly JwtSettings _jwtSettings;
         private readonly IMapper _mapper;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<User> _userManager;
+
         public AccountService(UserManager<User> userManager,
-                              RoleManager<IdentityRole> roleManager,
-                              IOptions<JwtSettings> jwtOptions,
-                              IMapper mapper)
+            RoleManager<IdentityRole> roleManager,
+            IOptions<JwtSettings> jwtOptions,
+            IMapper mapper)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -48,9 +44,7 @@ namespace RemoteExamination.BLL.Services
             var user = await _userManager.FindByEmailAsync(email);
 
             if (user is null || !await _userManager.CheckPasswordAsync(user, password))
-            {
                 throw new BusinessLogicException("Email or password is incorrect.");
-            }
 
             var token = await GenerateToken(user);
 
@@ -63,15 +57,15 @@ namespace RemoteExamination.BLL.Services
             user.Id = Guid.NewGuid().ToString();
             user.UserName = user.Email;
             user.PassportHash = await ExtractPassportData(passportImage);
-            if (user.PassportHash is null)
-            {
-                return false;
-            }
+            if (user.PassportHash is null) return false;
 
             using (HashAlgorithm algorithm = SHA256.Create())
+            {
                 user.PassportHash = algorithm
                     .ComputeHash(Encoding.UTF8.GetBytes(user.PassportHash))
                     .ToString();
+            }
+
             var result = await _userManager.CreateAsync(user, password);
 
             if (!result.Succeeded)
@@ -94,9 +88,9 @@ namespace RemoteExamination.BLL.Services
             var credentials = new SigningCredentials(signKey, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer: _jwtSettings.Issuer,
-                audience: _jwtSettings.Audience,
-                claims: claims,
+                _jwtSettings.Issuer,
+                _jwtSettings.Audience,
+                claims,
                 expires: expires,
                 signingCredentials: credentials);
 
@@ -107,19 +101,13 @@ namespace RemoteExamination.BLL.Services
 
         private async Task CheckRoleExists(string role)
         {
-            if (!await _roleManager.RoleExistsAsync(role))
-            {
-                await _roleManager.CreateAsync(new IdentityRole(role));
-            }
+            if (!await _roleManager.RoleExistsAsync(role)) await _roleManager.CreateAsync(new IdentityRole(role));
         }
 
         public async Task<bool> CheckUserInRole(string userId, string role)
         {
             var user = await _userManager.FindByIdAsync(userId);
-            if (await _userManager.IsInRoleAsync(user, Role.Admin))
-            {
-                return true;
-            }
+            if (await _userManager.IsInRoleAsync(user, Role.Admin)) return true;
             return await _userManager.IsInRoleAsync(user, role);
         }
 
@@ -133,7 +121,8 @@ namespace RemoteExamination.BLL.Services
             var responseMessage = await httpClient.PostAsync("https://resiot.azurewebsites.net/api/parse", data);
             if (responseMessage.StatusCode != HttpStatusCode.OK || responseMessage.Content.ToString() == null)
                 return null;
-            var jsonResponse = JsonConvert.DeserializeObject<IotResult>(await responseMessage.Content.ReadAsStringAsync());
+            var jsonResponse =
+                JsonConvert.DeserializeObject<IotResult>(await responseMessage.Content.ReadAsStringAsync());
             return jsonResponse?.Data.Result.DocumentNumber;
         }
     }

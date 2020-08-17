@@ -1,12 +1,12 @@
 <div class="manage-user-wrapper">
-  <nb-card  [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
+  <nb-card [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
     <nb-card-header>
       <div class="card-header-wrapper">
         <div>
           {{'Edit user' | translate}}
         </div>
         <div>
-          <fa-icon [icon]="faTrash" class="fa-icon-color-danger" (click)="deleteUser()"></fa-icon>
+          <fa-icon (click)="deleteUser()" [icon]="faTrash" class="fa-icon-color-danger"></fa-icon>
         </div>
       </div>
     </nb-card-header>
@@ -15,20 +15,20 @@
         <div class="form-wrapper">
           <div class="form-item">
             <label for="email">{{'User\'s email' | translate}}</label>
-            <input nbInput status="danger" formControlName="email" id="email">
+            <input formControlName="email" id="email" nbInput status="danger">
           </div>
           <div class="form-item">
             <label for="role">{{'User\'s role' | translate}}</label>
-            <nb-select status="danger" formControlName="role" id="role">
+            <nb-select formControlName="role" id="role" status="danger">
               <nb-option *ngFor="let role of options" [value]="role">{{role}}</nb-option>
             </nb-select>
           </div>
           <div class="form-item">
             <label for="password">{{'Users\'s password' | translate}}</label>
-            <input nbInput status="primary" formControlName="password" id="password">
+            <input formControlName="password" id="password" nbInput status="primary">
           </div>
           <div class="form-item">
-            <button nbButton status="danger" (click)="updateUser()">{{'Update user' | translate}}</button>
+            <button (click)="updateUser()" nbButton status="danger">{{'Update user' | translate}}</button>
           </div>
         </div>
       </form>

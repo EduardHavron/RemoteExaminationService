@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -16,11 +15,12 @@ namespace RemoteExamination.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdminController: ControllerBase
+    public class AdminController : ControllerBase
     {
         private readonly IAdminService _adminService;
-        private readonly IMapper _mapper;
         private readonly IWebHostEnvironment _environment;
+        private readonly IMapper _mapper;
+
         public AdminController(IAdminService adminService, IMapper mapper, IWebHostEnvironment environment)
         {
             _adminService = adminService;
@@ -45,7 +45,7 @@ namespace RemoteExamination.API.Controllers
             await _adminService.RemoveUser(id);
             return Ok();
         }
-        
+
         [Authorize(Roles = Role.Admin)]
         [HttpGet("GetUsers")]
         public async Task<IActionResult> GetUsers()
@@ -54,7 +54,7 @@ namespace RemoteExamination.API.Controllers
             var result = users.Select(user => _mapper.Map<AdminUserViewModel>(user)).ToList();
             return Ok(result);
         }
-        
+
         [Authorize(Roles = Role.Admin)]
         [HttpGet("GetUser/{id}")]
         public async Task<IActionResult> GetUser([FromRoute] string id)
@@ -63,13 +63,14 @@ namespace RemoteExamination.API.Controllers
                 (await _adminService.GetUser(id));
             return Ok(user);
         }
-        
+
         [Authorize(Roles = Role.Admin)]
         [HttpGet("GetBackup")] //Note that this method will not work with azure database, should use azure services for that
         public async Task<IActionResult> GetBackup()
         {
             var filePath = await _adminService.CreateBackup(_environment.WebRootPath);
-            return PhysicalFile(filePath, "application/octet-stream", $"BackupFile{DateTime.UtcNow.ToShortDateString()}.bak");
+            return PhysicalFile(filePath, "application/octet-stream",
+                $"BackupFile{DateTime.UtcNow.ToShortDateString()}.bak");
         }
 
         [Authorize(Roles = Role.Admin)]
@@ -79,6 +80,5 @@ namespace RemoteExamination.API.Controllers
             var affectedRows = await _adminService.ExecuteQuery(queryViewModel.Query);
             return Ok(affectedRows);
         }
-        
     }
 }

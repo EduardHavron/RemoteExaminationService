@@ -9,7 +9,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TranslateModule} from '@ngx-translate/core';
-import { GetBackupComponent } from './Pages/get-backup/get-backup.component';
+import {GetBackupComponent} from './Pages/get-backup/get-backup.component';
 
 
 @NgModule({

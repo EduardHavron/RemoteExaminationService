@@ -50,14 +50,14 @@ export class ManageDatabaseComponent implements OnInit {
     }
   }
 
-  private openDialog(dialog: TemplateRef<any>) {
-    this.modalRef = this.dialogService.open(dialog,
-      {closeOnBackdropClick: false, hasBackdrop: true, closeOnEsc: false});
-  }
-
   public setAccepted(value: boolean) {
     this.isAccepted.next(value);
     this.modalRef.close();
+  }
+
+  private openDialog(dialog: TemplateRef<any>) {
+    this.modalRef = this.dialogService.open(dialog,
+      {closeOnBackdropClick: false, hasBackdrop: true, closeOnEsc: false});
   }
 
   private executeQuery() {

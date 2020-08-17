@@ -33,7 +33,7 @@ namespace RemoteExamination.BLL.Services
 
         public async Task CheckExamResult(ExaminerExamModel model, string currentUser)
         {
-            double finalResult= 0;
+            double finalResult = 0;
             var checkedExam = _mapper.Map<ExaminerExamModel>(_dbContext
                 .Exams
                 .Include("Questions.Answers")
@@ -45,7 +45,7 @@ namespace RemoteExamination.BLL.Services
                 ExamName = checkedExam.Name,
                 UserId = currentUser,
                 UserEmail = _dbContext.Users
-                    .FirstOrDefaultAsync(x => 
+                    .FirstOrDefaultAsync(x =>
                         x.Id == currentUser).Result.Email
             };
             foreach (var question in model.Questions)
@@ -53,10 +53,7 @@ namespace RemoteExamination.BLL.Services
                 var checkedQuestion =
                     checkedExam.Questions.FirstOrDefault(questionModel =>
                         questionModel.QuestionId == question.QuestionId);
-                if (checkedQuestion is null)
-                {
-                    throw new Exception("Checked question not found");
-                }
+                if (checkedQuestion is null) throw new Exception("Checked question not found");
                 var examResultQuestion = new ExamResultQuestionModel
                 {
                     Question = checkedQuestion.QuestionMessage
@@ -67,12 +64,9 @@ namespace RemoteExamination.BLL.Services
                 {
                     var checkedAnswer =
                         checkedQuestion.Answers
-                            .FirstOrDefault(answerModel => 
+                            .FirstOrDefault(answerModel =>
                                 answerModel.AnswerId == answer.AnswerId);
-                    if (checkedAnswer is null)
-                    {
-                        throw new Exception("Checked answer not found");
-                    }
+                    if (checkedAnswer is null) throw new Exception("Checked answer not found");
                     var examResultAnswerModel = new ExamResultAnswerModel
                     {
                         IsCorrect = checkedAnswer.IsCorrect,
@@ -90,10 +84,8 @@ namespace RemoteExamination.BLL.Services
                         isFrozen = true;
                     }
                 }
-                if (correctlyAnswered && !isFrozen)
-                {
-                    finalResult++;
-                }
+
+                if (correctlyAnswered && !isFrozen) finalResult++;
                 examResultModel.ExamResultQuestions.Add(examResultQuestion);
             }
 
@@ -108,7 +100,7 @@ namespace RemoteExamination.BLL.Services
         public async Task<IList<ExamResult>> GetAllExamResults(int examId)
         {
             var result = await _dbContext.ExamResults
-                .Where(x 
+                .Where(x
                     => x.ExamId == examId).ToListAsync();
 
             return result;
@@ -116,31 +108,31 @@ namespace RemoteExamination.BLL.Services
 
         public async Task<ExamResult> GetExamResult(int examResultId)
         {
-            var result = await _dbContext.ExamResults.Include(examResult 
-                => examResult.ExamResultQuestions).ThenInclude(question 
-                => question.ExamResultAnswers)
-                .FirstOrDefaultAsync(x 
+            var result = await _dbContext.ExamResults.Include(examResult
+                    => examResult.ExamResultQuestions).ThenInclude(question
+                    => question.ExamResultAnswers)
+                .FirstOrDefaultAsync(x
                     => x.ExamResultId == examResultId);
 
             return result;
         }
-        
-        
+
+
         public async Task<bool> RecognizePassportData(PassportRecognizeModel model)
         {
             var modelData = await ExtractPassportData(model.PassportImageBase64);
-            if (modelData is null)
-            {
-                return false;
-            }
+            if (modelData is null) return false;
             using (HashAlgorithm algorithm = SHA256.Create())
+            {
                 modelData = algorithm
                     .ComputeHash(Encoding.UTF8.GetBytes(modelData))
                     .ToString();
+            }
+
             var storedData = _dbContext.Users.FirstOrDefaultAsync(x => x.Id == model.UserId).Result.PassportHash;
             return storedData == modelData;
         }
-        
+
         private async Task<string> ExtractPassportData(string passportImage)
         {
             var json = JsonConvert.SerializeObject(new {base64file = passportImage});
@@ -151,9 +143,9 @@ namespace RemoteExamination.BLL.Services
             var responseMessage = await httpClient.PostAsync("https://resiot.azurewebsites.net/api/parse", data);
             if (responseMessage.StatusCode != HttpStatusCode.OK || responseMessage.Content.ToString() == null)
                 return null;
-            var jsonResponse = JsonConvert.DeserializeObject<IotResult>(await responseMessage.Content.ReadAsStringAsync());
+            var jsonResponse =
+                JsonConvert.DeserializeObject<IotResult>(await responseMessage.Content.ReadAsStringAsync());
             return jsonResponse.Data.Result != null ? jsonResponse.Data.Result.DocumentNumber : null;
         }
-        
     }
 }

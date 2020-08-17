@@ -5,6 +5,7 @@ import {IUserExtended} from '../../Models/Admin/admin-user-extended';
 import {Observable} from 'rxjs';
 import {IQuery} from '../../Models/Query/query';
 import {saveAs} from 'file-saver';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +36,7 @@ export class AdminService {
   }
 
   getBackupFile() {
-    this.http.get(this.url + 'GetBackup', { responseType: 'blob', reportProgress: true })
+    this.http.get(this.url + 'GetBackup', {responseType: 'blob', reportProgress: true})
       .subscribe(file => {
           saveAs(file, `Database_backup_${new Date().toString()}.bak`);
         },
