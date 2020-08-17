@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {IExamResult} from '../../Models/ExamResults/exam-result';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import {IExam} from '../../Models/ExamView/Exam/IExam';
 import {IQuestion} from '../../Models/ExamView/Question/IQuestion';
 import {IAnswer} from '../../Models/ExamView/Answer/IAnswer';
+import {IPassportImage} from '../../Models/Passport/passport-image';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ export class ExamCompetitionService {
 
   getExamResult(examResultId: number): Observable<IExamResult> {
     return this.http.get<IExamResult>(this.url + 'GetExamResult/' + examResultId, {reportProgress: true});
+  }
+
+  recognizeData(passportImage: IPassportImage): Observable<HttpResponse<any>> {
+    return this.http.post(this.url + 'RecognizeData', passportImage, {reportProgress: true, observe: 'response'});
   }
 }

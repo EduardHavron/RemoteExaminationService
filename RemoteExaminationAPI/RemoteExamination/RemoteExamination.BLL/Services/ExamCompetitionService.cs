@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using RemoteExamination.BLL.Abstractions;
 using RemoteExamination.BLL.Models;
 using RemoteExamination.BLL.Models.ExamCompetition;
+using RemoteExamination.BLL.Models.IoT;
+using RemoteExamination.BLL.Models.Passport;
 using RemoteExamination.DAL.Context;
 using RemoteExamination.DAL.Entities;
 
@@ -117,5 +124,36 @@ namespace RemoteExamination.BLL.Services
 
             return result;
         }
+        
+        
+        public async Task<bool> RecognizePassportData(PassportRecognizeModel model)
+        {
+            var modelData = await ExtractPassportData(model.PassportImageBase64);
+            if (modelData is null)
+            {
+                return false;
+            }
+            using (HashAlgorithm algorithm = SHA256.Create())
+                modelData = algorithm
+                    .ComputeHash(Encoding.UTF8.GetBytes(modelData))
+                    .ToString();
+            var storedData = _dbContext.Users.FirstOrDefaultAsync(x => x.Id == model.UserId).Result.PassportHash;
+            return storedData == modelData;
+        }
+        
+        private async Task<string> ExtractPassportData(string passportImage)
+        {
+            var json = JsonConvert.SerializeObject(new {base64file = passportImage});
+            var data = new StringContent(json,
+                Encoding.UTF8,
+                "application/json");
+            using var httpClient = new HttpClient();
+            var responseMessage = await httpClient.PostAsync("https://resiot.azurewebsites.net/api/parse", data);
+            if (responseMessage.StatusCode != HttpStatusCode.OK || responseMessage.Content.ToString() == null)
+                return null;
+            var jsonResponse = JsonConvert.DeserializeObject<IotResult>(await responseMessage.Content.ReadAsStringAsync());
+            return jsonResponse.Data.Result != null ? jsonResponse.Data.Result.DocumentNumber : null;
+        }
+        
     }
 }

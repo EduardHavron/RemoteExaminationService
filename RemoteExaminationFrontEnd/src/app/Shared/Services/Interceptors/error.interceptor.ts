@@ -36,6 +36,13 @@ export class ErrorInterceptor implements HttpInterceptor {
           this.translateService.instant('Incorrect request, please review submitted data'),
           this.translateService.instant('Error'));
       }
+      if (err.status === 403) {
+        this.customToastrService.showToast('top-right',
+          'danger',
+          3000,
+          this.translateService.instant('You are not allowed to access this exam'),
+          this.translateService.instant('Error'));
+      }
       if (err.status === 500 || err.status === 502 || err.status === 503 || err.status === 504) {
         this.customToastrService.showToast('top-right',
           'danger',

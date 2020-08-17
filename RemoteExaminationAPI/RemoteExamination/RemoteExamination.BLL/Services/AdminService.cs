@@ -120,6 +120,8 @@ namespace RemoteExamination.BLL.Services
                 throw new Exception("User not found, ensure userId is correct");
             }
 
+            var users =  _dbContext.UserInvitations.Where(invitation => invitation.UserId == contextUser.Id);
+            _dbContext.UserInvitations.RemoveRange(users);
             _dbContext.Users.Remove(contextUser);
             await _dbContext.SaveChangesAsync();
         }

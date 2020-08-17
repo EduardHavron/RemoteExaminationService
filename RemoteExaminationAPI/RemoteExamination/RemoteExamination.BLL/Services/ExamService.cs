@@ -152,6 +152,8 @@ namespace RemoteExamination.BLL.Services
                 throw new NotFoundException("Exam", id);
             }
 
+            var invitations = _dbContext.Invitations.Where(invitation => invitation.ExamId == exam.ExamId);
+            _dbContext.Invitations.RemoveRange(invitations);
             _dbContext.Exams.Remove(exam);
 
             await _dbContext.SaveChangesAsync();

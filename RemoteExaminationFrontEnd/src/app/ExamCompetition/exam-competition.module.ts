@@ -19,7 +19,7 @@ import {NbAccordionModule, NbListModule, NbSpinnerModule, NbStepperModule} from 
     SharedModule.forRoot(),
     NbListModule,
     NbAccordionModule,
-    NbSpinnerModule
+    NbSpinnerModule,
   ]
 })
 export class ExamCompetitionModule {

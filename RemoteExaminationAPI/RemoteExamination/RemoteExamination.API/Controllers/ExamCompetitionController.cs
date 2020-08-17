@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using RemoteExamination.API.Controllers.Abstractions;
 using RemoteExamination.API.ViewModels.ExamCompetitionViewModels;
 using RemoteExamination.API.ViewModels.ExamViewModels;
+using RemoteExamination.API.ViewModels.PassportViewModel;
 using RemoteExamination.BLL.Abstractions;
 using RemoteExamination.BLL.Models;
 using RemoteExamination.BLL.Models.ExamCompetition;
+using RemoteExamination.BLL.Models.Passport;
 using RemoteExamination.Common.Authentication;
 
 namespace RemoteExamination.API.Controllers
@@ -50,6 +52,19 @@ namespace RemoteExamination.API.Controllers
         {
             var result = await _examCompetitionService.GetExamResult(examResultId);
             return Ok(result);
+        }
+        
+        
+        [Authorize]
+        [HttpPost("RecognizeData")]
+        public async Task<IActionResult> CheckPassport(PassportRecognizeViewModel model)
+        {
+            var passportImage = _mapper.Map<PassportRecognizeModel>(model);
+            passportImage.UserId = CurrentUser.UserId;
+            var result = await _examCompetitionService.RecognizePassportData(passportImage);
+            if (result)
+                return Ok();
+            return Forbid();
         }
     }
 }

@@ -21,6 +21,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RemoteExamination.BLL.Models.IoT;
+using RemoteExamination.BLL.Models.Passport;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace RemoteExamination.BLL.Services

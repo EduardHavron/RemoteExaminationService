@@ -8,6 +8,7 @@ import {ExamResultComponent} from '../Pages/exam-result/exam-result.component';
 import {ExamCompetitionComponent} from '../Pages/exam-competition/exam-competition.component';
 import {ExaminedGuard} from '../../Shared/Guard/examined.guard';
 import {ExamResultResolver} from '../../Shared/Resolvers/exam-result.resolver';
+import {ExamCompetitionGuard} from '../../Shared/Guard/exam-competition.guard';
 
 const routes: Routes = [
   {
@@ -28,8 +29,8 @@ const routes: Routes = [
   {
     path: ':examId/competition',
     component: ExamCompetitionComponent,
-    canLoad: [ExaminedGuard],
-    canActivate: [ExaminedGuard],
+    canLoad: [ExamCompetitionGuard],
+    canActivate: [ExamCompetitionGuard],
     resolve: {
       exam: ExamResolver
     }

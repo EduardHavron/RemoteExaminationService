@@ -7,6 +7,8 @@ using RemoteExamination.BLL.Models;
 using RemoteExamination.Common.Authentication;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using RemoteExamination.API.ViewModels.PassportViewModel;
+using RemoteExamination.BLL.Models.Passport;
 
 namespace RemoteExamination.API.Controllers
 {

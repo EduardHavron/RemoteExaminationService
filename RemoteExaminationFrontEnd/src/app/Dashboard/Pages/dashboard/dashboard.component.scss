@@ -64,3 +64,70 @@ nb-card-header {
 .no-pointer {
   cursor: default;
 }
+
+
+.form-camera-control {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.form-camera-info {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+video {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.form-camera-item {
+  margin-bottom: 25px;
+}
+
+.webcam-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.webcam-position {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+
+.empty-state {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  width: calc(100vw - 2px);
+  height: calc(100vh - 100px);
+  text-align: center;
+}
+
+.empty-state-inner {
+  max-width: 360px;
+  width:100%;
+}
+
+.empty-state-details p {
+  color: #3F3F3F;
+  font-weight: 400;
+  opacity: 0.75;
+  margin-bottom: 24px;
+}
+
+.empty-state-details .button {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.empty-state-title {
+  color: white;
+}

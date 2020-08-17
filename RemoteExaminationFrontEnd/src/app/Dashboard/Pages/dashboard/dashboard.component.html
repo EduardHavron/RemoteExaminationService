@@ -1,57 +1,216 @@
 <div class="dashboard-wrapper">
-  <div *ngFor="let exam of ExamList; let i = index" class="exams-wrapper">
-    <nb-card size="tiny"  [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
-      <nb-card-header>
-        <ng-container *ngIf="isExaminer() || isAdmin()">
+  <ng-container *ngIf="ExamList && ExamList.length > 0">
+    <div *ngFor="let exam of ExamList; let i = index" class="exams-wrapper">
+      <nb-card size="tiny"  [nbSpinner]="this.isLoading" nbSpinnerSize="large" nbSpinnerStatus="danger">
+        <nb-card-header>
+          <ng-container *ngIf="isExaminer() || isAdmin()">
           <span class="exam-name" routerLink="/exams/exam/{{exam.examId}}">
             {{exam.name}}
           </span>
-        </ng-container>
-        <ng-container *ngIf="!isExaminer() && !isAdmin()">
+          </ng-container>
+          <ng-container *ngIf="!isExaminer() && !isAdmin()">
           <span class="exam-name no-pointer">
             {{exam.name}}
           </span>
-        </ng-container>
-        <ng-container *ngIf="isExaminer() || isAdmin()">
-          <div class="card-icon-actions">
-            <div class="actions-item">
-              <fa-icon [icon]="faVoteYea" class="fa-icon-color-primary"
-                       routerLink="/competition/{{exam.examId}}/results"></fa-icon>
+          </ng-container>
+          <ng-container *ngIf="isExaminer() || isAdmin()">
+            <div class="card-icon-actions">
+              <div class="actions-item">
+                <fa-icon [icon]="faVoteYea" class="fa-icon-color-primary"
+                         routerLink="/competition/{{exam.examId}}/results"></fa-icon>
+              </div>
+              <div class="actions-item">
+                <fa-icon (click)="deleteExam(exam.examId, i)" [icon]="faTrash"
+                         class="fa-icon-color-danger"></fa-icon>
+              </div>
+              <div class="actions-item">
+                <fa-icon [icon]="faEdit" class="fa-icon-color-primary"
+                         routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>
+              </div>
             </div>
-            <div class="actions-item">
-              <fa-icon (click)="deleteExam(exam.examId, i)" [icon]="faTrash"
-                       class="fa-icon-color-danger"></fa-icon>
-            </div>
-            <div class="actions-item">
-              <fa-icon [icon]="faEdit" class="fa-icon-color-primary"
-                       routerLink="/exams/exam/{{exam.examId}}/edit"></fa-icon>
+          </ng-container>
+        </nb-card-header>
+        <nb-card-body>
+          <div class="card-item">
+            <span>{{'Questions count' | translate}} - {{exam.questions.length}}</span>
+          </div>
+          <div class="card-item">
+            <div class="card-item-buttons">
+              <ng-container *ngIf="isExaminer() || isAdmin()">
+                <div class="card-item-button">
+                  <button nbButton routerLink="/invites/create/{{exam.examId}}" size="medium" status='primary'>
+                    {{'Create' | translate}}<br>{{'invite' | translate}}
+                  </button>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="isExamined()">
+                <div class="card-item-button" (click)="startExam(exam.examId, webcamTemplate, dialogTemplate)">
+                  <button nbButton size="medium"
+                          status='primary'>{{'Launch' | translate}}
+                  </button>
+                </div>
+              </ng-container>
             </div>
           </div>
-        </ng-container>
-      </nb-card-header>
-      <nb-card-body>
-        <div class="card-item">
-          <span>{{'Questions count' | translate}} - {{exam.questions.length}}</span>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="ExamList && ExamList.length < 1">
+    <div class="empty-state">
+
+      <div class="empty-state-inner">
+        <div class="empty-state-image">
+          <svg width="144px" height="144px" viewBox="0 0 144 144" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title>Empty-state-image</title>
+            <desc>Created with Sketch.</desc>
+            <defs>
+              <circle id="path-1" cx="72" cy="72" r="72"></circle>
+              <path d="M7.77799264,-3.32955885e-13 C6.33272899,1.32282959 5.42637079,3.22480322 5.42637079,5.33846816 C5.42637079,9.33433727 8.66566273,12.5736292 12.6615318,12.5736292 C14.7751968,12.5736292 16.6771704,11.667271 18,10.2220074 C17.384318,14.6175131 13.6091457,18 9.04395132,18 C4.04911493,18 1.77635684e-15,13.9508851 1.77635684e-15,8.95604868 C1.77635684e-15,4.39085425 3.38248693,0.61568197 7.77799264,-1.89474825e-12 Z" id="path-3"></path>
+            </defs>
+            <g id="Empty-state-image" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Mountains">
+                <mask id="mask-2" fill="white">
+                  <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Mask"></g>
+                <g mask="url(#mask-2)">
+                  <g transform="translate(-653.500000, -5.500000)">
+                    <polygon id="Background" fill="#3F3F3F" points="543 321 864 321 864 0 543 0"></polygon>
+                    <g id="Moon-Icon" stroke-width="1" fill="none" transform="translate(745.000000, 27.500000)">
+                      <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                      </mask>
+                      <use id="Mask" fill="#F8F8F8" xlink:href="#path-3"></use>
+                    </g>
+                    <g id="Cloud-group" stroke-width="1" fill="none" transform="translate(0.500000, 23.500000)" fill-opacity="0.2">
+                      <path d="M644.298995,22 C643.466064,20.2605549 643,18.3147079 643,16.2608696 C643,8.86505639 649.043455,2.86956522 656.498435,2.86956522 C657.444728,2.86956522 658.368279,2.96616664 659.259613,3.1499714 C661.105399,1.21043489 663.721343,0 666.622261,0 C670.358406,0 673.621855,2.00778863 675.376104,4.9950875 C676.791326,4.24887418 678.406242,3.82608696 680.120696,3.82608696 C685.210362,3.82608696 689.4228,7.55214184 690.137606,12.4046452 C691.085399,12.113381 692.092757,11.9565217 693.137043,11.9565217 C698.728278,11.9565217 703.26087,16.4531401 703.26087,22 L644.298995,22 Z" id="Cloud-1" fill="#657490" style="mix-blend-mode: luminosity;"></path>
+
+                    </g>
+                    <g id="Peak" stroke-width="1" fill="none" transform="translate(729.000000, 87.000000)">
+                      <polygon id="Path" fill="#D4E2FC" points="34.5 69 34.5 0 69 69"></polygon>
+                      <polygon id="Path" fill="#C6D1ED" points="0 69 34.5 0 55.5 69"></polygon>
+                    </g>
+                    <g id="Group-6" stroke-width="1" fill="none" transform="translate(661.500000, 69.000000)">
+                      <polygon id="Path" fill="#D4E2FC" points="126.75 253.5 126.75 0 253.5 253.5"></polygon>
+                      <polygon id="Path" fill="#BCCAE4" points="0 253.5 126.75 0 203.902174 253.5"></polygon>
+                    </g>
+                    <g id="Peak" stroke-width="1" fill="none" transform="translate(649.000000, 61.000000)">
+                      <polygon id="Path" fill="#D4E2FC" points="35 69.5 35 0.5 69.5 69.5"></polygon>
+                      <polygon id="Path" fill="#C6D1ED" points="0.5 69.5 35 0.5 56 69.5"></polygon>
+                    </g>
+                    <g id="Peak" stroke-width="1" fill="none" transform="translate(716.500000, 97.500000)">
+                      <polygon id="Path" fill="#BCCAE4" points="0.939655172 220.5 111.866962 0 179.387931 220.5"></polygon>
+                    </g>
+                    <g id="Peak" stroke-width="1" fill="none" transform="translate(627.000000, 82.000000)">
+                      <polygon id="Path" fill="#A0B0D1" points="34.5 69.5 34.5 0.5 69 69.5"></polygon>
+                      <polygon id="Path" fill="#8B9BBC" points="0 69.5 34.5 0.5 55.5 69.5"></polygon>
+                    </g>
+                    <g id="Peak" stroke-width="1" fill="none" transform="translate(645.000000, 34.000000)">
+                      <polygon id="Path" fill="#8B9BBC" points="69 138.5 69 0.5 0 138.5"></polygon>
+                      <polygon id="Path" fill="#A0B0D1" points="214.5 288.5 69 0.5 69 288.5"></polygon>
+                    </g>
+                    <g id="Peak" stroke-width="1" fill="none" transform="translate(490.500000, 102.000000)">
+                      <polygon id="Path" fill="#8B9BBC" points="103.5 220.5 103.5 13.5 207 220.5"></polygon>
+                      <polygon id="Path" fill="#7C8BA8" points="0 220.5 103.5 13.5 166.5 220.5"></polygon>
+                      <polygon id="Path" fill="#8B9BBC" points="135 207 135 0 238.5 207"></polygon>
+                      <polygon id="Path" fill="#7C8BA8" points="31.5 207 135 0 198 207"></polygon>
+                    </g>
+                    <g id="Peak" stroke-width="1" fill="none" transform="translate(582.000000, 126.000000)">
+                      <polygon id="Path" fill="#A0B0D1" points="69 138.0054 69 0.0054 138 138.0054"></polygon>
+                      <polygon id="Path" fill="#7C8BA8" points="0 138.0054 69 0.0054 111 138.0054"></polygon>
+                    </g>
+                    <g id="Frost" stroke-width="1" fill="none" transform="translate(697.000000, 34.000000)">
+                      <polygon id="Path" fill="#E4E4E4" points="17 0.5 0.5 33.5 9.5 24.5 17 35 24.5 29 41 48.5"></polygon>
+                      <polygon id="Path" fill="#F8F8F8" points="17 0.5 17 35 24.5 29 41 48.5"></polygon>
+                    </g>
+                    <g id="Peak" stroke-width="1" fill="none" transform="translate(594.000000, 102.000000)">
+                      <polygon id="Path" fill="#A0B0D1" points="109.5 219 109.5 0 219 219"></polygon>
+                      <polygon id="Path" fill="#7C8BA8" points="0 219 109.5 0 176.152174 219"></polygon>
+                    </g>
+                    <g id="Peak" stroke-width="1" fill="none" transform="translate(624.000000, 115.500000)">
+                      <polygon id="Path" fill="#BCCAE4" points="103.5 207 103.5 0 207 207"></polygon>
+                      <polygon id="Path" fill="#7C8BA8" points="0 207 103.5 0 166.5 207"></polygon>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
         </div>
-        <div class="card-item">
-          <div class="card-item-buttons">
-            <ng-container *ngIf="isExaminer() || isAdmin()">
-              <div class="card-item-button">
-                <button nbButton routerLink="/invites/create/{{exam.examId}}" size="medium" status='primary'>
-                  {{'Create' | translate}}<br>{{'invite' | translate}}
-                </button>
-              </div>
+        <div class="empty-state-details">
+          <h1 class="empty-state-title">{{'No exams found' | translate}}</h1>
+          <p>{{'No exams found' | translate}}<br>
+            <ng-container *ngIf="isAdmin() || isExaminer()">
+              {{'How about create a new one?' | translate}}
             </ng-container>
-            <ng-container *ngIf="isExamined()">
-              <div class="card-item-button">
-                <button nbButton routerLink="/competition/{{exam.examId}}/competition" size="medium"
-                        status='primary'>{{'Launch' | translate}}
-                </button>
-              </div>
-            </ng-container>
-          </div>
+          <ng-container *ngIf="isExamined()">{{'You can use invite code to get access to exams' | translate}}</ng-container></p>
+          <ng-container *ngIf="isAdmin() || isExaminer()" routerLink="/exams/exam/create">
+            <button class="button" nbButton status="primary"> {{'Create new exam' | translate}}</button>
+          </ng-container>
+          <ng-container *ngIf="isExamined()" routerLink="/invites/append">
+            <button class="button" nbButton status="primary">{{'Append invite code' | translate}}</button>
+          </ng-container>
         </div>
-      </nb-card-body>
-    </nb-card>
-  </div>
+      </div>
+    </div>
+  </ng-container>
 </div>
+<ng-template #webcamTemplate let-data>
+  <div class="form-camera-info" [nbSpinner]="this.cameraError" nbSpinnerSize="large" nbSpinnerStatus="danger">
+    <div class="form-camera-item">
+      {{'Photo manual' | translate}}
+    </div>
+    <div class="form-camera">
+      <ng-container *ngIf="isCameraAllowed">
+        <div class="webcam-wrapper">
+          <div class="webcam-position">
+            <webcam [trigger]="triggerObservable"
+                    (imageCapture)="handleImage($event)"
+                    [allowCameraSwitch]="true"
+                    [switchCamera]="nextWebcamObservable"
+                    [imageQuality]="1"
+                    (initError)="handleInitError($event)"
+                    [height]="webcamHeight.getValue()" [width]="webcamWidth.getValue()">
+            </webcam>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isCameraAllowed">
+        <div class="form-camera-controls">
+          <div class="form-camera-control" (click)="triggerSnapshot(data.examIdValue)">
+            <button nbButton status="primary">{{'Make photo' | translate}}</button>
+          </div>
+          <div class="form-camera-control" (click)="showNextWebcam(true)" *ngIf="multipleWebcamsAvailable"> <!--Move to NEXT camera-->
+            <button nbButton status="primary">{{'Next camera' | translate}}</button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #dialogTemplate let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header>
+      <div>
+        {{'For accessing exam you should provide MRZ of your document. Continue?' | translate}}
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="warning-wrapper">
+        <div class="buttons">
+          <div class="button-item">
+            <button nbButton status="success" (click)="setAccepted(true)">{{'Accept' | translate}}</button>
+          </div>
+          <div class="button-item">
+            <button nbButton status="danger" (click)="setAccepted(false)">{{'Decline' | translate}}</button>
+          </div>
+        </div>
+      </div>
+
+    </nb-card-body>
+  </nb-card>
+
+</ng-template>

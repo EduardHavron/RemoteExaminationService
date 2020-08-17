@@ -47,12 +47,12 @@
               <span>{{'Photo description' | translate}}</span>
             </div>
             <div class="form-item-wrapper" *ngIf="!cameraError && !documentPhoto">
-              <button nbButton status="primary" (click)="allowCamera()">
+              <button nbButton status="primary" (click)="allowCamera(webcamTemplate)">
                 {{'Open camera' | translate}}
               </button>
             </div>
             <div class="form-item-wrapper" *ngIf="!cameraError && documentPhoto">
-                <button nbButton status="primary">{{'Retake photo' | translate}}</button>
+                <button nbButton status="primary" (click)="retakePhoto(webcamTemplate)">{{'Retake photo' | translate}}</button>
             </div>
             <div class="form-item-wrapper" *ngIf="cameraError">
               {{'cameraError' | translate}}
@@ -69,7 +69,7 @@
   </nb-stepper>
 </div>
 
-<ng-template #contentTemplate>
+<ng-template #webcamTemplate>
   <div class="form-camera-info" [nbSpinner]="this.cameraError" nbSpinnerSize="large" nbSpinnerStatus="danger">
     <div class="form-camera-item">
       {{'Photo manual' | translate}}
@@ -84,16 +84,9 @@
                     [switchCamera]="nextWebcamObservable"
                     [imageQuality]="1"
                     (initError)="handleInitError($event)"
-                    [height]="375" [width]="280">
+                    [height]="this.webcamHeight.getValue()" [width]="this.webcamWidth.getValue()">
             </webcam>
           </div>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="!isCameraAllowed">
-        <div class="form-camera-button-allow">
-          <button nbButton status="primary" (click)="allowCamera()">
-            {{'Make photo' | translate}}
-          </button>
         </div>
       </ng-container>
       <ng-container *ngIf="isCameraAllowed">
@@ -101,7 +94,7 @@
           <div class="form-camera-control" (click)="triggerSnapshot()">
             <button nbButton status="primary">{{'Make photo' | translate}}</button>
           </div>
-          <div class="form-camera-control" (click)="showNextWebcam(true)" *ngIf="multipleWebcamsAvailable"> <!--Move to NEXT camera-->
+          <div class="form-camera-control" (click)="showNextWebcam(true)" *ngIf="multipleWebcamsAvailable"> <!--Move to NEXT camera where true = direction-->
             <button nbButton status="primary">{{'Next camera' | translate}}</button>
           </div>
         </div>

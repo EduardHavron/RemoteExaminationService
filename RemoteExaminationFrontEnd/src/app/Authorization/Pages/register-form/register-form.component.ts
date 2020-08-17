@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, HostListener, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthorizationService} from '../../../Shared/Services/Auth/authorization.service';
 import {Router} from '@angular/router';
@@ -7,7 +7,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {SpinnerService} from '../../../Shared/Services/Spinner/spinner.service';
 import {NbWindowRef, NbWindowService} from '@nebular/theme';
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {WebcamWidth} from '../../../Shared/Models/Webcam/webcam-width';
 
 @Component({
   selector: 'app-register-form',
@@ -19,14 +20,15 @@ export class RegisterFormComponent implements OnInit {
   checked = false;
   isLoading = false;
   webcamRef: NbWindowRef;
+  webcamWidth: BehaviorSubject<number>;
+  webcamHeight: BehaviorSubject<number>;
+  private changeSize = new Subject<WebcamWidth>();
   isCameraAllowed = false;
   documentPhoto: WebcamImage = null;
   cameraError: boolean;
   multipleWebcamsAvailable: boolean;
   private trigger: Subject<void> = new Subject<void>();
   private nextWebcam: Subject<boolean|string> = new Subject<boolean|string>();
-  @ViewChild('contentTemplate') contentTemplate: NbWindowRef;
-
   constructor(private fb: FormBuilder,
               private authService: AuthorizationService,
               private router: Router,
@@ -39,13 +41,16 @@ export class RegisterFormComponent implements OnInit {
       password: ['', Validators.required],
     });
     this.spinnerService.isLoading.subscribe(value => this.isLoading = value);
+    this.changeSize
+      .asObservable()
+      .subscribe((data) => this.calculateWebcamSize(data));
   }
 
   signUp() {
     const val = this.form.value;
     if (val.email && val.password && this.documentPhoto) {
       const imageAsBase64 = this.documentPhoto.imageAsDataUrl;
-      this.authService.signUp({email: val.email, password: val.password, role: this.checked, passportNumber: imageAsBase64.toString()})
+      this.authService.signUp({email: val.email, password: val.password, role: this.checked, passportHash: imageAsBase64.toString()})
         .subscribe(
           () => {
             this.router.navigateByUrl('authorize/login')
@@ -83,10 +88,10 @@ export class RegisterFormComponent implements OnInit {
       this.translateService.instant('Error'));
   }
 
-  allowCamera() {
+  allowCamera(window: TemplateRef<any>) {
     this.isCameraAllowed = true;
-    // @ts-ignore
-    this.webcamRef = this.windowService.open(this.contentTemplate,
+    this.initWebcamSize();
+    this.webcamRef = this.windowService.open(window,
       {
         title: this.translateService.instant('Taking photo'),
         closeOnBackdropClick: false,
@@ -94,10 +99,9 @@ export class RegisterFormComponent implements OnInit {
       });
   }
 
-  retakePhoto() {
+  retakePhoto(window: TemplateRef<any>) {
     this.documentPhoto = null;
-    // @ts-ignore cause im totally sure this works well and NbWindowRef is fully compatible with TemplateRef<any>
-    this.webcamRef = this.windowService.open(this.contentTemplate,
+    this.webcamRef = this.windowService.open(window,
       {
         title: this.translateService.instant('Taking photo'),
         closeOnBackdropClick: false,
@@ -137,5 +141,42 @@ export class RegisterFormComponent implements OnInit {
 
   public triggerSnapshot(): void {
     this.trigger.next();
+  }
+
+  @HostListener('window:resize', ['$event.target'])
+  public onResize(target) {
+    this.changeSize.next({width: target.innerWidth, height: target.innerHeight});
+  }
+
+  private initWebcamSize() {
+    const height = window.innerHeight * 0.4;
+    const width = window.innerWidth * 0.4;
+    if (width > 500 || height > 375) {
+      this.webcamWidth = new BehaviorSubject<number>(500);
+      this.webcamWidth = new BehaviorSubject<number>(375);
+    }
+    if (width < 225 || height < 150) {
+      this.webcamWidth = new BehaviorSubject<number>(225);
+      this.webcamHeight = new BehaviorSubject<number>(150);
+    } else {
+      this.webcamWidth = new BehaviorSubject<number>(width);
+      this.webcamHeight = new BehaviorSubject<number>(height);
+    }
+  }
+  private calculateWebcamSize(args: WebcamWidth) {
+    const height = args.height * 0.4;
+    const width = args.width * 0.4;
+    if (width > 500 || height > 375) {
+      this.webcamWidth.next(500);
+      this.webcamHeight.next(375);
+      return;
+    }
+    if (width < 225 || height < 150) {
+      this.webcamWidth.next(225);
+      this.webcamHeight.next(150);
+    } else {
+      this.webcamWidth.next(width);
+      this.webcamHeight.next(height);
+    }
   }
 }

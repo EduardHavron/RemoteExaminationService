@@ -4,10 +4,12 @@ using RemoteExamination.API.ViewModels.AdminViewModels;
 using RemoteExamination.API.ViewModels.ExamCompetitionViewModels;
 using RemoteExamination.API.ViewModels.ExamViewModels;
 using RemoteExamination.API.ViewModels.InvitationViewModels;
+using RemoteExamination.API.ViewModels.PassportViewModel;
 using RemoteExamination.BLL.Models;
 using RemoteExamination.BLL.Models.Admin;
 using RemoteExamination.BLL.Models.ExamCompetition;
 using RemoteExamination.BLL.Models.Invitation;
+using RemoteExamination.BLL.Models.Passport;
 using RemoteExamination.DAL.Entities;
 
 namespace RemoteExamination.API.Mapping
@@ -52,6 +54,7 @@ namespace RemoteExamination.API.Mapping
             //MapUsers
             CreateMap<AdminUserViewModel, AdminUserModel>().ReverseMap();
             CreateMap<UpdatedAdminUserViewModel, UpdatedAdminUserModel>().ReverseMap();
+            CreateMap<PassportRecognizeViewModel, PassportRecognizeModel>().ReverseMap();
         }
     }
 }
