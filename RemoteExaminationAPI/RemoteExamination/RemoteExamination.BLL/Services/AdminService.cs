@@ -84,9 +84,10 @@ namespace RemoteExamination.BLL.Services
         {
             var contextUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
             if (contextUser is null) throw new Exception("User not found, ensure userId is correct");
-
-            var users = _dbContext.UserInvitations.Where(invitation => invitation.UserId == contextUser.Id);
-            _dbContext.UserInvitations.RemoveRange(users);
+            var examResult = _dbContext.ExamResults.Where(result => result.UserId == userId);
+            _dbContext.RemoveRange(examResult);
+            var userInvitations = _dbContext.UserInvitations.Where(invitation => invitation.UserId == contextUser.Id);
+            _dbContext.UserInvitations.RemoveRange(userInvitations);
             _dbContext.Users.Remove(contextUser);
             await _dbContext.SaveChangesAsync();
         }

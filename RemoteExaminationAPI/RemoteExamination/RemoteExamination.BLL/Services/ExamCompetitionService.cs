@@ -122,12 +122,7 @@ namespace RemoteExamination.BLL.Services
         {
             var modelData = await ExtractPassportData(model.PassportImageBase64);
             if (modelData is null) return false;
-            using (HashAlgorithm algorithm = SHA256.Create())
-            {
-                modelData = algorithm
-                    .ComputeHash(Encoding.UTF8.GetBytes(modelData))
-                    .ToString();
-            }
+            modelData = GetStringSha256Hash(modelData);
 
             var storedData = _dbContext.Users.FirstOrDefaultAsync(x => x.Id == model.UserId).Result.PassportHash;
             return storedData == modelData;
@@ -146,6 +141,19 @@ namespace RemoteExamination.BLL.Services
             var jsonResponse =
                 JsonConvert.DeserializeObject<IotResult>(await responseMessage.Content.ReadAsStringAsync());
             return jsonResponse.Data.Result != null ? jsonResponse.Data.Result.DocumentNumber : null;
+        }
+        
+        private string GetStringSha256Hash(string text)
+        {
+            if (String.IsNullOrEmpty(text))
+                return String.Empty;
+
+            using (var sha = new System.Security.Cryptography.SHA256Managed())
+            {
+                var textData = System.Text.Encoding.UTF8.GetBytes(text);
+                var hash = sha.ComputeHash(textData);
+                return BitConverter.ToString(hash).Replace("-", String.Empty);
+            }
         }
     }
 }

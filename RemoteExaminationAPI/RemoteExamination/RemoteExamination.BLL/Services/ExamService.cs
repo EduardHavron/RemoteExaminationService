@@ -149,6 +149,7 @@ namespace RemoteExamination.BLL.Services
 
             var invitations = _dbContext.Invitations.Where(invitation => invitation.ExamId == exam.ExamId);
             _dbContext.Invitations.RemoveRange(invitations);
+            await _dbContext.SaveChangesAsync();
             _dbContext.Exams.Remove(exam);
 
             await _dbContext.SaveChangesAsync();

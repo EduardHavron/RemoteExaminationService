@@ -116,8 +116,11 @@ video {
   width: 100%;
 }
 
+.empty-state-details {
+  color: white;
+}
+
 .empty-state-details p {
-  color: #3F3F3F;
   font-weight: 400;
   opacity: 0.75;
   margin-bottom: 24px;
@@ -126,6 +129,7 @@ video {
 .empty-state-details .button {
   font-size: 14px;
   text-transform: uppercase;
+  margin-top: 5%;
 }
 
 .empty-state-title {

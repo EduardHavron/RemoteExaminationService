@@ -57,7 +57,7 @@
     </div>
   </ng-container>
 
-  <ng-container *ngIf="ExamList && ExamList.length < 1">
+  <ng-container *ngIf="(ExamList && ExamList.length < 1) || ExamList === undefined">
     <div class="empty-state">
 
       <div class="empty-state-inner">
@@ -149,18 +149,17 @@
         </div>
         <div class="empty-state-details">
           <h1 class="empty-state-title">{{'No exams found' | translate}}</h1>
-          <p>{{'No exams found' | translate}}<br>
-            <ng-container *ngIf="isAdmin() || isExaminer()">
-              {{'How about create a new one?' | translate}}
-            </ng-container>
-            <ng-container
-              *ngIf="isExamined()">{{'You can use invite code to get access to exams' | translate}}</ng-container>
-          </p>
-          <ng-container *ngIf="isAdmin() || isExaminer()" routerLink="/exams/exam/create">
-            <button class="button" nbButton status="primary"> {{'Create new exam' | translate}}</button>
+          {{'No exams found' | translate}}<br>
+          <ng-container *ngIf="isAdmin() || isExaminer()">
+            {{'How about create a new one?' | translate}}
           </ng-container>
-          <ng-container *ngIf="isExamined()" routerLink="/invites/append">
-            <button class="button" nbButton status="primary">{{'Append invite code' | translate}}</button>
+          <ng-container
+            *ngIf="isExamined()">{{'You can use invite code to get access to exams' | translate}}</ng-container>
+          <ng-container *ngIf="isAdmin() || isExaminer()">
+            <button class="button" nbButton status="primary" routerLink="/exams/exam/create"> {{'Create new exam' | translate}}</button>
+          </ng-container>
+          <ng-container *ngIf="isExamined()">
+            <button class="button" nbButton status="primary"  routerLink="/invites/append">{{'Append invite code' | translate}}</button>
           </ng-container>
         </div>
       </div>

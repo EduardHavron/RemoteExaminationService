@@ -59,12 +59,7 @@ namespace RemoteExamination.BLL.Services
             user.PassportHash = await ExtractPassportData(passportImage);
             if (user.PassportHash is null) return false;
 
-            using (HashAlgorithm algorithm = SHA256.Create())
-            {
-                user.PassportHash = algorithm
-                    .ComputeHash(Encoding.UTF8.GetBytes(user.PassportHash))
-                    .ToString();
-            }
+            user.PassportHash = GetStringSha256Hash(user.PassportHash);
 
             var result = await _userManager.CreateAsync(user, password);
 
@@ -124,6 +119,19 @@ namespace RemoteExamination.BLL.Services
             var jsonResponse =
                 JsonConvert.DeserializeObject<IotResult>(await responseMessage.Content.ReadAsStringAsync());
             return jsonResponse?.Data.Result.DocumentNumber;
+        }
+
+        private string GetStringSha256Hash(string text)
+        {
+            if (String.IsNullOrEmpty(text))
+                return String.Empty;
+
+            using (var sha = new System.Security.Cryptography.SHA256Managed())
+            {
+                var textData = System.Text.Encoding.UTF8.GetBytes(text);
+                var hash = sha.ComputeHash(textData);
+                return BitConverter.ToString(hash).Replace("-", String.Empty);
+            }
         }
     }
 }
