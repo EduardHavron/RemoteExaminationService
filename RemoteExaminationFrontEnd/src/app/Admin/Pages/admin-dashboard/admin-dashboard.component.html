@@ -11,9 +11,11 @@
         <button nbButton routerLink="database" status="primary">
           {{'Manage database' | translate}}
         </button>
-        <button nbButton routerLink="backup" status="primary">
-          {{'Get database backup' | translate}}
-        </button>
+        <ng-container *ngIf="isPC.getValue()">
+          <button nbButton routerLink="backup" status="primary">
+            {{'Get database backup' | translate}}
+          </button>
+        </ng-container>
       </div>
     </nb-card-body>
   </nb-card>

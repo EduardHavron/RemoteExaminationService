@@ -37,7 +37,7 @@ namespace RemoteExamination.API
             {
                 options.AddPolicy("AllowSpecificOriginPolicy", builder =>
                 {
-                    builder.WithOrigins("http://localhost:4200", "https://reservices.azurewebsites.net");
+                    builder.AllowAnyOrigin();
                     builder.AllowAnyHeader();
                     builder.AllowAnyMethod();
                 });
