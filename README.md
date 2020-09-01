@@ -1,7 +1,3 @@
----
-
-
----
 
 <h1 id="short-introduction">Short introduction</h1>
 <p>Pet project, developed as coursework for 3rd course. Provides service for creating, managing, inviting users and running exams in form of tests.</p>
