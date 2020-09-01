@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using RemoteExamination.BLL.Models;
-using RemoteExamination.BLL.Models.ExamCompetition;
 using RemoteExamination.DAL.Entities;
 
 namespace RemoteExamination.BLL.Abstractions

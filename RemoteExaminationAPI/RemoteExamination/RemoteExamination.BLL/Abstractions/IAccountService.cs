@@ -1,5 +1,5 @@
-﻿using RemoteExamination.BLL.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using RemoteExamination.BLL.Models;
 
 namespace RemoteExamination.BLL.Abstractions
 {

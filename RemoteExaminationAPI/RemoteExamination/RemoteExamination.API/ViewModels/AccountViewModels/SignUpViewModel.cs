@@ -2,10 +2,8 @@
 
 namespace RemoteExamination.API.ViewModels.AccountViewModels
 {
-    public class SignUpViewModel: SignUpAdminViewModel
+    public class SignUpViewModel : SignUpAdminViewModel
     {
-
-        [Required]
-        public bool Role { get; set; }
+        [Required] public bool Role { get; set; }
     }
 }

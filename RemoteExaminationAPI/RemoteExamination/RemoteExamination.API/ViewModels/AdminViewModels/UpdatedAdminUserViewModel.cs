@@ -1,8 +1,8 @@
 ﻿namespace RemoteExamination.API.ViewModels.AdminViewModels
 {
-    public class UpdatedAdminUserViewModel: AdminUserViewModel
+    public class UpdatedAdminUserViewModel : AdminUserViewModel
     {
-        #nullable enable
+#nullable enable
         public string? Password { get; set; }
     }
 }

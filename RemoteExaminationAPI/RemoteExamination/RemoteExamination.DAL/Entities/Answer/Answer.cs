@@ -1,25 +1,20 @@
-﻿using RemoteExamination.DAL.Tables;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using RemoteExamination.DAL.Tables;
 
 namespace RemoteExamination.DAL.Entities
 {
     [Table(TableName.Answer)]
     public class Answer
     {
-        [Key]
-        public int AnswerId { get; set; }
+        [Key] public int AnswerId { get; set; }
 
-        [ForeignKey(nameof(Question))]
-        public int QuestionId { get; set; }
+        [ForeignKey(nameof(Question))] public int QuestionId { get; set; }
 
-        [Required]
-        [MaxLength(200)]
-        public string Value { get; set; }
+        [Required] [MaxLength(200)] public string Value { get; set; }
 
         public bool IsCorrect { get; set; }
 
         public Question Question { get; set; }
-
     }
 }

@@ -6,7 +6,7 @@ namespace RemoteExamination.API.ViewModels.ExamCompetitionViewModels
     {
         public int ExamResultQuestionId { get; set; }
 
-        public List<ExamResultViewModel>  ExamResultAnswers { get; set; }
+        public List<ExamResultViewModel> ExamResultAnswers { get; set; }
 
         public string Question { get; set; }
     }

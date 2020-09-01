@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -12,14 +13,13 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RemoteExamination.API.Mapping;
 using RemoteExamination.API.Middleware;
+using RemoteExamination.API.Seeding;
 using RemoteExamination.BLL.Abstractions;
 using RemoteExamination.BLL.Services;
 using RemoteExamination.Common.Authentication;
 using RemoteExamination.DAL.Context;
 using RemoteExamination.DAL.Entities;
-using System.Text;
-using RemoteExamination.API.Seeding;
-using Newtonsoft.Json;
+
 namespace RemoteExamination.API
 {
     public class Startup
@@ -30,6 +30,7 @@ namespace RemoteExamination.API
         }
 
         public IConfiguration Configuration { get; }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options =>
@@ -50,10 +51,7 @@ namespace RemoteExamination.API
                     options.UseSqlServer(Configuration["ConnectionStrings:DbConnection"],
                         m => m.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
 
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new MappingProfile());
-            });
+            var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile(new MappingProfile()); });
             var mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
             services.AddIdentity<User, IdentityRole>(options =>
@@ -98,19 +96,15 @@ namespace RemoteExamination.API
             services.AddSwaggerGen(c =>
             {
                 if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-                {
                     c.SwaggerDoc("v1", new OpenApiInfo
                     {
                         Title = "RES API Swagger Production"
                     });
-                }
                 else
-                {
                     c.SwaggerDoc("v1", new OpenApiInfo
                     {
                         Title = "RES API Swagger Development"
                     });
-                }
 
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -142,10 +136,7 @@ namespace RemoteExamination.API
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseMiddleware<ErrorHandling>();
 
@@ -157,10 +148,7 @@ namespace RemoteExamination.API
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             app.UseSwagger();
             app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "RESApiService"));

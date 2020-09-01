@@ -7,8 +7,7 @@ namespace RemoteExamination.DAL.Entities
     [Table(TableName.ExamResultAnswer)]
     public class ExamResultAnswer
     {
-        [Key]
-        public int ExamResultAnswerId { get; set; }
+        [Key] public int ExamResultAnswerId { get; set; }
 
         public int ExamResultQuestionId { get; set; }
 

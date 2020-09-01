@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RemoteExamination.API.Controllers.Abstractions;
@@ -6,7 +7,6 @@ using RemoteExamination.API.ViewModels.ExamViewModels;
 using RemoteExamination.BLL.Abstractions;
 using RemoteExamination.BLL.Models;
 using RemoteExamination.Common.Authentication;
-using System.Threading.Tasks;
 
 namespace RemoteExamination.API.Controllers
 {
@@ -31,10 +31,7 @@ namespace RemoteExamination.API.Controllers
             {
                 var exams = await _examService.GetAllExamsAsync
                     <ExaminerExamModel, ExaminerQuestionModel, ExaminerAnswerModel>(CurrentUser);
-                if (exams == null)
-                {
-                    return NoContent();
-                }
+                if (exams == null) return NoContent();
 
                 return Ok(exams);
             }
@@ -42,10 +39,7 @@ namespace RemoteExamination.API.Controllers
             {
                 var exams = await _examService.GetAllExamsAsync
                     <ExaminedExamModel, ExaminedQuestionModel, ExaminedAnswerModel>(CurrentUser);
-                if (exams == null)
-                {
-                    return NoContent();
-                }
+                if (exams == null) return NoContent();
 
                 return Ok(exams);
             }
@@ -58,24 +52,20 @@ namespace RemoteExamination.API.Controllers
             if (CurrentUser.UserRoles == Role.Admin || CurrentUser.UserRoles == Role.Examiner)
             {
                 var exam =
-                   await _examService.GetExamAsync<ExaminerExamModel, ExaminerQuestionModel, ExaminerAnswerModel>(examId,
+                    await _examService.GetExamAsync<ExaminerExamModel, ExaminerQuestionModel, ExaminerAnswerModel>(
+                        examId,
                         CurrentUser);
-                if (exam == null)
-                {
-                    return NoContent();
-                }
+                if (exam == null) return NoContent();
 
                 return Ok(exam);
             }
             else
             {
                 var exam =
-                    await _examService.GetExamAsync<ExaminedExamModel, ExaminedQuestionModel, ExaminedAnswerModel>(examId,
+                    await _examService.GetExamAsync<ExaminedExamModel, ExaminedQuestionModel, ExaminedAnswerModel>(
+                        examId,
                         CurrentUser);
-                if (exam == null)
-                {
-                    return NoContent();
-                }
+                if (exam == null) return NoContent();
 
                 return Ok(exam);
             }

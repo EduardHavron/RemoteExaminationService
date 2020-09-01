@@ -1,14 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RemoteExamination.API.Controllers.Abstractions;
-using RemoteExamination.API.ViewModels.ExamCompetitionViewModels;
 using RemoteExamination.API.ViewModels.ExamViewModels;
 using RemoteExamination.BLL.Abstractions;
 using RemoteExamination.BLL.Models;
-using RemoteExamination.BLL.Models.ExamCompetition;
 using RemoteExamination.Common.Authentication;
 
 namespace RemoteExamination.API.Controllers
@@ -37,10 +34,10 @@ namespace RemoteExamination.API.Controllers
         }
 
         [HttpGet("GetAllResults/{examId}")]
-        [Authorize(Roles=Role.Admin + "," + Role.Examiner)]
+        [Authorize(Roles = Role.Admin + "," + Role.Examiner)]
         public async Task<IActionResult> GetAllExamResults(int examId)
         {
-           var result =  await _examCompetitionService.GetAllExamResults(examId);
+            var result = await _examCompetitionService.GetAllExamResults(examId);
             return Ok(result);
         }
 

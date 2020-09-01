@@ -26,7 +26,7 @@ namespace RemoteExamination.BLL.Services
 
         public async Task CheckExamResult(ExaminerExamModel model, string currentUser)
         {
-            double finalResult= 0;
+            double finalResult = 0;
             var checkedExam = _mapper.Map<ExaminerExamModel>(_dbContext
                 .Exams
                 .Include("Questions.Answers")
@@ -38,7 +38,7 @@ namespace RemoteExamination.BLL.Services
                 ExamName = checkedExam.Name,
                 UserId = currentUser,
                 UserEmail = _dbContext.Users
-                    .FirstOrDefaultAsync(x => 
+                    .FirstOrDefaultAsync(x =>
                         x.Id == currentUser).Result.Email
             };
             foreach (var question in model.Questions)
@@ -46,10 +46,7 @@ namespace RemoteExamination.BLL.Services
                 var checkedQuestion =
                     checkedExam.Questions.FirstOrDefault(questionModel =>
                         questionModel.QuestionId == question.QuestionId);
-                if (checkedQuestion is null)
-                {
-                    throw new Exception("Checked question not found");
-                }
+                if (checkedQuestion is null) throw new Exception("Checked question not found");
                 var examResultQuestion = new ExamResultQuestionModel
                 {
                     Question = checkedQuestion.QuestionMessage
@@ -60,12 +57,9 @@ namespace RemoteExamination.BLL.Services
                 {
                     var checkedAnswer =
                         checkedQuestion.Answers
-                            .FirstOrDefault(answerModel => 
+                            .FirstOrDefault(answerModel =>
                                 answerModel.AnswerId == answer.AnswerId);
-                    if (checkedAnswer is null)
-                    {
-                        throw new Exception("Checked answer not found");
-                    }
+                    if (checkedAnswer is null) throw new Exception("Checked answer not found");
                     var examResultAnswerModel = new ExamResultAnswerModel
                     {
                         IsCorrect = checkedAnswer.IsCorrect,
@@ -83,10 +77,8 @@ namespace RemoteExamination.BLL.Services
                         isFrozen = true;
                     }
                 }
-                if (correctlyAnswered && !isFrozen)
-                {
-                    finalResult++;
-                }
+
+                if (correctlyAnswered && !isFrozen) finalResult++;
                 examResultModel.ExamResultQuestions.Add(examResultQuestion);
             }
 
@@ -101,7 +93,7 @@ namespace RemoteExamination.BLL.Services
         public async Task<IList<ExamResult>> GetAllExamResults(int examId)
         {
             var result = await _dbContext.ExamResults
-                .Where(x 
+                .Where(x
                     => x.ExamId == examId).ToListAsync();
 
             return result;
@@ -109,10 +101,10 @@ namespace RemoteExamination.BLL.Services
 
         public async Task<ExamResult> GetExamResult(int examResultId)
         {
-            var result = await _dbContext.ExamResults.Include(examResult 
-                => examResult.ExamResultQuestions).ThenInclude(question 
-                => question.ExamResultAnswers)
-                .FirstOrDefaultAsync(x 
+            var result = await _dbContext.ExamResults.Include(examResult
+                    => examResult.ExamResultQuestions).ThenInclude(question
+                    => question.ExamResultAnswers)
+                .FirstOrDefaultAsync(x
                     => x.ExamResultId == examResultId);
 
             return result;
