@@ -39,7 +39,7 @@ packages:<br>
 <h1 id="i-want-to-try-it-myself">I want to try it myself</h1>
 <p>There is two ways to try it yourself:</p>
 <ol>
-<li>Azure Web App: For access to Azure Web App you can use links, provided earlier in this readme. <strong>You need credentials for accessing service: Login - <a href="mailto:admin@gmail.com">admin@gmail.com</a>, Password: 1234567890.</strong></li>
+<li>Azure Web App: For access to Azure Web App you can use links, provided earlier in this readme. <strong>You need credentials for accessing service: Login - <a href="mailto:admin@gmail.com">admin@gmail.com</a>, Password: 1234567890. Note: estimated azure web app availability: until January 2021</strong></li>
 <li>Launch Project Locally:<br>
 2.1.	Checkout project from github with <code>git clone -b &lt;insert branch name here&gt; https://github.com/EduardHavron/RemoteExaminationService.git</code>;<br>
 <br><br>
