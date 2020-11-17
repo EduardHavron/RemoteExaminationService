@@ -6,9 +6,8 @@
 <li>Backend Service is developed by .NET Core 3.1, using following<br>
 packages:<br>
 1.1. Entity Framework Core<br>
-1.2. <a href="https://github.com/jasontaylordev/CleanArchitecture">Clean Architecture Template</a><br>
-1.3. JWT Auth<br>
-1.4. Swashbuckle<br>
+1.2. JWT Auth<br>
+1.3. Swashbuckle<br>
 <br></li>
 <li>FrontEnd Service is developed with Angular 9 using following core packages (there may be more packages, which is used in some components, but it’s not so important)<br>
 2.1 <a href="https://github.com/akveo/nebular">Nebular UI</a><br>
