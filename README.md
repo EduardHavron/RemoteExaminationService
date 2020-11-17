@@ -16,14 +16,7 @@ packages:<br>
 <li>Database is driven by SQL Server with model-first approach</li>
 <li>Deploy is done using Azure Services with CI/CD integration using Azure DevOps and Azure Portal</li>
 </ol>
-<h1 id="badges">Badges</h1>
-<ol>
-<li>FrontEnd:<br>
-<a href="https://eva.design"><img src="https://i.imgur.com/oMcxwZ0.png" alt="Eva Design System" height="20px"></a><br>
-<a href="https://dev.azure.com/kyrylostakhevych/RemoteExaminationFrontEnd/_build/latest?definitionId=5"><img src="https://dev.azure.com/kyrylostakhevych/RemoteExaminationFrontEnd/_apis/build/status/RemoteExaminationFrontEnd-CI" alt="Build status"></a></li>
-<li>BackEnd:<br>
-<a href="https://dev.azure.com/kyrylostakhevych/RemoteExaminationBackEnd/_build/latest?definitionId=10"><img src="https://dev.azure.com/kyrylostakhevych/RemoteExaminationBackEnd/_apis/build/status/reservice%20-%20CI" alt="Build status"></a></li>
-</ol>
+
 <h1 id="github-project-structure">GitHub project structure</h1>
 <p>Project is separated at 2 branches: <strong>master</strong> and <strong>passportless</strong>.</p>
 <ul>
