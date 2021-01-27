@@ -18,15 +18,15 @@ packages:<br>
 </ol>
 <h1 id="i-want-to-try-it-myself">I want to try it myself</h1>
 Launch Project Locally:<br>
-2.1.	Checkout project from github with <code>git clone -b &lt;insert branch name here&gt; https://github.com/EduardHavron/RemoteExaminationService.git</code>;<br>
+1.1.	Checkout project from github with <code>git clone -b &lt;insert branch name here&gt; https://github.com/EduardHavron/RemoteExaminationService.git</code>;<br>
 <br><br>
-2.2. Manage Seed Data in <strong>RemoteExamination.API/SeedRoles.cs</strong> and <strong>RemoteExamination.API/SeedUsers.cs</strong>;<br>
+1.2. Manage Seed Data in <strong>RemoteExamination.API/SeedRoles.cs</strong> and <strong>RemoteExamination.API/SeedUsers.cs</strong>;<br>
 <br><br>
-2.3. Launch Update-Database from Visual Studio or it’s equivalent;<br>
+1.3. Launch Update-Database from Visual Studio or it’s equivalent;<br>
 <br><br>
-2.4. Serve .NET Core API with your favorite IDE or from console with <code>dotnet run RemoteExamination.API.dll</code>. Now you can access API with <strong>localhost:5000/swagger/index.html</strong>;<br>
+1.4. Serve .NET Core API with your favorite IDE or from console with <code>dotnet run RemoteExamination.API.dll</code>. Now you can access API with <strong>localhost:5000/swagger/index.html</strong>;<br>
 <br><br>
-2.5. If you also want to check Angular part you can also serve it with your favorite IDE or using ng: <code>ng serve</code></li>
+1.5. If you also want to check Angular part you can also serve it with your favorite IDE or using ng: <code>ng serve</code></li>
 <h1 id="copyrights">Copyrights</h1>
 <p>Notice: this is a pet project made for educational purposes. There are some front-end usages that might be used from other projects, including commercial ones. You totally shouldn’t use it for commercial purposes.</p>
 <p>All rights to materials presented on this project belong to their rightful owners.</p>
